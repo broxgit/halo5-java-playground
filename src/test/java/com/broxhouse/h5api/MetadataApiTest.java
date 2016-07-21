@@ -54,6 +54,7 @@ public class MetadataApiTest extends BaseTest {
         ApiFactory factory = new ApiFactory();
         Metadata metadata = factory.getMetadata();
         Response<List<Weapon>> weapons = metadata.getWeapons().execute();
+
         Assert.assertEquals(200, weapons.code());
     }
 
