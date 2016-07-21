@@ -1,42 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="5fdac0ad-8c12-40e7-a786-d460f1f65048" name="Default" comment="ehhe">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_squareup_retrofit2_converter_gson_2_0_0_beta4.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_squareup_retrofit2_retrofit_2_0_0_beta4.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/broxhouse/Profile.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/broxhouse/Stats.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/broxhouse/h5api/models/metadata/CSRDesignation.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/broxhouse/h5api/models/metadata/CSRTier.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/broxhouse/h5api/models/metadata/CampaignMission.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/broxhouse/h5api/models/metadata/Commendation.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/broxhouse/h5api/models/metadata/Enemy.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/broxhouse/h5api/models/metadata/FlexibleStat.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/broxhouse/h5api/models/metadata/GameBaseVariant.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/broxhouse/h5api/models/metadata/GameVariant.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/broxhouse/h5api/models/metadata/Impulse.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/broxhouse/h5api/models/metadata/Map.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/broxhouse/h5api/models/metadata/MapVariant.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/broxhouse/h5api/models/metadata/Medal.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/broxhouse/h5api/models/metadata/Playlist.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/broxhouse/h5api/models/metadata/Requisition.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/broxhouse/h5api/models/metadata/RequisitionPack.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/broxhouse/h5api/models/metadata/Reward.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/broxhouse/h5api/models/metadata/Skull.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/broxhouse/h5api/models/metadata/SpartanRank.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/broxhouse/h5api/models/metadata/SpriteLocation.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/broxhouse/h5api/models/metadata/TeamColor.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/broxhouse/h5api/models/metadata/Vehicle.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/broxhouse/h5api/models/metadata/Weapon.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HaloApp2.iml" afterPath="$PROJECT_DIR$/HaloApp2.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pom.xml" afterPath="$PROJECT_DIR$/pom.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/broxhouse/ApiFactory.java" afterPath="$PROJECT_DIR$/src/main/java/com/broxhouse/ApiFactory.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/broxhouse/MetaData.java" afterPath="$PROJECT_DIR$/src/main/java/com/broxhouse/MetaData.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/com/broxhouse/common/stats/WeaponId.java" afterPath="$PROJECT_DIR$/src/main/java/com/broxhouse/h5api/models/stats/WeaponId.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/com/broxhouse/common/stats/WeaponStats.java" afterPath="$PROJECT_DIR$/src/main/java/com/broxhouse/h5api/models/stats/WeaponStats.java" />
-    </list>
+    <list default="true" id="5fdac0ad-8c12-40e7-a786-d460f1f65048" name="Default" comment="ehhe" />
     <ignored path="HaloApp2.iws" />
     <ignored path=".idea/workspace.xml" />
     <ignored path="$PROJECT_DIR$/out/" />
@@ -61,8 +26,8 @@
       <file leaf-file-name="ApiFactory.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/broxhouse/ApiFactory.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="612">
-              <caret line="36" column="48" selection-start-line="36" selection-start-column="48" selection-end-line="36" selection-end-column="48" />
+            <state relative-caret-position="684">
+              <caret line="57" column="7" selection-start-line="57" selection-start-column="7" selection-end-line="57" selection-end-column="7" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#446#447#0" expanded="true" />
@@ -1305,8 +1270,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/broxhouse/ApiFactory.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="612">
-          <caret line="36" column="48" selection-start-line="36" selection-start-column="48" selection-end-line="36" selection-end-column="48" />
+        <state relative-caret-position="684">
+          <caret line="57" column="7" selection-start-line="57" selection-start-column="7" selection-end-line="57" selection-end-column="7" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#446#447#0" expanded="true" />
