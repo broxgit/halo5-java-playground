@@ -1,4 +1,4 @@
-package com.broxhouse.common.stats;
+package com.broxhouse.h5api.models.stats;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import java.util.List;

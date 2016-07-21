@@ -1,4 +1,4 @@
-package com.broxhouse.common.stats;
+package com.broxhouse.h5api.models.stats;
 
 /**
  * Created by Brock Berrett on 7/20/2016.
