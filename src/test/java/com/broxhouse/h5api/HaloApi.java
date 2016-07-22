@@ -13,17 +13,24 @@ import java.util.Arrays;
 
 import com.broxhouse.h5api.models.metadata.Medal;
 import com.broxhouse.h5api.models.metadata.Weapon;
+import com.broxhouse.h5api.models.stats.common.MedalAward;
+import com.broxhouse.h5api.models.stats.reports.ArenaPlayerStats;
+import com.broxhouse.h5api.models.stats.reports.BaseStats;
 import com.google.gson.Gson;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.utils.URIBuilder;
-//import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.HttpClients;
 import org.apache.http.util.EntityUtils;
+import org.codehaus.jackson.map.DeserializationConfig;
+import org.codehaus.jackson.map.ObjectMapper;
+import org.json.JSONArray;
+import org.json.JSONObject;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
-import org.json.*;
 
 public class HaloApi {
 
@@ -126,14 +133,15 @@ public class HaloApi {
 
 //            testJSONWeapons();
 //            testJSONMedals();
+            testPlayerStats();
 //            JSONObject customMatches = new JSONObject(customMatches("that%20brock%20guy"));
 //            JSONObject playerMatches = new JSONObject(playerMatches("that%20ax%20guy", "arena,custom", "50", null));
-            JSONObject arenaStats = new JSONObject(arenaStats("that%20trev%20guy"));
+//            JSONObject arenaStats = new JSONObject(arenaStats("that%20trev%20guy"));
 //            JSONArray weapons = new JSONArray(listWeapons());
 //            JSONArray medals = new JSONArray(listMedals());
 //            System.out.println(customMatches);
 //            System.out.println(playerMatches);
-            System.out.println(arenaStats);
+//            System.out.println(arenaStats);
 //            System.out.println(weapons);
 //            System.out.println(medals);
         } catch (IOException e)
@@ -166,7 +174,26 @@ public class HaloApi {
 
     public static void testPlayerStats() throws Exception
     {
+        JSONArray obj = new JSONObject(arenaStats("That%20Brock%20Guy")).getJSONArray("Results").getJSONObject(0).getJSONObject("Result").getJSONObject("ArenaStats").getJSONArray("MedalAwards");
+        String var = obj.toString();
+        System.out.println(var);
 
+        ObjectMapper mapper = new ObjectMapper();
+        mapper.configure(DeserializationConfig.Feature.FAIL_ON_UNKNOWN_PROPERTIES, false);
+        MedalAward[] stats = mapper.readValue(var, MedalAward[].class);
+//        System.out.println(stats.getCount());
+        //System.out.println(Arrays.toString(stats));
+        for (int row = 0; row < stats.length; row++)
+        {
+////            for (int col = 0; col < stats[row].length; col++)
+////            {
+////                System.out.println(stats[row][col].getArenaPlaylistStats());
+////            }
+        }
+
+//        JSONObject obj = new JSONObject(arenaStats("that%20brock%20guy"));
+//        JSONArray arr = obj.getJSONArray("MedalAwards");
+//        System.out.println(arr.toString());
     }
 
 }

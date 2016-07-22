@@ -28,7 +28,7 @@
 
 package com.broxhouse.h5api.models.stats.servicerecords;
 
-import com.broxhouse.h5api.models.stats.common.BaseStats;
+import com.broxhouse.h5api.models.stats.reports.BaseStats;
 import com.broxhouse.h5api.models.stats.common.FlexibleStats;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
