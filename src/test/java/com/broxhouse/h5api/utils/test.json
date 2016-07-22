@@ -1,0 +1,848 @@
+{
+
+  "Results": [
+    {
+
+      "Id": "string",
+
+
+
+
+
+
+
+
+      "ResultCode": "int",
+
+
+      "Result": {
+
+        "ArenaStats": {
+
+
+
+
+          "ArenaPlaylistStats": [
+            {
+
+              "PlaylistId": "guid",
+
+
+
+              "MeasurementMatchesLeft": "int",
+
+
+
+              "HighestCsr": {
+
+
+                "Tier": "int",
+
+
+
+                "DesignationId": "int",
+
+
+                "Csr": "int",
+
+
+                "PercentToNextTier": "int",
+
+
+
+                "Rank": "int"
+              },
+
+
+              "Csr": {
+
+
+                "Tier": "int",
+
+
+
+                "DesignationId": "int",
+
+
+                "Csr": "int",
+
+
+                "PercentToNextTier": "int",
+
+
+
+                "Rank": "int"
+              },
+
+
+
+
+
+              "CsrPercentile": "int"
+
+
+
+              "TotalKills": "int",
+
+
+              "TotalHeadshots": "int",
+
+
+              "TotalWeaponDamage": "double",
+
+
+              "TotalShotsFired": "int",
+
+
+              "TotalShotsLanded": "int",
+
+
+              "WeaponWithMostKills": {
+                "WeaponId": {
+
+                  "StockId": "int",
+
+
+                  "Attachments": [
+                    "int"
+                  ]
+                },
+
+
+                "TotalShotsFired": "int",
+
+
+                "TotalShotsLanded": "int",
+
+
+                "TotalHeadshots": "int",
+
+
+                "TotalKills": "int",
+
+
+                "TotalDamageDealt": "double",
+
+
+
+                "TotalPossessionTime": "string"
+              },
+
+
+              "TotalMeleeKills": "int",
+
+
+              "TotalMeleeDamage": "double",
+
+
+              "TotalAssassinations": "int",
+
+
+              "TotalGroundPoundKills": "int",
+
+
+              "TotalGroundPoundDamage": "double",
+
+
+              "TotalShoulderBashKills": "int",
+
+
+              "TotalShoulderBashDamage": "double",
+
+
+              "TotalGrenadeDamage": "double",
+
+
+              "TotalPowerWeaponKills": "int",
+
+
+              "TotalPowerWeaponDamage": "double",
+
+
+              "TotalPowerWeaponGrabs": "int",
+
+
+
+              "TotalPowerWeaponPossessionTime": "string",
+
+
+              "TotalDeaths": "int",
+
+
+              "TotalAssists": "int",
+
+
+              "TotalGamesCompleted": "int",
+
+
+              "TotalGamesWon": "int",
+
+
+              "TotalGamesLost": "int",
+
+
+              "TotalGamesTied": "int",
+
+
+              "TotalTimePlayed": "string",
+
+
+              "TotalGrenadeKills": "int",
+
+
+              "MedalAwards": [
+                {
+
+                  "MedalId": "int",
+
+
+                  "Count": "int"
+                }
+              ],
+
+
+
+
+              "DestroyedEnemyVehicles": [
+                {
+
+                  "Enemy": {
+
+                    "BaseId": "int",
+
+
+                    "Attachments": [
+                      "int"
+                    ]
+                  },
+
+
+                  "TotalKills": "int"
+                }
+              ],
+
+
+
+              "EnemyKills": [
+                {
+
+                  "Enemy": {
+
+                    "BaseId": "int",
+
+
+                    "Attachments": [
+                      "int"
+                    ]
+                  },
+
+
+                  "TotalKills": "int"
+                }
+              ],
+
+
+              "WeaponStats": [
+                {
+                  "WeaponId": {
+
+                    "StockId": "int",
+
+
+                    "Attachments": [
+                      "int"
+                    ]
+                  },
+
+
+                  "TotalShotsFired": "int",
+
+
+                  "TotalShotsLanded": "int",
+
+
+                  "TotalHeadshots": "int",
+
+
+                  "TotalKills": "int",
+
+
+                  "TotalDamageDealt": "double",
+
+
+
+                  "TotalPossessionTime": "string"
+                }
+              ],
+
+
+              "Impulses": [
+                {
+
+                  "Id": "int",
+
+
+                  "Count": "int"
+                }
+              ],
+
+
+              "TotalSpartanKills": "int"
+            }
+          ],
+
+
+
+
+          "HighestCsrAttained": {
+
+
+            "Tier": "int",
+
+
+
+            "DesignationId": "int",
+
+
+            "Csr": "int",
+
+
+            "PercentToNextTier": "int",
+
+
+
+            "Rank": "int"
+          },
+
+
+          "ArenaGameBaseVariantStats": [
+            {
+
+
+              "FlexibleStats": {
+
+                "MedalStatCounts": [
+                  {
+
+                    "Id": "guid",
+
+
+                    "Count": "int"
+                  }
+                ],
+
+
+                "ImpulseStatCounts": [
+                  {
+
+                    "Id": "guid",
+
+
+                    "Count": "int"
+                  }
+                ],
+
+
+                "MedalTimelapses": [
+                  {
+
+                    "Id": "guid",
+
+
+
+                    "Timelapse": "string"
+                  }
+                ],
+
+
+                "ImpulseTimelapses": [
+                  {
+
+                    "Id": "guid",
+
+
+
+                    "Timelapse": "string"
+                  }
+                ]
+              },
+
+
+
+              "GameBaseVariantId": "guid",
+
+
+
+
+              "TotalKills": "int",
+
+
+              "TotalHeadshots": "int",
+
+
+              "TotalWeaponDamage": "double",
+
+
+              "TotalShotsFired": "int",
+
+
+              "TotalShotsLanded": "int",
+
+
+              "WeaponWithMostKills": {
+                "WeaponId": {
+
+                  "StockId": "int",
+
+
+                  "Attachments": [
+                    "int"
+                  ]
+                },
+
+
+                "TotalShotsFired": "int",
+
+
+                "TotalShotsLanded": "int",
+
+
+                "TotalHeadshots": "int",
+
+
+                "TotalKills": "int",
+
+
+                "TotalDamageDealt": "double",
+
+
+
+                "TotalPossessionTime": "string"
+              },
+
+
+              "TotalMeleeKills": "int",
+
+
+              "TotalMeleeDamage": "double",
+
+
+              "TotalAssassinations": "int",
+
+
+              "TotalGroundPoundKills": "int",
+
+
+              "TotalGroundPoundDamage": "double",
+
+
+              "TotalShoulderBashKills": "int",
+
+
+              "TotalShoulderBashDamage": "double",
+
+
+              "TotalGrenadeDamage": "double",
+
+
+              "TotalPowerWeaponKills": "int",
+
+
+              "TotalPowerWeaponDamage": "double",
+
+
+              "TotalPowerWeaponGrabs": "int",
+
+
+
+              "TotalPowerWeaponPossessionTime": "string",
+
+
+              "TotalDeaths": "int",
+
+
+              "TotalAssists": "int",
+
+
+              "TotalGamesCompleted": "int",
+
+
+              "TotalGamesWon": "int",
+
+
+              "TotalGamesLost": "int",
+
+
+              "TotalGamesTied": "int",
+
+
+              "TotalTimePlayed": "string",
+
+
+              "TotalGrenadeKills": "int",
+
+
+              "MedalAwards": [
+                {
+
+                  "MedalId": "int",
+
+
+                  "Count": "int"
+                }
+              ],
+
+
+
+
+              "DestroyedEnemyVehicles": [
+                {
+
+                  "Enemy": {
+
+                    "BaseId": "int",
+
+
+                    "Attachments": [
+                      "int"
+                    ]
+                  },
+
+
+                  "TotalKills": "int"
+                }
+              ],
+
+
+
+              "EnemyKills": [
+                {
+
+                  "Enemy": {
+
+                    "BaseId": "int",
+
+
+                    "Attachments": [
+                      "int"
+                    ]
+                  },
+
+
+                  "TotalKills": "int"
+                }
+              ],
+
+
+              "WeaponStats": [
+                {
+                  "WeaponId": {
+
+                    "StockId": "int",
+
+
+                    "Attachments": [
+                      "int"
+                    ]
+                  },
+
+
+                  "TotalShotsFired": "int",
+
+
+                  "TotalShotsLanded": "int",
+
+
+                  "TotalHeadshots": "int",
+
+
+                  "TotalKills": "int",
+
+
+                  "TotalDamageDealt": "double",
+
+
+
+                  "TotalPossessionTime": "string"
+                }
+              ],
+
+
+              "Impulses": [
+                {
+
+                  "Id": "int",
+
+
+                  "Count": "int"
+                }
+              ],
+
+
+              "TotalSpartanKills": "int"
+            }
+          ],
+
+
+
+
+
+          "TopGameBaseVariants": [
+            {
+
+              "GameBaseVariantRank": "int",
+
+
+              "NumberOfMatchesCompleted": "int",
+
+
+              "GameBaseVariantId": "guid",
+
+
+              "NumberOfMatchesWon": "int"
+            }
+          ],
+
+
+
+          "HighestCsrPlaylistId": "guid",
+
+
+
+          "HighestCsrSeasonId": "guid",
+
+
+
+          "ArenaPlaylistStatsSeasonId": "guid",
+
+
+
+
+          "TotalKills": "int",
+
+
+          "TotalHeadshots": "int",
+
+
+          "TotalWeaponDamage": "double",
+
+
+          "TotalShotsFired": "int",
+
+
+          "TotalShotsLanded": "int",
+
+
+          "WeaponWithMostKills": {
+            "WeaponId": {
+
+              "StockId": "int",
+
+
+              "Attachments": [
+                "int"
+              ]
+            },
+
+
+            "TotalShotsFired": "int",
+
+
+            "TotalShotsLanded": "int",
+
+
+            "TotalHeadshots": "int",
+
+
+            "TotalKills": "int",
+
+
+            "TotalDamageDealt": "double",
+
+
+
+            "TotalPossessionTime": "string"
+          },
+
+
+          "TotalMeleeKills": "int",
+
+
+          "TotalMeleeDamage": "double",
+
+
+          "TotalAssassinations": "int",
+
+
+          "TotalGroundPoundKills": "int",
+
+
+          "TotalGroundPoundDamage": "double",
+
+
+          "TotalShoulderBashKills": "int",
+
+
+          "TotalShoulderBashDamage": "double",
+
+
+          "TotalGrenadeDamage": "double",
+
+
+          "TotalPowerWeaponKills": "int",
+
+
+          "TotalPowerWeaponDamage": "double",
+
+
+          "TotalPowerWeaponGrabs": "int",
+
+
+
+          "TotalPowerWeaponPossessionTime": "string",
+
+
+          "TotalDeaths": "int",
+
+
+          "TotalAssists": "int",
+
+
+          "TotalGamesCompleted": "int",
+
+
+          "TotalGamesWon": "int",
+
+
+          "TotalGamesLost": "int",
+
+
+          "TotalGamesTied": "int",
+
+
+          "TotalTimePlayed": "string",
+
+
+          "TotalGrenadeKills": "int",
+
+
+          "MedalAwards": [
+            {
+
+              "MedalId": "int",
+
+
+              "Count": "int"
+            }
+          ],
+
+
+
+          "DestroyedEnemyVehicles": [
+            {
+
+              "Enemy": {
+
+                "BaseId": "int",
+
+
+                "Attachments": [
+                  "int"
+                ]
+              },
+
+
+              "TotalKills": "int"
+            }
+          ],
+
+
+
+          "EnemyKills": [
+            {
+
+              "Enemy": {
+
+                "BaseId": "int",
+
+
+                "Attachments": [
+                  "int"
+                ]
+              },
+
+
+              "TotalKills": "int"
+            }
+          ],
+
+
+          "WeaponStats": [
+            {
+              "WeaponId": {
+
+                "StockId": "int",
+
+
+                "Attachments": [
+                  "int"
+                ]
+              },
+
+
+              "TotalShotsFired": "int",
+
+
+              "TotalShotsLanded": "int",
+
+
+              "TotalHeadshots": "int",
+
+
+              "TotalKills": "int",
+
+
+              "TotalDamageDealt": "double",
+
+
+
+              "TotalPossessionTime": "string"
+            }
+          ],
+
+
+          "Impulses": [
+            {
+
+              "Id": "int",
+
+
+              "Count": "int"
+            }
+          ],
+
+
+          "TotalSpartanKills": "int"
+        },
+
+
+        "PlayerId": {
+
+          "GamerTag": "string",
+
+
+          "Xuid": null
+        },
+
+
+        "SpartanRank": "int",
+
+
+        "Xp": "int"
+      }
+    }
+  ],
+
+
+  "Links": null
+}

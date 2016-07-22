@@ -22,13 +22,12 @@ public class MetadataTest extends BaseTest
 //         = KeyReader.getApiKey();
 //    }
 
-    
     @Test
     public void testWeapons() throws IOException {
         ApiFactory factory = new ApiFactory();
         Metadata metadata = factory.getMetadata();
         Response<List<Weapon>> weapons = metadata.getWeapons().execute();
-        System.out.println(weapons.toString());
+        System.out.println(weapons);
         Assert.assertEquals(200, weapons.code());
     }
 
