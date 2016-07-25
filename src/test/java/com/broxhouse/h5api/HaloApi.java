@@ -40,6 +40,7 @@ public class HaloApi {
     private static final String PLAYER_MATCHES = STATS_URL + "players/%s/matches";
     private static final String CUSTOM_STATS = STATS_URL + "servicerecords/custom?players=%s";
     private static final String ARENA_STATS = STATS_URL + "servicerecords/arena?players=%s";
+    private static final String WARZONE_STATS = STATS_URL + "servicerecords/warzone?players=%s";
     private static final String META_WEAPONS = META_URL + "weapons";
     private static final String META_MEDALS = META_URL + "medals";
     private static final String PLAYER_UF = "That Ax Guy";
@@ -62,6 +63,10 @@ public class HaloApi {
             pURL.concat("count=" + count);
 
         return api(String.format(PLAYER_MATCHES, gt));
+    }
+
+    public static String warzoneMatches(String gt) throws Exception{
+        return api(String.format(WARZONE_STATS, gt));
     }
 
     public static String customMatches(String gt) throws Exception
@@ -223,7 +228,8 @@ public class HaloApi {
 
     public static double totalGames() throws Exception
     {
-        JSONObject obj = new JSONObject(customMatches(PLAYER)).getJSONArray("Results").getJSONObject(0).getJSONObject("Result").getJSONObject("CustomStats");
+        JSONObject obj = new JSONObject(warzoneMatches(PLAYER)).getJSONArray("Results").getJSONObject(0).getJSONObject("Result").getJSONObject("WarzoneStat");
+//        JSONObject obj = new JSONObject(customMatches(PLAYER)).getJSONArray("Results").getJSONObject(0).getJSONObject("Result").getJSONObject("CustomStats");
         //JSONObject obj = new JSONObject(arenaStats(PLAYER)).getJSONArray("Results").getJSONObject(0).getJSONObject("Result").getJSONObject("ArenaStats");
         String var = obj.toString();
         Gson gson = new Gson();
@@ -234,8 +240,9 @@ public class HaloApi {
 
     public static void testWeaponKills() throws Exception
     {
-        JSONArray obj = new JSONObject(customMatches(PLAYER)).getJSONArray("Results").getJSONObject(0).getJSONObject("Result").getJSONObject("CustomStats").getJSONArray("WeaponStats");
-//        JSONArray obj = new JSONObject(customMatches(PLAYER)).getJSONArray("Results").getJSONObject(0).getJSONObject("Result").getJSONObject("ArenaStats").getJSONArray("WeaponStats");
+        JSONArray obj = new JSONObject(warzoneMatches(PLAYER)).getJSONArray("Results").getJSONObject(0).getJSONObject("Result").getJSONObject("WarzoneStat").getJSONArray("WeaponStats");
+//        JSONArray obj = new JSONObject(customMatches(PLAYER)).getJSONArray("Results").getJSONObject(0).getJSONObject("Result").getJSONObject("CustomStats").getJSONArray("WeaponStats");
+//        JSONArray obj = new JSONObject(arenaStats(PLAYER)).getJSONArray("Results").getJSONObject(0).getJSONObject("Result").getJSONObject("ArenaStats").getJSONArray("WeaponStats");
         Gson gson = new Gson();
         String var = obj.toString();
         WeaponStats[] stats = gson.fromJson(var, WeaponStats[].class);
