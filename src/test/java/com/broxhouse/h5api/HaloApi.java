@@ -223,16 +223,19 @@ public class HaloApi {
 
     public static double totalGames() throws Exception
     {
-        JSONObject obj = new JSONObject(arenaStats(PLAYER)).getJSONArray("Results").getJSONObject(0).getJSONObject("Result").getJSONObject("ArenaStats");
+        JSONObject obj = new JSONObject(customMatches(PLAYER)).getJSONArray("Results").getJSONObject(0).getJSONObject("Result").getJSONObject("CustomStats");
+        //JSONObject obj = new JSONObject(arenaStats(PLAYER)).getJSONArray("Results").getJSONObject(0).getJSONObject("Result").getJSONObject("ArenaStats");
         String var = obj.toString();
         Gson gson = new Gson();
         BaseStats stats = gson.fromJson(var, BaseStats.class);
+        System.out.println("Total games played: " + stats.getTotalGamesCompleted());
         return stats.getTotalGamesCompleted();
     }
 
     public static void testWeaponKills() throws Exception
     {
-        JSONArray obj = new JSONObject(arenaStats(PLAYER)).getJSONArray("Results").getJSONObject(0).getJSONObject("Result").getJSONObject("ArenaStats").getJSONArray("WeaponStats");
+        JSONArray obj = new JSONObject(customMatches(PLAYER)).getJSONArray("Results").getJSONObject(0).getJSONObject("Result").getJSONObject("CustomStats").getJSONArray("WeaponStats");
+//        JSONArray obj = new JSONObject(customMatches(PLAYER)).getJSONArray("Results").getJSONObject(0).getJSONObject("Result").getJSONObject("ArenaStats").getJSONArray("WeaponStats");
         Gson gson = new Gson();
         String var = obj.toString();
         WeaponStats[] stats = gson.fromJson(var, WeaponStats[].class);
