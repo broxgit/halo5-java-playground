@@ -28,20 +28,18 @@
 
 package com.broxhouse.h5api.models.stats.common;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
-
 public class Impulse {
 
     /**
      * The ID of the Impulse. Impulses are available via the Metadata API.
      */
-    @JsonProperty("Id")
+    @SerializedName("Id")
     private long id;
 
     /**
      * The number of times the Impuse was earned.
      */
-    @JsonProperty("Count")
+    @SerializedName("Count")
     private int count;
 
     public long getId() {

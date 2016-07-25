@@ -28,7 +28,7 @@
 
 package com.broxhouse.h5api.models.metadata;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
+import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
 
@@ -61,7 +61,7 @@ public class CSRDesignation {
     /**
      * Internal use only. Do not use.
      */
-    @JsonProperty("contentId")
+    @SerializedName("contentId")
     private String contentId;
 
     public String getName() {

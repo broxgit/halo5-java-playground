@@ -4,47 +4,46 @@ package com.broxhouse.h5api.models.stats;
  * Created by Brock Berrett on 7/20/2016.
  */
 
-import com.fasterxml.jackson.annotation.JsonProperty;
 public class WeaponStats
 {
-    @JsonProperty("WeaponId")
+    @SerializedName("WeaponId")
     private WeaponId weaponId;
 
     /**
      * The number of shots fired for this weapon.
      */
-    @JsonProperty("TotalShotsFired")
+    @SerializedName("TotalShotsFired")
     private int totalShotsFired;
 
     /**
      * The number of shots landed for this weapon.
      */
-    @JsonProperty("TotalShotsLanded")
+    @SerializedName("TotalShotsLanded")
     private int totalShotsLanded;
 
     /**
      * The number of headshots for this weapon.
      */
-    @JsonProperty("TotalHeadshots")
+    @SerializedName("TotalHeadshots")
     private int totalHeadshots;
 
     /**
      * The number of kills for this weapon.
      */
-    @JsonProperty("TotalKills")
+    @SerializedName("TotalKills")
     private int totalKills;
 
     /**
      * The total damage dealt for this weapon.
      */
-    @JsonProperty("TotalDamageDealt")
+    @SerializedName("TotalDamageDealt")
     private double totalDamageDealt;
 
     /**
      * The total possession time for this weapon. This is expressed as an ISO 8601
      * Duration.
      */
-    @JsonProperty("TotalPossessionTime")
+    @SerializedName("TotalPossessionTime")
     private String totalPossessionTime;
 
     public WeaponId getWeaponId() {

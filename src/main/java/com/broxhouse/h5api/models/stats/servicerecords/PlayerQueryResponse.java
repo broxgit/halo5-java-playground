@@ -29,14 +29,12 @@
 package com.broxhouse.h5api.models.stats.servicerecords;
 
 
-import com.fasterxml.jackson.annotation.JsonProperty;
-
 public class PlayerQueryResponse<T> {
 
     /**
      * The player's gamertag.
      */
-    @JsonProperty("Id")
+    @SerializedName("Id")
     private String id;
 
     /**
@@ -48,13 +46,13 @@ public class PlayerQueryResponse<T> {
      * It is possible for different requests from the batch to succeed and fail
      * independently.
      */
-    @JsonProperty("ResultCode")
+    @SerializedName("ResultCode")
     private int resultCode;
 
     /**
      * The Service Record result for the player. Only set if ResultCode is Success.
      */
-    @JsonProperty("Result")
+    @SerializedName("Result")
     private T result;
 
     public String getId() {

@@ -28,11 +28,9 @@
 
 package com.broxhouse.h5api.models.stats.servicerecords;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
-
 public class WarzoneResult extends BaseServiceRecordResult {
 
-    @JsonProperty("WarzoneStat")
+    @SerializedName("WarzoneStat")
     private WarzoneStat warzoneStat;
 
     public WarzoneStat getWarzoneStat() {

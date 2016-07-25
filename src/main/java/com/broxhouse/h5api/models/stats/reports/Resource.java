@@ -28,21 +28,19 @@
 
 package com.broxhouse.h5api.models.stats.reports;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
-
 public class Resource {
 
     /**
      * 2 - GameVariant
      * 3 - MatchVariant
      */
-    @JsonProperty("ResourceType")
+    @SerializedName("ResourceType")
     private int resourceType;
 
     /**
      * The ID of the resource. Can be linked to metadata.
      */
-    @JsonProperty("ResourceId")
+    @SerializedName("ResourceId")
     private String resourceId;
 
     /**
@@ -51,13 +49,13 @@ public class Resource {
      *   User-generated = 1 and 2,
      *   Official = 3.
      */
-    @JsonProperty("OwnerType")
+    @SerializedName("OwnerType")
     private String ownerType;
 
     /**
      * The owner. Usually set to null.
      */
-    @JsonProperty("Owner")
+    @SerializedName("Owner")
     private String owner;
 
     public int getResourceType() {

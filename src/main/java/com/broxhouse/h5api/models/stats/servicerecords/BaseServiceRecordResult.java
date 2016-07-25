@@ -29,26 +29,25 @@
 package com.broxhouse.h5api.models.stats.servicerecords;
 
 import com.broxhouse.h5api.models.stats.common.Player;
-import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class BaseServiceRecordResult {
 
     /**
      * Information about the player for whom this data was returned.
      */
-    @JsonProperty("PlayerId")
+    @SerializedName("PlayerId")
     private Player player;
 
     /**
      * The player's Spartan Rank. Zero for campaign.
      */
-    @JsonProperty("SpartanRank")
+    @SerializedName("SpartanRank")
     private int spartanRank;
 
     /**
      * The player's XP. Zero for campaign.
      */
-    @JsonProperty("Xp")
+    @SerializedName("Xp")
     private long xp;
 
     public Player getPlayer() {

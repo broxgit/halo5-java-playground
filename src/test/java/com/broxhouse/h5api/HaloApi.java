@@ -1,21 +1,13 @@
 package com.broxhouse.h5api;
 
 //import java.io.BufferedReader;
-import java.io.IOException;
-//import java.io.InputStream;
-//import java.io.InputStreamReader;
-//import java.net.HttpURLConnection;
-//import java.net.URL;
-//import java.util.Scanner;
-
-import java.net.URI;
-import java.util.Arrays;
 
 import com.broxhouse.h5api.models.metadata.Medal;
 import com.broxhouse.h5api.models.metadata.Weapon;
 import com.broxhouse.h5api.models.stats.common.MedalAward;
-import com.broxhouse.h5api.models.stats.reports.ArenaPlayerStats;
+import com.broxhouse.h5api.models.stats.common.WeaponStats;
 import com.broxhouse.h5api.models.stats.reports.BaseStats;
+import com.broxhouse.h5api.models.stats.servicerecords.ArenaStat;
 import com.google.gson.Gson;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
@@ -24,12 +16,18 @@ import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.utils.URIBuilder;
 import org.apache.http.impl.client.HttpClients;
 import org.apache.http.util.EntityUtils;
-import org.codehaus.jackson.map.DeserializationConfig;
-import org.codehaus.jackson.map.ObjectMapper;
 import org.json.JSONArray;
 import org.json.JSONObject;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonProperty;
+
+import java.io.IOException;
+import java.net.URI;
+import java.util.Arrays;
+
+//import java.io.InputStream;
+//import java.io.InputStreamReader;
+//import java.net.HttpURLConnection;
+//import java.net.URL;
+//import java.util.Scanner;
 
 
 public class HaloApi {
@@ -44,6 +42,14 @@ public class HaloApi {
     private static final String ARENA_STATS = STATS_URL + "servicerecords/arena?players=%s";
     private static final String META_WEAPONS = META_URL + "weapons";
     private static final String META_MEDALS = META_URL + "medals";
+    private static final String PLAYER_UF = "That Ax Guy";
+    private static final String PLAYER = formatString(PLAYER_UF);
+
+    public static String formatString(String string)
+    {
+        string = string.replaceAll("\\s+", "%20");
+        return string;
+    }
 
     //https://www.haloapi.com/stats/h5/players/that%20brock%20guy/matches?modes=arena,custom&start=10&count=26
     public static String playerMatches(String gt, String modes, String start, String count) throws Exception {
@@ -119,6 +125,7 @@ public class HaloApi {
             if (entity != null)
             {
                 getResponse = EntityUtils.toString(entity);
+                System.out.println(getResponse);
                 return getResponse;
             }
         else
@@ -130,10 +137,16 @@ public class HaloApi {
     public static void main(String[] args) throws Exception {
         try
         {
+//            JFrame frame = new JFrame("test");
+//            frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
 
 //            testJSONWeapons();
 //            testJSONMedals();
-            testPlayerStats();
+//            testMedalStats();
+            testWeaponKills();
+//            totalGames();
+//            testPlayerStats();
 //            JSONObject customMatches = new JSONObject(customMatches("that%20brock%20guy"));
 //            JSONObject playerMatches = new JSONObject(playerMatches("that%20ax%20guy", "arena,custom", "50", null));
 //            JSONObject arenaStats = new JSONObject(arenaStats("that%20trev%20guy"));
@@ -172,28 +185,76 @@ public class HaloApi {
         }
     }
 
-    public static void testPlayerStats() throws Exception
+    public static void testMedalStats() throws Exception
     {
-        JSONArray obj = new JSONObject(arenaStats("That%20Brock%20Guy")).getJSONArray("Results").getJSONObject(0).getJSONObject("Result").getJSONObject("ArenaStats").getJSONArray("MedalAwards");
+        JSONArray obj = new JSONObject(arenaStats(PLAYER)).getJSONArray("Results").getJSONObject(0).getJSONObject("Result").getJSONObject("ArenaStats").getJSONArray("MedalAwards");
         String var = obj.toString();
-        System.out.println(var);
-
-        ObjectMapper mapper = new ObjectMapper();
-        mapper.configure(DeserializationConfig.Feature.FAIL_ON_UNKNOWN_PROPERTIES, false);
-        MedalAward[] stats = mapper.readValue(var, MedalAward[].class);
-//        System.out.println(stats.getCount());
-        //System.out.println(Arrays.toString(stats));
+        double games = totalGames();
+        games = (double)Math.round(games *1000d) / 1000d;
+        Gson gson = new Gson();
+        String medalData = listMedals();
+        Medal[] medals = gson.fromJson(medalData, Medal[].class);
+        MedalAward[] stats = gson.fromJson(var, MedalAward[].class);
         for (int row = 0; row < stats.length; row++)
         {
-////            for (int col = 0; col < stats[row].length; col++)
-////            {
-////                System.out.println(stats[row][col].getArenaPlaylistStats());
-////            }
+            for (int i = 0; i < medals.length; i++)
+            {
+                if (medals[i].getId() == stats[row].getMedalId())
+                {
+                    stats[row].setName(medals[i].getName());
+                }
+            }
         }
+        System.out.println("Showing medal stats for " + PLAYER_UF);
+        for (int row = 0; row < stats.length; row++)
+        {
+            double medalCount = stats[row].getCount()/games;
+            medalCount = (double)Math.round(medalCount *1000d) / 1000d;
+            System.out.println(stats[row].getName() + "\n Count: " + stats[row].getCount() + "\n" + " Earned per game: " + medalCount);
+        }
+    }
 
-//        JSONObject obj = new JSONObject(arenaStats("that%20brock%20guy"));
-//        JSONArray arr = obj.getJSONArray("MedalAwards");
-//        System.out.println(arr.toString());
+    public static void testPlayerStats() throws Exception
+    {
+        Gson gson = new Gson();
+        BaseStats stats = gson.fromJson(arenaStats(PLAYER), ArenaStat.class);
+        System.out.println(stats.getEnemyKills());
+    }
+
+    public static double totalGames() throws Exception
+    {
+        JSONObject obj = new JSONObject(arenaStats(PLAYER)).getJSONArray("Results").getJSONObject(0).getJSONObject("Result").getJSONObject("ArenaStats");
+        String var = obj.toString();
+//        System.out.println(var);
+        Gson gson = new Gson();
+        BaseStats stats = gson.fromJson(var, BaseStats.class);
+        return stats.getTotalGamesCompleted();
+    }
+
+    public static void testWeaponKills() throws Exception
+    {
+        JSONArray obj = new JSONObject(arenaStats(PLAYER)).getJSONArray("Results").getJSONObject(0).getJSONObject("Result").getJSONObject("ArenaStats").getJSONArray("WeaponStats");
+        Gson gson = new Gson();
+        String var = obj.toString();
+        System.out.println(var);
+        WeaponStats[] stats = gson.fromJson(var, WeaponStats[].class);
+        String weaponData = listWeapons();
+        Weapon[] weapons = gson.fromJson(weaponData, Weapon[].class);
+
+        for (int row = 0; row < stats.length; row++)
+        {
+            for (int i = 0; i < weapons.length; i++)
+            {
+                if (weapons[i].getId() == stats[row].getWeaponId().getStockId())
+                {
+                    stats[row].setName(weapons[i].getLargeIconImageUrl());
+                }
+            }
+        }
+        for (int i = 0; i < stats.length; i++)
+        {
+            System.out.println(stats[i].getName() + " " + stats[i].getTotalKills());
+        }
     }
 
 }

@@ -28,8 +28,6 @@
 
 package com.broxhouse.h5api.models.metadata;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
-
 import java.util.List;
 
 public class Reward {
@@ -44,7 +42,7 @@ public class Reward {
     private String id;
 
     // Internal Use only. Do Not Use.
-    @JsonProperty("contentId")
+    @SerializedName("contentId")
     private String contentId;
 
     public int getXp() {

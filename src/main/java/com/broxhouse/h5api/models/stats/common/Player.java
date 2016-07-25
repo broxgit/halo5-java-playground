@@ -28,19 +28,17 @@
 
 package com.broxhouse.h5api.models.stats.common;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
-
 public class Player {
     /**
      *  The player's gamertag.
      */
-    @JsonProperty("Gamertag")
+    @SerializedName("Gamertag")
     private String gamertag;
 
     /**
      * Internal use only. This will always be null.
      */
-    @JsonProperty("Xuid")
+    @SerializedName("Xuid")
     private String xuid;
 
     public String getGamertag() {

@@ -29,7 +29,6 @@
 package com.broxhouse.h5api.models.stats.servicerecords;
 
 import com.broxhouse.h5api.models.stats.reports.BaseStats;
-import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.util.List;
 
@@ -38,7 +37,7 @@ public class CustomStat extends BaseStats {
     /**
      * List of custom stats by CustomGameBaseVariant
      */
-    @JsonProperty("CustomGameBaseVariantStats")
+    @SerializedName("CustomGameBaseVariantStats")
     private List<GameBaseVariantStats> customGameBaseVariantStats;
 
     /**
@@ -46,7 +45,7 @@ public class CustomStat extends BaseStats {
      * If there is a tie, the one with more completions is higher. If there's still
      * a tie, the GUIDs are sorted and selected.
      */
-    @JsonProperty("TopGameBaseVariants")
+    @SerializedName("TopGameBaseVariants")
     private List<VariantRecord> topGameBaseVariants;
 
     public List<GameBaseVariantStats> getCustomGameBaseVariantStats() {

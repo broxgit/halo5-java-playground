@@ -28,9 +28,8 @@
 
 package com.broxhouse.h5api.models.stats.servicerecords;
 
-import com.broxhouse.h5api.models.stats.reports.BaseStats;
 import com.broxhouse.h5api.models.stats.common.Csr;
-import com.fasterxml.jackson.annotation.JsonProperty;
+import com.broxhouse.h5api.models.stats.reports.BaseStats;
 
 import java.util.List;
 
@@ -40,27 +39,27 @@ public class ArenaStat extends BaseStats {
         /**
          * The playlist ID. Playlists are available via the Metadata API.
          */
-        @JsonProperty("PlaylistId")
+        @SerializedName("PlaylistId")
         private String playlistId;
 
         /**
          * The player's measurement matches left. If this field is greater than
          * zero, then the player will not have a Csr yet.
          */
-        @JsonProperty("MeasurementMatchesLeft")
+        @SerializedName("MeasurementMatchesLeft")
         private int measurementMatchesLeft;
 
         /**
          * The highest Competitive Skill Ranking (Csr) achieved by the player. This
          * is included because a player's Csr can drop based on performance.
          */
-        @JsonProperty("HighestCsr")
+        @SerializedName("HighestCsr")
         private Csr highestCsr;
 
         /**
          * The current Competitive Skill Ranking (Csr) of the player.
          */
-        @JsonProperty("Csr")
+        @SerializedName("Csr")
         private Csr csr;
 
         public String getPlaylistId() {
@@ -83,20 +82,20 @@ public class ArenaStat extends BaseStats {
     /**
      * List of arena stats by playlist.
      */
-    @JsonProperty("ArenaPlaylistStats")
+    @SerializedName("ArenaPlaylistStats")
     private List<ArenaPlaylistStats> arenaPlaylistStats;
 
     /**
      * The highest obtained Csr by the player in arena. If the player hasn't
      * finished measurement matches yet for any playlist, this value is null.
      */
-    @JsonProperty("HighestCsrAttained")
+    @SerializedName("HighestCsrAttained")
     private Csr highestCsrAttained;
 
     /**
      * List of arena stats by GameBaseVariant
      */
-    @JsonProperty("ArenaGameBaseVariantStats")
+    @SerializedName("ArenaGameBaseVariantStats")
     private List<GameBaseVariantStats> arenaGameBaseVariantStats;
 
     /**
@@ -104,14 +103,14 @@ public class ArenaStat extends BaseStats {
      * If there is a tie, the one with more completions is higher. If there's still
      * a tie, the GUIDs are sorted and selected.
      */
-    @JsonProperty("TopGameBaseVariants")
+    @SerializedName("TopGameBaseVariants")
     private List<VariantRecord> topGameBaseVariants;
 
     /**
      * The ID for the playlist that pertains to the highest obtained Csr field. If
      * the Csr is null, so is this field.
      */
-    @JsonProperty("HighestCsrPlaylistId")
+    @SerializedName("HighestCsrPlaylistId")
     private String highestCsrPlaylistId;
 
     public List<ArenaPlaylistStats> getArenaPlaylistStats() {

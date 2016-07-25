@@ -28,9 +28,8 @@
 
 package com.broxhouse.h5api.models.stats.servicerecords;
 
-import com.broxhouse.h5api.models.stats.reports.BaseStats;
 import com.broxhouse.h5api.models.stats.common.FlexibleStats;
-import com.fasterxml.jackson.annotation.JsonProperty;
+import com.broxhouse.h5api.models.stats.reports.BaseStats;
 
 public class GameBaseVariantStats extends BaseStats {
 
@@ -38,14 +37,14 @@ public class GameBaseVariantStats extends BaseStats {
      * The ID of the game base variant. Game base variants are available via
      * the Metadata API.
      */
-    @JsonProperty("GameBaseVariantId")
+    @SerializedName("GameBaseVariantId")
     private String gameBaseVariantId;
 
     /**
      * The game base variant specific stats. Flexible stats are available via
      * the Metadata API.
      */
-    @JsonProperty("FlexibleStats")
+    @SerializedName("FlexibleStats")
     private FlexibleStats flexibleStats;
 
     public String getGameBaseVariantId() {

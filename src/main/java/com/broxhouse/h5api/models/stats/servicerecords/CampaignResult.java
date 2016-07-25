@@ -28,11 +28,9 @@
 
 package com.broxhouse.h5api.models.stats.servicerecords;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
-
 public class CampaignResult extends BaseServiceRecordResult {
 
-    @JsonProperty("CampaignStat")
+    @SerializedName("CampaignStat")
     private CampaignStat campaignStat;
 
     public CampaignStat getCampaignStat() {

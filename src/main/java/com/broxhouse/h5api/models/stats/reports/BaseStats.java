@@ -28,11 +28,11 @@
 
 package com.broxhouse.h5api.models.stats.reports;
 
-import com.broxhouse.h5api.models.stats.common.*;
-import com.broxhouse.h5api.models.stats.reports.*;
 import com.broxhouse.h5api.models.stats.common.EnemyKill;
 import com.broxhouse.h5api.models.stats.common.Impulse;
-import com.fasterxml.jackson.annotation.JsonProperty;
+import com.broxhouse.h5api.models.stats.common.MedalAward;
+import com.broxhouse.h5api.models.stats.common.WeaponStats;
+import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
 
@@ -43,196 +43,196 @@ public class BaseStats {
      * bash kills and Spartan charge kills, all power weapons, AI kills and vehicle
      * destructions.
      */
-    @JsonProperty("TotalKills")
+    @SerializedName("TotalKills")
     private int totalKills;
 
     /**
      * Total number of headshots done by the player.
      */
-    @JsonProperty("TotalHeadshots")
+    @SerializedName("TotalHeadshots")
     private int totalHeadshots;
 
     /**
      * Total weapon damage dealt by the player.
      */
-    @JsonProperty("TotalWeaponDamage")
-    private int totalWeaponDamage;
+    @SerializedName("TotalWeaponDamage")
+    private double totalWeaponDamage;
 
     /**
      * Total number of shots fired by the player.
      */
-    @JsonProperty("TotalShotsFired")
+    @SerializedName("TotalShotsFired")
     private int totalShotsFired;
 
     /**
      * Total number of shots landed by the player.
      */
-    @JsonProperty("TotalShotsLanded")
+    @SerializedName("TotalShotsLanded")
     private int totalShotsLanded;
 
     /**
      * The weapon the player used to get the most kills this match.
      */
-    @JsonProperty("WeaponWithMostKills")
+    @SerializedName("WeaponWithMostKills")
     private WeaponStats weapon;
 
     /**
      * Total number of melee kills by the player.
      */
-    @JsonProperty("TotalMeleeKills")
+    @SerializedName("TotalMeleeKills")
     private int totalMeleeKills;
 
     /**
      * Total melee damage dealt by the player.
      */
-    @JsonProperty("TotalMeleeDamage")
+    @SerializedName("TotalMeleeDamage")
     private double totalMeleeDamage;
 
     /**
      * Total number of assassinations by the player.
      */
-    @JsonProperty("TotalAssassinations")
+    @SerializedName("TotalAssassinations")
     private int totalAssassinations;
 
     /**
      * Total number of ground pound kills by the player.
      */
-    @JsonProperty("TotalGroundPoundKills")
+    @SerializedName("TotalGroundPoundKills")
     private int totalGroundPoundKills;
 
     /**
      * Total ground pound damage dealt by the player.
      */
-    @JsonProperty("TotalGroundPoundDamage")
+    @SerializedName("TotalGroundPoundDamage")
     private double totalGroundPoundDamage;
 
     /**
      * Total number of shoulder bash kills by the player.
      */
-    @JsonProperty("TotalShoulderBashKills")
+    @SerializedName("TotalShoulderBashKills")
     private int totalShoulderBashKills;
 
     /**
      * Total shoulder bash damage dealt by the player.
      */
-    @JsonProperty("TotalShoulderBashDamage")
+    @SerializedName("TotalShoulderBashDamage")
     private double totalShoulderBashDamage;
 
     /**
      * Total grenade damage dealt by the player.
      */
-    @JsonProperty("TotalGrenadeDamage")
+    @SerializedName("TotalGrenadeDamage")
     private double totalGrenadeDamage;
 
     /**
      * Total number of power weapon kills by the player.
      */
-    @JsonProperty("TotalPowerWeaponKills")
+    @SerializedName("TotalPowerWeaponKills")
     private int totalPowerWeaponKills;
 
     /**
      * Total power weapon damage dealt by the player.
      */
-    @JsonProperty("TotalPowerWeaponDamage")
+    @SerializedName("TotalPowerWeaponDamage")
     private double totalPowerWeaponDamage;
 
     /**
      * Total number of power weapon grabs by the player.
      */
-    @JsonProperty("TotalPowerWeaponGrabs")
+    @SerializedName("TotalPowerWeaponGrabs")
     private int totalPowerWeaponGrabs;
 
     /**
      * Total power weapon possession by the player. This is expressed as an ISO 8601
      * Duration.
      */
-    @JsonProperty("TotalPowerWeaponPossessionTime")
+    @SerializedName("TotalPowerWeaponPossessionTime")
     private String totalPowerWeaponPossessionTime;
 
     /**
      * Total number of deaths by the player.
      */
-    @JsonProperty("TotalDeaths")
+    @SerializedName("TotalDeaths")
     private int totalDeaths;
 
     /**
      * Total number of assists by the player.
      */
-    @JsonProperty("TotalAssists")
+    @SerializedName("TotalAssists")
     private int totalAssists;
 
     /**
      * Not used.
      */
-    @JsonProperty("TotalGamesCompleted")
+    @SerializedName("TotalGamesCompleted")
     private int totalGamesCompleted;
 
     /**
      * Not used.
      */
-    @JsonProperty("TotalGamesWon")
+    @SerializedName("TotalGamesWon")
     private int totalGamesWon;
 
     /**
      * Not used.
      */
-    @JsonProperty("TotalGamesLost")
+    @SerializedName("TotalGamesLost")
     private int totalGamesLost;
 
     /**
      * Not used.
      */
-    @JsonProperty("TotalGamesTied")
+    @SerializedName("TotalGamesTied")
     private int totalGamesTied;
 
     /**
      * Total timed played in this match by the player.
      */
-    @JsonProperty("TotalTimePlayed")
+    @SerializedName("TotalTimePlayed")
     private String totalTimePlayed;
 
     /**
      * Total number of grenade kills by the player.
      */
-    @JsonProperty("TotalGrenadeKills")
+    @SerializedName("TotalGrenadeKills")
     private int totalGrenadeKills;
 
     /**
      * The set of Medals earned by the player.
      */
-    @JsonProperty("MedalAwards")
+    @SerializedName("MedalAwards")
     private List<MedalAward> medalAwards;
 
     /**
      * List of enemy vehicles destroyed. Vehicles are available via the Metadata API.
      * Note: this stat measures enemy vehicles, not any vehicle destruction.
      */
-    @JsonProperty("DestroyedEnemyVehicles")
+    @SerializedName("DestroyedEnemyVehicles")
     private List<EnemyKill> destroyedEnemyVehicles;
 
     /**
      * List of enemies killed, per enemy type. Enemies are available via the Metadata
      * API.
      */
-    @JsonProperty("EnemyKills")
+    @SerializedName("EnemyKills")
     private List<EnemyKill> enemyKills;
 
     /**
      * The set of weapons (weapons and vehicles included) used by the player.
      */
-    @JsonProperty("WeaponStats")
+    @SerializedName("WeaponStats")
     private List<WeaponStats> weapons;
 
     /**
      * The set of Impulses (invisible Medals) earned by the player.
      */
-    @JsonProperty("Impulses")
+    @SerializedName("Impulses")
     private List<com.broxhouse.h5api.models.stats.common.Impulse> impulses;
 
     /**
      * Total number of Spartan kills by the player.
      */
-    @JsonProperty("TotalSpartanKills")
+    @SerializedName("TotalSpartanKills")
     private int totalSpartanKills;
 
     public int getTotalKills() {
@@ -243,7 +243,7 @@ public class BaseStats {
         return totalHeadshots;
     }
 
-    public int getTotalWeaponDamage() {
+    public double getTotalWeaponDamage() {
         return totalWeaponDamage;
     }
 

@@ -28,51 +28,54 @@
 
 package com.broxhouse.h5api.models.stats.common;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
+import com.google.gson.annotations.SerializedName;
 
 /**
  * Created by ahart on 2015-11-06.
  */
 public class WeaponStats {
 
-    @JsonProperty("WeaponId")
+    @SerializedName("name")
+    private String name;
+
+    @SerializedName("WeaponId")
     private WeaponId weaponId;
 
     /**
      * The number of shots fired for this weapon.
      */
-    @JsonProperty("TotalShotsFired")
+    @SerializedName("TotalShotsFired")
     private int totalShotsFired;
 
     /**
      * The number of shots landed for this weapon.
      */
-    @JsonProperty("TotalShotsLanded")
+    @SerializedName("TotalShotsLanded")
     private int totalShotsLanded;
 
     /**
      * The number of headshots for this weapon.
      */
-    @JsonProperty("TotalHeadshots")
+    @SerializedName("TotalHeadshots")
     private int totalHeadshots;
 
     /**
      * The number of kills for this weapon.
      */
-    @JsonProperty("TotalKills")
+    @SerializedName("TotalKills")
     private int totalKills;
 
     /**
      * The total damage dealt for this weapon.
      */
-    @JsonProperty("TotalDamageDealt")
+    @SerializedName("TotalDamageDealt")
     private double totalDamageDealt;
 
     /**
      * The total possession time for this weapon. This is expressed as an ISO 8601
      * Duration.
      */
-    @JsonProperty("TotalPossessionTime")
+    @SerializedName("TotalPossessionTime")
     private String totalPossessionTime;
 
     public WeaponId getWeaponId() {
@@ -101,5 +104,15 @@ public class WeaponStats {
 
     public String getTotalPossessionTime() {
         return totalPossessionTime;
+    }
+
+    public void setName(String name)
+    {
+        this.name = name;
+    }
+
+    public String getName()
+    {
+        return name;
     }
 }

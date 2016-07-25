@@ -28,11 +28,9 @@
 
 package com.broxhouse.h5api.models.stats.servicerecords;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
-
 public class ArenaResult extends BaseServiceRecordResult {
 
-    @JsonProperty("ArenaStats")
+    @SerializedName("ArenaStats")
     private ArenaStat arenaStat;
 
     public ArenaStat getArenaStat() {

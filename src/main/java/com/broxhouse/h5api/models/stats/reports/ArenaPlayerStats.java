@@ -1,7 +1,7 @@
 package com.broxhouse.h5api.models.stats.reports;
 
 import com.broxhouse.h5api.models.stats.common.Csr;
-import com.fasterxml.jackson.annotation.JsonProperty;
+import com.google.gson.annotations.SerializedName;
 
 public class ArenaPlayerStats extends SpartanRankedPlayerStats {
 
@@ -10,14 +10,14 @@ public class ArenaPlayerStats extends SpartanRankedPlayerStats {
      * the player is still in measurement matches, this field is null. If the player
      * finished the last measurement match this match, this field is still null.
      */
-    @JsonProperty("PreviousCsr")
+    @SerializedName("PreviousCsr")
     private Csr previousCsr;
 
     /**
      * The Competitive Skill Ranking (Csr) of the player after the match ended. If the
      * player is still in measurement matches, this field is null.
      */
-    @JsonProperty("CurrentCsr")
+    @SerializedName("CurrentCsr")
     private Csr currentCsr;
 
     /**
@@ -25,7 +25,7 @@ public class ArenaPlayerStats extends SpartanRankedPlayerStats {
      * the player will not have a Csr yet. If the player finished the match, this match
      * is included in this count.
      */
-    @JsonProperty("MeasurementMatchesLeft")
+    @SerializedName("MeasurementMatchesLeft")
     private int measurementMatchesLeft;
 
     public Csr getPreviousCsr() {

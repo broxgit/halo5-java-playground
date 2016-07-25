@@ -28,14 +28,12 @@
 
 package com.broxhouse.h5api.models.stats.reports;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
-
 public class Team {
     /**
      * The ID for the team. The team's ID dictates the team's color. Team colors
      * are available via the Metadata API.
      */
-    @JsonProperty("Id")
+    @SerializedName("Id")
     private int id;
 
     /**
@@ -47,13 +45,13 @@ public class Team {
      *   Strongholds = number of points,
      *   Warzone = number of points.
      */
-    @JsonProperty("Score")
+    @SerializedName("Score")
     private long score;
 
     /**
      * The team's rank at the end of the match.
      */
-    @JsonProperty("Rank")
+    @SerializedName("Rank")
     private int rank;
 
     public int getId() {

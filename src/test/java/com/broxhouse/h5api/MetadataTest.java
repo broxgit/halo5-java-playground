@@ -1,13 +1,12 @@
 package com.broxhouse.h5api;
 
 import com.broxhouse.h5api.models.metadata.*;
-import com.broxhouse.h5api.utils.KeyReader;
-import junit.runner.BaseTestRunner;
+import org.junit.Assert;
+import org.junit.Test;
 import retrofit2.Response;
+
 import java.io.IOException;
-import java.util.Arrays;
 import java.util.List;
-import org.junit.*;
 
 /**
  * Created by Brock Berrett on 7/21/2016.

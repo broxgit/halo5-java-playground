@@ -30,25 +30,24 @@ package com.broxhouse.h5api.models.stats.reports;
 
 import com.broxhouse.h5api.models.stats.common.Player;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonProperty;
 
 @JsonIgnoreProperties({"PreMatchRatings", "PostMatchRatings"})
 public class TeamPlayer {
 
-    @JsonProperty("Player")
+    @SerializedName("Player")
     private Player player;
 
     /**
      * The ID of the team that the player was on when the match ended. Zero for
      * campaign games.
      */
-    @JsonProperty("TeamId")
+    @SerializedName("TeamId")
     private int teamId;
 
     /**
      * The player's team-agnostic ranking in this match.
      */
-    @JsonProperty("Rank")
+    @SerializedName("Rank")
     private int rank;
 
     /**
@@ -72,27 +71,27 @@ public class TeamPlayer {
      * the game may have unique rules for multi-team and FFA scenarios, in which
      * multiple teams are awarded a win.
      */
-    @JsonProperty("Result")
+    @SerializedName("Result")
     private int result;
 
     /**
      * The number of enemy kills the player had during this match. This includes
      * other Spartans and Enemy AI.
      */
-    @JsonProperty("TotalKills")
+    @SerializedName("TotalKills")
     private int totalKills;
 
     /**
      * The number of times this player died during the match.
      */
-    @JsonProperty("TotalDeaths")
+    @SerializedName("TotalDeaths")
     private int totalDeaths;
 
     /**
      * The number of assists credited to the player during the match. This includes
      * other Spartans and Enemy AI.
      */
-    @JsonProperty("TotalAssists")
+    @SerializedName("TotalAssists")
     private int totalAssists;
 
     public Player getPlayer() {

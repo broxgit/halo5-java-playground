@@ -28,8 +28,6 @@
 
 package com.broxhouse.h5api.models.metadata;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
-
 public class RequisitionPack {
     /**
      * A localized name for the pack, suitable for display to users. The text
@@ -60,13 +58,13 @@ public class RequisitionPack {
     /**
      * Internal use. Whether the item should be featured ahead of others.
      */
-    @JsonProperty("isFeatured")
+    @SerializedName("isFeatured")
     private boolean isFeatured;
 
     /**
      * Internal use. Whether the item should be labeled as "new!"
      */
-    @JsonProperty("isNew")
+    @SerializedName("isNew")
     private boolean isNew;
 
     /**
@@ -80,14 +78,14 @@ public class RequisitionPack {
      * If the pack is currently available for purchase by spending credits,
      * then this value is true.
      */
-    @JsonProperty("isPurchasableWithCredits")
+    @SerializedName("isPurchasableWithCredits")
     private boolean isPurchasableWithCredits;
 
     /**
      * If the pack might be obtainable through the Xbox Live Marketplace, then
      * this value is true.
      */
-    @JsonProperty("isPurchasableFromMarketplace")
+    @SerializedName("isPurchasableFromMarketplace")
     private boolean isPurchasableFromMarketplace;
 
     /**
@@ -135,7 +133,7 @@ public class RequisitionPack {
     /**
      * Internal use only. Do not use.
      */
-    @JsonProperty("contentId")
+    @SerializedName("contentId")
     private String contentId;
 
     public String getName() {

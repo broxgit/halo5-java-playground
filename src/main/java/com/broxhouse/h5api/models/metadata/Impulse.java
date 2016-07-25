@@ -28,8 +28,6 @@
 
 package com.broxhouse.h5api.models.metadata;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
-
 public class Impulse {
     /**
      * Internal use. The non-localized name of the impulse.
@@ -44,7 +42,7 @@ public class Impulse {
     /**
      * Internal use only. Do not use.
      */
-    @JsonProperty("contentId")
+    @SerializedName("contentId")
     private String contentId;
 
     public long getId() {

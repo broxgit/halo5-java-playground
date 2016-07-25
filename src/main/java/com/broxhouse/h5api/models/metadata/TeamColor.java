@@ -28,8 +28,6 @@
 
 package com.broxhouse.h5api.models.metadata;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
-
 public class TeamColor {
     /**
      * A localized name, suitable for display to users.
@@ -62,7 +60,7 @@ public class TeamColor {
     /**
      * Internal use only. Do not use.
      */
-    @JsonProperty("contentId")
+    @SerializedName("contentId")
     private String contentId;
 
     public String getName() {

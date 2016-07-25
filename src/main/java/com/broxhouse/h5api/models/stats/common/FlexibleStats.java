@@ -28,33 +28,31 @@
 
 package com.broxhouse.h5api.models.stats.common;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
-
 import java.util.List;
 
 public class FlexibleStats {
     /**
      * The set of flexible stats that are derived from medal events.
      */
-    @JsonProperty("MedalStatCounts")
+    @SerializedName("MedalStatCounts")
     private List<StatCount> medalStatCounts;
 
     /**
      * The set of flexible stats that are derived from impulse events.
      */
-    @JsonProperty("ImpulseStatCounts")
+    @SerializedName("ImpulseStatCounts")
     private List<StatCount> impulseStatCounts;
 
     /**
      * The set of flexible stats that are derived from medal time lapses.
      */
-    @JsonProperty("MedalTimelapses")
+    @SerializedName("MedalTimelapses")
     private List<Timelapse> medalTimelapses;
 
     /**
      * The set of flexible stats that are derived from impulse time lapses.
      */
-    @JsonProperty("ImpulseTimelapses")
+    @SerializedName("ImpulseTimelapses")
     private List<Timelapse> impulseTimelapses;
 
     public List<StatCount> getMedalStatCounts() {

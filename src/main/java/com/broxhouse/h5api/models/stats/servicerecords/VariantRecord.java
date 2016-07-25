@@ -28,31 +28,29 @@
 
 package com.broxhouse.h5api.models.stats.servicerecords;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
-
 public class VariantRecord {
     /**
      * Rank between 1-3
      */
-    @JsonProperty("GameBaseVariantRank")
+    @SerializedName("GameBaseVariantRank")
     private int gameBaseVariantRank;
 
     /**
      * Number of games played in game base variant
      */
-    @JsonProperty("NumberOfMatchesCompleted")
+    @SerializedName("NumberOfMatchesCompleted")
     private long numberOfMatchesCompleted;
 
     /**
      * Id of the game base variant
      */
-    @JsonProperty("GameBaseVariantId")
+    @SerializedName("GameBaseVariantId")
     private String gameBaseVariantId;
 
     /**
      * Number of matches won on game base variant
      */
-    @JsonProperty("NumberOfMatchesWon")
+    @SerializedName("NumberOfMatchesWon")
     private long numberOfMatchesWon;
 
     public int getGameBaseVariantRank() {

@@ -28,8 +28,6 @@
 
 package com.broxhouse.h5api.models.metadata;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
-
 public class Playlist {
     /**
      * A localized name for the playlist, suitable for display to users. The text is
@@ -46,7 +44,7 @@ public class Playlist {
      * Indicates if a Csr (competitive skill rank) is shown for players who participate
      * in this playlist.
      */
-    @JsonProperty("isRanked")
+    @SerializedName("isRanked")
     private boolean isRanked;
 
     /**
@@ -66,7 +64,7 @@ public class Playlist {
     /**
      * Indicates if this playlist is currently available for play.
      */
-    @JsonProperty("isActive")
+    @SerializedName("isActive")
     private boolean isActive;
 
     /**
@@ -77,7 +75,7 @@ public class Playlist {
     /**
      * Internal use only. Do not use.
      */
-    @JsonProperty("contentId")
+    @SerializedName("contentId")
     private String contentId;
 
     public String getName() {

@@ -1,10 +1,10 @@
-package com.broxhouse.h5api;
+package com.broxhouse.h5api
 
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-import javax.ws.rs.core.Response;
+import org.json.JSONArray
+import org.json.JSONException
+import org.json.JSONObject
 
+import javax.ws.rs.core.Response
 
 /**
  * JSonHelper contains methods useful for handling JSON responses.

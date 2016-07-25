@@ -28,19 +28,17 @@
 
 package com.broxhouse.h5api.models.stats.common;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
-
 public class StatCount {
     /**
      * The ID of the flexible stat.
      */
-    @JsonProperty("Id")
+    @SerializedName("Id")
     private String id;
 
     /**
      * The number of times this flexible stat was earned.
      */
-    @JsonProperty("Count")
+    @SerializedName("Count")
     private int count;
 
     public String getId() {

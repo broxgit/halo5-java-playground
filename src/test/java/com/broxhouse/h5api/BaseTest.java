@@ -1,8 +1,8 @@
 package com.broxhouse.h5api;
+
 import com.broxhouse.h5api.utils.Constants;
-import com.broxhouse.h5api.utils.KeyReader;
-import org.junit.Before;
 import org.junit.After;
+import org.junit.Before;
 /**
  * Created by Brock Berrett on 7/20/2016.
  */

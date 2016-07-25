@@ -27,10 +27,6 @@
  */
 
 package com.broxhouse.h5api.utils;
-import com.broxhouse.h5api.MetadataTest;
-
-import java.io.*;
-import java.net.URL;
 
 public class KeyReader {
 

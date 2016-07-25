@@ -32,16 +32,13 @@ import com.broxhouse.h5api.models.stats.matches.Match;
 import com.broxhouse.h5api.models.stats.matches.Page;
 import com.broxhouse.h5api.models.stats.reports.*;
 import com.broxhouse.h5api.utils.Constants;
-import com.broxhouse.h5api.utils.KeyReader;
-import org.junit.*;
+import org.junit.Assert;
+import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
 import retrofit2.Response;
 
 import java.io.IOException;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
 
 @RunWith(JUnit4.class)
 public class ReportsApiTest extends BaseTest {

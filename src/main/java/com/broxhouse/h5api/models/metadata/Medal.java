@@ -28,18 +28,20 @@
 
 package com.broxhouse.h5api.models.metadata;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
+import com.google.gson.annotations.SerializedName;
 
 public class Medal {
 
     /**
      * A localized name for the medal, suitable for display to users.
      */
+    @SerializedName("name")
     private String name;
 
     /**
      * A localized description, suitable for display to users.
      */
+    @SerializedName("description")
     private String description;
 
     /**
@@ -73,7 +75,7 @@ public class Medal {
     /**
      * Internal use only. Do not use.
      */
-    @JsonProperty("contentId")
+    @SerializedName("contentId")
     private String contentId;
 
     public String getName() {

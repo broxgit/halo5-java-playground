@@ -28,8 +28,6 @@
 
 package com.broxhouse.h5api.models.metadata;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
-
 import java.util.List;
 
 public class Commendation {
@@ -61,7 +59,7 @@ public class Commendation {
         /**
          * Internal use only. Do not use.
          */
-        @JsonProperty("contentId")
+        @SerializedName("contentId")
         private String contentId;
 
         public Reward getReward() {
@@ -105,7 +103,7 @@ public class Commendation {
         /**
          * Internal use only. Do not use.
          */
-        @JsonProperty("contentId")
+        @SerializedName("contentId")
         private String contentId;
 
         public String getName() {
@@ -181,7 +179,7 @@ public class Commendation {
     /**
      * Internal use only. Do not use.
      */
-    @JsonProperty("contentId")
+    @SerializedName("contentId")
     private String contentId;
 
     public String getType() {

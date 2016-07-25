@@ -6,12 +6,6 @@
       "Id": "string",
 
 
-
-
-
-
-
-
       "ResultCode": "int",
 
 
@@ -20,35 +14,22 @@
         "ArenaStats": {
 
 
-
-
           "ArenaPlaylistStats": [
             {
 
               "PlaylistId": "guid",
 
-
-
               "MeasurementMatchesLeft": "int",
-
-
 
               "HighestCsr": {
 
-
                 "Tier": "int",
-
-
 
                 "DesignationId": "int",
 
-
                 "Csr": "int",
 
-
                 "PercentToNextTier": "int",
-
-
 
                 "Rank": "int"
               },
@@ -56,16 +37,11 @@
 
               "Csr": {
 
-
                 "Tier": "int",
-
-
 
                 "DesignationId": "int",
 
-
                 "Csr": "int",
-
 
                 "PercentToNextTier": "int",
 

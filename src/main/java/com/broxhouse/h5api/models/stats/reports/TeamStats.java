@@ -28,8 +28,6 @@
 
 package com.broxhouse.h5api.models.stats.reports;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
-
 import java.util.List;
 
 public class TeamStats {
@@ -38,19 +36,19 @@ public class TeamStats {
         /**
          * The round number this entry pertains to.
          */
-        @JsonProperty("RoundNumber")
+        @SerializedName("RoundNumber")
         private int roundNumber;
 
         /**
          * The end rank for the team this round.
          */
-        @JsonProperty("Rank")
+        @SerializedName("Rank")
         private int rank;
 
         /**
          * The end score for the team this round.
          */
-        @JsonProperty("Score")
+        @SerializedName("Score")
         private long score;
 
         public int getRoundNumber() {
@@ -70,7 +68,7 @@ public class TeamStats {
     /**
      * The ID for the team.
      */
-    @JsonProperty("TeamId")
+    @SerializedName("TeamId")
     private int teamId;
 
     /** The team's score at the end of the match. The way the score is determined is
@@ -81,19 +79,19 @@ public class TeamStats {
      *  Strongholds = number of points,
      *  Warzone = number of points.
      */
-    @JsonProperty("Score")
+    @SerializedName("Score")
     private long score;
 
     /**
      * The team's rank at the end of the match.
      */
-    @JsonProperty("Rank")
+    @SerializedName("Rank")
     private int rank;
 
     /**
      * The set of round stats for the team.
      */
-    @JsonProperty("RoundStats")
+    @SerializedName("RoundStats")
     private List<RoundStats> roundStats;
 
     public int getTeamId() {

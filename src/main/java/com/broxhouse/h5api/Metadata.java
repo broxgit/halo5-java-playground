@@ -2,12 +2,10 @@ package com.broxhouse.h5api; /**
  * Created by Brock Berrett on 7/20/2016.
  */
 
+import com.broxhouse.h5api.models.metadata.*;
 import retrofit2.Call;
 import retrofit2.http.GET;
-import retrofit2.http.Headers;
 import retrofit2.http.Path;
-
-import com.broxhouse.h5api.models.metadata.*;
 
 import java.util.List;
 

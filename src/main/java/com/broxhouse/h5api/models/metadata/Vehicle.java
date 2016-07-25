@@ -28,8 +28,6 @@
 
 package com.broxhouse.h5api.models.metadata;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
-
 public class Vehicle {
     /**
      * A localized name for the object, suitable for display to users. The text is title
@@ -57,7 +55,7 @@ public class Vehicle {
     /**
      * Indicates whether the vehicle is usable by a player.
      */
-    @JsonProperty("isUsableByPlayer")
+    @SerializedName("isUsableByPlayer")
     private boolean isUsableByPlayer;
 
     /**
@@ -68,7 +66,7 @@ public class Vehicle {
     /**
      * Internal use only. Do not use.
      */
-    @JsonProperty("contentId")
+    @SerializedName("contentId")
     private String contentId;
 
     public String getName() {

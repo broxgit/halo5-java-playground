@@ -29,7 +29,6 @@
 package com.broxhouse.h5api.models.stats.matches;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.util.List;
 
@@ -40,7 +39,7 @@ public class Page<T> {
      * specified, this value is identical. When "start" is omitted, the default value is
      * returned.
      */
-    @JsonProperty("Start")
+    @SerializedName("Start")
     private int start;
 
     /**
@@ -49,21 +48,21 @@ public class Page<T> {
      * specified a count parameter greater than the maximum allowed, this value contains
      * the maximum allowed amount.
      */
-    @JsonProperty("Count")
+    @SerializedName("Count")
     private int count;
 
     /**
      * The number of results that are actually being returned in this response. This field
      * is named "ResultCount" to avoid confusion with "Count".
      */
-    @JsonProperty("ResultCount")
+    @SerializedName("ResultCount")
     private int resultCount;
 
     /**
      * A list of recent matches. Matches are listed in chronological order with the most
      * recently started match first.
      */
-    @JsonProperty("Results")
+    @SerializedName("Results")
     private List<T> results;
 
     public int getStart() {

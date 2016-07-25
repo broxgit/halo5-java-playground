@@ -28,22 +28,22 @@
 
 package com.broxhouse.h5api.models.stats.common;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
+import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
 
-public class WeaponId {
+public class WeaponId extends WeaponStats {
 
     /**
      * The ID of the weapon. Weapons are available via the Metadata API.
      */
-    @JsonProperty("StockId")
+    @SerializedName("StockId")
     private long stockId;
 
     /**
      * Any attachments the weapon had.
      */
-    @JsonProperty("Attachments")
+    @SerializedName("Attachments")
     private List<Integer> attachments;
 
     public long getStockId() {

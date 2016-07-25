@@ -28,19 +28,17 @@
 
 package com.broxhouse.h5api.models.stats.reports;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
-
 public class CampaignPlayerStats extends BasePlayerStats {
     /**
      * The player's biggest score due to a kill.
      */
-    @JsonProperty("BiggestKillScore")
+    @SerializedName("BiggestKillScore")
     private int biggestKillScore;
 
     /**
      * The player's score.
      */
-    @JsonProperty("Score")
+    @SerializedName("Score")
     private long score;
 
     public int getBiggestKillScore() {

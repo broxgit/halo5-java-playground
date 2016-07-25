@@ -32,7 +32,6 @@ import com.broxhouse.h5api.models.stats.reports.Resource;
 import com.broxhouse.h5api.models.stats.reports.Team;
 import com.broxhouse.h5api.models.stats.reports.TeamPlayer;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.util.List;
 
@@ -44,7 +43,7 @@ public class Match {
          * The ID for this match. More match details are available via the applicable
          * Post Game Carnage Report endpoint.
          */
-        @JsonProperty("MatchId")
+        @SerializedName("MatchId")
         private String matchId;
 
         /**
@@ -55,7 +54,7 @@ public class Match {
          *   Custom = 3,
          *   Warzone = 4.
          */
-        @JsonProperty("GameMode")
+        @SerializedName("GameMode")
         private int gameMode;
 
         public String getMatchId() {
@@ -68,7 +67,7 @@ public class Match {
     }
 
     public static class CompletedDate {
-        @JsonProperty("ISO8601Date")
+        @SerializedName("ISO8601Date")
         private String date;
 
         public String getDate() {
@@ -76,7 +75,7 @@ public class Match {
         }
     }
 
-    @JsonProperty("Id")
+    @SerializedName("Id")
     private Id id;
 
     /**
@@ -88,13 +87,13 @@ public class Match {
      * Null for campaign & custom games.
      * Playlists are available via the Metadata API.
      */
-    @JsonProperty("HopperId")
+    @SerializedName("HopperId")
     private String hopperId;
 
     /**
      * The ID of the base map for this match. Maps are available via the Metadata API.
      */
-    @JsonProperty("MapId")
+    @SerializedName("MapId")
     private String mapId;
 
     /**
@@ -104,14 +103,14 @@ public class Match {
      * this match was an official map variant, then the structure will be as documented
      * here. This will be null for campaign games.
      */
-    @JsonProperty("MapVariant")
+    @SerializedName("MapVariant")
     private Resource mapVariant;
 
     /**
      * The ID of the game base variant for this match. Game base variants are available
      * via the Metadata API.
      */
-    @JsonProperty("GameBaseVariantId")
+    @SerializedName("GameBaseVariantId")
     private String gameBaseVariantId;
 
     /**
@@ -121,13 +120,13 @@ public class Match {
      * this match was an official game variant, then the structure will be as
      * documented here. This will be null for campaign games.
      */
-    @JsonProperty("GameVariant")
+    @SerializedName("GameVariant")
     private Resource gameVariant;
 
     /**
      * The length of the match. This is expressed as an ISO 8601 Duration.
      */
-    @JsonProperty("MatchDuration")
+    @SerializedName("MatchDuration")
     private String matchDuration;
 
     /**
@@ -137,33 +136,33 @@ public class Match {
      * component of this date is always set to "00:00:00". This is expressed as an ISO
      * 8601 combined Date and Time.
      */
-    @JsonProperty("MatchCompletedDate")
+    @SerializedName("MatchCompletedDate")
     private CompletedDate matchCompletedDate;
 
     /**
      * Provides team data. This list contains all team that Won or Tied. Losing teams
      * are not included. This list is empty for campaign games.
      */
-    @JsonProperty("Teams")
+    @SerializedName("Teams")
     private List<Team> teams;
 
     /**
      * This field contains the player's data. This will only contain data for the
      * player specified in the request.
      */
-    @JsonProperty("Players")
+    @SerializedName("Players")
     private List<TeamPlayer> players;
 
     /**
      * Whether this was a team-based game or not (e.g. free-for-all).
      */
-    @JsonProperty("IsTeamGame")
+    @SerializedName("IsTeamGame")
     private boolean isTeamGame;
 
     /**
      * Internal use only. This will always be null.
      */
-    @JsonProperty("SeasonId")
+    @SerializedName("SeasonId")
     private String seasonId;
 
     public Id getId() {

@@ -28,11 +28,9 @@
 
 package com.broxhouse.h5api.models.stats.servicerecords;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
-
 public class CustomResult extends BaseServiceRecordResult {
 
-    @JsonProperty("CustomStats")
+    @SerializedName("CustomStats")
     private CustomStat customStat;
 
     public CustomStat getCustomStat() {

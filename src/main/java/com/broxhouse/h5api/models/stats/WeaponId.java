@@ -1,6 +1,5 @@
 package com.broxhouse.h5api.models.stats;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
 import java.util.List;
 
 public class WeaponId
@@ -8,13 +7,13 @@ public class WeaponId
     /**
      * The ID of the weapon. Weapons are available via the Metadata API.
      */
-    @JsonProperty("StockId")
+    @SerializedName("StockId")
     private long stockId;
 
     /**
      * Any attachments the weapon had.
      */
-    @JsonProperty("Attachments")
+    @SerializedName("Attachments")
     private List<Integer> attachments;
 
     public long getStockId() {

@@ -28,9 +28,8 @@
 
 package com.broxhouse.h5api.models.stats.servicerecords;
 
-import com.broxhouse.h5api.models.stats.reports.BaseStats;
 import com.broxhouse.h5api.models.stats.common.FlexibleStats;
-import com.fasterxml.jackson.annotation.JsonProperty;
+import com.broxhouse.h5api.models.stats.reports.BaseStats;
 
 import java.util.List;
 import java.util.Map;
@@ -43,7 +42,7 @@ public class CampaignStat extends BaseStats {
          * The game base variant specific stats. Flexible stats are available via
          * the Metadata API.
          */
-        @JsonProperty("FlexibleStats")
+        @SerializedName("FlexibleStats")
         private FlexibleStats flexibleStats;
 
         /**
@@ -53,7 +52,7 @@ public class CampaignStat extends BaseStats {
          *
          * Easy 0, Normal 1, Heroic 2, Legendary 3
          */
-        @JsonProperty("CoopStats")
+        @SerializedName("CoopStats")
         Map<Integer, PlaythroughStats> coopStats;
 
         /**
@@ -63,13 +62,13 @@ public class CampaignStat extends BaseStats {
          *
          * Easy 0, Normal 1, Heroic 2, Legendary 3
          */
-        @JsonProperty("SoloStats")
+        @SerializedName("SoloStats")
         Map<Integer, PlaythroughStats> soloStats;
 
         /**
          * The mission ID that pertains to this mission. Can be found in metadata.
          */
-        @JsonProperty("MissionId")
+        @SerializedName("MissionId")
         private String missionId;
 
         public FlexibleStats getFlexibleStats() {
@@ -94,13 +93,13 @@ public class CampaignStat extends BaseStats {
         /**
          * The highest score achieved by the player on this difficulty.
          */
-        @JsonProperty("HighestScore")
+        @SerializedName("HighestScore")
         private long highestScore;
 
         /**
          * The fastest completion time by the player on this difficulty.
          */
-        @JsonProperty("FastestCompletionTime")
+        @SerializedName("FastestCompletionTime")
         private String fastestCompletionTime;
 
         /**
@@ -108,14 +107,14 @@ public class CampaignStat extends BaseStats {
          * mission on this difficulty. Not most in a single run, but which have
          * been completed overall.
          */
-        @JsonProperty("Skulls")
+        @SerializedName("Skulls")
         private List<Integer> skulls;
 
         /**
          * The number of times this mission was completed by the player on this
          * difficulty.
          */
-        @JsonProperty("TotalTimesCompleted")
+        @SerializedName("TotalTimesCompleted")
         private long totalTimesCompleted;
 
         /**
@@ -126,7 +125,7 @@ public class CampaignStat extends BaseStats {
          * each with a different Skull (as opposed to playing through the
          * mission with ALL the skulls enabled).
          */
-        @JsonProperty("AllSkullsOn")
+        @SerializedName("AllSkullsOn")
         private boolean allSkullsOn;
 
         public long getHighestScore() {
@@ -153,7 +152,7 @@ public class CampaignStat extends BaseStats {
     /**
      * List of campaign stats by mission ID.
      */
-    @JsonProperty("CampaignMissionStats")
+    @SerializedName("CampaignMissionStats")
     private List<CampaignMissionStats> campaignMissionStats;
 
     public List<CampaignMissionStats> getCampaignMissionStats() {

@@ -28,9 +28,8 @@
 
 package com.broxhouse.h5api.models.stats.servicerecords;
 
-import com.broxhouse.h5api.models.stats.reports.BaseStats;
 import com.broxhouse.h5api.models.stats.common.FlexibleStats;
-import com.fasterxml.jackson.annotation.JsonProperty;
+import com.broxhouse.h5api.models.stats.reports.BaseStats;
 
 import java.util.List;
 
@@ -42,21 +41,21 @@ public class WarzoneStat extends BaseStats {
          * The total number of "pies" (in-game currency) the player has earned in
          * the scenario.
          */
-        @JsonProperty("TotalPiesEarned")
+        @SerializedName("TotalPiesEarned")
         private long totalPiesEarned;
 
         /**
          * The game base variant specific stats. Flexible stats are available via
          * the Metadata API.
          */
-        @JsonProperty("FlexibleStats")
+        @SerializedName("FlexibleStats")
         private FlexibleStats flexibleStats;
 
         /**
          * The map global ID that this warzone scenario pertains to. Found in
          * metadata
          */
-        @JsonProperty("MapId")
+        @SerializedName("MapId")
         private String mapId;
 
         public long getTotalPiesEarned() {
@@ -75,12 +74,12 @@ public class WarzoneStat extends BaseStats {
     /**
      * The total number of "pies" (in-game currency) the player has earned.
      */
-    @JsonProperty("TotalPiesEarned")
+    @SerializedName("TotalPiesEarned")
     private long totalPiesEarned;
 
     /**
      * List of scenario stats by map and game base variant id.
      */
-    @JsonProperty("ScenarioStats")
+    @SerializedName("ScenarioStats")
     private List<ScenarioStats> scenarioStats;
 }

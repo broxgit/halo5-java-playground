@@ -28,12 +28,7 @@
 
 package com.broxhouse.h5api;
 
-import com.broxhouse.h5api.utils.Constants;
-import com.broxhouse.h5api.utils.KeyReader;
 import org.junit.Assert;
-import org.junit.After;
-import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Test;
 import retrofit2.Response;
 

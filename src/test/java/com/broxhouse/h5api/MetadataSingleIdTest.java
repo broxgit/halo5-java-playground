@@ -37,16 +37,13 @@ import com.broxhouse.h5api.models.stats.matches.Page;
 import com.broxhouse.h5api.models.stats.reports.ArenaPlayerStats;
 import com.broxhouse.h5api.models.stats.reports.VersusCarnageReport;
 import com.broxhouse.h5api.utils.Constants;
-import com.broxhouse.h5api.utils.KeyReader;
 import org.junit.Assert;
-import org.junit.BeforeClass;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
 import retrofit2.Response;
 
 import java.io.IOException;
-import java.util.Collections;
 import java.util.List;
 
 /**

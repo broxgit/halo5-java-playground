@@ -28,8 +28,6 @@
 
 package com.broxhouse.h5api.models.metadata;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
-
 public class CampaignMission {
     /**
      * Order of mission in story
@@ -64,7 +62,7 @@ public class CampaignMission {
     /**
      * Internal Use Only. Do not use.
      */
-    @JsonProperty("contentId")
+    @SerializedName("contentId")
     private String contentId;
 
     public int getMissionNumber() {

@@ -28,21 +28,19 @@
 
 package com.broxhouse.h5api.models.stats.common;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
-
 import java.util.List;
 
 public class Enemy {
     /**
      * The Base ID for the enemy.
      */
-    @JsonProperty("BaseId")
+    @SerializedName("BaseId")
     private long baseId;
 
     /**
      * The attachments (variants) for the enemy.
      */
-    @JsonProperty("Attachments")
+    @SerializedName("Attachments")
     private List<Long> attachments;
 
     public long getBaseId() {
