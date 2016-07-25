@@ -28,6 +28,8 @@
 
 package com.broxhouse.h5api.models.stats.reports;
 
+import com.google.gson.annotations.SerializedName;
+
 public class Team {
     /**
      * The ID for the team. The team's ID dictates the team's color. Team colors

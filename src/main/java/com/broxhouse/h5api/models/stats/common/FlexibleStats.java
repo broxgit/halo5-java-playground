@@ -28,6 +28,8 @@
 
 package com.broxhouse.h5api.models.stats.common;
 
+import com.google.gson.annotations.SerializedName;
+
 import java.util.List;
 
 public class FlexibleStats {

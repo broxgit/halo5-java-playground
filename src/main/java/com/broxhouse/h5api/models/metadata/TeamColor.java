@@ -28,6 +28,8 @@
 
 package com.broxhouse.h5api.models.metadata;
 
+import com.google.gson.annotations.SerializedName;
+
 public class TeamColor {
     /**
      * A localized name, suitable for display to users.

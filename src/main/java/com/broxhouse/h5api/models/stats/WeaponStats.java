@@ -4,6 +4,8 @@ package com.broxhouse.h5api.models.stats;
  * Created by Brock Berrett on 7/20/2016.
  */
 
+import com.google.gson.annotations.SerializedName;
+
 public class WeaponStats
 {
     @SerializedName("WeaponId")

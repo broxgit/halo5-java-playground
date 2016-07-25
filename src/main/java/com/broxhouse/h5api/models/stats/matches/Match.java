@@ -32,6 +32,7 @@ import com.broxhouse.h5api.models.stats.reports.Resource;
 import com.broxhouse.h5api.models.stats.reports.Team;
 import com.broxhouse.h5api.models.stats.reports.TeamPlayer;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
 

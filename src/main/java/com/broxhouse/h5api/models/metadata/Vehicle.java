@@ -28,6 +28,8 @@
 
 package com.broxhouse.h5api.models.metadata;
 
+import com.google.gson.annotations.SerializedName;
+
 public class Vehicle {
     /**
      * A localized name for the object, suitable for display to users. The text is title

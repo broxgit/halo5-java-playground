@@ -125,7 +125,7 @@ public class HaloApi {
             if (entity != null)
             {
                 getResponse = EntityUtils.toString(entity);
-                System.out.println(getResponse);
+//                System.out.println(getResponse);
                 return getResponse;
             }
         else
@@ -225,7 +225,6 @@ public class HaloApi {
     {
         JSONObject obj = new JSONObject(arenaStats(PLAYER)).getJSONArray("Results").getJSONObject(0).getJSONObject("Result").getJSONObject("ArenaStats");
         String var = obj.toString();
-//        System.out.println(var);
         Gson gson = new Gson();
         BaseStats stats = gson.fromJson(var, BaseStats.class);
         return stats.getTotalGamesCompleted();
@@ -236,10 +235,11 @@ public class HaloApi {
         JSONArray obj = new JSONObject(arenaStats(PLAYER)).getJSONArray("Results").getJSONObject(0).getJSONObject("Result").getJSONObject("ArenaStats").getJSONArray("WeaponStats");
         Gson gson = new Gson();
         String var = obj.toString();
-        System.out.println(var);
         WeaponStats[] stats = gson.fromJson(var, WeaponStats[].class);
         String weaponData = listWeapons();
         Weapon[] weapons = gson.fromJson(weaponData, Weapon[].class);
+        double games = totalGames();
+        games = (double)Math.round(games *1000d) / 1000d;
 
         for (int row = 0; row < stats.length; row++)
         {
@@ -247,13 +247,16 @@ public class HaloApi {
             {
                 if (weapons[i].getId() == stats[row].getWeaponId().getStockId())
                 {
-                    stats[row].setName(weapons[i].getLargeIconImageUrl());
+                    stats[row].setName(weapons[i].getName());
                 }
             }
         }
+        System.out.println("Total kills per weapon for " + PLAYER_UF);
         for (int i = 0; i < stats.length; i++)
         {
-            System.out.println(stats[i].getName() + " " + stats[i].getTotalKills());
+            double killCount = stats[i].getTotalKills()/games;
+            killCount = (double)Math.round(killCount * 1000d) / 1000d;
+            System.out.println(stats[i].getName() + "\n Total Kills: " + stats[i].getTotalKills() + "\n Avg kills per game: " + killCount);
         }
     }
 

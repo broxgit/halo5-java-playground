@@ -30,6 +30,7 @@ package com.broxhouse.h5api.models.stats.servicerecords;
 
 import com.broxhouse.h5api.models.stats.common.FlexibleStats;
 import com.broxhouse.h5api.models.stats.reports.BaseStats;
+import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
 import java.util.Map;

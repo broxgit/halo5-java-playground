@@ -29,6 +29,7 @@
 package com.broxhouse.h5api.models.stats.servicerecords;
 
 import com.broxhouse.h5api.models.stats.common.Player;
+import com.google.gson.annotations.SerializedName;
 
 public class BaseServiceRecordResult {
 
