@@ -31,6 +31,9 @@ public class ArenaStat extends BaseStats {
         @SerializedName("HighestCsr")
         private Csr highestCsr;
 
+        @SerializedName("name")
+        private String name;
+
         /**
          * The current Competitive Skill Ranking (Csr) of the player.
          */
@@ -51,6 +54,16 @@ public class ArenaStat extends BaseStats {
 
         public Csr getCsr() {
             return csr;
+        }
+
+        public String getName()
+        {
+            return name;
+        }
+
+        public void setName(String name)
+        {
+            this.name = name;
         }
     }
 
@@ -107,4 +120,5 @@ public class ArenaStat extends BaseStats {
     public String getHighestCsrPlaylistId() {
         return highestCsrPlaylistId;
     }
+
 }

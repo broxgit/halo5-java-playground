@@ -19,6 +19,9 @@ public class BaseServiceRecordResult {
     @SerializedName("SpartanRank")
     private int spartanRank;
 
+    @SerializedName("ArenaStats")
+    private ArenaStat arenaStat;
+
     /**
      * The player's XP. Zero for campaign.
      */
@@ -35,5 +38,10 @@ public class BaseServiceRecordResult {
 
     public long getXp() {
         return xp;
+    }
+
+    public ArenaStat getArenaStat()
+    {
+        return arenaStat;
     }
 }

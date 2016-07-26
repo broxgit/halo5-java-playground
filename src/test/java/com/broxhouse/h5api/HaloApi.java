@@ -1,12 +1,13 @@
 package com.broxhouse.h5api;
 
 import com.broxhouse.h5api.models.metadata.Medal;
+import com.broxhouse.h5api.models.metadata.Playlist;
 import com.broxhouse.h5api.models.metadata.Weapon;
-import com.broxhouse.h5api.models.stats.common.EnemyKill;
 import com.broxhouse.h5api.models.stats.common.MedalAward;
 import com.broxhouse.h5api.models.stats.common.WeaponStats;
 import com.broxhouse.h5api.models.stats.reports.BaseStats;
 import com.broxhouse.h5api.models.stats.servicerecords.ArenaStat;
+import com.broxhouse.h5api.models.stats.servicerecords.BaseServiceRecordResult;
 import com.google.gson.Gson;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
@@ -45,6 +46,7 @@ public class HaloApi {
     private static final String META_MEDALS = META_URL + "medals";
     private static final String PLAYER_UF = "That Brock Guy";
     private static final String PLAYER = formatString(PLAYER_UF);
+    private static final String META_PLAYLISTS = META_URL + "playlists";
 
     public static String formatString(String string)
     {
@@ -89,6 +91,11 @@ public class HaloApi {
         return api(META_WEAPONS);
     }
 
+    public static String listPlaylists() throws Exception
+    {
+        return api(META_PLAYLISTS);
+    }
+
 //    private static String api(String url) throws Exception {
 //        System.out.println(url);
 //        URL apiUrl = new URL(url);
@@ -130,7 +137,7 @@ public class HaloApi {
             if (entity != null)
             {
                 getResponse = EntityUtils.toString(entity);
-                System.out.println(getResponse);
+//                System.out.println(getResponse);
                 return getResponse;
             }
         else
@@ -144,11 +151,13 @@ public class HaloApi {
         {
 //            testJSONWeapons();
 //            testJSONMedals();
-//            testMedalStats(ARENA);
-//            testWeaponKills(WARZONE);
+//            testMedalStats(CUSTOM);
+            testWeaponKills(CUSTOM);
 //            totalGames();
 //            testPlayerStats();
-            testBaseStats(ARENA);
+//            testBaseStats(ARENA);
+//            testBaseResults();
+//            testActivePlaylists();
         } catch (IOException e)
         {
             e.printStackTrace();
@@ -181,19 +190,23 @@ public class HaloApi {
     {
         JSONArray obj = null;
         String mostEarnedMedal = null;
+        String gType = null;
         double average = 0;
         int highestMedalCount = 0;
         if (gameType == WARZONE)
         {
             obj = new JSONObject(warzoneMatches(PLAYER)).getJSONArray("Results").getJSONObject(0).getJSONObject("Result").getJSONObject("WarzoneStat").getJSONArray("MedalAwards");
+            gType = "Warzone";
         }
         if (gameType == ARENA)
         {
             obj = new JSONObject(arenaStats(PLAYER)).getJSONArray("Results").getJSONObject(0).getJSONObject("Result").getJSONObject("ArenaStats").getJSONArray("MedalAwards");
+            gType = "Arena";
         }
         if (gameType == CUSTOM)
         {
             obj = new JSONObject(customMatches(PLAYER)).getJSONArray("Results").getJSONObject(0).getJSONObject("Result").getJSONObject("CustomStats").getJSONArray("MedalAwards");
+            gType = "Custom";
         }
         String var = obj.toString();
         System.out.println(var);
@@ -218,15 +231,15 @@ public class HaloApi {
         {
             double medalCount = stats[row].getCount()/games;
             medalCount = (double)Math.round(medalCount *1000d) / 1000d;
-            System.out.println(stats[row].getName() + "\n   Count: " + stats[row].getCount() + "\n   Earned per game: " + medalCount);
+            System.out.println(stats[row].getName() + ": " + stats[row].getCount() + " ||  Earned per game: " + medalCount);
         }
-        for (int row = 0; row < stats.length; row++)
-        {
-            if (stats[row].getName().equalsIgnoreCase("Top Gun"))
-            {
-                System.out.println("Brock has earned: " + stats[row].getCount() + " Top Gun medals, which is way more than Axel");
-            }
-        }
+//        for (int row = 0; row < stats.length; row++)
+//        {
+//            if (stats[row].getName().equalsIgnoreCase("Top Gun"))
+//            {
+//                System.out.println("Brock has earned: " + stats[row].getCount() + " Top Gun medals, which is way more than Axel");
+//            }
+//        }
         for (int i = 0; i < stats.length; i++)
         {
             for (int k = i + 1; k < stats.length; k++)
@@ -271,8 +284,35 @@ public class HaloApi {
         String var = obj.toString();
         Gson gson = new Gson();
         BaseStats stats = gson.fromJson(var, BaseStats.class);
-        System.out.println("Total games played: " + stats.getTotalGamesCompleted());
+        System.out.println("Total " + gType + " games played: " + stats.getTotalGamesCompleted());
         return stats.getTotalGamesCompleted();
+    }
+
+    public static String totalWins(Enum gameType) throws Exception
+    {
+        JSONObject obj = null;
+        String gType = null;
+        if (gameType == WARZONE)
+        {
+            obj = new JSONObject(warzoneMatches(PLAYER)).getJSONArray("Results").getJSONObject(0).getJSONObject("Result").getJSONObject("WarzoneStat");
+            gType = "Warzone";
+        }
+        if (gameType == ARENA)
+        {
+            obj = new JSONObject(arenaStats(PLAYER)).getJSONArray("Results").getJSONObject(0).getJSONObject("Result").getJSONObject("ArenaStats");
+            gType = "Arena";
+        }
+        if (gameType == CUSTOM)
+        {
+            obj = new JSONObject(customMatches(PLAYER)).getJSONArray("Results").getJSONObject(0).getJSONObject("Result").getJSONObject("CustomStats");
+            gType = "Custom Games";
+        }
+        String var = obj.toString();
+        Gson gson = new Gson();
+        BaseStats stats = gson.fromJson(var, BaseStats.class);
+        System.out.println("Total " + gType + " games won: " + stats.getTotalGamesWon() + " Total losses: " + stats.getTotalGamesLost());
+        String winLoss = ("Total number of Wins: " + stats.getTotalGamesWon() + " Total losses: " + stats.getTotalGamesLost());
+        return winLoss;
     }
 
     public static void testWeaponKills(Enum gameType) throws Exception
@@ -298,6 +338,7 @@ public class HaloApi {
         String weaponData = listWeapons();
         Weapon[] weapons = gson.fromJson(weaponData, Weapon[].class);
         double games = totalGames(gameType);
+        String wl = totalWins(gameType);
         games = (double)Math.round(games *1000d) / 1000d;
 
         for (int row = 0; row < stats.length; row++)
@@ -320,14 +361,14 @@ public class HaloApi {
                 }
             }
         }
+//        System.out.println("Total kills per weapon for " + PLAYER_UF);
+//        for (int i = 0; i < stats.length; i++)
+//        {
+//            double killCount = stats[i].getTotalKills()/games;
+//            killCount = (double)Math.round(killCount * 1000d) / 1000d;
+//            System.out.println(stats[i].getName() + ": " + stats[i].getTotalKills() + "  ||  Avg kills per game: " + killCount);
+//        }
         System.out.println("Your favorite weapon is the " + favWeapon + " with a kill total of: " + totalKills);
-        System.out.println("Total kills per weapon for " + PLAYER_UF);
-        for (int i = 0; i < stats.length; i++)
-        {
-            double killCount = stats[i].getTotalKills()/games;
-            killCount = (double)Math.round(killCount * 1000d) / 1000d;
-            System.out.println(stats[i].getName() + "\n   Total Kills: " + stats[i].getTotalKills() + "\n   Avg kills per game: " + killCount);
-        }
     }
 
     public static void testBaseStats(Enum gameType) throws Exception
@@ -347,12 +388,12 @@ public class HaloApi {
         if (gameType == CUSTOM)
         {
             obj = new JSONObject(customMatches(PLAYER)).getJSONArray("Results").getJSONObject(0).getJSONObject("Result").getJSONObject("CustomStats");
-            gType = "Custom Games";
+            gType = "Custom";
         }
         String var = obj.toString();
         Gson gson = new Gson();
         BaseStats stats = gson.fromJson(var, BaseStats.class);
-        System.out.println("Total games played: " + stats.getTotalKills());
+        System.out.println("Total " + gType + " games played: " + stats.getTotalKills());
 
         List<WeaponStats> weaponList = stats.getWeapons();
         for(WeaponStats en : weaponList)
@@ -360,5 +401,49 @@ public class HaloApi {
             System.out.println(en.getName() + " " + en.getTotalKills());
         }
     }
+
+    public static void testBaseResults() throws Exception
+    {
+        JSONObject obj = new JSONObject(arenaStats(PLAYER)).getJSONArray("Results").getJSONObject(0).getJSONObject("Result");
+        String var = obj.toString();
+        Gson gson = new Gson();
+        BaseServiceRecordResult stats = gson.fromJson(var, BaseServiceRecordResult.class);
+        List<ArenaStat.ArenaPlaylistStats> arenaStats = stats.getArenaStat().getArenaPlaylistStats();
+        for (ArenaStat.ArenaPlaylistStats sta : arenaStats)
+        {
+            System.out.println(sta.getPlaylistId() + " " + sta.getTotalGamesCompleted());
+        }
+    }
+
+    public static void testActivePlaylists() throws Exception
+    {
+        JSONArray obj = new JSONObject(arenaStats(PLAYER)).getJSONArray("Results").getJSONObject(0).getJSONObject("Result").getJSONObject("ArenaStats").getJSONArray("ArenaPlaylistStats");
+        String var = obj.toString();
+        System.out.println(var);
+        Gson gson = new Gson();
+        String playlistData = listPlaylists();
+        ArenaStat.ArenaPlaylistStats[] playlistStats = gson.fromJson(var, ArenaStat.ArenaPlaylistStats[].class);
+        Playlist[] playlists = gson.fromJson(playlistData, Playlist[].class);
+        for (int i = 0; i < playlistStats.length; i++)
+        {
+            for (int k = 0; k < playlists.length; k++)
+            {
+                if (playlists[k].isActive() == true)
+                {
+                    System.out.println(playlists[k].getName());
+                }
+                if (playlists[k].getId().equalsIgnoreCase(playlistStats[i].getPlaylistId()))
+                {
+                    playlistStats[i].setName(playlists[k].getName());
+                }
+            }
+        }
+
+//        for (int i = 0; i < playlistStats.length; i++)
+//        {
+//            System.out.println(playlistStats[i].getName() + " " + " " + playlistStats[i].getTotalKills());
+//        }
+    }
+
 
 }
