@@ -17,13 +17,13 @@ public class MedalAward {
     /**
      * The ID of the Medal. Medals are available via the Metadata API.
      */
-    @SerializedName("medalId")
+    @SerializedName("MedalId")
     private long medalId;
 
     /**
      * The number of times the Medal was earned.
      */
-    @SerializedName("count")
+    @SerializedName("Count")
     private int count;
 
     private String name;
