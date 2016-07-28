@@ -96,4 +96,14 @@ public class TeamPlayer {
     public int getTotalAssists() {
         return totalAssists;
     }
+
+    public void setTotalKills(int kills)
+    {
+        this.totalKills = kills;
+    }
+
+    public void setTotalDeaths(int deaths)
+    {
+        this.totalDeaths = deaths;
+    }
 }

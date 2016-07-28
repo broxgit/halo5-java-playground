@@ -66,9 +66,9 @@ public class ApiFactory
     /**
      * @return Stats Adapter for Reports, Matches, and Service Records.
      */
-    public Stats getStats() {
-        return retrofit.create(Stats.class);
-    }
+//    public Stats getStats() {
+//        return retrofit.create(Stats.class);
+//    }
 
     /**
      * @return Profile Adapter for Emblem and Profile Images

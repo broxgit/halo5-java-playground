@@ -5,7 +5,9 @@ import com.broxhouse.h5api.models.metadata.Playlist;
 import com.broxhouse.h5api.models.metadata.Weapon;
 import com.broxhouse.h5api.models.stats.common.MedalAward;
 import com.broxhouse.h5api.models.stats.common.WeaponStats;
+import com.broxhouse.h5api.models.stats.matches.Match;
 import com.broxhouse.h5api.models.stats.reports.BaseStats;
+import com.broxhouse.h5api.models.stats.reports.TeamPlayer;
 import com.broxhouse.h5api.models.stats.servicerecords.ArenaStat;
 import com.broxhouse.h5api.models.stats.servicerecords.BaseServiceRecordResult;
 import com.google.gson.Gson;
@@ -20,9 +22,12 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.io.IOException;
+import java.math.BigDecimal;
 import java.net.URI;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 import static com.broxhouse.h5api.gameType.ARENA;
 import static com.broxhouse.h5api.gameType.CUSTOM;
@@ -35,17 +40,17 @@ public class HaloApi {
 
     static JSonHelper jSonHelper = new JSonHelper();
 
+    private static final String PLAYER_UF = "That Brock Guy";
+    private static final String PLAYER = formatString(PLAYER_UF);
     private static final String TOKEN = "293bb4a86da743bdb983b97efa5bb265";
     private static final String STATS_URL = "https://www.haloapi.com/stats/h5/";
     private static final String META_URL = "https://www.haloapi.com/metadata/h5/metadata/";
-    private static final String PLAYER_MATCHES = STATS_URL + "players/%s/matches";
+    private static final String PLAYER_MATCHES = STATS_URL + "players/" + PLAYER + "/matches";
     private static final String CUSTOM_STATS = STATS_URL + "servicerecords/custom?players=%s";
     private static final String ARENA_STATS = STATS_URL + "servicerecords/arena?players=%s";
     private static final String WARZONE_STATS = STATS_URL + "servicerecords/warzone?players=%s";
     private static final String META_WEAPONS = META_URL + "weapons";
     private static final String META_MEDALS = META_URL + "medals";
-    private static final String PLAYER_UF = "That Brock Guy";
-    private static final String PLAYER = formatString(PLAYER_UF);
     private static final String META_PLAYLISTS = META_URL + "playlists";
 
     public static String formatString(String string)
@@ -55,16 +60,13 @@ public class HaloApi {
     }
 
     //https://www.haloapi.com/stats/h5/players/that%20brock%20guy/matches?modes=arena,custom&start=10&count=26
-    public static String playerMatches(String gt, String modes, String start, String count) throws Exception {
-        String pURL = String.format(PLAYER_MATCHES, gt);
-        if (modes != null)
-            pURL.concat("modes=" + modes + "&");
-        if (start != null)
-            pURL.concat("start=" + start + "&");
-        if (count != null)
-            pURL.concat("count=" + count);
+    public static String playerMatches(String gt, String modes, int start, int count) throws Exception {
+        String pURL = PLAYER_MATCHES;
+        pURL = pURL +"?modes=" + modes + "&";
+        pURL = pURL + "start=" + start + "&";
+        pURL = pURL + "count=" + count;
 
-        return api(String.format(PLAYER_MATCHES, gt));
+        return api(pURL);
     }
 
     public static String warzoneMatches(String gt) throws Exception{
@@ -116,6 +118,7 @@ public class HaloApi {
 
     private static String api(String url) throws Exception
     {
+//        System.out.println(url);
         HttpClient httpclient = HttpClients.createDefault();
         String getResponse;
 
@@ -152,7 +155,8 @@ public class HaloApi {
 //            testJSONWeapons();
 //            testJSONMedals();
 //            testMedalStats(CUSTOM);
-            testWeaponKills(CUSTOM);
+//            testWeaponKills(CUSTOM);
+            testPlayerMatches();
 //            totalGames();
 //            testPlayerStats();
 //            testBaseStats(ARENA);
@@ -286,6 +290,12 @@ public class HaloApi {
         BaseStats stats = gson.fromJson(var, BaseStats.class);
         System.out.println("Total " + gType + " games played: " + stats.getTotalGamesCompleted());
         return stats.getTotalGamesCompleted();
+    }
+
+    public static double totalGamesAll() throws Exception
+    {
+        double totalGames = totalGames(CUSTOM) + totalGames(WARZONE) + totalGames(ARENA);
+        return totalGames;
     }
 
     public static String totalWins(Enum gameType) throws Exception
@@ -443,6 +453,96 @@ public class HaloApi {
 //        {
 //            System.out.println(playlistStats[i].getName() + " " + " " + playlistStats[i].getTotalKills());
 //        }
+    }
+
+    public static void testPlayerMatches() throws Exception
+    {
+        JSONObject obj = null;
+        String var = null;
+        String var2 = "";
+        double iterations = totalGames(ARENA) / 25;
+        double totalGames = totalGames(ARENA);
+        int count = 25;
+        int start = 0;
+        BigDecimal kdRatio = new BigDecimal(0);
+        BigDecimal averageKills = new BigDecimal(0);
+        BigDecimal averageDeaths = new BigDecimal(0);
+        int avgKills = 0;
+        int avgDeaths = 0;
+
+        for (int i = 0; i < iterations; i++)
+        {
+//            System.out.println(start);
+            obj = new JSONObject(playerMatches(PLAYER, "arena", start, 25));
+//            System.out.println(count);
+//            String var1 = obj.toString();
+//            System.out.println(var1);
+            JSONArray obj2 = obj.getJSONArray("Results");
+            var = obj2.toString();
+            if (i < iterations)
+            {
+                var = var.substring(1, var.length() - 1);
+                var2 = var2.concat(var);
+                var2 = var2 + ",";
+            }
+            else
+            {
+                var2 = var2.concat(var);
+            }
+//            System.out.println(var);
+//            count = count + obj.getInt("Count");
+//            System.out.println(count);
+            start = start + obj.getInt("Count");
+            if (i % 10 == 0)
+            {
+                TimeUnit.SECONDS.sleep(10);
+            }
+        }
+        var2 = var2.substring(0, var2.length() - 1);
+        var2 = "[" + var2 + "]";
+//        System.out.println(var2);
+        Gson gson = new Gson();
+        Match[] matches = gson.fromJson(var2, Match[].class);
+        List<List<TeamPlayer>> players = new ArrayList<List<TeamPlayer>>();
+        for (int i = 0; i < matches.length; i++)
+        {
+//            System.out.println(matches[i].getPlayers());
+            players.add(matches[i].getPlayers());
+        }
+//        System.out.println(matches.length);
+
+        for (List<TeamPlayer> teamPlayer : players)
+        {
+            for (TeamPlayer player : teamPlayer)
+            {
+                BigDecimal totalKills = new BigDecimal(player.getTotalKills());
+                BigDecimal totalDeaths = new BigDecimal(player.getTotalDeaths());
+//                BigDecimal one = new BigDecimal(1);
+                if (totalDeaths.equals(0)){
+                    totalDeaths = new BigDecimal(1);
+                }
+                if (totalKills.equals(0)){
+                    totalKills = new BigDecimal(1);
+                }
+                BigDecimal currentKD = totalKills.divide(totalDeaths, 2, BigDecimal.ROUND_HALF_UP);
+                avgDeaths += player.getTotalDeaths();
+                avgKills += player.getTotalKills();
+                int res = currentKD.compareTo(kdRatio);
+                System.out.println(currentKD);
+                if (res == 1)
+                {
+                    kdRatio = currentKD;
+                    System.out.println(currentKD);
+                }
+            }
+        }
+        averageDeaths = new BigDecimal(avgDeaths);
+        averageKills = new BigDecimal(avgKills);
+        //kdRatio= (double)Math.round(kdRatio *1000d) / 1000d;
+        System.out.println("Number of iterations: " + iterations);
+        System.out.println("Your total number of kills: " + averageKills + " Your total number of deaths: " + averageDeaths);
+        System.out.println("Your best Kill/Death ratio in any Arena game is: " + kdRatio);
+        System.out.println("Your average K/D spread is: " + averageKills.divide(averageDeaths, 2, BigDecimal.ROUND_HALF_UP));
     }
 
 

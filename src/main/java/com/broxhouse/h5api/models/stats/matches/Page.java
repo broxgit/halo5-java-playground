@@ -2,13 +2,11 @@
 
 package com.broxhouse.h5api.models.stats.matches;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
 
-@JsonIgnoreProperties({"Links"})
-public class Page<T> {
+public class Page {
     /**
      * The starting point that was used. When the "start" query string parameter is
      * specified, this value is identical. When "start" is omitted, the default value is
@@ -38,7 +36,7 @@ public class Page<T> {
      * recently started match first.
      */
     @SerializedName("Results")
-    private List<T> results;
+    private Result results;
 
     public int getStart() {
         return start;
@@ -52,7 +50,7 @@ public class Page<T> {
         return resultCount;
     }
 
-    public List<T> getResults() {
+    public Result getResults() {
         return results;
     }
 }
