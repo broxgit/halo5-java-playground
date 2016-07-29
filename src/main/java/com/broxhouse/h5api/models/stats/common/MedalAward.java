@@ -4,13 +4,6 @@ package com.broxhouse.h5api.models.stats.common;
 
 import com.google.gson.annotations.SerializedName;
 
-//@JsonInclude(JsonInclude.Include.NON_NULL)
-//@SerializedNameOrder(
-//        {
-//                "MedalId",
-//                "Count"
-//        }
-//)
 
 public class MedalAward {
 
@@ -49,4 +42,5 @@ public class MedalAward {
     }
 
     public void setName(String name){this.name = name;}
+
 }
