@@ -37,7 +37,7 @@ public class HaloApi {
 
     static JSonHelper jSonHelper = new JSonHelper();
 
-    private static final String PLAYER_UF = "That Brock Guy";
+    private static final String PLAYER_UF = "That Ax Guy";
     private static final String PLAYER = formatString(PLAYER_UF);
     private static final String TOKEN = "293bb4a86da743bdb983b97efa5bb265";
     private static final String BASE_URL = "https://www.haloapi.com/";
@@ -160,7 +160,7 @@ public class HaloApi {
 //            testBaseStats(ARENA);
 //            testBaseResults();
 //            testActivePlaylists();
-            comparePlayers("That Brock Guy", "That Ax Guy");
+            comparePlayers("That Trev Guy", "That Ax Guy");
         } catch (IOException e)
         {
             e.printStackTrace();
@@ -233,6 +233,20 @@ public class HaloApi {
 
         }
         return medalName;
+    }
+
+    public static String getMedalDescription(long medalID, Medal[] medals) throws Exception
+    {
+        String medalDesc = null;
+        for (int i = 0; i < medals.length; i++)
+        {
+            if (medals[i].getId() == medalID)
+            {
+                medalDesc = medals[i].getDescription();
+            }
+
+        }
+        return medalDesc;
     }
 
     public static long getMedalID(String medalName, Medal[] medals)
@@ -322,7 +336,7 @@ public class HaloApi {
         int highestMedalCount = 0;
         String var = obj.toString();
         System.out.println(var);
-        double games = totalGames(gameType);
+        double games = totalGames(gameType, PLAYER);
         games = (double)Math.round(games *1000d) / 1000d;
         Gson gson = new Gson();
         Medal[] medals = getMedals();
@@ -360,20 +374,20 @@ public class HaloApi {
         System.out.println(stats.getEnemyKills());
     }
 
-    public static double totalGames(Enum gameType) throws Exception
+    public static double totalGames(Enum gameType, String gt) throws Exception
     {
-        JSONObject obj = getPlayerStatsJSON(gameType);
+        JSONObject obj = getPlayerStatsJSON(gameType, formatString(gt));
         String gType = gameType.toString();
         String var = obj.toString();
         Gson gson = new Gson();
         BaseStats stats = gson.fromJson(var, BaseStats.class);
-        System.out.println(PLAYER_UF + " has played a total of " + stats.getTotalGamesCompleted() + " " + gType + " games : ");
+        System.out.println(gt + " has played a total of " + stats.getTotalGamesCompleted() + " " + gType + " games : ");
         return stats.getTotalGamesCompleted();
     }
 
     public static double totalGamesAll() throws Exception
     {
-        double totalGames = totalGames(CUSTOM) + totalGames(WARZONE) + totalGames(ARENA);
+        double totalGames = totalGames(CUSTOM, PLAYER) + totalGames(WARZONE, PLAYER) + totalGames(ARENA, PLAYER);
         return totalGames;
     }
 
@@ -398,7 +412,7 @@ public class HaloApi {
         String var = obj.toString();
         Weapon[] weapons = getWeapons();
         WeaponStats[] stats = gson.fromJson(var, WeaponStats[].class);
-        double games = totalGames(gameType);
+        double games = totalGames(gameType, PLAYER);
         String wl = totalWins(gameType);
         games = (double)Math.round(games *1000d) / 1000d;
 
@@ -487,8 +501,8 @@ public class HaloApi {
 
     public static void comparePlayers(String player1, String player2) throws Exception
     {
-        JSONArray obj = getPlayerStatsJSON(CUSTOM, formatString(player1)).getJSONArray("MedalAwards");
-        JSONArray obj2 = getPlayerStatsJSON(CUSTOM, formatString(player2)).getJSONArray("MedalAwards");
+        JSONArray obj = getPlayerStatsJSON(ARENA, formatString(player1)).getJSONArray("MedalAwards");
+        JSONArray obj2 = getPlayerStatsJSON(ARENA, formatString(player2)).getJSONArray("MedalAwards");
         Gson gson = new Gson();
         String var1 = obj.toString();
         String var2 = obj2.toString();
@@ -499,6 +513,12 @@ public class HaloApi {
         String[] worseMedals = new String[p1Medals.length];
         String[] allMedals1 = new String [p1Medals.length];
         String[] allMedals2 = new String [p2Medals.length];
+        double p1totalMedals = 0;
+        double p2totalMedals = 0;
+        double totalGames1 = totalGames(ARENA, player1);
+        double totalGames2 = totalGames(ARENA, player2);
+        double gamePercentage1 = 0;
+        double gamePercentage2 = 0;
         long[] p1Has = null;
         long[] p2Has = null;
 
@@ -509,23 +529,36 @@ public class HaloApi {
             {
                   allMedals2[k] = getMedalName(p2Medals[k].getMedalId(), medals);
                 if (p1Medals[i].getMedalId() == p2Medals[k].getMedalId()) {
-                    if (p1Medals[i].getCount() > p2Medals[k].getCount()) {
-                        betterMedals[i] = (player1 + " has " + p1Medals[i].getCount() + " " + getMedalName(p1Medals[i].getMedalId(), medals) + " medals \n\t-" + player2 + " only has : " + p2Medals[k].getCount());
+                    p1totalMedals = p1Medals[i].getCount();
+                    p2totalMedals = p2Medals[k].getCount();
+                    gamePercentage1 = p1totalMedals/totalGames1;
+                    gamePercentage2 = p2totalMedals/totalGames2;
+                    gamePercentage1 = (double)Math.round(gamePercentage1 *1000d) / 1000d;
+                    gamePercentage2 = (double)Math.round(gamePercentage2 *1000d) / 1000d;
+
+
+                    if (gamePercentage1 > gamePercentage2) {
+//                        betterMedals[i] = (player1 + " has " + p1Medals[i].getCount() + " " + getMedalName(p1Medals[i].getMedalId(), medals) + " medals \n\t-" + player2 + " only has : " + p2Medals[k].getCount());
+                        betterMedals[i] = getMedalName(p1Medals[i].getMedalId(), medals) + " : " + "Earned per game: " + gamePercentage1 + " " + player2 + " is a loser and only earns " + gamePercentage2 + " per game";
                     }
-                    else if (p2Medals[k].getCount() > p1Medals[i].getCount())
+                    else if (gamePercentage2 > gamePercentage1)
                     {
-                        worseMedals[i] = (player2 + " has " + p2Medals[k].getCount() + " " + getMedalName(p2Medals[k].getMedalId(), medals) + " medals \n\t-" + player1 + " only has : " + p1Medals[i].getCount());
+                        //worseMedals[i] = (player2 + " has " + p2Medals[k].getCount() + " " + getMedalName(p2Medals[k].getMedalId(), medals) + " medals \n\t-" + player1 + " only has : " + p1Medals[i].getCount());
+                        worseMedals[i] = getMedalName(p2Medals[k].getMedalId(), medals) + " : " + "Earned per game: " + gamePercentage2 + " " + player1 + " is a loser and only earns " + gamePercentage1 + " per game";
+                        //getMedalDescription(p2Medals[k].getMedalId(), medals)
                     }
                 }
             }
         }
 
+        System.out.println(player1 + " has earned these medals more than " + player2);
         for (int i = 0; i < betterMedals.length; i++)
         {
             if (betterMedals[i] != null) {
                 System.out.println(betterMedals[i]);
             }
         }
+        System.out.println("\n" + player2 + " has earned these medals more than " + player1);
         for (int i = 0; i < worseMedals.length; i++){
             if (worseMedals[i] != null){
                 System.out.println(worseMedals[i]);
@@ -550,20 +583,23 @@ public class HaloApi {
                 p2Has[i] = getMedalID(allMedals2[i], medals);
             }
         }
+        System.out.println("\nMedals that " + player1 + " has earned that " + player2 + " hasn't: ");
         for (int k = 0; k < p1Medals.length; k++) {
             for (int i = 0; i < p1Has.length; i++) {
                 if (p1Medals[k].getMedalId() == p1Has[i])
                 {
-                    System.out.println(player2 + " hasn't earned any " + getMedalName(p1Has[i], medals) + " medals but " + player1 + " has " + p1Medals[k].getCount());
+//                    System.out.println(player2 + " hasn't earned any " + getMedalName(p1Has[i], medals) + " medals but " + player1 + " has " + p1Medals[k].getCount());
+                    System.out.println(getMedalName(p1Has[i], medals) + " : " + getMedalDescription(p1Has[i], medals));
                 }
             }
         }
-
+        System.out.println("\nMedals that " + player2 + " has earned that " + player1 + " hasn't: ");
         for (int k = 0; k < p2Medals.length; k++) {
             for (int i = 0; i < p2Has.length; i++) {
                 if (p2Medals[k].getMedalId() == p2Has[i])
                 {
-                    System.out.println(player1 + " hasn't earned any " + getMedalName(p2Has[i], medals) + " medals but " + player2 + " has " + p2Medals[k].getCount());
+//                    System.out.println(player1 + " hasn't earned any " + getMedalName(p2Has[i], medals) + " medals but " + player2 + " has " + p2Medals[k].getCount());
+                    System.out.println(getMedalName(p2Has[i], medals) + " : " + getMedalDescription(p2Has[i], medals));
                 }
             }
         }
@@ -574,7 +610,7 @@ public class HaloApi {
         JSONObject obj = null;
         String var = null;
         String var2 = "";
-        double totalGames = totalGames(ARENA);
+        double totalGames = totalGames(ARENA, PLAYER);
         double iterations = totalGames / 25;
         Medal[] medals = getMedals();
         Map[] maps = getMaps();
@@ -625,7 +661,6 @@ public class HaloApi {
                 if (currentKD > kdRatio && totalKills > 4) {
                     kdRatio = currentKD;
                     bestMatchID = matchID;
-                    //System.out.println(currentKD);
                 }
             }
             if (currentKD >= 1){
@@ -662,7 +697,6 @@ public class HaloApi {
                 }
             }
         }
-        System.out.println("Top Gun x 11");
     }
 
 

@@ -2,7 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5fdac0ad-8c12-40e7-a786-d460f1f65048" name="Default" comment="ehhe">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/broxhouse/h5api/models/stats/common/MedalAward.java" afterPath="$PROJECT_DIR$/src/main/java/com/broxhouse/h5api/models/stats/common/MedalAward.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/test-classes/com/broxhouse/h5api/HaloApi.class" afterPath="$PROJECT_DIR$/target/test-classes/com/broxhouse/h5api/HaloApi.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/com/broxhouse/h5api/HaloApi.java" afterPath="$PROJECT_DIR$/src/test/java/com/broxhouse/h5api/HaloApi.java" />
     </list>
     <ignored path="HaloApp2.iws" />
@@ -89,8 +90,8 @@
       <file leaf-file-name="HaloApi.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/test/java/com/broxhouse/h5api/HaloApi.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="68">
-              <caret line="32" column="0" selection-start-line="32" selection-start-column="0" selection-end-line="32" selection-end-column="0" />
+            <state relative-caret-position="629">
+              <caret line="162" column="37" selection-start-line="162" selection-start-column="37" selection-end-line="162" selection-end-column="37" />
               <folding>
                 <element signature="method#formatString#0;class#HaloApi#0" expanded="false" />
                 <element signature="method#postGameCarnage#0;class#HaloApi#0" expanded="false" />
@@ -108,14 +109,13 @@
                 <element signature="method#getMaps#0;class#HaloApi#0" expanded="false" />
                 <element signature="method#getWeapons#0;class#HaloApi#0" expanded="false" />
                 <element signature="method#getMapVariant#0;class#HaloApi#0" expanded="false" />
+                <element signature="method#getMedalID#0;class#HaloApi#0" expanded="false" />
                 <element signature="method#getWeaponName#0;class#HaloApi#0" expanded="false" />
                 <element signature="method#getMapName#0;class#HaloApi#0" expanded="false" />
-                <element signature="method#testMedalStats#0;class#HaloApi#0" expanded="false" />
+                <element signature="method#getPlayerStatsJSON#0;class#HaloApi#0" expanded="false" />
+                <element signature="method#getPlayerStatsJSON#1;class#HaloApi#0" expanded="false" />
                 <element signature="method#testPlayerStats#0;class#HaloApi#0" expanded="false" />
-                <element signature="method#totalGames#0;class#HaloApi#0" expanded="false" />
-                <element signature="method#totalGamesAll#0;class#HaloApi#0" expanded="false" />
                 <element signature="method#totalWins#0;class#HaloApi#0" expanded="false" />
-                <element signature="method#testWeaponKills#0;class#HaloApi#0" expanded="false" />
                 <element signature="method#testBaseStats#0;class#HaloApi#0" expanded="false" />
                 <element signature="method#testBaseResults#0;class#HaloApi#0" expanded="false" />
                 <element signature="method#testActivePlaylists#0;class#HaloApi#0" expanded="false" />
@@ -124,11 +124,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="String.java" pinned="false" current-in-tab="false">
-        <entry file="jar://C:/Program Files/Java/jdk1.8.0_92/src.zip!/java/lang/String.java">
+      <file leaf-file-name="Medal.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/broxhouse/h5api/models/metadata/Medal.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="192">
-              <caret line="110" column="19" selection-start-line="110" selection-start-column="19" selection-end-line="110" selection-end-column="19" />
+            <state relative-caret-position="-102">
+              <caret line="6" column="13" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
               <folding />
             </state>
           </provider>
@@ -1230,7 +1230,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1176" extended-state="6" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -1240,7 +1240,7 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3336887" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="WINDOWED" visible="true" show_stripe_button="true" weight="1.0" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="WINDOWED" visible="true" show_stripe_button="true" weight="1.0" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" x="-8" y="-8" width="1936" height="1176" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -1686,14 +1686,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/broxhouse/h5api/models/metadata/Medal.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="6" column="13" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/broxhouse/h5api/models/stats/matches/Match.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2244">
@@ -1793,10 +1785,18 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/broxhouse/h5api/models/metadata/Medal.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-102">
+          <caret line="6" column="13" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/com/broxhouse/h5api/HaloApi.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="32" column="0" selection-start-line="32" selection-start-column="0" selection-end-line="32" selection-end-column="0" />
+        <state relative-caret-position="629">
+          <caret line="162" column="37" selection-start-line="162" selection-start-column="37" selection-end-line="162" selection-end-column="37" />
           <folding>
             <element signature="method#formatString#0;class#HaloApi#0" expanded="false" />
             <element signature="method#postGameCarnage#0;class#HaloApi#0" expanded="false" />
@@ -1814,14 +1814,13 @@
             <element signature="method#getMaps#0;class#HaloApi#0" expanded="false" />
             <element signature="method#getWeapons#0;class#HaloApi#0" expanded="false" />
             <element signature="method#getMapVariant#0;class#HaloApi#0" expanded="false" />
+            <element signature="method#getMedalID#0;class#HaloApi#0" expanded="false" />
             <element signature="method#getWeaponName#0;class#HaloApi#0" expanded="false" />
             <element signature="method#getMapName#0;class#HaloApi#0" expanded="false" />
-            <element signature="method#testMedalStats#0;class#HaloApi#0" expanded="false" />
+            <element signature="method#getPlayerStatsJSON#0;class#HaloApi#0" expanded="false" />
+            <element signature="method#getPlayerStatsJSON#1;class#HaloApi#0" expanded="false" />
             <element signature="method#testPlayerStats#0;class#HaloApi#0" expanded="false" />
-            <element signature="method#totalGames#0;class#HaloApi#0" expanded="false" />
-            <element signature="method#totalGamesAll#0;class#HaloApi#0" expanded="false" />
             <element signature="method#totalWins#0;class#HaloApi#0" expanded="false" />
-            <element signature="method#testWeaponKills#0;class#HaloApi#0" expanded="false" />
             <element signature="method#testBaseStats#0;class#HaloApi#0" expanded="false" />
             <element signature="method#testBaseResults#0;class#HaloApi#0" expanded="false" />
             <element signature="method#testActivePlaylists#0;class#HaloApi#0" expanded="false" />
