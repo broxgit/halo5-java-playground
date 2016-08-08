@@ -4,10 +4,8 @@ package com.broxhouse.h5api.models.stats.reports;
 
 import com.broxhouse.h5api.models.stats.common.FlexibleStats;
 import com.broxhouse.h5api.models.stats.common.Player;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.google.gson.annotations.SerializedName;
 
-@JsonIgnoreProperties({"PreMatchRatings", "PostMatchRatings"})
 public class BasePlayerStats extends BaseStats {
 
     /**
