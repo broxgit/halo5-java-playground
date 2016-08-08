@@ -683,8 +683,8 @@ public class HaloApi {
         double averageDeaths = 0;
         String bestMatchID = null;
         BaseStats stats = getBaseStats(ARENA, PLAYER_UF);
-        int totalShotsFired = stats.getTotalShotsFired();
-        int totalShotsLanded = stats.getTotalShotsLanded();
+        double totalShotsFired = stats.getTotalShotsFired();
+        double totalShotsLanded = stats.getTotalShotsLanded();
         int totalHeadShots = stats.getTotalHeadshots();
         int totalPowerWeapon = stats.getTotalPowerWeaponGrabs();
         int totalPowerWeaponKills = stats.getTotalPowerWeaponKills();
@@ -711,7 +711,7 @@ public class HaloApi {
                 positiveCount++;
             }
         }
-        kdRatio = (double)Math.round(kdRatio *1000d) / 1000d;
+        kdRatio = (double)Math.round(kdRatio *100d) / 1000d;
 //        System.out.println("Number of iterations: " + iterations);
         float percentagePositive = (float) ((positiveCount * 100.0f) / totalGames);
         System.out.println("Your total number of kills: " + averageKills + " Your total number of deaths: " + averageDeaths);
@@ -738,15 +738,17 @@ public class HaloApi {
             }
         }
 
+        System.out.println("\nHere are some more Random Stats: ");
         System.out.println("You have fired a total of: " + totalShotsFired + " shots");
-        System.out.println("Of those, you've landed " + totalShotsFired + " shots");
+        System.out.println("Of those, you've landed " + totalShotsLanded + " shots");
         double accuracy = (totalShotsLanded/totalShotsFired);
+        accuracy = (double)Math.round(accuracy * 100d);
         System.out.println("That's an accuracy of " + accuracy + "%");
         System.out.println("You have murdered " + totalHeadShots + " Spartans with a headshot.");
         System.out.println("You have grabbed a power weapon " + totalPowerWeapon + " times " + " you've killed " + totalPowerWeaponKills + " Spartans with those power weapons");
         System.out.println("You have Spartan Charged " + stats.getTotalShoulderBashKills() + " Spartans");
         System.out.println("You have murdered " + stats.getTotalGrenadeKills() + " Spartans with grenades");
-        System.out.println("You have tied the stupid enemy team " + stats.getTotalGamesTied() + " times");
+        System.out.println("You have tied the stupid enemy team " + stats.getTotalGamesTied() + " time(s)");
     }
 
 }
