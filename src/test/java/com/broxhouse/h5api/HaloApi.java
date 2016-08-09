@@ -6,10 +6,12 @@ import com.broxhouse.h5api.models.stats.common.WeaponStats;
 import com.broxhouse.h5api.models.stats.matches.Match;
 import com.broxhouse.h5api.models.stats.reports.BaseCarnageReport;
 import com.broxhouse.h5api.models.stats.reports.BaseStats;
+import com.broxhouse.h5api.models.stats.reports.Resource;
 import com.broxhouse.h5api.models.stats.reports.SpartanRankedPlayerStats;
 import com.broxhouse.h5api.models.stats.servicerecords.ArenaStat;
 import com.broxhouse.h5api.models.stats.servicerecords.BaseServiceRecordResult;
 import com.google.gson.Gson;
+import org.apache.commons.lang3.time.DurationFormatUtils;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
@@ -20,11 +22,22 @@ import org.apache.http.util.EntityUtils;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-import java.io.IOException;
+import java.io.*;
 import java.net.URI;
+import java.nio.charset.Charset;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.StandardOpenOption;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.Arrays;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 import java.util.concurrent.TimeUnit;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import static com.broxhouse.h5api.gameType.ARENA;
 import static com.broxhouse.h5api.gameType.CUSTOM;
@@ -36,7 +49,7 @@ enum gameType {WARZONE, ARENA, CUSTOM}
 public class HaloApi {
 
 
-    private static final String PLAYER_UF = "That Ax Guy";
+    private static final String PLAYER_UF = "That Brock Guy";
     private static final String PLAYER = formatString(PLAYER_UF);
     private static final String TOKEN = "293bb4a86da743bdb983b97efa5bb265";
     private static final String BASE_URL = "https://www.haloapi.com/";
@@ -57,6 +70,10 @@ public class HaloApi {
     {
         string = string.replaceAll("\\s+", "%20");
         return string;
+    }
+
+    public static String capitalize(final String line){
+        return Character.toUpperCase(line.charAt(0)) + line.substring(1);
     }
 
     public static String postGameCarnage(String matchID) throws Exception
@@ -153,9 +170,12 @@ public class HaloApi {
 //            testJSONMedals();
 //            testMedalStats(CUSTOM);
 //            testWeaponKills(CUSTOM);
-            testPlayerMatches();
+//            testPlayerMatches(ARENA);
 //            totalGames();
+//            getResources();
+//            getMatches();
 //            testPlayerStats();
+            favoriteMapVariant();
 //            testBaseStats(ARENA);
 //            testBaseResults();
 //            testActivePlaylists();
@@ -222,31 +242,97 @@ public class HaloApi {
         TimeUnit.SECONDS.sleep(8);
         double iterations = totalGames / 25;
         Gson gson = new Gson();
-        for (int i = 1; i < iterations; i++)
-        {
-            obj = new JSONObject(playerMatches(PLAYER, "arena", start, 25));
-            JSONArray obj2 = obj.getJSONArray("Results");
-            var = obj2.toString();
-            if (i < iterations)
-            {
-                var = var.substring(1, var.length() - 1);
-                var2 = var2.concat(var);
-                var2 = var2 + ",";
-            }
-            else
-            {
-                var2 = var2.concat(var);
-            }
-            start = start + obj.getInt("Count");
-            if (i % 10 == 0)
-            {
-                TimeUnit.SECONDS.sleep(10);
-            }
+//        for (int i = 1; i < iterations; i++)
+//        {
+//            obj = new JSONObject(playerMatches(PLAYER, "arena", start, 25));
+//            JSONArray obj2 = obj.getJSONArray("Results");
+//            var = obj2.toString();
+//            if (i < iterations)
+//            {
+//                var = var.substring(1, var.length() - 1);
+//                var2 = var2.concat(var);
+//                var2 = var2 + ",";
+//            }
+//            else
+//            {
+//                var2 = var2.concat(var);
+//            }
+//            start = start + obj.getInt("Count");
+//            if (i % 10 == 0)
+//            {
+//                TimeUnit.SECONDS.sleep(10);
+//            }
+//        }
+//        var2 = var2.substring(0, var2.length() - 1);
+//        var2 = "[" + var2 + "]";
+//        try (Writer writer = new BufferedWriter(new OutputStreamWriter(
+//                new FileOutputStream("brock_matches.txt"), "utf-8"))) {
+//            writer.write(var2);
+//        }catch(Exception e){}
+        if (PLAYER_UF == "That Brock Guy") {
+            BufferedReader br = new BufferedReader(new FileReader("brock_matches.txt"));
+            var2 = br.readLine();
+            br.close();
         }
-        var2 = var2.substring(0, var2.length() - 1);
-        var2 = "[" + var2 + "]";
         Match[] matches = gson.fromJson(var2, Match[].class);
         return matches;
+    }
+
+    public static Set<String> getResources() throws Exception
+    {
+        JSONObject obj = null;
+        String var = null;
+        String var3 = "";
+        Integer start = 0;
+        int m = 0;
+        double totalGames = totalGames(ARENA, PLAYER_UF);
+//        TimeUnit.SECONDS.sleep(8);
+//        double iterations = totalGames/25;
+//        Gson gson = new Gson();
+//        for (int i = 0; i < iterations; i++) {
+//            obj = new JSONObject(playerMatches(PLAYER, "arena", start, 25));
+//            JSONArray obj2 = obj.getJSONArray("Results");
+////            System.out.println(i);
+//            for (int k = 0; k < obj2.length(); k++) {
+//                m++;
+////                System.out.println(k);
+//                JSONObject obj3 = obj2.getJSONObject(k).getJSONObject("MapVariant");
+//                var = obj3.toString();
+//                if (k < obj2.length()) {
+//                    var3 = var3.concat(var);
+//                    var3 = var3 + ",";
+//                } else {
+//                    var3 = var3.concat(var);
+//                }
+//            }
+//            start = start + 25;
+//            if (i % 10 == 0) {
+//                TimeUnit.SECONDS.sleep(10);
+//            }
+//        }
+//        var3 = var3.substring(0, var3.length() - 1);
+//        var3 = "[" + var3 + "]";
+//        try (Writer writer = new BufferedWriter(new OutputStreamWriter(
+//                new FileOutputStream("brock_mapvars.txt"), "utf-8"))) {
+//            writer.write(var3);
+//        }catch(Exception e){}
+        BufferedReader br = new BufferedReader(new FileReader("brock_mapvars.txt"));
+        var3 = br.readLine();
+        br.close();
+        JSONArray obj3 = new JSONArray(var3);
+        Set<String> mapIDs = new HashSet<String>();
+        for (int i = 0; i < obj3.length(); i++){
+            String mapID = obj3.getJSONObject(i).getString("ResourceId");
+            if(mapIDs.contains(mapID)){
+                continue;
+            }
+            else{
+                mapIDs.add(mapID);
+            }
+        }
+        System.out.println(mapIDs.size());
+        System.out.println(var3);
+        return mapIDs;
     }
 
     public static MapVariant getMapVariant(String mapVariantID) throws Exception
@@ -372,14 +458,14 @@ public class HaloApi {
         return obj;
     }
 
-    public static void testMedalStats(Enum gameType) throws Exception
+    public static String testMedalStats(Enum gameType) throws Exception
     {
         JSONArray obj = getPlayerStatsJSON(gameType).getJSONArray("MedalAwards");
         String mostEarnedMedal = null;
         double average = 0;
         int highestMedalCount = 0;
         String var = obj.toString();
-        System.out.println(var);
+//        System.out.println(var);
         double games = totalGames(gameType, PLAYER);
         games = (double)Math.round(games *1000d) / 1000d;
         Gson gson = new Gson();
@@ -389,12 +475,12 @@ public class HaloApi {
         {
             stats[row].setName(getMedalName(stats[row].getMedalId(), medals));
          }
-        System.out.println("Showing medal stats for " + PLAYER_UF);
+//        System.out.println("Showing medal stats for " + PLAYER_UF);
         for (int row = 0; row < stats.length; row++)
         {
             double medalCount = stats[row].getCount()/games;
             medalCount = (double)Math.round(medalCount *1000d) / 1000d;
-            System.out.println(stats[row].getName() + ": " + stats[row].getCount() + " ||  Earned per game: " + medalCount);
+//            System.out.println(stats[row].getName() + ": " + stats[row].getCount() + " ||  Earned per game: " + medalCount);
         }
         for (int i = 0; i < stats.length; i++)
         {
@@ -408,7 +494,8 @@ public class HaloApi {
         }
         average = highestMedalCount / games;
         average = (double)Math.round(average *1000d) / 1000d;
-        System.out.println("Your most earned medal is the " + mostEarnedMedal + " medal with a total of " + highestMedalCount + " and an average of " + average + " per game");
+//        System.out.println("Your most earned medal is the " + mostEarnedMedal + " medal with a total of " + highestMedalCount + " and an average of " + average + " per game");
+        return ("Your most earned medal is the " + mostEarnedMedal + " medal with a total of " + highestMedalCount + " and an average of " + average + " per game");
     }
 
     public static void testPlayerStats() throws Exception
@@ -421,11 +508,9 @@ public class HaloApi {
     public static double totalGames(Enum gameType, String gt) throws Exception
     {
         JSONObject obj = getPlayerStatsJSON(gameType, formatString(gt));
-        String gType = gameType.toString();
         String var = obj.toString();
         Gson gson = new Gson();
         BaseStats stats = gson.fromJson(var, BaseStats.class);
-        System.out.println(gt + " has played a total of " + stats.getTotalGamesCompleted() + " " + gType + " games : " + " with a K/D spread of: " + getKD(totalDeaths(gameType, gt), totalKills(gameType, gt)));
         return stats.getTotalGamesCompleted();
     }
 
@@ -439,7 +524,7 @@ public class HaloApi {
     {
         String gType = gameType.toString();
         BaseStats stats = getBaseStats(gameType, PLAYER);
-        System.out.println("Total " + gType + " games won: " + stats.getTotalGamesWon() + " Total losses: " + stats.getTotalGamesLost());
+        System.out.println("Total " + capitalize(gType.toString().toLowerCase()) + " games won: " + stats.getTotalGamesWon() + " Total losses: " + stats.getTotalGamesLost());
         String winLoss = ("Total number of Wins: " + stats.getTotalGamesWon() + " Total losses: " + stats.getTotalGamesLost());
         return winLoss;
     }
@@ -458,7 +543,7 @@ public class HaloApi {
         return totalDeaths;
     }
 
-    public static double getKD(double deaths, double kills){
+    public static double getKD(double kills, double deaths){
         double kdRatio = (kills/deaths);
         kdRatio = (double)Math.round(kdRatio *1000d) / 1000d;
 //        System.out.println(kdRatio);
@@ -478,14 +563,11 @@ public class HaloApi {
         String wl = totalWins(gameType);
         games = (double)Math.round(games *1000d) / 1000d;
 
-        for (int row = 0; row < stats.length; row++)
-        {
+        for (int row = 0; row < stats.length; row++){
             stats[row].setName(getWeaponName(stats[row].getWeaponId().getStockId(), weapons));
         }
-        for (int i = 0; i < stats.length; i++)
-        {
-            for (int k = i + 1; k < stats.length; k++)
-            {
+        for (int i = 0; i < stats.length; i++) {
+            for (int k = i + 1; k < stats.length; k++){
                 if (stats[i].getTotalKills() > stats[k].getTotalKills() && stats[i].getTotalKills() > totalKills) {
                     totalKills = stats[i].getTotalKills();
                     favWeapon = stats[i].getName();
@@ -502,26 +584,58 @@ public class HaloApi {
         System.out.println("Your favorite weapon is the " + favWeapon + " with a kill total of: " + totalKills);
     }
 
-    public static void testBestMap() throws Exception
-    {
-        Match matches[] = getMatches();
-    }
-
 
     public static void testBaseStats(Enum gameType) throws Exception
     {
         JSONObject obj = getPlayerStatsJSON(gameType);
-        String gType = gameType.toString();
+        String gType = capitalize(gameType.toString().toLowerCase());
         String var = obj.toString();
         Gson gson = new Gson();
         BaseStats stats = gson.fromJson(var, BaseStats.class);
-        System.out.println("Total " + gType + " games played: " + stats.getTotalKills());
+        double totalShotsFired = stats.getTotalShotsFired();
+        double totalShotsLanded = stats.getTotalShotsLanded();
+        int totalHeadShots = stats.getTotalHeadshots();
+        double totalPowerWeapon = stats.getTotalPowerWeaponGrabs();
+        double totalPowerWeaponKills = stats.getTotalPowerWeaponKills();
+        double powerWeaponKillAvg = (totalPowerWeaponKills/totalPowerWeapon);
+        String totalPowerWeaponTime = stats.getTotalPowerWeaponPossessionTime();
+        totalPowerWeaponTime = totalPowerWeaponTime.replaceAll("[^-?0-9]+", " ");
+        String[] pWeaponTime = totalPowerWeaponTime.trim().split("[a-zA-Z ]+");
+        String totalTimePlayed = stats.getTotalTimePlayed();
+        totalTimePlayed = totalTimePlayed.replaceAll("[^-?0-9]+", " ");
+        String[] playTime = totalTimePlayed.trim().split("[a-zA-Z ]+");
+        powerWeaponKillAvg = (double)Math.round(powerWeaponKillAvg * 100d) / 100d;
+        double totalDamageDealt = stats.getTotalGrenadeDamage() + stats.getTotalMeleeDamage() + stats.getTotalGroundPoundDamage() + stats.getTotalWeaponDamage() + stats.getTotalPowerWeaponDamage() + stats.getTotalShoulderBashDamage();
+        totalDamageDealt = (double)Math.round(totalDamageDealt * 100d) / 100d;
+        double accuracy = (totalShotsLanded/totalShotsFired);
+        WeaponStats favWeapon = stats.getWeapon();
+//        Weapon[] weapon = getWeapons();
+//        String favWeaponName = getWeaponName(favWeapon.getWeaponId().getStockId(), weapon);
+        accuracy = (double)Math.round(accuracy * 100d);
+        System.out.println("\nHere are some Random Stats: ");
+        System.out.println(PLAYER_UF + " has completed " + stats.getTotalGamesCompleted()+ " " + capitalize(gType.toString().toLowerCase()) + " games.");
+        System.out.println("You have wasted a total of: " + playTime[0] + " days " + playTime[1] + " hours " + playTime[2] + " minutes and "  + playTime[3] + " seconds playing Halo 5!");
+        testWeaponKills(gameType);
+        System.out.println("You have fired a total of: " + (int)totalShotsFired + " shots. Of those, you've landed " + (int)totalShotsLanded + " shots.");
+        System.out.println("That's an accuracy of " + accuracy + "%");
+        System.out.println("You have raped " + totalHeadShots + " Spartans with a headshot.");
+        System.out.println("You've stroked a power weapon in your hands for a total of " + pWeaponTime[0] + " days " + pWeaponTime[1] + " hours " + pWeaponTime[2] + " minutes and "  + pWeaponTime[2] + " seconds!");
+        System.out.println("You have grabbed a power weapon " + (int)totalPowerWeapon + " times, you've killed " + (int)totalPowerWeaponKills + " Spartans with those power weapons.");
+        System.out.println("That's an average of " + powerWeaponKillAvg + " kills each time you pick up a power weapon!");
+        System.out.println("You have Spartan Charged " + stats.getTotalShoulderBashKills() + " dumb-dumbs.");
+        System.out.println("You have murdered " + stats.getTotalGrenadeKills() + " Niggers with grenades.");
+        System.out.println("You have tied the stupid enemy team " + stats.getTotalGamesTied() + " time(s).");
+        System.out.println("You have dealt " + totalDamageDealt + " damage points in your Arena career.");
+        System.out.println("You have performed a total of " + stats.getTotalAssassinations() + " assassinations!");
+        System.out.println(testMedalStats(gameType));
 
-        List<WeaponStats> weaponList = stats.getWeapons();
-        for(WeaponStats en : weaponList)
-        {
-            System.out.println(en.getName() + " " + en.getTotalKills());
-        }
+//
+//
+//        List<WeaponStats> weaponList = stats.getWeapons();
+//        for(WeaponStats en : weaponList)
+//        {
+//            System.out.println(en.getName() + " " + en.getTotalKills());
+//        }
     }
 
     public static void testBaseResults() throws Exception
@@ -673,21 +787,66 @@ public class HaloApi {
         }
     }
 
-    public static void testPlayerMatches() throws Exception
+    public static String favoriteMap(Match[] matches, Map[] maps) throws Exception{
+        String favMap = null;
+        int favMapCount = 0;
+        for (int i = 0; i < matches.length; i++){
+            for (int k = 0; k < maps.length; k++){
+                if (matches[i].getMapId().equalsIgnoreCase(maps[k].getId())){
+                    maps[k].setCount(maps[k].getCount()+ 1);
+                }
+            }
+        }
+        for (int i = 0; i < maps.length; i++){
+            for (int k = 0; k < maps.length; k++){
+                if (maps[i].getCount() > maps[k].getCount() && maps[i].getCount() >= favMapCount){
+                    favMapCount = maps[i].getCount();
+                    favMap = maps[i].getName();
+                }
+//                else if (maps[k].getCount() > maps[i].getCount() && maps[k].getCount() >= favMapCount){
+//
+//                }
+            }
+        }
+        return ("Your favorite map is: " + favMap + " with a total play count of: " + favMapCount);
+    }
+
+    public static void favoriteMapVariant() throws Exception{
+        int iterations = 0;
+        MapVariant mv = null;
+        Set<String> mapIDs = getResources();
+        TimeUnit.SECONDS.sleep(8);
+        Set<String> mapIDsFixed = new HashSet<String>();
+        Writer writer = new BufferedWriter(new OutputStreamWriter(
+                new FileOutputStream("brock_mapvars2.txt"), "utf-8"));
+        for (String s: mapIDs){
+            if (s != null){
+//                System.out.println(s);
+                iterations++;
+                mv = getMapVariant(s.toLowerCase());
+                System.out.println(mv.getName() + " " +  mv.getId());
+                writer.write(mv.getName() + "\n" +  mv.getId());
+                if (iterations % 10 == 0){
+                    TimeUnit.SECONDS.sleep(10);
+                }
+            }else{
+                continue;
+            }
+        }
+        writer.close();
+    }
+
+    public static void testPlayerMatches(Enum gameType) throws Exception
     {
-        double totalGames = totalGames(ARENA, PLAYER_UF);
+        double totalGames = totalGames(gameType, PLAYER_UF);
         Medal[] medals = getMedals();
         Map[] maps = getMaps();
         double kdRatio = 0;
         double averageKills = 0;
         double averageDeaths = 0;
+        int matchesDNF = 0;
         String bestMatchID = null;
-        BaseStats stats = getBaseStats(ARENA, PLAYER_UF);
-        double totalShotsFired = stats.getTotalShotsFired();
-        double totalShotsLanded = stats.getTotalShotsLanded();
-        int totalHeadShots = stats.getTotalHeadshots();
-        int totalPowerWeapon = stats.getTotalPowerWeaponGrabs();
-        int totalPowerWeaponKills = stats.getTotalPowerWeaponKills();
+        BaseStats stats = getBaseStats(gameType, PLAYER_UF);
         int positiveCount = 0;
         Gson gson = new Gson();
         Match[] matches = getMatches();
@@ -695,6 +854,9 @@ public class HaloApi {
             double totalKills = matches[i].getPlayers().get(0).getTotalKills();
             double totalDeaths = matches[i].getPlayers().get(0).getTotalDeaths();
             double currentKD = totalKills / totalDeaths;
+            if (matches[i].getPlayers().get(0).getResult() == 0){
+                matchesDNF++;
+            }
             String matchID = matches[i].getId().getMatchId();
             if (totalDeaths == 0){
                     totalDeaths = 1;
@@ -711,11 +873,13 @@ public class HaloApi {
                 positiveCount++;
             }
         }
-        kdRatio = (double)Math.round(kdRatio *100d) / 1000d;
+        kdRatio = (double)Math.round(kdRatio *1000d) / 1000d;
 //        System.out.println("Number of iterations: " + iterations);
         float percentagePositive = (float) ((positiveCount * 100.0f) / totalGames);
         System.out.println("Your total number of kills: " + averageKills + " Your total number of deaths: " + averageDeaths);
-        System.out.println("Your average K/D spread is: " + averageKills / averageDeaths);
+        System.out.println("Your average K/D spread is: " + getKD(stats.getTotalKills(),stats.getTotalDeaths()));
+        System.out.println("You have quit or been booted from " + matchesDNF + " games");
+        System.out.println("You have assisted your teammates " + stats.getTotalAssists() + " times");
         System.out.println("You've had a positive K/D spread " + positiveCount + " times. That's " + percentagePositive + "% of your games!");
         System.out.println("Your best Kill/Death ratio in any Arena game is: " + kdRatio);
 
@@ -737,18 +901,10 @@ public class HaloApi {
                 }
             }
         }
-
-        System.out.println("\nHere are some more Random Stats: ");
-        System.out.println("You have fired a total of: " + totalShotsFired + " shots");
-        System.out.println("Of those, you've landed " + totalShotsLanded + " shots");
-        double accuracy = (totalShotsLanded/totalShotsFired);
-        accuracy = (double)Math.round(accuracy * 100d);
-        System.out.println("That's an accuracy of " + accuracy + "%");
-        System.out.println("You have murdered " + totalHeadShots + " Spartans with a headshot.");
-        System.out.println("You have grabbed a power weapon " + totalPowerWeapon + " times " + " you've killed " + totalPowerWeaponKills + " Spartans with those power weapons");
-        System.out.println("You have Spartan Charged " + stats.getTotalShoulderBashKills() + " Spartans");
-        System.out.println("You have murdered " + stats.getTotalGrenadeKills() + " Spartans with grenades");
-        System.out.println("You have tied the stupid enemy team " + stats.getTotalGamesTied() + " time(s)");
+        TimeUnit.SECONDS.sleep(8);
+        testBaseStats(gameType);
+//        System.out.println(favoriteMap(matches, maps));
+//        favoriteMap(matches, getMapVariant())
     }
 
 }

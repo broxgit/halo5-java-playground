@@ -5,6 +5,14 @@ package com.broxhouse.h5api.models.metadata;
 import com.google.gson.annotations.SerializedName;
 
 public class MapVariant {
+
+    MapVariant (String name, String description, String mapImageUrl, String mapId, String id){
+        this.name = name;
+        this.description = description;
+        this.mapImageUrl = mapImageUrl;
+        this.mapId = mapId;
+        this.id = id;
+    }
     /**
      * A localized name, suitable for display to users.
      */
@@ -36,6 +44,8 @@ public class MapVariant {
     @SerializedName("contentId")
     private String contentId;
 
+    private int count = 0;
+
     public String getName() {
         return name;
     }
@@ -54,5 +64,13 @@ public class MapVariant {
 
     public String getId() {
         return id;
+    }
+
+    public int getCount(){
+        return count;
+    }
+
+    public void setCount(int count){
+            count++;
     }
 }

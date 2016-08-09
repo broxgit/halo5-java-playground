@@ -36,6 +36,8 @@ public class Map {
      */
     private String id;
 
+    private int count = 0;
+
     /**
      * Internal use only. Do not use.
      */
@@ -60,5 +62,13 @@ public class Map {
 
     public String getId() {
         return id;
+    }
+
+    public int getCount(){
+        return count;
+    }
+
+    public void setCount(int count){
+        this.count = count;
     }
 }
