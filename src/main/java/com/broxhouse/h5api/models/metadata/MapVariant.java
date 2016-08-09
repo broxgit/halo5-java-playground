@@ -73,4 +73,6 @@ public class MapVariant {
     public void setCount(int count){
             count++;
     }
+
+    public String getContentId(){return contentId;}
 }

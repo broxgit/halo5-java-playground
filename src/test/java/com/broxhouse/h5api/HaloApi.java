@@ -815,17 +815,20 @@ public class HaloApi {
         int iterations = 0;
         MapVariant mv = null;
         Set<String> mapIDs = getResources();
+        String var = null;
+        String var2 = "";
         TimeUnit.SECONDS.sleep(8);
         Set<String> mapIDsFixed = new HashSet<String>();
-        Writer writer = new BufferedWriter(new OutputStreamWriter(
-                new FileOutputStream("brock_mapvars2.txt"), "utf-8"));
+
         for (String s: mapIDs){
             if (s != null){
 //                System.out.println(s);
                 iterations++;
                 mv = getMapVariant(s.toLowerCase());
                 System.out.println(mv.getName() + " " +  mv.getId());
-                writer.write(mv.getName() + "\n" +  mv.getId());
+                var = "{\"name\":\"" +mv.getName()+ "\",\"description\":\"" + mv.getDescription() + "\",\"mapImageUrl\":\"" + mv.getMapImageUrl() +  "\",\"mapId\":\"" + mv.getMapId() + "\",\"id\":\"" + mv.getId() +  "\",\"contentId\":\"" + mv.getContentId() + "\"}";
+                var = var + ",";
+                var2 = var2.concat(var);
                 if (iterations % 10 == 0){
                     TimeUnit.SECONDS.sleep(10);
                 }
@@ -833,6 +836,11 @@ public class HaloApi {
                 continue;
             }
         }
+        Writer writer = new BufferedWriter(new OutputStreamWriter(
+                new FileOutputStream("brock_mapvars2.txt"), "utf-8"));
+        var2 = var2.substring(0, var2.length() - 1);
+        var2 = "[" + var2 + "]";
+        writer.write(var2);
         writer.close();
     }
 
