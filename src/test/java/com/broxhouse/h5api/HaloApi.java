@@ -54,7 +54,12 @@ public class HaloApi {
     private static final String META_PLAYLISTS = META_URL + "playlists";
     private static final String META_MAPS = META_URL + "maps";
     private static final String META_MAP_VARIANTS = META_URL + "map-variants/%s";
+    private static final String META_CUSTOM_MAPS = BASE_URL + "ugc/h5/players/%s";
     private static final String POST_GAME_CARNAGE = BASE_URL + "stats/h5/arena/matches/%s";
+
+    private static boolean cachingResources = false;
+    private static boolean cachingMatches = false;
+    private static boolean cachingMapVariants = true;
 
     public static String formatString(String string)
     {
@@ -120,6 +125,11 @@ public class HaloApi {
         return api(String.format(META_MAP_VARIANTS, mapVariantID));
     }
 
+    public static String listCustomMapVariants(String mapVariantID, String player) throws Exception{
+        String url =  player + "/mapvariants/" + mapVariantID;
+        return api(String.format(META_CUSTOM_MAPS, url));
+    }
+
     private static String api(String url) throws Exception
     {
 //        System.out.println(url);
@@ -160,12 +170,12 @@ public class HaloApi {
 //            testJSONMedals();
 //            testMedalStats(CUSTOM);
 //            testWeaponKills(CUSTOM);
-            testPlayerMatches(ARENA);
+//            testPlayerMatches(ARENA);
 //            totalGames();
-//            getResources();
-//            getMatches();
+//            getResources(CUSTOM);
+//            getMatches(CUSTOM);
 //            testPlayerStats();
-//            favoriteMapVariant();
+            favoriteMapVariant(CUSTOM);
 //            testBaseStats(ARENA);
 //            testBaseResults();
 //            testActivePlaylists();
@@ -222,118 +232,130 @@ public class HaloApi {
         return weapons;
     }
 
-    public static Match[] getMatches() throws Exception
-    {
+    public static Match[] getMatches(Enum gameType) throws Exception {
         JSONObject obj = null;
         String var = null;
         String var2 = "";
         Integer start = 0;
         String fileName = null;
         if (PLAYER_UF.equalsIgnoreCase("That Brock Guy")) {
-            fileName= "brock_matches.txt";
-        }else if(PLAYER_UF.equalsIgnoreCase("That Ax Guy")){
-            fileName = "ax_matches.txt";
+            fileName = "brock_matches";
+        } else if (PLAYER_UF.equalsIgnoreCase("That Ax Guy")) {
+            fileName = "ax_matches";
+        } else if (PLAYER_UF.equalsIgnoreCase("That Trev Guy")) {
+            fileName = "trev_matches";
+        } else if (PLAYER_UF.equalsIgnoreCase("That Sturt Guy")) {
+            fileName = "stu_matches";
+        } else if (PLAYER_UF.equalsIgnoreCase("Phantom6030")) {
+            fileName = "mitch_matches";
         }
-        else if(PLAYER_UF.equalsIgnoreCase("That Trev Guy")){
-            fileName = "trev_matches.txt";
-        }else if(PLAYER_UF.equalsIgnoreCase("That Sturt Guy")){
-            fileName = "stu_matches.txt";
+        if(gameType.toString().equalsIgnoreCase("custom")){
+            fileName += "_custom";
+        }else if(gameType.toString().equalsIgnoreCase("warzone")){
+            fileName += "_warzone";
         }
-        double totalGames = totalGames(ARENA, PLAYER_UF);
-        TimeUnit.SECONDS.sleep(8);
-        double iterations = totalGames / 25;
-        Gson gson = new Gson();
-//        for (int i = 1; i < iterations; i++)
-//        {
-//            obj = new JSONObject(playerMatches(PLAYER, "arena", start, 25));
-//            JSONArray obj2 = obj.getJSONArray("Results");
-//            var = obj2.toString();
-//            if (i < iterations)
-//            {
-//                var = var.substring(1, var.length() - 1);
-//                var2 = var2.concat(var);
-//                var2 = var2 + ",";
-//            }
-//            else
-//            {
-//                var2 = var2.concat(var);
-//            }
-//            start = start + obj.getInt("Count");
-//            if (i % 10 == 0)
-//            {
-//                TimeUnit.SECONDS.sleep(10);
-//            }
-//        }
-//        var2 = var2.substring(0, var2.length() - 1);
-//        var2 = "[" + var2 + "]";
-//        Writer writer = new BufferedWriter(new OutputStreamWriter(
-//        new FileOutputStream(fileName), "utf-8"));
-//        writer.write(var2);
-//        writer.close();
-
-
+        fileName += ".txt";
+        if (cachingMatches){
+            double totalGames = totalGames(gameType, PLAYER_UF);
+            TimeUnit.SECONDS.sleep(8);
+            double iterations = totalGames / 25;
+            for (int i = 1; i < iterations; i++) {
+                obj = new JSONObject(playerMatches(PLAYER, gameType.toString().toLowerCase(), start, 25));
+                JSONArray obj2 = obj.getJSONArray("Results");
+                var = obj2.toString();
+                if (i < iterations) {
+                    var = var.substring(1, var.length() - 1);
+                    var2 = var2.concat(var);
+                    var2 = var2 + ",";
+                } else {
+                    var2 = var2.concat(var);
+                }
+                start = start + obj.getInt("Count");
+                if (i % 10 == 0) {
+                    TimeUnit.SECONDS.sleep(10);
+                }
+            }
+        var2 = var2.substring(0, var2.length() - 1);
+        var2 = "[" + var2 + "]";
+        Writer writer = new BufferedWriter(new OutputStreamWriter(
+                new FileOutputStream(fileName), "utf-8"));
+        writer.write(var2);
+        writer.close();
+    }else{
         BufferedReader br = new BufferedReader(new FileReader(fileName));
         var2 = br.readLine();
         br.close();
+    }
+        Gson gson = new Gson();
         Match[] matches = gson.fromJson(var2, Match[].class);
         return matches;
     }
 
-    public static Set<String> getResources() throws Exception
+    public static Set<String> getResources(Enum gameType) throws Exception
     {
         JSONObject obj = null;
         String var = null;
         String var3 = "";
         Integer start = 0;
         int m = 0;
-        double totalGames = totalGames(ARENA, PLAYER_UF);
-        TimeUnit.SECONDS.sleep(10);
+        double totalGames = totalGames(gameType, PLAYER_UF);
+//        TimeUnit.SECONDS.sleep(10);
         double iterations = totalGames/25;
         String fileName = null;
         if (PLAYER_UF.equalsIgnoreCase("That Brock Guy")) {
-            fileName= "brock_mapvars.txt";
+            fileName= "brock_mapvars";
         }
         else if(PLAYER_UF.equalsIgnoreCase("That Ax Guy")){
-            fileName = "ax_mapvars.txt";
+            fileName = "ax_mapvars";
         }
         else if(PLAYER_UF.equalsIgnoreCase("That Trev Guy")){
-            fileName = "trev_mapvars.txt";
+            fileName = "trev_mapvars";
         }else if(PLAYER_UF.equalsIgnoreCase("That Sturt Guy")){
-            fileName = "stu_mapvars.txt";
+            fileName = "stu_mapvars";
         }
-        Gson gson = new Gson();
-//        for (int i = 1; i < iterations; i++) {
-//            obj = new JSONObject(playerMatches(PLAYER, "arena", start, 25));
-//            JSONArray obj2 = obj.getJSONArray("Results");
-////            System.out.println(i);
-//            for (int k = 0; k < obj2.length(); k++) {
-//                m++;
-////                System.out.println(k);
-//                JSONObject obj3 = obj2.getJSONObject(k).getJSONObject("MapVariant");
-//                var = obj3.toString();
-//                if (k < obj2.length()) {
-//                    var3 = var3.concat(var);
-//                    var3 = var3 + ",";
-//                } else {
-//                    var3 = var3.concat(var);
-//                }
-//            }
-//            start = start + 25;
-//            if (i % 10 == 0) {
-//                TimeUnit.SECONDS.sleep(10);
-//            }
-//        }
-//        var3 = var3.substring(0, var3.length() - 1);
-//        var3 = "[" + var3 + "]";
-//        Writer writer = new BufferedWriter(new OutputStreamWriter(
-//                new FileOutputStream(fileName), "utf-8"));
-//                writer.write(var3);
-//                writer.close();
-
-
-        BufferedReader br = new BufferedReader(new FileReader(fileName));
-        var3 = br.readLine();
-        br.close();
+        else if(PLAYER_UF.equalsIgnoreCase("Phantom6030")){
+            fileName = "mitch_mapvars";
+        }
+        if(gameType.toString().equalsIgnoreCase("custom")){
+            fileName += "_custom";
+        }else if(gameType.toString().equalsIgnoreCase("warzone")){
+            fileName += "_warzone";
+        }
+        fileName += ".txt";
+        if(cachingResources) {
+            Gson gson = new Gson();
+            for (int i = 1; i < iterations; i++) {
+                obj = new JSONObject(playerMatches(PLAYER, gameType.toString().toLowerCase(), start, 25));
+                JSONArray obj2 = obj.getJSONArray("Results");
+//            System.out.println(i);
+                for (int k = 0; k < obj2.length(); k++) {
+                    m++;
+//                System.out.println(k);
+                    JSONObject obj3 = obj2.getJSONObject(k).getJSONObject("MapVariant");
+                    var = obj3.toString();
+                    if (k < obj2.length()) {
+                        var3 = var3.concat(var);
+                        var3 = var3 + ",";
+                    } else {
+                        var3 = var3.concat(var);
+                    }
+                }
+                start = start + 25;
+                if (i % 10 == 0) {
+                    TimeUnit.SECONDS.sleep(10);
+                }
+            }
+            var3 = var3.substring(0, var3.length() - 1);
+            var3 = "[" + var3 + "]";
+            Writer writer = new BufferedWriter(new OutputStreamWriter(
+                    new FileOutputStream(fileName), "utf-8"));
+            writer.write(var3);
+            writer.close();
+        }else{
+            BufferedReader br = new BufferedReader(new FileReader(fileName));
+            var3 = br.readLine();
+            br.close();
+        }
         JSONArray obj3 = new JSONArray(var3);
         Set<String> mapIDs = new HashSet<String>();
         for (int i = 0; i < obj3.length(); i++){
@@ -355,6 +377,13 @@ public class HaloApi {
         Gson gson = new Gson();
         String mapData = listMapVariants(mapVariantID);
         MapVariant mapVariant = gson.fromJson(mapData, MapVariant.class);
+        return mapVariant;
+    }
+
+    public static CustomMapVariant getCustomMapVariant(String mapVariantID, String player) throws Exception{
+        Gson gson = new Gson();
+        String mapData = listCustomMapVariants(mapVariantID, player);
+        CustomMapVariant mapVariant = gson.fromJson(mapData, CustomMapVariant.class);
         return mapVariant;
     }
 
@@ -836,70 +865,107 @@ public class HaloApi {
         return ("Your favorite map is: " + favMap + " with a total play count of: " + favMapCount);
     }
 
-    public static String favoriteMapVariant() throws Exception{
-        Match[] matches = getMatches();
+    public static String favoriteMapVariant(Enum gameType) throws Exception{
+        Match[] matches = getMatches(gameType);
         String var = null;
         TimeUnit.SECONDS.sleep(8);
         int iterations = 1;
-        Set<String> mapIDs = getResources();
-        MapVariant mv = null;
+        Set<String> mapIDs = getResources(gameType);
         String fileName = null;
+        String fileName2 = null;
         if (PLAYER_UF.equalsIgnoreCase("That Brock Guy")) {
-            fileName= "brock_mapvars2.txt";
+            fileName= "brock_mapvars2";
+            fileName2= "brock_mapvars";
         }else if(PLAYER_UF.equalsIgnoreCase("That Ax Guy")){
-            fileName = "ax_mapvars2.txt";
+            fileName = "ax_mapvars2";
+            fileName2= "ax_mapvars";
         }else if(PLAYER_UF.equalsIgnoreCase("That Trev Guy")){
-            fileName = "trev_mapvars2.txt";
+            fileName = "trev_mapvars2";
+            fileName2= "trev_mapvars";
         }else if(PLAYER_UF.equalsIgnoreCase("That Sturt Guy")){
-            fileName = "stu_mapvars2.txt";
+            fileName = "stu_mapvars2";
+            fileName2= "stu_mapvars";
         }
-        String var2 = "";
-        BufferedReader br = new BufferedReader(new FileReader(fileName));
-        var = br.readLine();
+        else if(PLAYER_UF.equalsIgnoreCase("Phantom6030")){
+            fileName = "mitch_mapvars2";
+            fileName2= "mitch_mapvars";
+        }
+        if(gameType.toString().equalsIgnoreCase("custom")){
+            fileName += "_custom";
+            fileName2 += "_custom";
+        }else if(gameType.toString().equalsIgnoreCase("warzone")){
+            fileName += "_warzone";
+            fileName2 += "_warzone";
+        }
+        fileName += ".txt";
+        fileName2 += ".txt";
+        BufferedReader br = new BufferedReader(new FileReader(fileName2));
+        String var3 = br.readLine();
         br.close();
-        Gson gson = new Gson();
-        MapVariant[] mapv = gson.fromJson(var, MapVariant[].class);
-        String favMap = null;
-        int favMapCount = 0;
-        for (int i = 0; i < matches.length; i++){
-            for (int k = 0; k < mapv.length; k++){
-                if (getMapVariantName(matches[i].getMapVariant().getResourceId(), mapv).equalsIgnoreCase(mapv[k].getName())){
-                    mapv[k].setCount(mapv[k].getCount()+ 1);
+        JSONArray jsonArray = new JSONArray(var3);
+        String var2 = "";
+        if(cachingMapVariants){
+            for (String s: mapIDs){
+                if (s != null){
+                    if (gameType.toString().equalsIgnoreCase("custom")){
+                        CustomMapVariant mv = getCustomMapVariant(jsonArray.getJSONObject(iterations).getString("ResourceId"), formatString(jsonArray.getJSONObject(iterations).getString("Owner")));
+                        System.out.println(mv.getName() + " " +  mv.getBaseMap().getResourceId());
+                        var = "{\"BaseMap\":{\"ResourceType\":" + mv.getBaseMap().getResourceType() + ",\"ResourceId\":\"" + mv.getBaseMap().getResourceId() + "\",\"OwnerType\":" + mv.getBaseMap().getOwnerType() + ",\"Owner\":null},\"Name\":\"" + mv.getName() +  "\",\"Description\":\"" + mv.getDescription() +  "\",\"AccessControl\":" + mv.getAccessControl() +  ",\"Links\":{},\"CreationTimeUtc\":{\"ISO8601Date\":\"" + mv.getCreationTimeUtc() +"\"},\"LastModifiedTimeUtc\":{\"ISO8601Date\":\""+ mv.getLastModifiedTimeUtc() + "\"},\"Banned\":"+ mv.getBanned() + ",\"Identity\":{\"ResourceType\":" + mv.getIdentity().getResourceType() + ",\"ResourceId\":\"" + mv.getIdentity().getResourceId() + "\",\"OwnerType\":" + mv.getIdentity().getOwnerType() + ",\"Owner\":\"" + mv.getIdentity().getOwner() + "\"},\"Stats\":{\"BookmarkCount\":" + mv.getStats().getBookmarkCount() + ",\"HasCallerBookmarked\":" + mv.getStats().getHasCallerBookmarked() + "}}";
+                        var = var + ",";
+                        var2 = var2.concat(var);
+                        iterations++;
+                        if (iterations % 10 == 0){
+                            TimeUnit.SECONDS.sleep(10);
+                        }
+                    }else{
+                        continue;
+                    }
+                    }else{
+                        MapVariant mv = getMapVariant(s.toLowerCase());
+                        System.out.println(mv.getName() + " " +  mv.getId());
+                        var = "{\"name\":\"" +mv.getName()+ "\",\"description\":\"" + mv.getDescription() + "\",\"mapImageUrl\":\"" + mv.getMapImageUrl() +  "\",\"mapId\":\"" + mv.getMapId() + "\",\"id\":\"" + mv.getId() +  "\",\"contentId\":\"" + mv.getContentId() + "\"}";
+                        var = var + ",";
+                        var2 = var2.concat(var);
+                        if (iterations % 10 == 0){
+                            TimeUnit.SECONDS.sleep(10);
+                        }
+                    else{
+                        continue;
+                    }
                 }
             }
-        }
-        for (int i = 0; i < mapv.length; i++){
-            for (int k = 0; k < mapv.length; k++){
-                if (mapv[i].getCount() > mapv[k].getCount() && mapv[i].getCount() >= favMapCount){
-                    favMapCount = mapv[i].getCount();
-                    favMap = mapv[i].getName();
+            Writer writer = new BufferedWriter(new OutputStreamWriter(
+                    new FileOutputStream(fileName), "utf-8"));
+            var2 = var2.substring(0, var2.length() - 1);
+            var2 = "[" + var2 + "]";
+            writer.write(var2);
+            writer.close();
+            return null;
+        }else {
+            String favMap = null;
+            int favMapCount = 0;
+            br = new BufferedReader(new FileReader(fileName));
+            var = br.readLine();
+            Gson gson = new Gson();
+            MapVariant[] mapv = gson.fromJson(var, MapVariant[].class);
+            br.close();
+            for (int i = 0; i < matches.length; i++) {
+                for (int k = 0; k < mapv.length; k++) {
+                    if (getMapVariantName(matches[i].getMapVariant().getResourceId(), mapv).equalsIgnoreCase(mapv[k].getName())) {
+                        mapv[k].setCount(mapv[k].getCount() + 1);
+                    }
                 }
             }
+            for (int i = 0; i < mapv.length; i++) {
+                for (int k = 0; k < mapv.length; k++) {
+                    if (mapv[i].getCount() > mapv[k].getCount() && mapv[i].getCount() >= favMapCount) {
+                        favMapCount = mapv[i].getCount();
+                        favMap = mapv[i].getName();
+                    }
+                }
+            }
+            return ("Your favorite map is " + favMap + " with a total play count of " + favMapCount);
         }
-        return ("Your favorite map is " + favMap + " with a total play count of " + favMapCount);
-//
-//        for (String s: mapIDs){
-//            if (s != null){
-////                System.out.println(s);
-//                iterations++;
-//                mv = getMapVariant(s.toLowerCase());
-//                System.out.println(mv.getName() + " " +  mv.getId());
-//                var = "{\"name\":\"" +mv.getName()+ "\",\"description\":\"" + mv.getDescription() + "\",\"mapImageUrl\":\"" + mv.getMapImageUrl() +  "\",\"mapId\":\"" + mv.getMapId() + "\",\"id\":\"" + mv.getId() +  "\",\"contentId\":\"" + mv.getContentId() + "\"}";
-//                var = var + ",";
-//                var2 = var2.concat(var);
-//                if (iterations % 10 == 0){
-//                    TimeUnit.SECONDS.sleep(10);
-//                }
-//            }else{
-//                continue;
-//            }
-//        }
-//        Writer writer = new BufferedWriter(new OutputStreamWriter(
-//                new FileOutputStream(fileName), "utf-8"));
-//        var2 = var2.substring(0, var2.length() - 1);
-//        var2 = "[" + var2 + "]";
-//        writer.write(var2);
-//        writer.close();
     }
 
     public static void testPlayerMatches(Enum gameType) throws Exception
@@ -915,7 +981,7 @@ public class HaloApi {
         BaseStats stats = getBaseStats(gameType, PLAYER_UF);
         int positiveCount = 0;
         Gson gson = new Gson();
-        Match[] matches = getMatches();
+        Match[] matches = getMatches(gameType);
         for (int i = 0; i < matches.length; i++){
             double totalKills = matches[i].getPlayers().get(0).getTotalKills();
             double totalDeaths = matches[i].getPlayers().get(0).getTotalDeaths();
@@ -969,7 +1035,7 @@ public class HaloApi {
         }
         TimeUnit.SECONDS.sleep(8);
         testBaseStats(gameType);
-        System.out.println(favoriteMapVariant());
+        System.out.println(favoriteMapVariant(gameType));
     }
 
 }
