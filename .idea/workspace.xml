@@ -2,16 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5fdac0ad-8c12-40e7-a786-d460f1f65048" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/broxhouse/h5api/models/metadata/BaseMap.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/broxhouse/h5api/models/metadata/CreationTimeUtc.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/broxhouse/h5api/models/metadata/CustomMapVariant.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/broxhouse/h5api/models/metadata/Identity.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/broxhouse/h5api/models/metadata/LastModifiedTimeUtc.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/broxhouse/h5api/models/metadata/Links.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/broxhouse/h5api/models/metadata/Stats.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/test-classes/com/broxhouse/h5api/HaloApi.class" afterPath="$PROJECT_DIR$/target/test-classes/com/broxhouse/h5api/HaloApi.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/broxhouse/h5api/models/metadata/CustomMapVariant.java" afterPath="$PROJECT_DIR$/src/main/java/com/broxhouse/h5api/models/metadata/CustomMapVariant.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/com/broxhouse/h5api/HaloApi.java" afterPath="$PROJECT_DIR$/src/test/java/com/broxhouse/h5api/HaloApi.java" />
     </list>
     <ignored path="HaloApp2.iws" />
@@ -37,13 +29,12 @@
       <file leaf-file-name="HaloApi.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/test/java/com/broxhouse/h5api/HaloApi.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="140">
-              <caret line="906" column="0" selection-start-line="906" selection-start-column="0" selection-end-line="907" selection-end-column="0" />
+            <state relative-caret-position="-410">
+              <caret line="240" column="26" selection-start-line="240" selection-start-column="26" selection-end-line="240" selection-end-column="26" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="method#formatString#0;class#HaloApi#0" expanded="false" />
                 <element signature="method#capitalize#0;class#HaloApi#0" expanded="false" />
-                <element signature="method#postGameCarnage#0;class#HaloApi#0" expanded="false" />
                 <element signature="method#playerMatches#0;class#HaloApi#0" expanded="false" />
                 <element signature="method#warzoneMatches#0;class#HaloApi#0" expanded="false" />
                 <element signature="method#customMatches#0;class#HaloApi#0" expanded="false" />
@@ -56,8 +47,8 @@
                 <element signature="method#testJSONMedals#0;class#HaloApi#0" expanded="false" />
                 <element signature="method#getMedals#0;class#HaloApi#0" expanded="false" />
                 <element signature="method#getWeapons#0;class#HaloApi#0" expanded="false" />
-                <element signature="e#13055#13063#0" expanded="true" />
-                <element signature="method#getMedalName#0;class#HaloApi#0" expanded="false" />
+                <element signature="method#getResources#0;class#HaloApi#0" expanded="false" />
+                <element signature="e#13313#13321#0" expanded="true" />
                 <element signature="method#getMedalDescription#0;class#HaloApi#0" expanded="false" />
                 <element signature="method#getMedalID#0;class#HaloApi#0" expanded="false" />
                 <element signature="method#getPlayerStatsJSON#1;class#HaloApi#0" expanded="false" />
@@ -70,8 +61,8 @@
                 <element signature="method#totalDeaths#0;class#HaloApi#0" expanded="false" />
                 <element signature="method#getKD#0;class#HaloApi#0" expanded="false" />
                 <element signature="method#testWeaponKills#0;class#HaloApi#0" expanded="false" />
-                <element signature="e#23145#23217#0" expanded="false" />
-                <element signature="e#27450#27452#0" expanded="false" />
+                <element signature="e#24208#24280#0" expanded="false" />
+                <element signature="e#28513#28515#0" expanded="false" />
                 <element signature="method#testBaseResults#0;class#HaloApi#0" expanded="false" />
                 <element signature="method#testActivePlaylists#0;class#HaloApi#0" expanded="false" />
                 <element signature="method#comparePlayers#0;class#HaloApi#0" expanded="false" />
@@ -110,11 +101,15 @@
       <file leaf-file-name="CustomMapVariant.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/broxhouse/h5api/models/metadata/CustomMapVariant.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="177">
-              <caret line="100" column="19" selection-start-line="100" selection-start-column="19" selection-end-line="100" selection-end-column="19" />
+            <state relative-caret-position="378">
+              <caret line="221" column="0" selection-start-line="221" selection-start-column="0" selection-end-line="221" selection-end-column="0" />
               <folding>
-                <element signature="e#1980#1981#0" expanded="true" />
-                <element signature="e#2016#2017#0" expanded="true" />
+                <element signature="e#2007#2008#0" expanded="true" />
+                <element signature="e#2043#2044#0" expanded="true" />
+                <element signature="e#4135#4136#0" expanded="true" />
+                <element signature="e#4169#4170#0" expanded="true" />
+                <element signature="e#4197#4198#0" expanded="true" />
+                <element signature="e#4230#4231#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -133,8 +128,8 @@
       <file leaf-file-name="brock_mapvars_custom.txt" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/brock_mapvars_custom.txt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="34">
-              <caret line="0" column="265" selection-start-line="0" selection-start-column="255" selection-end-line="0" selection-end-column="265" />
+            <state relative-caret-position="121">
+              <caret line="0" column="4513" selection-start-line="0" selection-start-column="4513" selection-end-line="0" selection-end-column="4513" />
               <folding />
             </state>
           </provider>
@@ -160,22 +155,28 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="trev_mapvars2.txt" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/trev_mapvars2.txt">
+      <file leaf-file-name="BaseCarnageReport.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/broxhouse/h5api/models/stats/reports/BaseCarnageReport.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="204">
-              <caret line="0" column="1280" selection-start-line="0" selection-start-column="1280" selection-end-line="0" selection-end-column="1280" />
-              <folding />
+            <state relative-caret-position="100">
+              <caret line="81" column="18" selection-start-line="81" selection-start-column="18" selection-end-line="81" selection-end-column="18" />
+              <folding>
+                <element signature="e#2074#2075#0" expanded="true" />
+                <element signature="e#2109#2110#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ax_mapvars2.txt" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/ax_mapvars2.txt">
+      <file leaf-file-name="MapVariant.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/broxhouse/h5api/models/metadata/MapVariant.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
+            <state relative-caret-position="327">
+              <caret line="72" column="4" selection-start-line="72" selection-start-column="4" selection-end-line="76" selection-end-column="51" />
+              <folding>
+                <element signature="e#1504#1505#0" expanded="true" />
+                <element signature="e#1542#1543#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -200,7 +201,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/com/broxhouse/h5api/models/stats/common/Timelapse.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/broxhouse/h5api/models/stats/reports/CampaignCarnageReport.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/broxhouse/h5api/models/stats/reports/CampaignPlayerStats.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/broxhouse/h5api/models/stats/reports/Resource.java" />
@@ -249,6 +249,7 @@
         <option value="$PROJECT_DIR$/src/main/java/com/broxhouse/h5api/models/metadata/Example.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/broxhouse/h5api/models/metadata/Stats.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/broxhouse/h5api/models/metadata/BaseMap.java" />
+        <option value="$PROJECT_DIR$/brock_mapvars_custom.txt" />
         <option value="$PROJECT_DIR$/src/main/java/com/broxhouse/h5api/models/metadata/CustomMapVariant.java" />
         <option value="$PROJECT_DIR$/src/test/java/com/broxhouse/h5api/HaloApi.java" />
       </list>
@@ -991,7 +992,14 @@
       <option name="project" value="LOCAL" />
       <updated>1470795600355</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="really good caching now">
+      <created>1470803373633</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1470803373633</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -1038,7 +1046,7 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32991454" sideWeight="0.5" order="10" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3336887" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32940018" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.23247863" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" x="0" y="23" width="1362" height="705" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.13333334" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" x="0" y="23" width="1362" height="705" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -1076,7 +1084,7 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="15" />
+      <option name="time" value="16" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -1193,34 +1201,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/broxhouse/h5api/models/stats/reports/BaseCarnageReport.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1241">
-          <caret line="81" column="18" selection-start-line="81" selection-start-column="18" selection-end-line="81" selection-end-column="18" />
-          <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="e#1855#1856#0" expanded="false" />
-            <element signature="e#1889#1890#0" expanded="false" />
-            <element signature="e#1925#1926#0" expanded="false" />
-            <element signature="e#1959#1960#0" expanded="false" />
-            <element signature="e#1999#2000#0" expanded="false" />
-            <element signature="e#2035#2036#0" expanded="false" />
-            <element signature="e#2074#2075#0" expanded="false" />
-            <element signature="e#2109#2110#0" expanded="false" />
-            <element signature="e#2149#2150#0" expanded="false" />
-            <element signature="e#2185#2186#0" expanded="false" />
-            <element signature="e#2222#2223#0" expanded="false" />
-            <element signature="e#2255#2256#0" expanded="false" />
-            <element signature="e#2287#2288#0" expanded="false" />
-            <element signature="e#2315#2316#0" expanded="false" />
-            <element signature="e#2359#2360#0" expanded="false" />
-            <element signature="e#2399#2400#0" expanded="false" />
-            <element signature="e#2434#2435#0" expanded="false" />
-            <element signature="e#2467#2468#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://C:/Program Files/Java/jdk1.8.0_92/src.zip!/java/nio/charset/Charset.java" />
     <entry file="jar://C:/Program Files/Java/jdk1.8.0_92/src.zip!/java/nio/file/OpenOption.java" />
     <entry file="jar://C:/Program Files/Java/jdk1.8.0_92/src.zip!/java/nio/file/Files.java" />
@@ -1324,17 +1304,6 @@
         <state relative-caret-position="17">
           <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/broxhouse/h5api/models/metadata/MapVariant.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="656">
-          <caret line="73" column="31" selection-start-line="73" selection-start-column="31" selection-end-line="73" selection-end-column="31" />
-          <folding>
-            <element signature="e#1504#1505#0" expanded="false" />
-            <element signature="e#1542#1543#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1453,17 +1422,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/broxhouse/h5api/models/metadata/CustomMapVariant.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="177">
-          <caret line="100" column="19" selection-start-line="100" selection-start-column="19" selection-end-line="100" selection-end-column="19" />
-          <folding>
-            <element signature="e#1980#1981#0" expanded="true" />
-            <element signature="e#2016#2017#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/broxhouse/h5api/models/metadata/Identity.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="429">
@@ -1477,21 +1435,57 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/brock_mapvars_custom.txt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="0" column="265" selection-start-line="0" selection-start-column="255" selection-end-line="0" selection-end-column="265" />
+        <state relative-caret-position="121">
+          <caret line="0" column="4513" selection-start-line="0" selection-start-column="4513" selection-end-line="0" selection-end-column="4513" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/broxhouse/h5api/models/stats/reports/BaseCarnageReport.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="100">
+          <caret line="81" column="18" selection-start-line="81" selection-start-column="18" selection-end-line="81" selection-end-column="18" />
+          <folding>
+            <element signature="e#2074#2075#0" expanded="true" />
+            <element signature="e#2109#2110#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/broxhouse/h5api/models/metadata/MapVariant.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="327">
+          <caret line="72" column="4" selection-start-line="72" selection-start-column="4" selection-end-line="76" selection-end-column="51" />
+          <folding>
+            <element signature="e#1504#1505#0" expanded="true" />
+            <element signature="e#1542#1543#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/broxhouse/h5api/models/metadata/CustomMapVariant.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="378">
+          <caret line="221" column="0" selection-start-line="221" selection-start-column="0" selection-end-line="221" selection-end-column="0" />
+          <folding>
+            <element signature="e#2007#2008#0" expanded="true" />
+            <element signature="e#2043#2044#0" expanded="true" />
+            <element signature="e#4135#4136#0" expanded="true" />
+            <element signature="e#4169#4170#0" expanded="true" />
+            <element signature="e#4197#4198#0" expanded="true" />
+            <element signature="e#4230#4231#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/com/broxhouse/h5api/HaloApi.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="140">
-          <caret line="906" column="0" selection-start-line="906" selection-start-column="0" selection-end-line="907" selection-end-column="0" />
+        <state relative-caret-position="-410">
+          <caret line="240" column="26" selection-start-line="240" selection-start-column="26" selection-end-line="240" selection-end-column="26" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="method#formatString#0;class#HaloApi#0" expanded="false" />
             <element signature="method#capitalize#0;class#HaloApi#0" expanded="false" />
-            <element signature="method#postGameCarnage#0;class#HaloApi#0" expanded="false" />
             <element signature="method#playerMatches#0;class#HaloApi#0" expanded="false" />
             <element signature="method#warzoneMatches#0;class#HaloApi#0" expanded="false" />
             <element signature="method#customMatches#0;class#HaloApi#0" expanded="false" />
@@ -1504,8 +1498,8 @@
             <element signature="method#testJSONMedals#0;class#HaloApi#0" expanded="false" />
             <element signature="method#getMedals#0;class#HaloApi#0" expanded="false" />
             <element signature="method#getWeapons#0;class#HaloApi#0" expanded="false" />
-            <element signature="e#13055#13063#0" expanded="true" />
-            <element signature="method#getMedalName#0;class#HaloApi#0" expanded="false" />
+            <element signature="method#getResources#0;class#HaloApi#0" expanded="false" />
+            <element signature="e#13313#13321#0" expanded="true" />
             <element signature="method#getMedalDescription#0;class#HaloApi#0" expanded="false" />
             <element signature="method#getMedalID#0;class#HaloApi#0" expanded="false" />
             <element signature="method#getPlayerStatsJSON#1;class#HaloApi#0" expanded="false" />
@@ -1518,8 +1512,8 @@
             <element signature="method#totalDeaths#0;class#HaloApi#0" expanded="false" />
             <element signature="method#getKD#0;class#HaloApi#0" expanded="false" />
             <element signature="method#testWeaponKills#0;class#HaloApi#0" expanded="false" />
-            <element signature="e#23145#23217#0" expanded="false" />
-            <element signature="e#27450#27452#0" expanded="false" />
+            <element signature="e#24208#24280#0" expanded="false" />
+            <element signature="e#28513#28515#0" expanded="false" />
             <element signature="method#testBaseResults#0;class#HaloApi#0" expanded="false" />
             <element signature="method#testActivePlaylists#0;class#HaloApi#0" expanded="false" />
             <element signature="method#comparePlayers#0;class#HaloApi#0" expanded="false" />

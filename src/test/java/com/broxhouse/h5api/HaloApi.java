@@ -56,10 +56,11 @@ public class HaloApi {
     private static final String META_MAP_VARIANTS = META_URL + "map-variants/%s";
     private static final String META_CUSTOM_MAPS = BASE_URL + "ugc/h5/players/%s";
     private static final String POST_GAME_CARNAGE = BASE_URL + "stats/h5/arena/matches/%s";
+    private static final String POST_GAME_CARNAGE_CUST = BASE_URL + "stats/h5/custom/matches/%s";
 
     private static boolean cachingResources = false;
     private static boolean cachingMatches = false;
-    private static boolean cachingMapVariants = true;
+    private static boolean cachingMapVariants = false;
 
     public static String formatString(String string)
     {
@@ -75,6 +76,11 @@ public class HaloApi {
     {
         return api(String.format(POST_GAME_CARNAGE, matchID));
     }
+
+    public static String getPostGameCarnageCust(String matchID) throws Exception{
+        return api(String.format(POST_GAME_CARNAGE_CUST, matchID));
+    }
+
 
     //https://www.haloapi.com/stats/h5/players/that%20brock%20guy/matches?modes=arena,custom&start=10&count=26
     public static String playerMatches(String gt, String modes, int start, int count) throws Exception {
@@ -170,12 +176,12 @@ public class HaloApi {
 //            testJSONMedals();
 //            testMedalStats(CUSTOM);
 //            testWeaponKills(CUSTOM);
-//            testPlayerMatches(ARENA);
+            testPlayerMatches(CUSTOM);
 //            totalGames();
 //            getResources(CUSTOM);
 //            getMatches(CUSTOM);
 //            testPlayerStats();
-            favoriteMapVariant(CUSTOM);
+//            favoriteMapVariant(CUSTOM);
 //            testBaseStats(ARENA);
 //            testBaseResults();
 //            testActivePlaylists();
@@ -385,6 +391,26 @@ public class HaloApi {
         String mapData = listCustomMapVariants(mapVariantID, player);
         CustomMapVariant mapVariant = gson.fromJson(mapData, CustomMapVariant.class);
         return mapVariant;
+    }
+
+    public static CustomMapVariant[] getCachedCustMapVariants() throws Exception{
+        Gson gson = new Gson();
+        BufferedReader br = new BufferedReader(new FileReader("brock_mapvars2_custom.txt"));
+        String var3 = br.readLine();
+        br.close();
+        CustomMapVariant[] mapVariant = gson.fromJson(var3, CustomMapVariant[].class);
+        return mapVariant;
+    }
+
+    public static String getCustomMapName(String mapID) throws Exception{
+        CustomMapVariant[] mapVariants = getCachedCustMapVariants();
+        String mapName = null;
+        for (int i = 0; i < mapVariants.length; i++){
+            if(mapVariants[i].getBaseMap().getResourceId().equalsIgnoreCase(mapID)){
+                mapName = mapVariants[i].getName();
+            }
+        }
+        return mapName;
     }
 
     public static String getMedalName(long medalID, Medal[] medals) throws Exception
@@ -908,6 +934,10 @@ public class HaloApi {
             for (String s: mapIDs){
                 if (s != null){
                     if (gameType.toString().equalsIgnoreCase("custom")){
+                        if((jsonArray.getJSONObject(iterations).getString("Owner")).isEmpty()  || (jsonArray.getJSONObject(iterations).getString("Owner")) == ""){
+                            iterations++;
+                            continue;
+                        }
                         CustomMapVariant mv = getCustomMapVariant(jsonArray.getJSONObject(iterations).getString("ResourceId"), formatString(jsonArray.getJSONObject(iterations).getString("Owner")));
                         System.out.println(mv.getName() + " " +  mv.getBaseMap().getResourceId());
                         var = "{\"BaseMap\":{\"ResourceType\":" + mv.getBaseMap().getResourceType() + ",\"ResourceId\":\"" + mv.getBaseMap().getResourceId() + "\",\"OwnerType\":" + mv.getBaseMap().getOwnerType() + ",\"Owner\":null},\"Name\":\"" + mv.getName() +  "\",\"Description\":\"" + mv.getDescription() +  "\",\"AccessControl\":" + mv.getAccessControl() +  ",\"Links\":{},\"CreationTimeUtc\":{\"ISO8601Date\":\"" + mv.getCreationTimeUtc() +"\"},\"LastModifiedTimeUtc\":{\"ISO8601Date\":\""+ mv.getLastModifiedTimeUtc() + "\"},\"Banned\":"+ mv.getBanned() + ",\"Identity\":{\"ResourceType\":" + mv.getIdentity().getResourceType() + ",\"ResourceId\":\"" + mv.getIdentity().getResourceId() + "\",\"OwnerType\":" + mv.getIdentity().getOwnerType() + ",\"Owner\":\"" + mv.getIdentity().getOwner() + "\"},\"Stats\":{\"BookmarkCount\":" + mv.getStats().getBookmarkCount() + ",\"HasCallerBookmarked\":" + mv.getStats().getHasCallerBookmarked() + "}}";
@@ -947,23 +977,44 @@ public class HaloApi {
             br = new BufferedReader(new FileReader(fileName));
             var = br.readLine();
             Gson gson = new Gson();
-            MapVariant[] mapv = gson.fromJson(var, MapVariant[].class);
             br.close();
-            for (int i = 0; i < matches.length; i++) {
-                for (int k = 0; k < mapv.length; k++) {
-                    if (getMapVariantName(matches[i].getMapVariant().getResourceId(), mapv).equalsIgnoreCase(mapv[k].getName())) {
-                        mapv[k].setCount(mapv[k].getCount() + 1);
+            if (gameType == CUSTOM){
+                CustomMapVariant[] mapv = gson.fromJson(var3, CustomMapVariant[].class);
+                for (int i = 0; i < matches.length; i++) {
+                    for (int k = 0; k < mapv.length; k++) {
+                        if (getCustomMapName(matches[i].getMapVariant().getResourceId()).equalsIgnoreCase(mapv[k].getName())) {
+                            mapv[k].setCount(mapv[k].getCount() + 1);
+                        }
+                    }
+                }
+                for (int i = 0; i < mapv.length; i++) {
+                    for (int k = 0; k < mapv.length; k++) {
+                        if (mapv[i].getCount() > mapv[k].getCount() && mapv[i].getCount() >= favMapCount) {
+                            favMapCount = mapv[i].getCount();
+                            favMap = mapv[i].getName();
+                        }
+                    }
+                }
+
+            }else if (gameType == ARENA){
+                MapVariant[] mapv = gson.fromJson(var, MapVariant[].class);
+                for (int i = 0; i < matches.length; i++) {
+                    for (int k = 0; k < mapv.length; k++) {
+                        if (getMapVariantName(matches[i].getMapVariant().getResourceId(), mapv).equalsIgnoreCase(mapv[k].getName())) {
+                            mapv[k].setCount(mapv[k].getCount() + 1);
+                        }
+                    }
+                }
+                for (int i = 0; i < mapv.length; i++) {
+                    for (int k = 0; k < mapv.length; k++) {
+                        if (mapv[i].getCount() > mapv[k].getCount() && mapv[i].getCount() >= favMapCount) {
+                            favMapCount = mapv[i].getCount();
+                            favMap = mapv[i].getName();
+                        }
                     }
                 }
             }
-            for (int i = 0; i < mapv.length; i++) {
-                for (int k = 0; k < mapv.length; k++) {
-                    if (mapv[i].getCount() > mapv[k].getCount() && mapv[i].getCount() >= favMapCount) {
-                        favMapCount = mapv[i].getCount();
-                        favMap = mapv[i].getName();
-                    }
-                }
-            }
+
             return ("Your favorite map is " + favMap + " with a total play count of " + favMapCount);
         }
     }
@@ -1013,12 +1064,21 @@ public class HaloApi {
         System.out.println("You have quit or been booted from " + matchesDNF + " games");
         System.out.println("You have assisted your teammates " + stats.getTotalAssists() + " times");
         System.out.println("You've had a positive K/D spread " + positiveCount + " times. That's " + percentagePositive + "% of your games!");
-        System.out.println("Your best Kill/Death ratio in any Arena game is: " + kdRatio);
-
-        JSONObject obj2 = new JSONObject(postGameCarnage(bestMatchID));
+        System.out.println("Your best Kill/Death ratio in any " + capitalize(gameType.toString().toLowerCase()) + " game is: " + kdRatio);
+        JSONObject obj2 = null;
+        if (gameType == CUSTOM){
+            obj2 = new JSONObject(getPostGameCarnageCust(bestMatchID));
+        }else if(gameType == ARENA){
+            obj2 = new JSONObject(postGameCarnage(bestMatchID));
+        }
         BaseCarnageReport carnageReport = gson.fromJson(obj2.toString(), BaseCarnageReport.class);
         SpartanRankedPlayerStats[] playerStats = gson.fromJson(obj2.getJSONArray("PlayerStats").toString(), SpartanRankedPlayerStats[].class);
-        String mapName = getMapVariant(carnageReport.getMapVariantId()).getName();
+        String mapName = null;
+        if (gameType == ARENA){
+            mapName = getMapVariant(carnageReport.getMapVariantId()).getName();
+        }else if(gameType == CUSTOM){
+            mapName = getCustomMapName(carnageReport.getMapVariantId());
+        }
         System.out.println("Your best game was played on map: " + mapName);
         System.out.println("Here are the medals you earned in that game: \n");
         for (int i = 0; i < playerStats.length; i++){
