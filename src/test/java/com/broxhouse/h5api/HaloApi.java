@@ -6,12 +6,10 @@ import com.broxhouse.h5api.models.stats.common.WeaponStats;
 import com.broxhouse.h5api.models.stats.matches.Match;
 import com.broxhouse.h5api.models.stats.reports.BaseCarnageReport;
 import com.broxhouse.h5api.models.stats.reports.BaseStats;
-import com.broxhouse.h5api.models.stats.reports.Resource;
 import com.broxhouse.h5api.models.stats.reports.SpartanRankedPlayerStats;
 import com.broxhouse.h5api.models.stats.servicerecords.ArenaStat;
 import com.broxhouse.h5api.models.stats.servicerecords.BaseServiceRecordResult;
 import com.google.gson.Gson;
-import org.apache.commons.lang3.time.DurationFormatUtils;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
@@ -24,20 +22,11 @@ import org.json.JSONObject;
 
 import java.io.*;
 import java.net.URI;
-import java.nio.charset.Charset;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.nio.file.StandardOpenOption;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 import java.util.concurrent.TimeUnit;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 import static com.broxhouse.h5api.gameType.ARENA;
 import static com.broxhouse.h5api.gameType.CUSTOM;
@@ -47,6 +36,7 @@ import static com.broxhouse.h5api.gameType.WARZONE;
 enum gameType {WARZONE, ARENA, CUSTOM}
 
 public class HaloApi {
+
 
 
     private static final String PLAYER_UF = "That Brock Guy";
@@ -170,12 +160,12 @@ public class HaloApi {
 //            testJSONMedals();
 //            testMedalStats(CUSTOM);
 //            testWeaponKills(CUSTOM);
-//            testPlayerMatches(ARENA);
+            testPlayerMatches(ARENA);
 //            totalGames();
 //            getResources();
 //            getMatches();
 //            testPlayerStats();
-            favoriteMapVariant();
+//            favoriteMapVariant();
 //            testBaseStats(ARENA);
 //            testBaseResults();
 //            testActivePlaylists();
@@ -238,6 +228,17 @@ public class HaloApi {
         String var = null;
         String var2 = "";
         Integer start = 0;
+        String fileName = null;
+        if (PLAYER_UF.equalsIgnoreCase("That Brock Guy")) {
+            fileName= "brock_matches.txt";
+        }else if(PLAYER_UF.equalsIgnoreCase("That Ax Guy")){
+            fileName = "ax_matches.txt";
+        }
+        else if(PLAYER_UF.equalsIgnoreCase("That Trev Guy")){
+            fileName = "trev_matches.txt";
+        }else if(PLAYER_UF.equalsIgnoreCase("That Sturt Guy")){
+            fileName = "stu_matches.txt";
+        }
         double totalGames = totalGames(ARENA, PLAYER_UF);
         TimeUnit.SECONDS.sleep(8);
         double iterations = totalGames / 25;
@@ -265,15 +266,15 @@ public class HaloApi {
 //        }
 //        var2 = var2.substring(0, var2.length() - 1);
 //        var2 = "[" + var2 + "]";
-//        try (Writer writer = new BufferedWriter(new OutputStreamWriter(
-//                new FileOutputStream("brock_matches.txt"), "utf-8"))) {
-//            writer.write(var2);
-//        }catch(Exception e){}
-        if (PLAYER_UF == "That Brock Guy") {
-            BufferedReader br = new BufferedReader(new FileReader("brock_matches.txt"));
-            var2 = br.readLine();
-            br.close();
-        }
+//        Writer writer = new BufferedWriter(new OutputStreamWriter(
+//        new FileOutputStream(fileName), "utf-8"));
+//        writer.write(var2);
+//        writer.close();
+
+
+        BufferedReader br = new BufferedReader(new FileReader(fileName));
+        var2 = br.readLine();
+        br.close();
         Match[] matches = gson.fromJson(var2, Match[].class);
         return matches;
     }
@@ -286,10 +287,22 @@ public class HaloApi {
         Integer start = 0;
         int m = 0;
         double totalGames = totalGames(ARENA, PLAYER_UF);
-//        TimeUnit.SECONDS.sleep(8);
-//        double iterations = totalGames/25;
-//        Gson gson = new Gson();
-//        for (int i = 0; i < iterations; i++) {
+        TimeUnit.SECONDS.sleep(10);
+        double iterations = totalGames/25;
+        String fileName = null;
+        if (PLAYER_UF.equalsIgnoreCase("That Brock Guy")) {
+            fileName= "brock_mapvars.txt";
+        }
+        else if(PLAYER_UF.equalsIgnoreCase("That Ax Guy")){
+            fileName = "ax_mapvars.txt";
+        }
+        else if(PLAYER_UF.equalsIgnoreCase("That Trev Guy")){
+            fileName = "trev_mapvars.txt";
+        }else if(PLAYER_UF.equalsIgnoreCase("That Sturt Guy")){
+            fileName = "stu_mapvars.txt";
+        }
+        Gson gson = new Gson();
+//        for (int i = 1; i < iterations; i++) {
 //            obj = new JSONObject(playerMatches(PLAYER, "arena", start, 25));
 //            JSONArray obj2 = obj.getJSONArray("Results");
 ////            System.out.println(i);
@@ -312,11 +325,13 @@ public class HaloApi {
 //        }
 //        var3 = var3.substring(0, var3.length() - 1);
 //        var3 = "[" + var3 + "]";
-//        try (Writer writer = new BufferedWriter(new OutputStreamWriter(
-//                new FileOutputStream("brock_mapvars.txt"), "utf-8"))) {
-//            writer.write(var3);
-//        }catch(Exception e){}
-        BufferedReader br = new BufferedReader(new FileReader("brock_mapvars.txt"));
+//        Writer writer = new BufferedWriter(new OutputStreamWriter(
+//                new FileOutputStream(fileName), "utf-8"));
+//                writer.write(var3);
+//                writer.close();
+
+
+        BufferedReader br = new BufferedReader(new FileReader(fileName));
         var3 = br.readLine();
         br.close();
         JSONArray obj3 = new JSONArray(var3);
@@ -330,8 +345,8 @@ public class HaloApi {
                 mapIDs.add(mapID);
             }
         }
-        System.out.println(mapIDs.size());
-        System.out.println(var3);
+//        System.out.println(mapIDs.size());
+//        System.out.println(var3);
         return mapIDs;
     }
 
@@ -405,6 +420,16 @@ public class HaloApi {
         {
             if (maps[i].getId().equalsIgnoreCase(id))
             {
+                mapName = maps[i].getName();
+            }
+        }
+        return mapName;
+    }
+
+    public static String getMapVariantName(String id, MapVariant[] maps) throws Exception{
+        String mapName = null;
+        for (int i = 0; i < maps.length; i++){
+            if(maps[i].getId().equalsIgnoreCase(id)){
                 mapName = maps[i].getName();
             }
         }
@@ -619,7 +644,7 @@ public class HaloApi {
         System.out.println("You have fired a total of: " + (int)totalShotsFired + " shots. Of those, you've landed " + (int)totalShotsLanded + " shots.");
         System.out.println("That's an accuracy of " + accuracy + "%");
         System.out.println("You have raped " + totalHeadShots + " Spartans with a headshot.");
-        System.out.println("You've stroked a power weapon in your hands for a total of " + pWeaponTime[0] + " days " + pWeaponTime[1] + " hours " + pWeaponTime[2] + " minutes and "  + pWeaponTime[2] + " seconds!");
+        System.out.println("You've stroked a power weapon in your hands for a total of " + pWeaponTime[0] + " days " + pWeaponTime[1] + " hours " + pWeaponTime[2] + " minutes and "  + pWeaponTime[3] + " seconds!");
         System.out.println("You have grabbed a power weapon " + (int)totalPowerWeapon + " times, you've killed " + (int)totalPowerWeaponKills + " Spartans with those power weapons.");
         System.out.println("That's an average of " + powerWeaponKillAvg + " kills each time you pick up a power weapon!");
         System.out.println("You have Spartan Charged " + stats.getTotalShoulderBashKills() + " dumb-dumbs.");
@@ -792,7 +817,7 @@ public class HaloApi {
         int favMapCount = 0;
         for (int i = 0; i < matches.length; i++){
             for (int k = 0; k < maps.length; k++){
-                if (matches[i].getMapId().equalsIgnoreCase(maps[k].getId())){
+                if (matches[i].getMapVariant().getResourceId().equalsIgnoreCase(maps[k].getId())){
                     maps[k].setCount(maps[k].getCount()+ 1);
                 }
             }
@@ -811,37 +836,70 @@ public class HaloApi {
         return ("Your favorite map is: " + favMap + " with a total play count of: " + favMapCount);
     }
 
-    public static void favoriteMapVariant() throws Exception{
-        int iterations = 0;
-        MapVariant mv = null;
-        Set<String> mapIDs = getResources();
+    public static String favoriteMapVariant() throws Exception{
+        Match[] matches = getMatches();
         String var = null;
-        String var2 = "";
         TimeUnit.SECONDS.sleep(8);
-        Set<String> mapIDsFixed = new HashSet<String>();
-
-        for (String s: mapIDs){
-            if (s != null){
-//                System.out.println(s);
-                iterations++;
-                mv = getMapVariant(s.toLowerCase());
-                System.out.println(mv.getName() + " " +  mv.getId());
-                var = "{\"name\":\"" +mv.getName()+ "\",\"description\":\"" + mv.getDescription() + "\",\"mapImageUrl\":\"" + mv.getMapImageUrl() +  "\",\"mapId\":\"" + mv.getMapId() + "\",\"id\":\"" + mv.getId() +  "\",\"contentId\":\"" + mv.getContentId() + "\"}";
-                var = var + ",";
-                var2 = var2.concat(var);
-                if (iterations % 10 == 0){
-                    TimeUnit.SECONDS.sleep(10);
+        int iterations = 1;
+        Set<String> mapIDs = getResources();
+        MapVariant mv = null;
+        String fileName = null;
+        if (PLAYER_UF.equalsIgnoreCase("That Brock Guy")) {
+            fileName= "brock_mapvars2.txt";
+        }else if(PLAYER_UF.equalsIgnoreCase("That Ax Guy")){
+            fileName = "ax_mapvars2.txt";
+        }else if(PLAYER_UF.equalsIgnoreCase("That Trev Guy")){
+            fileName = "trev_mapvars2.txt";
+        }else if(PLAYER_UF.equalsIgnoreCase("That Sturt Guy")){
+            fileName = "stu_mapvars2.txt";
+        }
+        String var2 = "";
+        BufferedReader br = new BufferedReader(new FileReader(fileName));
+        var = br.readLine();
+        br.close();
+        Gson gson = new Gson();
+        MapVariant[] mapv = gson.fromJson(var, MapVariant[].class);
+        String favMap = null;
+        int favMapCount = 0;
+        for (int i = 0; i < matches.length; i++){
+            for (int k = 0; k < mapv.length; k++){
+                if (getMapVariantName(matches[i].getMapVariant().getResourceId(), mapv).equalsIgnoreCase(mapv[k].getName())){
+                    mapv[k].setCount(mapv[k].getCount()+ 1);
                 }
-            }else{
-                continue;
             }
         }
-        Writer writer = new BufferedWriter(new OutputStreamWriter(
-                new FileOutputStream("brock_mapvars2.txt"), "utf-8"));
-        var2 = var2.substring(0, var2.length() - 1);
-        var2 = "[" + var2 + "]";
-        writer.write(var2);
-        writer.close();
+        for (int i = 0; i < mapv.length; i++){
+            for (int k = 0; k < mapv.length; k++){
+                if (mapv[i].getCount() > mapv[k].getCount() && mapv[i].getCount() >= favMapCount){
+                    favMapCount = mapv[i].getCount();
+                    favMap = mapv[i].getName();
+                }
+            }
+        }
+        return ("Your favorite map is " + favMap + " with a total play count of " + favMapCount);
+//
+//        for (String s: mapIDs){
+//            if (s != null){
+////                System.out.println(s);
+//                iterations++;
+//                mv = getMapVariant(s.toLowerCase());
+//                System.out.println(mv.getName() + " " +  mv.getId());
+//                var = "{\"name\":\"" +mv.getName()+ "\",\"description\":\"" + mv.getDescription() + "\",\"mapImageUrl\":\"" + mv.getMapImageUrl() +  "\",\"mapId\":\"" + mv.getMapId() + "\",\"id\":\"" + mv.getId() +  "\",\"contentId\":\"" + mv.getContentId() + "\"}";
+//                var = var + ",";
+//                var2 = var2.concat(var);
+//                if (iterations % 10 == 0){
+//                    TimeUnit.SECONDS.sleep(10);
+//                }
+//            }else{
+//                continue;
+//            }
+//        }
+//        Writer writer = new BufferedWriter(new OutputStreamWriter(
+//                new FileOutputStream(fileName), "utf-8"));
+//        var2 = var2.substring(0, var2.length() - 1);
+//        var2 = "[" + var2 + "]";
+//        writer.write(var2);
+//        writer.close();
     }
 
     public static void testPlayerMatches(Enum gameType) throws Exception
@@ -911,8 +969,7 @@ public class HaloApi {
         }
         TimeUnit.SECONDS.sleep(8);
         testBaseStats(gameType);
-//        System.out.println(favoriteMap(matches, maps));
-//        favoriteMap(matches, getMapVariant())
+        System.out.println(favoriteMapVariant());
     }
 
 }
