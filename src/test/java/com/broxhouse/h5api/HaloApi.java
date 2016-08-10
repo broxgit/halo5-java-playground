@@ -4,9 +4,7 @@ import com.broxhouse.h5api.models.metadata.*;
 import com.broxhouse.h5api.models.stats.common.MedalAward;
 import com.broxhouse.h5api.models.stats.common.WeaponStats;
 import com.broxhouse.h5api.models.stats.matches.Match;
-import com.broxhouse.h5api.models.stats.reports.BaseCarnageReport;
-import com.broxhouse.h5api.models.stats.reports.BaseStats;
-import com.broxhouse.h5api.models.stats.reports.SpartanRankedPlayerStats;
+import com.broxhouse.h5api.models.stats.reports.*;
 import com.broxhouse.h5api.models.stats.servicerecords.ArenaStat;
 import com.broxhouse.h5api.models.stats.servicerecords.BaseServiceRecordResult;
 import com.google.gson.Gson;
@@ -40,7 +38,7 @@ public class HaloApi {
 
 
 
-    private static final String PLAYER_UF = "That Noah Guy";
+    private static final String PLAYER_UF = "That Ax Guy";
     private static final String PLAYER = formatString(PLAYER_UF);
     private static final String TOKEN = "293bb4a86da743bdb983b97efa5bb265";
     private static final String BASE_URL = "https://www.haloapi.com/";
@@ -66,7 +64,7 @@ public class HaloApi {
 
     private static String api(String url) throws Exception
     {
-        System.out.println(url);
+//        System.out.println(url);
         HttpClient httpclient = HttpClients.createDefault();
         String getResponse;
 
@@ -100,10 +98,13 @@ public class HaloApi {
     public static void main(String[] args) throws Exception {
         try{
 //            testPlayerMatches(CUSTOM);
+//            cacheEnemyKills(CUSTOM);
 //            cachePlayerData(CUSTOM);
+//            killedByOponent(CUSTOM);
 //            cacheAllPlayerData();
             cacheGameCarnage(CUSTOM);
 //            testBaseStats(ARENA);
+//            postCustomGameCarnage("af5c2264-91d4-4056-a206-7c4111351d24");
 //            comparePlayers("That Brock Guy", "That Ax Guy");
         }catch (IOException e){
             e.printStackTrace();
@@ -215,7 +216,7 @@ public class HaloApi {
         String var = null;
         String fileName = getFileName(gameType, PLAYER_UF, "carnage");
         System.out.println(totalGames);
-        for (int i = 0; i < totalGames; i++) {
+        for (int i = 0; i < matches.length; i++) {
             if (gameType == ARENA)
                 obj = new JSONObject(postGameCarnage(matches[i].getId().getMatchId()));
             else if(gameType == CUSTOM)
@@ -460,9 +461,15 @@ public class HaloApi {
         return matches;
     }
 
-//    public static BaseCarnageReport[] getCarnageReport() throws Exception{
-//
-//    }
+    public static CarnageReport[] getCarnageReports(Enum gameType) throws Exception{
+        Gson gson = new Gson();
+        String fileName = getFileName(gameType, PLAYER_UF, "carnage");
+        BufferedReader br = new BufferedReader(new FileReader(fileName));
+        String carnageData = br.readLine();
+        br.close();
+        CarnageReport[] carnageReports = gson.fromJson(carnageData, CarnageReport[].class);
+        return carnageReports;
+    }
 
     public static Set<String> getResources(Enum gameType) throws Exception
     {
@@ -1182,6 +1189,66 @@ public class HaloApi {
         }
     }
 
+    public static String cacheEnemyKills(Enum gameType) throws Exception{
+        CarnageReport[] reports = getCarnageReports(gameType);
+        String fileName = getFileName(gameType, PLAYER_UF, "carnage");
+        String fileName2 = getFileName(gameType, PLAYER_UF, "enemyKills");
+        BufferedReader br = new BufferedReader(new FileReader(fileName));
+        br.close();
+        String var = null;
+        String var2 = "";
+        for (int i = 0; i < reports.length; i++){
+            List<PlayerStat> playerList = reports[i].getPlayerStats();
+            for(PlayerStat en : playerList){
+                if(en.getPlayer().getGamertag().equalsIgnoreCase(PLAYER_UF)){
+                    List<KilledByOpponentDetail> killedBy = en.getKilledByOpponentDetails();
+                    for(KilledByOpponentDetail kb: killedBy){
+                        var = "{\"GamerTag\":\"" + kb.getGamerTag() + "\",\"TotalKills\":" + kb.getTotalKills() + "}";
+                        var = var + ",";
+                        var2 = var2.concat(var);
+                    }
+                }
+            }
+        }
+//        System.out.println(var2.length());
+        var2 = var2.substring(0, var2.length() - 1);
+        var2 = "[" + var2 + "]";
+        Writer writer = new BufferedWriter(new OutputStreamWriter(
+                new FileOutputStream(fileName2), "utf-8"));
+        writer.write(var2);
+        writer.close();
+
+        return "";
+    }
+
+    public static String killedByOponent(Enum gameType) throws Exception{
+        Gson gson = new Gson();
+        String worstEnemy = null;
+        String fileName = getFileName(gameType, PLAYER_UF, "enemyKills");
+        BufferedReader br = new BufferedReader(new FileReader(fileName));
+        String var2 = br.readLine();
+        br.close();
+//        System.out.println(var2);
+        int totalKills = 0;
+        KilledByOpponentDetail[] enemies = gson.fromJson(var2, KilledByOpponentDetail[].class);
+        for (int i = 0; i < enemies.length; i++) {
+            for (int k = 0; k < enemies.length; k++) {
+//                System.out.println(enemies[i].getGamerTag());
+                if (enemies[i].getGamerTag().equalsIgnoreCase(enemies[k].getGamerTag())) {
+                    enemies[i].setKilledEnemyTotal(enemies[i].getKilledEnemyTotal() + enemies[k].getTotalKills());
+                }
+            }
+        }
+        for(int i = 0; i < enemies.length; i++){
+            if(enemies[i].getKilledEnemyTotal() > totalKills){
+                totalKills = enemies[i].getKilledEnemyTotal();
+                worstEnemy = enemies[i].getGamerTag();
+            }
+        }
+//        System.out.println("The enemy that has killed you the most is: " + worstEnemy + " with a total of " + totalKills + " kills in " + gameType.toString() + " games.");
+        return ("The enemy that has killed you the most is: " + worstEnemy + " with a total of " + totalKills + " kills in " + capitalize(gameType.toString().toLowerCase()) + " games.");
+    }
+
     public static void testPlayerMatches(Enum gameType) throws Exception
     {
         double totalGames = totalGames(gameType, PLAYER_UF);
@@ -1249,7 +1316,7 @@ public class HaloApi {
             mapName = getMapVariant(carnageReport.getMapVariantId()).getName();
         }else if(gameType == CUSTOM){
             mapName = getCustomMapName(carnageReport.getMapVariantId());
-        }else if(gameType == WARZONE){
+        }else if(gameType == WARZONE) {
             mapName = "Warzone Map";
         }
         System.out.println("Your best game was played on map: " + mapName);
@@ -1269,6 +1336,7 @@ public class HaloApi {
         TimeUnit.SECONDS.sleep(8);
         testBaseStats(gameType);
         System.out.println(favoriteMapVariant(gameType));
+        System.out.println(killedByOponent(gameType));
     }
 
 }
