@@ -38,7 +38,7 @@ public class HaloApi {
 
 
 
-    private static final String PLAYER_UF = "That Ax Guy";
+    private static final String PLAYER_UF = "That Brock Guy";
     private static final String PLAYER = formatString(PLAYER_UF);
     private static final String TOKEN = "293bb4a86da743bdb983b97efa5bb265";
     private static final String BASE_URL = "https://www.haloapi.com/";
@@ -97,12 +97,12 @@ public class HaloApi {
 
     public static void main(String[] args) throws Exception {
         try{
-            testPlayerMatches(CUSTOM);
+//            testPlayerMatches(CUSTOM);
 //            cacheEnemyKills(CUSTOM);
-//            cachePlayerData(CUSTOM);
+            cachePlayerData(CUSTOM);
 //            killedByOponent(CUSTOM);
 //            cacheAllPlayerData();
-//            cacheGameCarnage(CUSTOM);
+//            cacheGameCarnage(ARENA);
 //            testBaseStats(ARENA);
 //            postCustomGameCarnage("af5c2264-91d4-4056-a206-7c4111351d24");
 //            comparePlayers("That Brock Guy", "That Ax Guy");
@@ -216,15 +216,17 @@ public class HaloApi {
         String var = null;
         String fileName = getFileName(gameType, PLAYER_UF, "carnage");
         System.out.println(totalGames);
-        for (int i = 0; i < matches.length; i++) {
+        for (int i = 0; i < 5; i++) {
             if (gameType == ARENA)
                 obj = new JSONObject(postGameCarnage(matches[i].getId().getMatchId()));
             else if(gameType == CUSTOM)
                 obj = new JSONObject(postCustomGameCarnage(matches[i].getId().getMatchId()));
             var = obj.toString();
+//            System.out.println(var);
+            var = var + ",";
+//            System.out.println(var);
             var3 = var3.concat(var);
-            var3 = var3 + ",";
-            var3 = var3.concat(var);
+//            System.out.println(var3);
             if (i % 10 == 0) {
                 TimeUnit.SECONDS.sleep(10);
             }

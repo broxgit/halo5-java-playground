@@ -7,16 +7,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5fdac0ad-8c12-40e7-a786-d460f1f65048" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ax_carnage_custom.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ax_enemyKills_custom.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/brock_carnage_custom.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/brock_enemyKills_custom.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/that noah guy_carnage_custom.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/that noah guy_enemyKills_custom.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/test-classes/com/broxhouse/h5api/HaloApi.class" afterPath="$PROJECT_DIR$/target/test-classes/com/broxhouse/h5api/HaloApi.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/test-classes/com/broxhouse/h5api/gameType.class" afterPath="$PROJECT_DIR$/target/test-classes/com/broxhouse/h5api/gameType.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/broxhouse/h5api/models/stats/reports/TeamStat.java" afterPath="$PROJECT_DIR$/src/main/java/com/broxhouse/h5api/models/stats/reports/TeamStat.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/com/broxhouse/h5api/HaloApi.java" afterPath="$PROJECT_DIR$/src/test/java/com/broxhouse/h5api/HaloApi.java" />
     </list>
     <ignored path="HaloApp2.iws" />
@@ -166,11 +157,11 @@
       <file leaf-file-name="HaloApi.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/test/java/com/broxhouse/h5api/HaloApi.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="340">
-              <caret line="98" column="12" selection-start-line="98" selection-start-column="12" selection-end-line="98" selection-end-column="12" />
+            <state relative-caret-position="476">
+              <caret line="209" column="72" selection-start-line="209" selection-start-column="72" selection-end-line="209" selection-end-column="72" />
               <folding>
                 <element signature="method#api#0;class#HaloApi#0" expanded="false" />
-                <element signature="e#3283#3298#0" expanded="false" />
+                <element signature="e#3286#3301#0" expanded="false" />
                 <element signature="method#getFileName#0;class#HaloApi#0" expanded="false" />
                 <element signature="method#cachePlayerData#0;class#HaloApi#0" expanded="false" />
                 <element signature="method#cacheAllPlayerData#0;class#HaloApi#0" expanded="false" />
@@ -192,9 +183,9 @@
                 <element signature="method#getMedals#0;class#HaloApi#0" expanded="false" />
                 <element signature="method#getMaps#0;class#HaloApi#0" expanded="false" />
                 <element signature="method#getResources#0;class#HaloApi#0" expanded="false" />
-                <element signature="e#16884#16916#0" expanded="false" />
-                <element signature="e#17240#17272#0" expanded="false" />
-                <element signature="e#19309#19353#0" expanded="false" />
+                <element signature="e#16952#16984#0" expanded="false" />
+                <element signature="e#17308#17340#0" expanded="false" />
+                <element signature="e#19377#19421#0" expanded="false" />
                 <element signature="method#getMapVariant#0;class#HaloApi#0" expanded="false" />
                 <element signature="method#getCustomMapVariant#0;class#HaloApi#0" expanded="false" />
                 <element signature="method#getCachedCustMapVariants#0;class#HaloApi#0" expanded="false" />
@@ -209,10 +200,10 @@
                 <element signature="method#getPlayerStatsJSON#0;class#HaloApi#0" expanded="false" />
                 <element signature="method#getPlayerStatsJSON#1;class#HaloApi#0" expanded="false" />
                 <element signature="method#testMedalStats#0;class#HaloApi#0" expanded="false" />
-                <element signature="e#25076#25110#0" expanded="false" />
-                <element signature="e#25517#25519#0" expanded="false" />
-                <element signature="e#25786#25912#0" expanded="false" />
-                <element signature="e#26428#26605#0" expanded="false" />
+                <element signature="e#25144#25178#0" expanded="false" />
+                <element signature="e#25585#25587#0" expanded="false" />
+                <element signature="e#25854#25980#0" expanded="false" />
+                <element signature="e#26496#26673#0" expanded="false" />
                 <element signature="method#testPlayerStats#0;class#HaloApi#0" expanded="false" />
                 <element signature="method#totalGames#0;class#HaloApi#0" expanded="false" />
                 <element signature="method#totalGamesAll#0;class#HaloApi#0" expanded="false" />
@@ -221,20 +212,20 @@
                 <element signature="method#totalDeaths#0;class#HaloApi#0" expanded="false" />
                 <element signature="method#getKD#0;class#HaloApi#0" expanded="false" />
                 <element signature="method#testWeaponKills#0;class#HaloApi#0" expanded="false" />
-                <element signature="e#29930#30002#0" expanded="false" />
-                <element signature="e#32155#32196#0" expanded="false" />
+                <element signature="e#29998#30070#0" expanded="false" />
+                <element signature="e#32223#32264#0" expanded="false" />
                 <element signature="method#testBaseResults#0;class#HaloApi#0" expanded="false" />
                 <element signature="method#testActivePlaylists#0;class#HaloApi#0" expanded="false" />
-                <element signature="e#36194#36250#0" expanded="false" />
+                <element signature="e#36262#36318#0" expanded="false" />
                 <element signature="method#comparePlayers#0;class#HaloApi#0" expanded="false" />
                 <element signature="method#favoriteMap#0;class#HaloApi#0" expanded="false" />
-                <element signature="e#42794#42899#0" expanded="false" />
+                <element signature="e#42862#42967#0" expanded="false" />
                 <element signature="method#favoriteMapVariant#0;class#HaloApi#0" expanded="false" />
                 <element signature="method#favoriteCustomMapVariant#0;class#HaloApi#0" expanded="false" />
-                <marker date="1470865763383" expanded="false" signature="37:301" ph="..." />
-                <marker date="1470865763383" expanded="false" signature="1351:2887" ph="..." />
-                <marker date="1470865763383" expanded="false" signature="14004:16086" ph="..." />
-                <marker date="1470865763383" expanded="true" signature="53320:55214" ph="..." />
+                <marker date="1470866464505" expanded="false" signature="37:301" ph="..." />
+                <marker date="1470866464505" expanded="false" signature="1354:2890" ph="..." />
+                <marker date="1470866464505" expanded="false" signature="14072:16154" ph="..." />
+                <marker date="1470866464505" expanded="true" signature="53388:55282" ph="..." />
               </folding>
             </state>
           </provider>
@@ -1306,7 +1297,14 @@
       <option name="project" value="LOCAL" />
       <updated>1470863874115</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="caching data">
+      <created>1470865843024</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1470865843024</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -1353,7 +1351,7 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3336887" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32907662" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="WINDOWED" visible="true" show_stripe_button="true" weight="1.0" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" x="161" y="25" width="1616" height="1176" />
+      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="WINDOWED" visible="true" show_stripe_button="true" weight="1.0" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" x="161" y="25" width="1616" height="1176" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -1904,11 +1902,11 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/com/broxhouse/h5api/HaloApi.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="98" column="12" selection-start-line="98" selection-start-column="12" selection-end-line="98" selection-end-column="12" />
+        <state relative-caret-position="476">
+          <caret line="209" column="72" selection-start-line="209" selection-start-column="72" selection-end-line="209" selection-end-column="72" />
           <folding>
             <element signature="method#api#0;class#HaloApi#0" expanded="false" />
-            <element signature="e#3283#3298#0" expanded="false" />
+            <element signature="e#3286#3301#0" expanded="false" />
             <element signature="method#getFileName#0;class#HaloApi#0" expanded="false" />
             <element signature="method#cachePlayerData#0;class#HaloApi#0" expanded="false" />
             <element signature="method#cacheAllPlayerData#0;class#HaloApi#0" expanded="false" />
@@ -1930,9 +1928,9 @@
             <element signature="method#getMedals#0;class#HaloApi#0" expanded="false" />
             <element signature="method#getMaps#0;class#HaloApi#0" expanded="false" />
             <element signature="method#getResources#0;class#HaloApi#0" expanded="false" />
-            <element signature="e#16884#16916#0" expanded="false" />
-            <element signature="e#17240#17272#0" expanded="false" />
-            <element signature="e#19309#19353#0" expanded="false" />
+            <element signature="e#16952#16984#0" expanded="false" />
+            <element signature="e#17308#17340#0" expanded="false" />
+            <element signature="e#19377#19421#0" expanded="false" />
             <element signature="method#getMapVariant#0;class#HaloApi#0" expanded="false" />
             <element signature="method#getCustomMapVariant#0;class#HaloApi#0" expanded="false" />
             <element signature="method#getCachedCustMapVariants#0;class#HaloApi#0" expanded="false" />
@@ -1947,10 +1945,10 @@
             <element signature="method#getPlayerStatsJSON#0;class#HaloApi#0" expanded="false" />
             <element signature="method#getPlayerStatsJSON#1;class#HaloApi#0" expanded="false" />
             <element signature="method#testMedalStats#0;class#HaloApi#0" expanded="false" />
-            <element signature="e#25076#25110#0" expanded="false" />
-            <element signature="e#25517#25519#0" expanded="false" />
-            <element signature="e#25786#25912#0" expanded="false" />
-            <element signature="e#26428#26605#0" expanded="false" />
+            <element signature="e#25144#25178#0" expanded="false" />
+            <element signature="e#25585#25587#0" expanded="false" />
+            <element signature="e#25854#25980#0" expanded="false" />
+            <element signature="e#26496#26673#0" expanded="false" />
             <element signature="method#testPlayerStats#0;class#HaloApi#0" expanded="false" />
             <element signature="method#totalGames#0;class#HaloApi#0" expanded="false" />
             <element signature="method#totalGamesAll#0;class#HaloApi#0" expanded="false" />
@@ -1959,20 +1957,20 @@
             <element signature="method#totalDeaths#0;class#HaloApi#0" expanded="false" />
             <element signature="method#getKD#0;class#HaloApi#0" expanded="false" />
             <element signature="method#testWeaponKills#0;class#HaloApi#0" expanded="false" />
-            <element signature="e#29930#30002#0" expanded="false" />
-            <element signature="e#32155#32196#0" expanded="false" />
+            <element signature="e#29998#30070#0" expanded="false" />
+            <element signature="e#32223#32264#0" expanded="false" />
             <element signature="method#testBaseResults#0;class#HaloApi#0" expanded="false" />
             <element signature="method#testActivePlaylists#0;class#HaloApi#0" expanded="false" />
-            <element signature="e#36194#36250#0" expanded="false" />
+            <element signature="e#36262#36318#0" expanded="false" />
             <element signature="method#comparePlayers#0;class#HaloApi#0" expanded="false" />
             <element signature="method#favoriteMap#0;class#HaloApi#0" expanded="false" />
-            <element signature="e#42794#42899#0" expanded="false" />
+            <element signature="e#42862#42967#0" expanded="false" />
             <element signature="method#favoriteMapVariant#0;class#HaloApi#0" expanded="false" />
             <element signature="method#favoriteCustomMapVariant#0;class#HaloApi#0" expanded="false" />
-            <marker date="1470865763383" expanded="false" signature="37:301" ph="..." />
-            <marker date="1470865763383" expanded="false" signature="1351:2887" ph="..." />
-            <marker date="1470865763383" expanded="false" signature="14004:16086" ph="..." />
-            <marker date="1470865763383" expanded="true" signature="53320:55214" ph="..." />
+            <marker date="1470866464505" expanded="false" signature="37:301" ph="..." />
+            <marker date="1470866464505" expanded="false" signature="1354:2890" ph="..." />
+            <marker date="1470866464505" expanded="false" signature="14072:16154" ph="..." />
+            <marker date="1470866464505" expanded="true" signature="53388:55282" ph="..." />
           </folding>
         </state>
       </provider>
