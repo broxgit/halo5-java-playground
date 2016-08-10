@@ -6,28 +6,8 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5fdac0ad-8c12-40e7-a786-d460f1f65048" name="Default" comment="caching data">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/artifacts/HaloApp2_jar.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ax_mapvars2_custom.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ax_mapvars_custom.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ax_matches_custom.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/brock_mapvars2_custom.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/brock_mapvars_custom.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/brock_matches_custom.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/maps_metadata.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/medals_metadata.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/META-INF/MANIFEST.MF" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/trev_mapvars2_custom.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/trev_mapvars_custom.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/trev_matches_custom.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/weapons_metadata.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/broxhouse/h5api/models/metadata/MapVariant.class" afterPath="$PROJECT_DIR$/target/classes/com/broxhouse/h5api/models/metadata/MapVariant.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/test-classes/com/broxhouse/h5api/HaloApi.class" afterPath="$PROJECT_DIR$/target/test-classes/com/broxhouse/h5api/HaloApi.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/test-classes/com/broxhouse/h5api/gameType.class" afterPath="$PROJECT_DIR$/target/test-classes/com/broxhouse/h5api/gameType.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/org_json_json_20160807.xml" afterPath="$PROJECT_DIR$/.idea/libraries/org_json_json_20160807.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/modules.xml" afterPath="$PROJECT_DIR$/.idea/modules.xml" />
+    <list default="true" id="5fdac0ad-8c12-40e7-a786-d460f1f65048" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/com/broxhouse/h5api/HaloApi.java" afterPath="$PROJECT_DIR$/src/test/java/com/broxhouse/h5api/HaloApi.java" />
     </list>
     <ignored path="HaloApp2.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -1106,7 +1086,14 @@
       <option name="project" value="LOCAL" />
       <updated>1470779937993</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="caching data">
+      <created>1470856236614</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1470856236614</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -1143,7 +1130,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1176" extended-state="6" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -1153,7 +1140,7 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3336887" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32907662" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="WINDOWED" visible="true" show_stripe_button="true" weight="1.0" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" x="-8" y="-8" width="1936" height="1176" />
+      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="WINDOWED" visible="true" show_stripe_button="true" weight="1.0" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" x="-8" y="-8" width="1936" height="1176" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
