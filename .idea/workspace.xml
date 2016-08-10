@@ -7,18 +7,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5fdac0ad-8c12-40e7-a786-d460f1f65048" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/broxhouse/h5api/models/stats/reports/CarnageReport.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/broxhouse/h5api/models/stats/reports/GameVariantResourceId.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/broxhouse/h5api/models/stats/reports/KilledByOpponentDetail.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/broxhouse/h5api/models/stats/reports/KilledOpponentDetail.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/broxhouse/h5api/models/stats/reports/MapVariantResourceId.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/broxhouse/h5api/models/stats/reports/PlayerStat.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/broxhouse/h5api/models/stats/reports/TeamStat.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/test-classes/com/broxhouse/h5api/HaloApi$1.class" afterPath="$PROJECT_DIR$/target/test-classes/com/broxhouse/h5api/HaloApi$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/test-classes/com/broxhouse/h5api/HaloApi$2.class" afterPath="$PROJECT_DIR$/target/test-classes/com/broxhouse/h5api/HaloApi$2.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/test-classes/com/broxhouse/h5api/HaloApi$3.class" afterPath="$PROJECT_DIR$/target/test-classes/com/broxhouse/h5api/HaloApi$3.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ax_carnage_custom.txt" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ax_enemyKills_custom.txt" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/brock_carnage_custom.txt" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/brock_enemyKills_custom.txt" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/that noah guy_carnage_custom.txt" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/that noah guy_enemyKills_custom.txt" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/test-classes/com/broxhouse/h5api/HaloApi.class" afterPath="$PROJECT_DIR$/target/test-classes/com/broxhouse/h5api/HaloApi.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/test-classes/com/broxhouse/h5api/gameType.class" afterPath="$PROJECT_DIR$/target/test-classes/com/broxhouse/h5api/gameType.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/broxhouse/h5api/models/stats/reports/TeamStat.java" afterPath="$PROJECT_DIR$/src/main/java/com/broxhouse/h5api/models/stats/reports/TeamStat.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/com/broxhouse/h5api/HaloApi.java" afterPath="$PROJECT_DIR$/src/test/java/com/broxhouse/h5api/HaloApi.java" />
     </list>
     <ignored path="HaloApp2.iws" />
@@ -168,8 +166,8 @@
       <file leaf-file-name="HaloApi.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/test/java/com/broxhouse/h5api/HaloApi.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="5508">
-              <caret line="1223" column="72" selection-start-line="1223" selection-start-column="72" selection-end-line="1223" selection-end-column="72" />
+            <state relative-caret-position="340">
+              <caret line="98" column="12" selection-start-line="98" selection-start-column="12" selection-end-line="98" selection-end-column="12" />
               <folding>
                 <element signature="method#api#0;class#HaloApi#0" expanded="false" />
                 <element signature="e#3283#3298#0" expanded="false" />
@@ -193,7 +191,6 @@
                 <element signature="method#testJSONMedals#0;class#HaloApi#0" expanded="false" />
                 <element signature="method#getMedals#0;class#HaloApi#0" expanded="false" />
                 <element signature="method#getMaps#0;class#HaloApi#0" expanded="false" />
-                <element signature="method#getMatches#0;class#HaloApi#0" expanded="false" />
                 <element signature="method#getResources#0;class#HaloApi#0" expanded="false" />
                 <element signature="e#16884#16916#0" expanded="false" />
                 <element signature="e#17240#17272#0" expanded="false" />
@@ -234,11 +231,31 @@
                 <element signature="e#42794#42899#0" expanded="false" />
                 <element signature="method#favoriteMapVariant#0;class#HaloApi#0" expanded="false" />
                 <element signature="method#favoriteCustomMapVariant#0;class#HaloApi#0" expanded="false" />
-                <element signature="method#killedByOponent#0;class#HaloApi#0" expanded="false" />
-                <marker date="1470863201084" expanded="false" signature="37:301" ph="..." />
-                <marker date="1470863201084" expanded="false" signature="1351:2887" ph="..." />
-                <marker date="1470863201084" expanded="false" signature="53320:54983" ph="..." />
+                <marker date="1470865763383" expanded="false" signature="37:301" ph="..." />
+                <marker date="1470865763383" expanded="false" signature="1351:2887" ph="..." />
+                <marker date="1470865763383" expanded="false" signature="14004:16086" ph="..." />
+                <marker date="1470865763383" expanded="true" signature="53320:55214" ph="..." />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="brock_carnage_custom.txt" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/brock_carnage_custom.txt">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="292">
+              <caret line="0" column="1163526" selection-start-line="0" selection-start-column="1163526" selection-end-line="0" selection-end-column="1163526" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ax_carnage_custom.txt" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/ax_carnage_custom.txt">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="311">
+              <caret line="0" column="3148843" selection-start-line="0" selection-start-column="3148843" selection-end-line="0" selection-end-column="3148843" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -256,8 +273,8 @@
       <file leaf-file-name="TeamStat.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/broxhouse/h5api/models/stats/reports/TeamStat.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="836">
-              <caret line="77" column="0" selection-start-line="77" selection-start-column="0" selection-end-line="77" selection-end-column="0" />
+            <state relative-caret-position="445">
+              <caret line="46" column="17" selection-start-line="46" selection-start-column="17" selection-end-line="46" selection-end-column="17" />
               <folding />
             </state>
           </provider>
@@ -338,8 +355,8 @@
       <file leaf-file-name="PlayerStat.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/broxhouse/h5api/models/stats/reports/PlayerStat.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="17">
-              <caret line="1" column="11" selection-start-line="1" selection-start-column="11" selection-end-line="1" selection-end-column="11" />
+            <state relative-caret-position="354">
+              <caret line="58" column="11" selection-start-line="58" selection-start-column="11" selection-end-line="58" selection-end-column="11" />
               <folding>
                 <element signature="e#943#965#0" expanded="true" />
                 <element signature="e#1108#1132#0" expanded="true" />
@@ -391,8 +408,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/com/broxhouse/h5api/models/stats/reports/CampaignCarnageReport.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/broxhouse/h5api/models/stats/reports/CampaignPlayerStats.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/broxhouse/h5api/models/stats/reports/Resource.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/broxhouse/h5api/models/stats/reports/SpartanRankedPlayerStats.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/broxhouse/h5api/models/stats/reports/Team.java" />
@@ -438,9 +453,11 @@
         <option value="$PROJECT_DIR$/ax_mapvars_custom.txt" />
         <option value="$PROJECT_DIR$/src/main/java/com/broxhouse/h5api/models/stats/reports/CarnageReport.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/broxhouse/h5api/models/stats/reports/PlayerStat.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/broxhouse/h5api/models/stats/reports/TeamStat.java" />
         <option value="$PROJECT_DIR$/that noah guy_carnage_custom.txt" />
         <option value="$PROJECT_DIR$/src/main/java/com/broxhouse/h5api/models/stats/reports/KilledByOpponentDetail.java" />
+        <option value="$PROJECT_DIR$/ax_carnage_custom.txt" />
+        <option value="$PROJECT_DIR$/src/main/java/com/broxhouse/h5api/models/stats/reports/TeamStat.java" />
+        <option value="$PROJECT_DIR$/brock_carnage_custom.txt" />
         <option value="$PROJECT_DIR$/src/test/java/com/broxhouse/h5api/HaloApi.java" />
       </list>
     </option>
@@ -1282,7 +1299,14 @@
       <option name="project" value="LOCAL" />
       <updated>1470856236614</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="caching data">
+      <created>1470863874115</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1470863874115</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -1366,7 +1390,7 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="22" />
+      <option name="time" value="23" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -1375,31 +1399,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/broxhouse/h5api/models/stats/common/WeaponStats.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="581">
-          <caret line="54" column="15" selection-start-line="54" selection-start-column="15" selection-end-line="54" selection-end-column="15" />
-          <folding>
-            <element signature="e#1207#1208#0" expanded="false" />
-            <element signature="e#1238#1239#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/broxhouse/h5api/models/stats/common/MedalAward.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_92/src.zip!/java/text/SimpleDateFormat.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="329">
-          <caret line="554" column="11" selection-start-line="554" selection-start-column="11" selection-end-line="554" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$MAVEN_REPOSITORY$/org/apache/commons/commons-lang3/3.0/commons-lang3-3.0.jar!/org/apache/commons/lang3/time/DurationFormatUtils.class">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-997">
@@ -1765,28 +1764,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/broxhouse/h5api/models/stats/reports/PlayerStat.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="1" column="11" selection-start-line="1" selection-start-column="11" selection-end-line="1" selection-end-column="11" />
-          <folding>
-            <element signature="e#943#965#0" expanded="true" />
-            <element signature="e#1108#1132#0" expanded="true" />
-            <element signature="e#4456#4468#0" expanded="true" />
-            <element signature="e#4817#4829#0" expanded="true" />
-            <element signature="e#4927#4936#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/broxhouse/h5api/models/stats/reports/TeamStat.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="836">
-          <caret line="77" column="0" selection-start-line="77" selection-start-column="0" selection-end-line="77" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/stu_matches.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-136429">
@@ -1871,6 +1848,36 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/broxhouse/h5api/models/stats/reports/PlayerStat.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="354">
+          <caret line="58" column="11" selection-start-line="58" selection-start-column="11" selection-end-line="58" selection-end-column="11" />
+          <folding>
+            <element signature="e#943#965#0" expanded="true" />
+            <element signature="e#1108#1132#0" expanded="true" />
+            <element signature="e#4456#4468#0" expanded="true" />
+            <element signature="e#4817#4829#0" expanded="true" />
+            <element signature="e#4927#4936#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ax_enemyKills_custom.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/broxhouse/h5api/models/stats/reports/TeamStat.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="445">
+          <caret line="46" column="17" selection-start-line="46" selection-start-column="17" selection-end-line="46" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/that noah guy_enemyKills_custom.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -1879,10 +1886,26 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/ax_carnage_custom.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="311">
+          <caret line="0" column="3148843" selection-start-line="0" selection-start-column="3148843" selection-end-line="0" selection-end-column="3148843" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/brock_carnage_custom.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="292">
+          <caret line="0" column="1163526" selection-start-line="0" selection-start-column="1163526" selection-end-line="0" selection-end-column="1163526" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/com/broxhouse/h5api/HaloApi.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="5508">
-          <caret line="1223" column="72" selection-start-line="1223" selection-start-column="72" selection-end-line="1223" selection-end-column="72" />
+        <state relative-caret-position="340">
+          <caret line="98" column="12" selection-start-line="98" selection-start-column="12" selection-end-line="98" selection-end-column="12" />
           <folding>
             <element signature="method#api#0;class#HaloApi#0" expanded="false" />
             <element signature="e#3283#3298#0" expanded="false" />
@@ -1906,7 +1929,6 @@
             <element signature="method#testJSONMedals#0;class#HaloApi#0" expanded="false" />
             <element signature="method#getMedals#0;class#HaloApi#0" expanded="false" />
             <element signature="method#getMaps#0;class#HaloApi#0" expanded="false" />
-            <element signature="method#getMatches#0;class#HaloApi#0" expanded="false" />
             <element signature="method#getResources#0;class#HaloApi#0" expanded="false" />
             <element signature="e#16884#16916#0" expanded="false" />
             <element signature="e#17240#17272#0" expanded="false" />
@@ -1947,10 +1969,10 @@
             <element signature="e#42794#42899#0" expanded="false" />
             <element signature="method#favoriteMapVariant#0;class#HaloApi#0" expanded="false" />
             <element signature="method#favoriteCustomMapVariant#0;class#HaloApi#0" expanded="false" />
-            <element signature="method#killedByOponent#0;class#HaloApi#0" expanded="false" />
-            <marker date="1470863201084" expanded="false" signature="37:301" ph="..." />
-            <marker date="1470863201084" expanded="false" signature="1351:2887" ph="..." />
-            <marker date="1470863201084" expanded="false" signature="53320:54983" ph="..." />
+            <marker date="1470865763383" expanded="false" signature="37:301" ph="..." />
+            <marker date="1470865763383" expanded="false" signature="1351:2887" ph="..." />
+            <marker date="1470865763383" expanded="false" signature="14004:16086" ph="..." />
+            <marker date="1470865763383" expanded="true" signature="53320:55214" ph="..." />
           </folding>
         </state>
       </provider>

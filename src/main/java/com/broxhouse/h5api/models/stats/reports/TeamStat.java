@@ -15,7 +15,7 @@ public class TeamStat {
     private Integer teamId;
     @SerializedName("Score")
     @Expose
-    private Integer score;
+    private double score;
     @SerializedName("Rank")
     @Expose
     private Integer rank;
@@ -44,7 +44,7 @@ public class TeamStat {
      * @return
      *     The score
      */
-    public Integer getScore() {
+    public double getScore() {
         return score;
     }
 

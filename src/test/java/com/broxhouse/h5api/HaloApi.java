@@ -97,12 +97,12 @@ public class HaloApi {
 
     public static void main(String[] args) throws Exception {
         try{
-//            testPlayerMatches(CUSTOM);
+            testPlayerMatches(CUSTOM);
 //            cacheEnemyKills(CUSTOM);
 //            cachePlayerData(CUSTOM);
 //            killedByOponent(CUSTOM);
 //            cacheAllPlayerData();
-            cacheGameCarnage(CUSTOM);
+//            cacheGameCarnage(CUSTOM);
 //            testBaseStats(ARENA);
 //            postCustomGameCarnage("af5c2264-91d4-4056-a206-7c4111351d24");
 //            comparePlayers("That Brock Guy", "That Ax Guy");
@@ -1260,6 +1260,7 @@ public class HaloApi {
         double bestTotalKills = 0;
         double bestTotalDeaths = 0;
         int matchesDNF = 0;
+        int m = 0;
         String bestMatchID = null;
         BaseStats stats = getBaseStats(gameType, PLAYER_UF);
         int positiveCount = 0;
@@ -1268,12 +1269,16 @@ public class HaloApi {
         for (int i = 0; i < matches.length; i++){
             double totalKills = matches[i].getPlayers().get(0).getTotalKills();
             double totalDeaths = matches[i].getPlayers().get(0).getTotalDeaths();
+
+//            System.out.println("Total Kills: " + totalKills + " Total Deaths: " + totalDeaths + " " + m);
             double currentKD = 0;
             if (totalDeaths == 0){
                 totalDeaths = 1;
-                currentKD = totalKills / totalDeaths;
+                currentKD = (totalKills / totalDeaths);
                 totalDeaths = 0;
             }
+            else{currentKD = (totalKills/totalDeaths);}
+//            System.out.println(currentKD);
             if (matches[i].getPlayers().get(0).getResult() == 0){
                 matchesDNF++;
             }
