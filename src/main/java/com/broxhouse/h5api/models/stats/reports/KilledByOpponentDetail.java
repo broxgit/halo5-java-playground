@@ -15,6 +15,12 @@ public class KilledByOpponentDetail {
     @Expose
     private Integer totalKills;
     private int killedEnemyTotal = 0;
+    private int totalTimesPlayedAgainst = 0;
+
+    public KilledByOpponentDetail(String name, Integer totalKills){
+        this.totalKills = totalKills;
+        this.gamerTag = name;
+    }
 
     /**
      * 
@@ -45,6 +51,8 @@ public class KilledByOpponentDetail {
 
     public int getKilledEnemyTotal(){return killedEnemyTotal;}
 
+    public int getTotalTimesPlayedAgainst(){return totalTimesPlayedAgainst;}
+
     /**
      * 
      * @param totalKills
@@ -53,6 +61,8 @@ public class KilledByOpponentDetail {
     public void setTotalKills(Integer totalKills) {
         this.totalKills = totalKills;
     }
+
+    public void setTotalTimesPlayedAgainst(int timesPlayed){this.totalTimesPlayedAgainst = timesPlayed;}
 
     public void setKilledEnemyTotal(int totalKills){this.killedEnemyTotal = totalKills;}
 
