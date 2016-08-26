@@ -20,6 +20,8 @@ public class MapVariantResourceId {
     @SerializedName("Owner")
     @Expose
     private String owner;
+    @SerializedName("Name")
+    private String name;
 
     /**
      * 
@@ -84,6 +86,8 @@ public class MapVariantResourceId {
         return owner;
     }
 
+    public String getName(){return name;}
+
     /**
      * 
      * @param owner
@@ -92,5 +96,7 @@ public class MapVariantResourceId {
     public void setOwner(String owner) {
         this.owner = owner;
     }
+
+    public void setName(String name){this.name = name;}
 
 }

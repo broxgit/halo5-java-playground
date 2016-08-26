@@ -9,34 +9,24 @@ import com.google.gson.annotations.SerializedName;
 public class CustomMapVariant {
 
     @SerializedName("BaseMap")
-    @Expose
     private BaseMap baseMap;
     @SerializedName("Name")
-    @Expose
     private String name;
     @SerializedName("Description")
-    @Expose
     private String description;
     @SerializedName("AccessControl")
-    @Expose
     private Integer accessControl;
     @SerializedName("Links")
-    @Expose
     private Links links;
     @SerializedName("CreationTimeUtc")
-    @Expose
     private CreationTimeUtc creationTimeUtc;
     @SerializedName("LastModifiedTimeUtc")
-    @Expose
     private LastModifiedTimeUtc lastModifiedTimeUtc;
     @SerializedName("Banned")
-    @Expose
     private Boolean banned;
     @SerializedName("Identity")
-    @Expose
     private Identity identity;
     @SerializedName("Stats")
-    @Expose
     private Stats stats;
     private int count = 0;
 
