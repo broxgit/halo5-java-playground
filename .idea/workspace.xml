@@ -7,60 +7,22 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5fdac0ad-8c12-40e7-a786-d460f1f65048" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ax_carnage_arena.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ax_enemyKills_arena.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ax_mapAllData_arena.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ax_mapAllData_custom.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ax_mapNames_arena.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ax_mapSimpleData_custom.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ax_matches_arena.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ax_matches_warzone.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/brock_mapAllData_arena.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/brock_mapAllData_custom.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/brock_mapNames_arena.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/brock_mapSimpleData_custom.txt" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/ax_mapvars2.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/ax_mapvars2_custom.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/ax_mapvars_custom.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/ax_matches.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/brock_mapvars2.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/brock_mapvars2_arena.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/brock_mapvars2_custom.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/brock_mapvars_arena.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/brock_mapvars_custom.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/erin_mapvars_arena.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/erin_matches_arena.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stu_mapvars.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stu_mapvars2.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/that noah guy_mapvars2_custom.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/that noah guy_mapvars_custom.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/that noah guy_matches_custom.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/trev_mapvars.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/trev_mapvars2.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/trev_mapvars2_custom.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/trev_mapvars_custom.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/trev_matches.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/trev_matches_custom.txt" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/broxhouse/h5api/models/metadata/CustomMapVariant.class" afterPath="$PROJECT_DIR$/target/classes/com/broxhouse/h5api/models/metadata/CustomMapVariant.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/test-classes/com/broxhouse/h5api/HaloApi$1.class" afterPath="$PROJECT_DIR$/target/test-classes/com/broxhouse/h5api/HaloApi$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/test-classes/com/broxhouse/h5api/HaloApi$2.class" afterPath="$PROJECT_DIR$/target/test-classes/com/broxhouse/h5api/HaloApi$2.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/test-classes/com/broxhouse/h5api/HaloApi$3.class" afterPath="$PROJECT_DIR$/target/test-classes/com/broxhouse/h5api/HaloApi$3.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/stu_mapAllData_arena.txt" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/stu_mapSimpleData_arena.txt" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/stu_mapSimpleData_custom.txt" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/stu_matches_arena.txt" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/stu_matches_custom.txt" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/trev_carnage_arena.txt" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/trev_carnage_custom.txt" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/trev_enemyKills_custom.txt" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/trev_mapAllData_arena.txt" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/trev_mapAllData_custom.txt" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/trev_mapSimpleData_arena.txt" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/trev_mapSimpleData_custom.txt" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/test-classes/com/broxhouse/h5api/HaloApi.class" afterPath="$PROJECT_DIR$/target/test-classes/com/broxhouse/h5api/HaloApi.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/test-classes/com/broxhouse/h5api/gameType.class" afterPath="$PROJECT_DIR$/target/test-classes/com/broxhouse/h5api/gameType.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ax_carnage_custom.txt" afterPath="$PROJECT_DIR$/ax_carnage_custom.txt" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ax_enemyKills_custom.txt" afterPath="$PROJECT_DIR$/ax_enemyKills_custom.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ax_matches_custom.txt" afterPath="$PROJECT_DIR$/ax_matches_custom.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/brock_carnage_arena.txt" afterPath="$PROJECT_DIR$/brock_carnage_arena.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/brock_carnage_custom.txt" afterPath="$PROJECT_DIR$/brock_carnage_custom.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/brock_enemyKills_custom.txt" afterPath="$PROJECT_DIR$/brock_enemyKills_custom.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/brock_matches_custom.txt" afterPath="$PROJECT_DIR$/brock_matches_custom.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/broxhouse/h5api/models/metadata/CustomMapVariant.java" afterPath="$PROJECT_DIR$/src/main/java/com/broxhouse/h5api/models/metadata/CustomMapVariant.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/broxhouse/h5api/models/stats/reports/MapVariantResourceId.java" afterPath="$PROJECT_DIR$/src/main/java/com/broxhouse/h5api/models/stats/reports/MapVariantResourceId.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/com/broxhouse/h5api/HaloApi.java" afterPath="$PROJECT_DIR$/src/test/java/com/broxhouse/h5api/HaloApi.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/ax_mapvars.txt" afterPath="$PROJECT_DIR$/ax_mapSimpleData_arena.txt" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/brock_mapvars.txt" afterPath="$PROJECT_DIR$/brock_mapSimpleData_arena.txt" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/brock_matches.txt" afterPath="$PROJECT_DIR$/brock_matches_arena.txt" />
     </list>
     <ignored path="HaloApp2.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -116,8 +78,8 @@
       <file leaf-file-name="HaloApi.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/test/java/com/broxhouse/h5api/HaloApi.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="459">
-              <caret line="105" column="28" selection-start-line="105" selection-start-column="28" selection-end-line="105" selection-end-column="28" />
+            <state relative-caret-position="324">
+              <caret line="106" column="38" selection-start-line="106" selection-start-column="38" selection-end-line="106" selection-end-column="38" />
               <folding>
                 <element signature="method#api#0;class#HaloApi#0" expanded="false" />
                 <element signature="e#3483#3498#0" expanded="false" />
@@ -125,12 +87,12 @@
                 <element signature="method#getFileName#1;class#HaloApi#0" expanded="false" />
                 <element signature="method#cachePlayerData#0;class#HaloApi#0" expanded="false" />
                 <element signature="method#cacheAllPlayerData#0;class#HaloApi#0" expanded="false" />
-                <element signature="e#11783#11830#0" expanded="false" />
+                <element signature="e#11782#11829#0" expanded="false" />
                 <element signature="method#cacheMetaData#0;class#HaloApi#0" expanded="false" />
                 <element signature="method#formatString#0;class#HaloApi#0" expanded="false" />
-                <element signature="e#13847#13848#0" expanded="true" />
+                <element signature="e#13846#13847#0" expanded="true" />
                 <element signature="method#capitalize#0;class#HaloApi#0" expanded="false" />
-                <element signature="e#13927#13928#0" expanded="true" />
+                <element signature="e#13926#13927#0" expanded="true" />
                 <element signature="method#playerMatches#0;class#HaloApi#0" expanded="false" />
                 <element signature="method#warzoneMatches#0;class#HaloApi#0" expanded="false" />
                 <element signature="method#customMatches#0;class#HaloApi#0" expanded="false" />
@@ -144,11 +106,12 @@
                 <element signature="method#getMedals#0;class#HaloApi#0" expanded="false" />
                 <element signature="method#getMaps#0;class#HaloApi#0" expanded="false" />
                 <element signature="method#getWeapons#0;class#HaloApi#0" expanded="false" />
-                <element signature="e#21082#21114#0" expanded="false" />
+                <element signature="method#getMatches#0;class#HaloApi#0" expanded="false" />
+                <element signature="e#21081#21113#0" expanded="false" />
                 <element signature="method#getCarnageReports#0;class#HaloApi#0" expanded="false" />
                 <element signature="method#getResources#0;class#HaloApi#0" expanded="false" />
-                <element signature="e#24401#24433#0" expanded="false" />
-                <element signature="e#24757#24789#0" expanded="false" />
+                <element signature="e#24400#24432#0" expanded="false" />
+                <element signature="e#24756#24788#0" expanded="false" />
                 <element signature="method#getMapVariant#0;class#HaloApi#0" expanded="false" />
                 <element signature="method#getMapOwner#0;class#HaloApi#0" expanded="false" />
                 <element signature="method#getMedalName#0;class#HaloApi#0" expanded="false" />
@@ -169,7 +132,7 @@
                 <element signature="method#totalDeaths#0;class#HaloApi#0" expanded="false" />
                 <element signature="method#getKD#0;class#HaloApi#0" expanded="false" />
                 <element signature="method#testWeaponKills#0;class#HaloApi#0" expanded="false" />
-                <element signature="e#36966#37038#0" expanded="false" />
+                <element signature="e#36965#37037#0" expanded="false" />
                 <element signature="method#testBaseStats#0;class#HaloApi#0" expanded="false" />
                 <element signature="method#testBaseResults#0;class#HaloApi#0" expanded="false" />
                 <element signature="method#testActivePlaylists#0;class#HaloApi#0" expanded="false" />
@@ -177,12 +140,12 @@
                 <element signature="method#favoriteMap#0;class#HaloApi#0" expanded="false" />
                 <element signature="method#favoriteMapVariant#0;class#HaloApi#0" expanded="false" />
                 <element signature="method#favoriteCustomMapVariant#0;class#HaloApi#0" expanded="false" />
-                <element signature="e#58731#58778#0" expanded="false" />
-                <element signature="e#58731#58778#0" expanded="false" />
-                <element signature="e#59022#59108#0" expanded="false" />
-                <element signature="e#59979#60043#0" expanded="false" />
-                <marker date="1472249075280" expanded="false" signature="1337:2715" ph="..." />
-                <marker date="1472249075280" expanded="true" signature="49211:51107" ph="..." />
+                <element signature="e#58733#58780#0" expanded="false" />
+                <element signature="e#58733#58780#0" expanded="false" />
+                <element signature="e#59024#59110#0" expanded="false" />
+                <element signature="e#59981#60045#0" expanded="false" />
+                <marker date="1472249275916" expanded="false" signature="1337:2715" ph="..." />
+                <marker date="1472249275916" expanded="true" signature="49210:51106" ph="..." />
               </folding>
             </state>
           </provider>
@@ -191,7 +154,7 @@
       <file leaf-file-name="ax_enemyKills_custom.txt" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/ax_enemyKills_custom.txt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
+            <state relative-caret-position="17">
               <caret line="0" column="258" selection-start-line="0" selection-start-column="258" selection-end-line="0" selection-end-column="258" />
               <folding />
             </state>
@@ -943,7 +906,14 @@
       <option name="project" value="LOCAL" />
       <updated>1470897856095</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="caching data">
+      <created>1472249161072</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1472249161072</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -1039,13 +1009,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/broxhouse/h5api/models/stats/matches/Page.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="612">
-          <caret line="38" column="15" selection-start-line="38" selection-start-column="15" selection-end-line="38" selection-end-column="15" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/broxhouse/h5api/models/stats/reports/Resource.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="646">
@@ -1459,16 +1422,21 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/ax_enemyKills_custom.txt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
+        <state relative-caret-position="17">
           <caret line="0" column="258" selection-start-line="0" selection-start-column="258" selection-end-line="0" selection-end-column="258" />
           <folding />
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/ax_carnage_arena.txt">
+      <provider selected="true" editor-type-id="LargeFileEditor">
+        <state />
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/com/broxhouse/h5api/HaloApi.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="459">
-          <caret line="105" column="28" selection-start-line="105" selection-start-column="28" selection-end-line="105" selection-end-column="28" />
+        <state relative-caret-position="324">
+          <caret line="106" column="38" selection-start-line="106" selection-start-column="38" selection-end-line="106" selection-end-column="38" />
           <folding>
             <element signature="method#api#0;class#HaloApi#0" expanded="false" />
             <element signature="e#3483#3498#0" expanded="false" />
@@ -1476,12 +1444,12 @@
             <element signature="method#getFileName#1;class#HaloApi#0" expanded="false" />
             <element signature="method#cachePlayerData#0;class#HaloApi#0" expanded="false" />
             <element signature="method#cacheAllPlayerData#0;class#HaloApi#0" expanded="false" />
-            <element signature="e#11783#11830#0" expanded="false" />
+            <element signature="e#11782#11829#0" expanded="false" />
             <element signature="method#cacheMetaData#0;class#HaloApi#0" expanded="false" />
             <element signature="method#formatString#0;class#HaloApi#0" expanded="false" />
-            <element signature="e#13847#13848#0" expanded="true" />
+            <element signature="e#13846#13847#0" expanded="true" />
             <element signature="method#capitalize#0;class#HaloApi#0" expanded="false" />
-            <element signature="e#13927#13928#0" expanded="true" />
+            <element signature="e#13926#13927#0" expanded="true" />
             <element signature="method#playerMatches#0;class#HaloApi#0" expanded="false" />
             <element signature="method#warzoneMatches#0;class#HaloApi#0" expanded="false" />
             <element signature="method#customMatches#0;class#HaloApi#0" expanded="false" />
@@ -1495,11 +1463,12 @@
             <element signature="method#getMedals#0;class#HaloApi#0" expanded="false" />
             <element signature="method#getMaps#0;class#HaloApi#0" expanded="false" />
             <element signature="method#getWeapons#0;class#HaloApi#0" expanded="false" />
-            <element signature="e#21082#21114#0" expanded="false" />
+            <element signature="method#getMatches#0;class#HaloApi#0" expanded="false" />
+            <element signature="e#21081#21113#0" expanded="false" />
             <element signature="method#getCarnageReports#0;class#HaloApi#0" expanded="false" />
             <element signature="method#getResources#0;class#HaloApi#0" expanded="false" />
-            <element signature="e#24401#24433#0" expanded="false" />
-            <element signature="e#24757#24789#0" expanded="false" />
+            <element signature="e#24400#24432#0" expanded="false" />
+            <element signature="e#24756#24788#0" expanded="false" />
             <element signature="method#getMapVariant#0;class#HaloApi#0" expanded="false" />
             <element signature="method#getMapOwner#0;class#HaloApi#0" expanded="false" />
             <element signature="method#getMedalName#0;class#HaloApi#0" expanded="false" />
@@ -1520,7 +1489,7 @@
             <element signature="method#totalDeaths#0;class#HaloApi#0" expanded="false" />
             <element signature="method#getKD#0;class#HaloApi#0" expanded="false" />
             <element signature="method#testWeaponKills#0;class#HaloApi#0" expanded="false" />
-            <element signature="e#36966#37038#0" expanded="false" />
+            <element signature="e#36965#37037#0" expanded="false" />
             <element signature="method#testBaseStats#0;class#HaloApi#0" expanded="false" />
             <element signature="method#testBaseResults#0;class#HaloApi#0" expanded="false" />
             <element signature="method#testActivePlaylists#0;class#HaloApi#0" expanded="false" />
@@ -1528,12 +1497,12 @@
             <element signature="method#favoriteMap#0;class#HaloApi#0" expanded="false" />
             <element signature="method#favoriteMapVariant#0;class#HaloApi#0" expanded="false" />
             <element signature="method#favoriteCustomMapVariant#0;class#HaloApi#0" expanded="false" />
-            <element signature="e#58731#58778#0" expanded="false" />
-            <element signature="e#58731#58778#0" expanded="false" />
-            <element signature="e#59022#59108#0" expanded="false" />
-            <element signature="e#59979#60043#0" expanded="false" />
-            <marker date="1472249075280" expanded="false" signature="1337:2715" ph="..." />
-            <marker date="1472249075280" expanded="true" signature="49211:51107" ph="..." />
+            <element signature="e#58733#58780#0" expanded="false" />
+            <element signature="e#58733#58780#0" expanded="false" />
+            <element signature="e#59024#59110#0" expanded="false" />
+            <element signature="e#59981#60045#0" expanded="false" />
+            <marker date="1472249275916" expanded="false" signature="1337:2715" ph="..." />
+            <marker date="1472249275916" expanded="true" signature="49210:51106" ph="..." />
           </folding>
         </state>
       </provider>

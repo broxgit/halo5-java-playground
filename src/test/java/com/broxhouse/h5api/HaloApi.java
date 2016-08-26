@@ -101,8 +101,8 @@ public class HaloApi {
         try{
             HaloApi hapi = new HaloApi();
 //            long startTime = System.nanoTime();
-//            hapi.testPlayerMatches(CUSTOM);
-            hapi.cacheEnemyKills(CUSTOM);
+            hapi.testPlayerMatches(ARENA);
+//            hapi.cacheEnemyKills(CUSTOM);
 //            hapi.cachePlayerData(CUSTOM, hapi.PLAYER_UF);
 //            hapi.killedByOponent(ARENA);
 //            hapi.cacheAllPlayerData("all");
@@ -1292,7 +1292,7 @@ public class HaloApi {
                         System.out.println(i);
                         sb.append("{\"GamerTag\":\"" + kb.getGamerTag() + "\",\"TotalKills\":" + kb.getTotalKills() + "}");
                         sb.append(",");
-                        break;
+                        continue;
                     }}}}
         var2 = sb.toString();
         var2 = var2.substring(0, var2.length() - 1);
