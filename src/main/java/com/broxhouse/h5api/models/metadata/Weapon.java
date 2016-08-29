@@ -5,8 +5,7 @@ import com.google.gson.annotations.SerializedName;
 /**
  * Created by Brock Berrett on 7/21/2016.
  */
-public class Weapon
-{
+public class Weapon extends MetaData{
     /**
      * A localized name for the object, suitable for display to users. The text is title
      * cased.
@@ -91,8 +90,42 @@ public class Weapon
         return id;
     }
 
+    public String getContentId(){return contentId;}
+
     public String toString()
     {
         return getName();
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    public void setLargeIconImageUrl(String largeIconImageUrl) {
+        this.largeIconImageUrl = largeIconImageUrl;
+    }
+
+    public void setSmallIconImageUrl(String smallIconImageUrl) {
+        this.smallIconImageUrl = smallIconImageUrl;
+    }
+
+    public void setUsableByPlayer(boolean usableByPlayer) {
+        isUsableByPlayer = usableByPlayer;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public void setContentId(String contentId) {
+        this.contentId = contentId;
     }
 }

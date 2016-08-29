@@ -4,7 +4,31 @@ package com.broxhouse.h5api.models.metadata;
 
 import com.google.gson.annotations.SerializedName;
 
-public class Medal {
+public class Medal{
+//    @Override
+//    public String getContentId() {
+//        return null;
+//    }
+//
+//    @Override
+//    public String getLargeIconImageUrl() {
+//        return null;
+//    }
+//
+//    @Override
+//    public String getSmallIconImageUrl() {
+//        return null;
+//    }
+//
+//    @Override
+//    public boolean isUsableByPlayer() {
+//        return false;
+//    }
+//
+//    @Override
+//    public String getType() {
+//        return null;
+//    }
 
     /**
      * A localized name for the medal, suitable for display to users.
@@ -74,5 +98,38 @@ public class Medal {
 
     public long getId() {
         return id;
+    }
+
+    public String getContentId() {
+        return contentId;
+    }
+
+    public void setName(String name) {
+
+        this.name = name;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public void setClassification(String classification) {
+        this.classification = classification;
+    }
+
+    public void setDifficulty(int difficulty) {
+        this.difficulty = difficulty;
+    }
+
+    public void setSpriteLocation(SpriteLocation spriteLocation) {
+        this.spriteLocation = spriteLocation;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public void setContentId(String contentId) {
+        this.contentId = contentId;
     }
 }
