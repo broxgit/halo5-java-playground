@@ -4,6 +4,7 @@ package com.broxhouse.h5api;
  * Created by Brock Berrett on 7/26/2016.
  */
 
+import com.broxhouse.h5api.models.metadata.Map;
 import com.broxhouse.h5api.models.metadata.MapVariant;
 import com.broxhouse.h5api.models.metadata.Medal;
 import com.broxhouse.h5api.models.metadata.Weapon;
@@ -78,23 +79,22 @@ public class Database {
         return weaponsArr;
     }
 
-    public static MapVariant[] getMapsDB(){
-        List<MapVariant> maps = new ArrayList<>();
-        MapVariant[] mapArr = null;
+    public static Map[] getMapsDB(){
+        List<Map> maps = new ArrayList<>();
+        Map[] mapArr = null;
         Database db = createDatabaseConnection(dataType.MAPS);
         try{
             while(db.rs.next()){
-                MapVariant map = new MapVariant();
+                Map map = new Map();
                 map.setId(db.rs.getString("id"));
                 map.setContentId(db.rs.getString("contentid"));
                 map.setName(db.rs.getString("name"));
                 map.setDescription(db.rs.getString("description"));
-                map.setMapImageUrl(db.rs.getString("mapimgurl"));
-                map.setMapId(db.rs.getString("mapid"));
+                map.setImageUrl(db.rs.getString("mapimgurl"));
                 map.setCount(db.rs.getInt("count"));
                 maps.add(map);
             }
-            mapArr = new MapVariant[maps.size()];
+            mapArr = new Map[maps.size()];
             for (int i = 0; i < maps.size(); i++){
                 mapArr[i] = maps.get(i);
             }
@@ -155,23 +155,22 @@ public class Database {
     }
 
     public static void addArenaMapVariantsToDB(Statement stmt){
-        MapVariant[] metaData = null;
+        Map[] metaData = null;
         String sql = null;
         Gson gson = new Gson();
         try {
-            String mapData = haloApi.listWeapons();
-            metaData = gson.fromJson(mapData, MapVariant[].class);
+            String mapData = haloApi.listMaps();
+            metaData = gson.fromJson(mapData, Map[].class);
             for (int i = 0; i < metaData.length; i++) {
                 String mapDesc = metaData[i].getDescription();
                 if (mapDesc != null && mapDesc.contains("'"))
                     mapDesc = mapDesc.replaceAll("'", "''");
                 sql = "INSERT INTO " + "WEAPONS" + " VALUES " +
-                        "(" + metaData[i].getId() + ", " +
+                        "('" + metaData[i].getId() + "', " +
                         "'" + metaData[i].getContentId() + "', " +
                         "'" + metaData[i].getName() + "', " +
                         "'" + mapDesc + "', " +
-                        "'" + metaData[i].getMapImageUrl() + "', " +
-                        "'" + metaData[i].getMapId() + "', " +
+                        "'" + metaData[i].getImageUrl() + "', " +
                         "" + metaData[i].getCount() + ")";
                 stmt.executeUpdate(sql);
             }
@@ -194,10 +193,10 @@ public class Database {
                 sql = "INSERT INTO " + "MEDALS" + " VALUES " +
                         "(" + medals[i].getId() + ", " +
                         "'" + medals[i].getName() + "', " +
-                        "'" + medals[i].getDifficulty() + "', " +
+                        "" + medals[i].getDifficulty() + ", " +
                         "'" + mapDesc + "', " +
                         "'" + medals[i].getClassification() + "', " +
-                        "" + medals[i].getContentId() + ")";
+                        "'" + medals[i].getContentId() + "')";
                 System.out.println(sql);
                 stmt.executeUpdate(sql);
             }

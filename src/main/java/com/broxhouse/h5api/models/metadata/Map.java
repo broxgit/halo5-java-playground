@@ -17,11 +17,40 @@ public class Map {
      */
     private String description;
 
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public void setSupportedGameModes(List<String> supportedGameModes) {
+        this.supportedGameModes = supportedGameModes;
+    }
+
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public String getContentId() {
+        return contentId;
+    }
+
+    public void setContentId(String contentId) {
+        this.contentId = contentId;
+    }
+
     /**
      * This lists all the game modes to which this map is available. Options are:
      * - Arena
      * - Campaign
      * - Custom
+
      * - Warzone
      */
     private List<String> supportedGameModes;

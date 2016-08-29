@@ -99,7 +99,7 @@ public class HaloApi {
     }
 
     public void printData() throws Exception{
-        Medal[] weapons = getMedals();
+        Map[] weapons = getMaps();
         System.out.println(weapons.length);
         for (int i = 0; i < weapons.length; i++){
             System.out.println(weapons[i].getName());
@@ -111,7 +111,8 @@ public class HaloApi {
             HaloApi hapi = new HaloApi();
 //            long startTime = System.nanoTime();
 //            hapi.printData();
-            hapi.getMedals();
+//            hapi.getMedals();
+            hapi.getMaps();
 //            hapi.getWeapons();
 //            hapi.testPlayerMatches(CUSTOM);
 //            hapi.cacheEnemyKills(CUSTOM);
@@ -571,21 +572,13 @@ public class HaloApi {
 
     public  Map[] getMaps() throws Exception
     {
-        Gson gson = new Gson();
-        String fileName = getFileName("maps");
-        String mapData = null;
+        Database db = new Database();
+        Map[] maps = null;
         if (cacheMetaData) {
-            mapData = listMaps();
-            Writer writer1 = new BufferedWriter(new OutputStreamWriter(
-                    new FileOutputStream(fileName), "utf-8"));
-            writer1.write(mapData);
-            writer1.close();
+           db.addItemsToDatabase(dataType.MAPS);
         }else{
-            BufferedReader br = new BufferedReader(new FileReader(fileName));
-            mapData = br.readLine();
-            br.close();
+            maps = db.getMapsDB();
         }
-        Map[] maps = gson.fromJson(mapData, Map[].class);
         return maps;
     }
 
