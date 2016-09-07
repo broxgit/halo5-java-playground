@@ -4,7 +4,9 @@ package com.broxhouse.h5api.models.stats.common;
 
 import com.google.gson.annotations.SerializedName;
 
-public class Timelapse {
+import java.io.Serializable;
+
+public class Timelapse implements Serializable {
     /**
      * The ID of the flexible stat.
      */

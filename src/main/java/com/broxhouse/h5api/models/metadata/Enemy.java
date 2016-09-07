@@ -4,7 +4,9 @@ package com.broxhouse.h5api.models.metadata;
 
 import com.google.gson.annotations.SerializedName;
 
-public class Enemy {
+import java.io.Serializable;
+
+public class Enemy implements Serializable {
 
     /**
      * The faction that this enemy is affiliated with. One of the following options:

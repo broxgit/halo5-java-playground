@@ -18,26 +18,21 @@ import org.apache.http.impl.client.HttpClients;
 import org.apache.http.util.EntityUtils;
 import org.json.JSONArray;
 import org.json.JSONObject;
-import org.jvnet.hk2.annotations.*;
 
 import java.io.*;
 import java.net.URI;
 import java.util.*;
-import java.util.concurrent.TimeUnit;
 import java.util.HashSet;
-import java.util.logging.Logger;
 
-import static com.broxhouse.h5api.gameType.ARENA;
-import static com.broxhouse.h5api.gameType.CUSTOM;
-import static com.broxhouse.h5api.gameType.WARZONE;
+import static com.broxhouse.h5api.gameType.*;
 
 
-enum gameType {WARZONE, ARENA, CUSTOM}
+enum gameType {WARZONE, ARENA, CUSTOM, NA}
 
 
 public class HaloApi {
 
-    private String PLAYER_UF = "That Ax Guy";
+    public String PLAYER_UF = "That Ax Guy";
     private final String PLAYER = formatString(PLAYER_UF);
     private static final String TOKEN = "ad00d31dde2c44a8b6f07c05621699d9";
     private static final String BASE_URL = "https://www.haloapi.com/";
@@ -52,18 +47,21 @@ public class HaloApi {
     private static final String META_PLAYLISTS = META_URL + "playlists";
     private static final String META_MAPS = META_URL + "maps";
     private static final String META_MAP_VARIANTS = META_URL + "map-variants/%s";
-    private static final String META_CUSTOM_MAPS = BASE_URL + "ugc/h5/players/%s";
+    private static final String META_GAME_VARIANTS = META_URL + "game-variants/%s";
+    private static final String META_UGC = BASE_URL + "ugc/h5/players/%s";
     private static final String POST_GAME_CARNAGE = BASE_URL + "stats/h5/arena/matches/%s";
     private static final String POST_GAME_CARNAGE_CUST = BASE_URL + "stats/h5/custom/matches/%s";
 
-    private static boolean cachingResources = false;
+//    private static boolean cachingResources = false;
 //    private static boolean cachingResources = true;
-    private static boolean cachingMatches = false;
+//    private static boolean cachingMatches = false;
 //    private static boolean cachingMatches = true;
     private static boolean cachingMapVariants = false;
 //    private static boolean cachingMapVariants = true;
 //    private static boolean cacheMetaData = false;
-    private static boolean cacheMetaData = true;
+////    private static boolean cacheMetaData = true;
+
+    Database db = new Database();
 
     private static String api(String url) throws Exception
     {
@@ -99,11 +97,26 @@ public class HaloApi {
     }
 
     public void printData() throws Exception{
-        Map[] weapons = getMaps();
-        System.out.println(weapons.length);
-        for (int i = 0; i < weapons.length; i++){
-            System.out.println(weapons[i].getName());
+//        db.clearTable("MAPVRESOURCES");
+//        Map[] weapons = getMaps();
+//        MapVariant[] metaData = getArenaMapVariants();
+//        CustomMapVariant[] metaData = getCachedCustMapVariants();
+//        Match[] metaData = getMatches(ARENA);
+        Weapon[] metaData = (Weapon[]) db.getMetadataFromDB(dataType.MEDALS);
+        System.out.println(metaData.length);
+        int i = 0;
+        for (; i < metaData.length; i++){
+            System.out.println(metaData[i].getName());
         }
+    }
+
+    public void test() throws Exception{
+//        db.writeMetadataToDB(getWeapons(), dataType.MEDALS);
+    }
+
+    public void cacheData() throws Exception{
+        cacheAllMetaData();
+        cacheMatches(ARENA);
     }
 
     public static void main(String[] args) throws Exception {
@@ -111,9 +124,16 @@ public class HaloApi {
             HaloApi hapi = new HaloApi();
 //            long startTime = System.nanoTime();
 //            hapi.printData();
+//            hapi.test();
+            hapi.cacheMatches(CUSTOM);
+//            hapi.cacheData();
+//            hapi.cacheAllMetaData();
+//            hapi.cacheArenaMaps();
+//            hapi.cacheCustomMaps();
 //            hapi.getMedals();
-            hapi.getMaps();
+//            hapi.getMaps();
 //            hapi.getWeapons();
+//            hapi.cacheData();
 //            hapi.testPlayerMatches(CUSTOM);
 //            hapi.cacheEnemyKills(CUSTOM);
 //            hapi.cachePlayerData(CUSTOM, hapi.PLAYER_UF);
@@ -123,7 +143,7 @@ public class HaloApi {
 //            System.out.println(hapi.favoriteMapVariant(ARENA));
 //            System.out.println(hapi.favoriteCustomMapVariant(CUSTOM));
 //            System.out.println(hapi.killedByOponent(CUSTOM));
-//            hapi.getMatches(CUSTOM);
+//            hapi.getMatches(ARENA);
 //            hapi.testBaseStats(ARENA);
 //            hapi.postCustomGameCarnage("af5c2264-91d4-4056-a206-7c4111351d24");
 //            hapi.comparePlayers("That Ax Guy", "That Brock Guy", CUSTOM);
@@ -133,12 +153,6 @@ public class HaloApi {
         }catch (IOException e){
             e.printStackTrace();
         }
-    }
-
-    public static String getFileName(String metaDataItem) throws Exception{
-        metaDataItem = metaDataItem.toLowerCase();
-        String fileName = metaDataItem + "_metadata.txt";
-        return fileName;
     }
 
     public static String getFileName(Enum gameType, String gamertag, String cacheItem) throws Exception{
@@ -186,127 +200,127 @@ public class HaloApi {
     }
 
     public  void cachePlayerData(Enum gameType, String gamerTag) throws Exception{
-        gamerTag = gamerTag.toLowerCase();
-        Thread metaDataThread = new Thread(){
-            @Override
-            public void run() {
-                try {
-                    HaloApi hapi = new HaloApi();
-                    cacheMetaData = true;
-                    hapi.getMaps();
-                    hapi.getWeapons();
-                    hapi.getMedals();
-                    cacheMetaData = false;
-                }catch(Exception e){
-                    e.printStackTrace();
-                }
-            }};
-        Thread axelThread = new Thread(){
-            @Override
-            public void run(){
-                try{
-                    HaloApi hapi = new HaloApi();
-                    hapi.PLAYER_UF = "That Ax Guy";
-                    hapi.cachingMatches = true;
-                    hapi.getMatches(gameType);
-                    hapi.cachingMatches = false;
-                    hapi.cachingMapVariants = true;
-                    hapi.cacheArenaMaps(gameType);
-                    hapi.cachingMapVariants = false;
-                    hapi.cacheGameCarnage(gameType);
-                    cacheEnemyKills(gameType);
-                }catch (Exception e){
-                    e.printStackTrace();
-                }
-          }};
-        Thread brockThread = new Thread(){
-            @Override
-            public void run(){
-                try{
-                    HaloApi hapi = new HaloApi();
-                    hapi.PLAYER_UF = "That Brock Guy";
-                    hapi.cachingMatches = true;
-                    hapi.getMatches(gameType);
-                    hapi.cachingMatches = false;
-                    hapi.cachingMapVariants = true;
-                    hapi.cacheArenaMaps(gameType);
-                    hapi.cachingMapVariants = false;
-                    hapi.cacheGameCarnage(gameType);
-                    cacheEnemyKills(gameType);
-                }catch (Exception e){
-                    e.printStackTrace();
-                }
-            }};
-        Thread stuartThread = new Thread(){
-            @Override
-            public void run(){
-                try{
-                    HaloApi hapi = new HaloApi();
-                    hapi.PLAYER_UF = "That Sturt Guy";
-                    hapi.cachingMatches = true;
-                    hapi.getMatches(gameType);
-                    hapi.cachingMatches = false;
-                    hapi.cachingMapVariants = true;
-                    hapi.cacheArenaMaps(gameType);
-                    hapi.cachingMapVariants = false;
-                    hapi.cacheGameCarnage(gameType);
-                    cacheEnemyKills(gameType);
-                }catch (Exception e){
-                    e.printStackTrace();
-                }
-            }};
-        Thread trevorThread = new Thread(){
-            @Override
-            public void run(){
-                try{
-                    HaloApi hapi = new HaloApi();
-                    hapi.PLAYER_UF = "That Trev Guy";
-                    hapi.cachingMatches = true;
-                    hapi.getMatches(gameType);
-                    hapi.cachingMatches = false;
-                    hapi.cachingMapVariants = true;
-                    hapi.cacheArenaMaps(gameType);
-                    hapi.cachingMapVariants = false;
-                    hapi.cacheGameCarnage(gameType);
-                    cacheEnemyKills(gameType);
-                }catch (Exception e){
-                    e.printStackTrace();
-                }
-            }};
-        Thread richardThread = new Thread(){
-            @Override
-            public void run(){
-                try{
-                    HaloApi hapi = new HaloApi();
-                    hapi.PLAYER_UF = "That Noah Guy";
-                    hapi.cachingMatches = true;
-                    hapi.getMatches(gameType);
-                    hapi.cachingMatches = false;
-                    hapi.cachingMapVariants = true;
-                    hapi.cacheArenaMaps(gameType);
-                    hapi.cachingMapVariants = false;
-                    hapi.cacheGameCarnage(gameType);
-                    cacheEnemyKills(gameType);
-                }catch (Exception e){
-                    e.printStackTrace();
-                }
-            }};
-        switch(gamerTag){
-                case "that brock guy": metaDataThread.start();brockThread.start();
-                    break;
-                case "that ax guy": metaDataThread.start();axelThread.start();
-                    break;
-                case "that sturt guy": metaDataThread.start();stuartThread.start();
-                    break;
-                case "that trev guy": metaDataThread.start();trevorThread.start();
-                    break;
-                default:  metaDataThread.start();axelThread.start();brockThread.start();stuartThread.start();
-        }
-//        axelThread.start();
-//        brockThread.start();
-//        stuartThread.start();
-//        trevorThread.start();
-//        richardThread.start();
+//        gamerTag = gamerTag.toLowerCase();
+//        Thread metaDataThread = new Thread(){
+//            @Override
+//            public void run() {
+//                try {
+//                    HaloApi hapi = new HaloApi();
+//                    cacheMetaData = true;
+//                    hapi.getMaps();
+//                    hapi.getWeapons();
+//                    hapi.getMedals();
+//                    cacheMetaData = false;
+//                }catch(Exception e){
+//                    e.printStackTrace();
+//                }
+//            }};
+//        Thread axelThread = new Thread(){
+//            @Override
+//            public void run(){
+//                try{
+//                    HaloApi hapi = new HaloApi();
+//                    hapi.PLAYER_UF = "That Ax Guy";
+//                    hapi.cachingMatches = true;
+//                    hapi.getMatches(gameType);
+//                    hapi.cachingMatches = false;
+//                    hapi.cachingMapVariants = true;
+//                    hapi.cacheArenaMaps(gameType);
+//                    hapi.cachingMapVariants = false;
+//                    hapi.cacheGameCarnage(gameType);
+//                    cacheEnemyKills(gameType);
+//                }catch (Exception e){
+//                    e.printStackTrace();
+//                }
+//          }};
+//        Thread brockThread = new Thread(){
+//            @Override
+//            public void run(){
+//                try{
+//                    HaloApi hapi = new HaloApi();
+//                    hapi.PLAYER_UF = "That Brock Guy";
+//                    hapi.cachingMatches = true;
+//                    hapi.getMatches(gameType);
+//                    hapi.cachingMatches = false;
+//                    hapi.cachingMapVariants = true;
+//                    hapi.cacheArenaMaps(gameType);
+//                    hapi.cachingMapVariants = false;
+//                    hapi.cacheGameCarnage(gameType);
+//                    cacheEnemyKills(gameType);
+//                }catch (Exception e){
+//                    e.printStackTrace();
+//                }
+//            }};
+//        Thread stuartThread = new Thread(){
+//            @Override
+//            public void run(){
+//                try{
+//                    HaloApi hapi = new HaloApi();
+//                    hapi.PLAYER_UF = "That Sturt Guy";
+//                    hapi.cachingMatches = true;
+//                    hapi.getMatches(gameType);
+//                    hapi.cachingMatches = false;
+//                    hapi.cachingMapVariants = true;
+//                    hapi.cacheArenaMaps(gameType);
+//                    hapi.cachingMapVariants = false;
+//                    hapi.cacheGameCarnage(gameType);
+//                    cacheEnemyKills(gameType);
+//                }catch (Exception e){
+//                    e.printStackTrace();
+//                }
+//            }};
+//        Thread trevorThread = new Thread(){
+//            @Override
+//            public void run(){
+//                try{
+//                    HaloApi hapi = new HaloApi();
+//                    hapi.PLAYER_UF = "That Trev Guy";
+//                    hapi.cachingMatches = true;
+//                    hapi.getMatches(gameType);
+//                    hapi.cachingMatches = false;
+//                    hapi.cachingMapVariants = true;
+//                    hapi.cacheArenaMaps(gameType);
+//                    hapi.cachingMapVariants = false;
+//                    hapi.cacheGameCarnage(gameType);
+//                    cacheEnemyKills(gameType);
+//                }catch (Exception e){
+//                    e.printStackTrace();
+//                }
+//            }};
+//        Thread richardThread = new Thread(){
+//            @Override
+//            public void run(){
+//                try{
+//                    HaloApi hapi = new HaloApi();
+//                    hapi.PLAYER_UF = "That Noah Guy";
+//                    hapi.cachingMatches = true;
+//                    hapi.getMatches(gameType);
+//                    hapi.cachingMatches = false;
+//                    hapi.cachingMapVariants = true;
+//                    hapi.cacheArenaMaps(gameType);
+//                    hapi.cachingMapVariants = false;
+//                    hapi.cacheGameCarnage(gameType);
+//                    cacheEnemyKills(gameType);
+//                }catch (Exception e){
+//                    e.printStackTrace();
+//                }
+//            }};
+//        switch(gamerTag){
+//                case "that brock guy": metaDataThread.start();brockThread.start();
+//                    break;
+//                case "that ax guy": metaDataThread.start();axelThread.start();
+//                    break;
+//                case "that sturt guy": metaDataThread.start();stuartThread.start();
+//                    break;
+//                case "that trev guy": metaDataThread.start();trevorThread.start();
+//                    break;
+//                default:  metaDataThread.start();axelThread.start();brockThread.start();stuartThread.start();
+//        }
+////        axelThread.start();
+////        brockThread.start();
+////        stuartThread.start();
+////        trevorThread.start();
+////        richardThread.start();
     }
 
     public  void cacheAllPlayerData(String gamerTag) throws Exception{
@@ -342,13 +356,17 @@ public class HaloApi {
 //        warzoneThread.start();
     }
 
-//    public  void cacheAllMetaData() throws Exception{
-//        cacheMetaData = true;
-//        getMaps();
-//        getWeapons();
-//        getMedals();
-//        cacheMetaData = false;
-//    }
+    public  void cacheAllMetaData() throws Exception{
+        Gson gson = new Gson();
+//        db.addItemsToDatabase(dataType.WEAPONS);
+//        db.addItemsToDatabase(dataType.MAPS);
+//        db.addItemsToDatabase(dataType.MEDALS);
+//        db.addItemsToDatabase(dataType.MAPVARIANTS);
+//        db.addItemsToDatabase(dataType.CUSTOMMAPVARIANTS);
+        db.writeMetadataToDB(gson.fromJson(listMedals(), Medal[].class), dataType.MEDALS, false, NA);
+        db.writeMetadataToDB(gson.fromJson(listWeapons(), Weapon[].class), dataType.WEAPONS, false, NA);
+        db.writeMetadataToDB(gson.fromJson(listMaps(), Map[].class), dataType.MAPS, false, NA);
+    }
 
     public  void cacheGameCarnage(Enum gameType) throws Exception{
         System.out.println("Getting " + gameType +  " game carnage for: " + PLAYER_UF);
@@ -380,87 +398,130 @@ public class HaloApi {
         System.out.println("Finished caching " + capitalize(gameType.toString().toLowerCase()) + " carnage reports");
     }
 
-    public void cacheCustomMaps() throws Exception {
-        int iterations = 0;
-        Set<String> mapIDs = getResources(CUSTOM);
-        String fileName = getFileName(CUSTOM, PLAYER_UF, "mapMax");
-        String fileName2 = getFileName(CUSTOM, PLAYER_UF, "mapMin");
-        StringBuilder sb = new StringBuilder();
-        BufferedReader br = new BufferedReader(new FileReader(fileName2));
-        String var3 = br.readLine();
-        br.close();
-        JSONArray jsonArray = new JSONArray(var3);
-        String var2 = "";
-        if (cachingMapVariants) {
-            System.out.println("Caching favorite Custom map variants for: " + PLAYER_UF);
-            for (String s : mapIDs) {
-                if ((jsonArray.getJSONObject(iterations).getString("Owner")).isEmpty() || (jsonArray.getJSONObject(iterations).getString("Owner")) == "") {
-                    iterations++;
-                    continue;
-                }
-                CustomMapVariant mv = getCustomMapVariant(jsonArray.getJSONObject(iterations).getString("ResourceId"), formatString(jsonArray.getJSONObject(iterations).getString("Owner")));
-                sb.append("{\"BaseMap\":{\"ResourceType\":" + mv.getBaseMap().getResourceType() + ",\"ResourceId\":\"" + mv.getBaseMap().getResourceId() + "\",\"OwnerType\":" + mv.getBaseMap().getOwnerType() + ",\"Owner\":" + mv.getBaseMap().getOwner() + "},\"Name\":\"" + mv.getName() + "\",\"Description\":\"" + mv.getDescription() + "\",\"AccessControl\":" + mv.getAccessControl() + ",\"Links\":{},\"CreationTimeUtc\":{\"ISO8601Date\":\"" + mv.getCreationTimeUtc() + "\"},\"LastModifiedTimeUtc\":{\"ISO8601Date\":\"" + mv.getLastModifiedTimeUtc() + "\"},\"Banned\":" + mv.getBanned() + ",\"Identity\":{\"ResourceType\":" + mv.getIdentity().getResourceType() + ",\"ResourceId\":\"" + mv.getIdentity().getResourceId() + "\",\"OwnerType\":" + mv.getIdentity().getOwnerType() + ",\"Owner\":\"" + mv.getIdentity().getOwner() + "\"},\"Stats\":{\"BookmarkCount\":" + mv.getStats().getBookmarkCount() + ",\"HasCallerBookmarked\":" + mv.getStats().getHasCallerBookmarked() + "}}");
-                sb.append(",");
-                iterations++;
-            }
-            Writer writer = new BufferedWriter(new OutputStreamWriter(
-                    new FileOutputStream(fileName), "utf-8"));
-            var2 = sb.substring(0, sb.length() - 1);
-            var2 = "[" + var2 + "]";
-            writer.write(var2);
-            writer.close();
-            System.out.println("Finished Caching Custom Map Data");
-        }
+    public void cacheArenaMaps() throws Exception {
+//        MapVariant[] oldmaps = db.getArenaMapVariants();
+//        List<Resource> oldResourceList = new ArrayList<>();
+        Resource[] mapResources = db.getResources(resourceType.MAPVRESOURCES);
+
+
+
+//        for (int i = 0; i < oldmaps.length; i++){
+//            Resource oldResource = new Resource();
+//            oldResource.setResourceId(oldmaps[i].getId());
+//            oldResourceList.add(oldResource);
+//        }
+//        oldResources = new Resource[oldResourceList.size()];
+//        for (int i = 0; i < oldResourceList.size(); i++){
+//            oldResources[i] = oldResourceList.get(i);
+//        }
+//        Set<String> oldMapIDs = getUniqueResources(oldResources);
+//        System.out.println("Caching Arena Maps");
+//        Match[] matches = db.getMatchesDB(ARENA);
+//        Resource[] resources = null;
+//        List<Resource> mapList = new ArrayList<>();
+//        int k = 0;
+//        System.out.println("Creating resourceList");
+//        for (int i = 0; i < matches.length; i++){
+//            Resource mapv = matches[i].getMapVariant();
+//            mapList.add(mapv);
+//        }
+//        System.out.println("Creating resource array");
+//        resources = new Resource[mapList.size()];
+//        Set<String> mapIDs = getUniqueResources(resources);
+//        for (int i = 0; i < mapList.size(); i++){
+//            resources[i] = mapList.get(i);
+//        }
+//        boolean newValues = false;
+//        List<MapVariant> mapList2 = new ArrayList<>();
+//        for (String s: mapIDs){
+//            if (db.checkDBForValue("id", s, dataType.MAPVARIANTS)) {
+//                k++;
+//                continue;
+//            }else{
+//                MapVariant map = getMapVariant(s);
+//                mapList2.add(map);
+//                newValues = true;
+//                k++;
+//                continue;
+//            }
+//        }
+//        MapVariant[] maps = new MapVariant[mapList2.size()];
+//        for (int i = 0; i < mapList2.size(); i++){
+//            maps[i] = mapList2.get(i);
+//        }
+//        System.out.println("Adding map variants to the database");
+//        if (newValues == true){
+//            db.addArenaMapVariantsToDB(maps);
+//            System.out.println("Finished caching Arena maps");
+//        }else System.out.println("There weren't any new values to add.");
     }
 
-    public void cacheArenaMaps(Enum gameType) throws Exception{
-        if (gameType == CUSTOM){
-            cacheCustomMaps();
-            return;
+    public void cacheCustomMaps() throws Exception{
+        CustomMapVariant[] oldmaps = db.getCustomMapVariants();
+        List<Resource> oldResourceList = new ArrayList<>();
+        Resource[] oldResources = null;
+        for (int i = 0; i < oldmaps.length; i++){
+            Resource oldResource = new Resource();
+            oldResource.setResourceId(oldmaps[i].getIdentity().getResourceId());
+            oldResourceList.add(oldResource);
         }
-        Gson gson = new Gson();
-        StringBuilder sb = new StringBuilder();
-        StringBuilder sb2 = new StringBuilder();
-        Set<String> mapIDs = getResources(ARENA);
-        String fileName = getFileName(ARENA, PLAYER_UF, "mapMax");
-        String fileName2 = getFileName(ARENA, PLAYER_UF, "mapMin");
-        String fileName3 = getFileName(ARENA, PLAYER_UF, "mapNames");
-        BufferedReader br = new BufferedReader(new FileReader(fileName2));
-        String var3 = br.readLine();
-        br.close();
-        MapVariantResourceId[] maps = gson.fromJson(var3, MapVariantResourceId[].class);
-        String var2 = "";
-        if(cachingMapVariants){
-            System.out.println("Caching favorite map variants for: " + PLAYER_UF);
-            for (String s: mapIDs){
-                if (s != null){
-                    MapVariant mv = getMapVariant(s.toLowerCase());
-                    for (int i = 0; i < maps.length; i++){
-//                        System.out.println(mv.getId() + " " + maps[i].getResourceId());
-                        if (mv.getContentId().equalsIgnoreCase(maps[i].getResourceId())){
-//                            System.out.println(mv.getName());
-                            maps[i].setName(mv.getName());
-                            sb2.append("{\"OwnerType\":" + maps[i].getOwnerType() + ",\"ResourceId\":\"" + maps[i].getResourceId() + "\",\"ResourceType\":" + maps[i].getResourceType() + ",\"Name\":\"" + mv.getName() +  "\"}");
-                            sb2.append(",");
-                        }
-                    }
-                    sb.append("{\"name\":\"" +mv.getName()+ "\",\"description\":\"" + mv.getDescription() + "\",\"mapImageUrl\":\"" + mv.getMapImageUrl() +  "\",\"mapId\":\"" + mv.getMapId() + "\",\"id\":\"" + mv.getId() +  "\",\"contentId\":\"" + mv.getContentId() + "\"}");
-                    sb.append(",");
+        oldResources = new Resource[oldResourceList.size()];
+        for (int i = 0; i < oldResourceList.size(); i++){
+            oldResources[i] = oldResourceList.get(i);
+        }
+        Set<String> oldMapIDs = getUniqueResources(oldResources);
+        System.out.println("Caching Custom Maps");
+        Match[] matches = db.getMatchesDB(CUSTOM);
+        Resource[] resources = null;
+        List<Resource> mapList = new ArrayList<>();
+        int k = 0;
+        System.out.println("Creating resourceList");
+        for (int i = 0; i < matches.length; i++){
+            Resource mapv = matches[i].getMapVariant();
+            mapList.add(mapv);
+        }
+        System.out.println("Creating resource array");
+        resources = new Resource[mapList.size()];
+        for (int i = 0; i < mapList.size(); i++){
+            resources[i] = mapList.get(i);
+        }
+        boolean newValues = false;
+        boolean firstRun = false;
+        Set<String> mapIDs = getUniqueResources(resources);
+        CustomMapVariant[] maps = null;
+        List<CustomMapVariant> newMaps = new ArrayList<>();
+        if (firstRun) {
+            maps = new CustomMapVariant[resources.length];
+            for (int i = 0; i < resources.length; i++) {
+                maps[i] = getCustomMapVariant(resources[i].getResourceId(), formatString(resources[i].getOwner()));
+            }
+        }
+        if (!firstRun) {
+            for (String s : mapIDs) {
+                if (db.checkDBForValue("resourceid", s, dataType.CUSTOMMAPVARIANTS)) {
+//                    System.out.println("Contains");
+                    k++;
+                    continue;
+                } else {
+//                    System.out.println("Does not contain");
+                    CustomMapVariant map = getCustomMapVariant(s, getMapOwner(s));
+                    newMaps.add(map);
+                    newValues = true;
+                    k++;
+                    continue;
                 }
             }
-            Writer writer = new BufferedWriter(new OutputStreamWriter(
-                    new FileOutputStream(fileName), "utf-8"));
-            var2 = sb.substring(0, sb.length() - 1);
-            var2 = "[" + var2 + "]";
-            writer.write(var2);
-            writer.close();
-            writer = new BufferedWriter(new OutputStreamWriter(
-                    new FileOutputStream(fileName3), "utf-8"));
-            var2 = sb2.substring(0, sb2.length() - 1);
-            var2 = "[" + var2 + "]";
-            writer.write(var2);
-            writer.close();
-            System.out.println("Finished Caching Arena Map Data");
+            maps = new CustomMapVariant[newMaps.size()];
+            for (int i = 0; i < newMaps.size(); i++){
+                maps[i] = newMaps.get(i);
+            }
+        }
+        System.out.println("Adding map variants to the database");
+        if (newValues == true){
+            db.addCustomMapVariantsToDB(maps);
+            System.out.println("Finished caching Arena maps");
+        }else{
+            System.out.println("There weren't any new values to add.");
         }
     }
 
@@ -522,24 +583,30 @@ public class HaloApi {
         return api(META_PLAYLISTS);
     }
 
-    public  String listMaps() throws Exception
-    {
+    public  String listMaps() throws Exception {
         return api(META_MAPS);
     }
 
-    public  String listMapVariants(String mapVariantID) throws Exception
-    {
+    public  String listMapVariants(String mapVariantID) throws Exception {
         return api(String.format(META_MAP_VARIANTS, mapVariantID));
     }
 
     public  String listCustomMapVariants(String mapVariantID, String player) throws Exception{
         String url =  player + "/mapvariants/" + mapVariantID;
-        return api(String.format(META_CUSTOM_MAPS, url));
+        return api(String.format(META_UGC, url));
+    }
+
+    public String listGameVariant(String gameVariantID) throws Exception{
+        return api(String.format(META_GAME_VARIANTS, gameVariantID));
+    }
+
+    public String listCustomGameVariants(String gameVariantID, String player) throws Exception{
+        String url =  player + "/gamevariants/" + gameVariantID;
+        return api(String.format(META_UGC, url));
     }
 
 
-    public  void testJSONWeapons() throws Exception
-    {
+    public  void testJSONWeapons() throws Exception {
         Gson gson = new Gson();
         Weapon[] data = gson.fromJson(listWeapons(), Weapon[].class);
         System.out.println(Arrays.toString(data));
@@ -558,171 +625,57 @@ public class HaloApi {
         }
     }
 
-    public  Medal[] getMedals() throws Exception
-    {
-        Medal[] medals = null;
-        Database db = new Database();
-        if (cacheMetaData) {
-            db.addItemsToDatabase(dataType.MEDALS);
-        }else{
-            medals = db.getMedalsDB();
-        }
-        return medals;
+    public  Medal[] getMedals() throws Exception {
+        return db.getMedalsDB();
     }
 
-    public  Map[] getMaps() throws Exception
-    {
-        Database db = new Database();
-        Map[] maps = null;
-        if (cacheMetaData) {
-           db.addItemsToDatabase(dataType.MAPS);
-        }else{
-            maps = db.getMapsDB();
-        }
-        return maps;
+    public  Map[] getMaps() throws Exception{
+        return db.getMapsDB();
     }
 
-    public  Weapon[] getWeapons() throws Exception
-    {
-        Weapon[] weapons = null;
-        Database db = new Database();
-        if (cacheMetaData) {
-            db.addItemsToDatabase(dataType.WEAPONS);
-//            Writer writer1 = new BufferedWriter(new OutputStreamWriter(
-//                    new FileOutputStream(fileName), "utf-8"));
-//            writer1.write(weaponData);
-//            writer1.close();
-        }else{
-            weapons = db.getWeaponsDB();
-        }
-        return weapons;
+    public  Weapon[] getWeapons() throws Exception {
+        return db.getWeaponsDB();
     }
 
-    public  Match[] getMatches(Enum gameType) throws Exception {
+    public Match[] getMatches(Enum gameType) throws Exception{
+        return db.getMatchesDB(gameType);
+    }
+
+    public void cacheMatches(Enum gameType) throws Exception {
         JSONObject obj = null;
         JSONArray obj2 = null;
-        JSONObject obj3 = null;
-        String var2 = null;
         Integer start = 0;
-        StringBuilder sb = new StringBuilder();
-        StringBuilder sb2 = new StringBuilder();
-        String fileName = getFileName(gameType, PLAYER_UF, "matches");
-        String fileName2 = getFileName(gameType, PLAYER_UF, "mapMin");
-        if (cachingMatches){
-            System.out.println("Caching " + capitalize(gameType.toString().toLowerCase()) +  " matches for " + PLAYER_UF);
-            double totalGames = totalGames(gameType, PLAYER_UF);
-           if(totalGames == 0)
-               return null;
-            String var3 = "";
-            double iterations = totalGames / 25;
-            for (int i = 1; i < iterations; i++) {
-                obj = new JSONObject(playerMatches(PLAYER, gameType.toString().toLowerCase(), start, 25));
-                obj2 = obj.getJSONArray("Results");
-                System.out.println(obj2.toString());
-                for (int k = 0; k < obj2.length(); k++) {
-                    obj3 = obj2.getJSONObject(k).getJSONObject("MapVariant");
-                    if (k < obj2.length()) {
-                        sb.append(obj3.toString());
-                        sb.append(",");
-                    } else {
-                        sb.append(obj3.toString());
-                    }
-                }
-                if (i < iterations) {
-                    sb2.append(obj2.toString().substring(1, obj2.toString().length() -1));
-                    sb2.append(",");
-                } else {
-                    sb2.append(obj2.toString());
-                }
-                start = start + obj.getInt("Count");
-            }
-        var3 = sb.substring(0, sb.length() - 1);
-        var3 = "[" + var3 + "]";
-        Writer writer1 = new BufferedWriter(new OutputStreamWriter(
-                new FileOutputStream(fileName2), "utf-8"));
-        writer1.write(var3);
-        writer1.close();
-        var2 = sb2.substring(0, sb2.length() - 1);
-        var2 = "[" + var2 + "]";
-
-        Writer writer = new BufferedWriter(new OutputStreamWriter(
-                new FileOutputStream(fileName), "utf-8"));
-        writer.write(var2);
-        writer.close();
-            System.out.println("Finished Caching " + gameType +  " Match Data");
-    }else{
-        BufferedReader br = new BufferedReader(new FileReader(fileName));
-        var2 = br.readLine();
-        br.close();
-    }
+        Match[] matches = null;
+        Match[] matches1 = null;
+        List<Match> matchList = new ArrayList<>();
+        Database db2 = new Database();
+        Match match = null;
         Gson gson = new Gson();
-        Match[] matches = gson.fromJson(var2, Match[].class);
-        return matches;
-
-//        JSONObject obj = null;
-//        String var = null;
-//        String var2 = "";
-//        Integer start = 0;
-//        String fileName = getFileName(gameType, PLAYER_UF, "matches");
-//        String fileName2 = getFileName(gameType, PLAYER_UF, "mapMin");
-//        if (cachingMatches){
-//            double totalGames = totalGames(gameType, PLAYER_UF);
-//            if(totalGames == 0)
-//                return null;
-//            TimeUnit.SECONDS.sleep(8);
-//            int m = 0;
-//            String var3 = "";
-//            double iterations = totalGames / 25;
-//            for (int i = 1; i < iterations; i++) {
-//                obj = new JSONObject(playerMatches(PLAYER, gameType.toString().toLowerCase(), start, 25));
-//                JSONArray obj2 = obj.getJSONArray("Results");
-//                for (int k = 0; k < obj2.length(); k++) {
-//                    m++;
-////                System.out.println(k);
-//                    JSONObject obj3 = obj2.getJSONObject(k).getJSONObject("MapVariant");
-//                    var = obj3.toString();
-//                    if (k < obj2.length()) {
-//                        var3 = var3.concat(var);
-//                        var3 = var3 + ",";
-//                    } else {
-//                        var3 = var3.concat(var);
-//                    }
-//                }
-//                var = obj2.toString();
-//                if (i < iterations) {
-//                    var = var.substring(1, var.length() - 1);
-//                    var2 = var2.concat(var);
-//                    var2 = var2 + ",";
-//                } else {
-//                    var2 = var2.concat(var);
-//                }
-//                start = start + obj.getInt("Count");
-//                if (i % 10 == 0) {
-//                    TimeUnit.SECONDS.sleep(10);
-//                }
-//            }
-//            var3 = var3.substring(0, var3.length() - 1);
-//            var3 = "[" + var3 + "]";
-////            System.out.println(var3);
-//            Writer writer1 = new BufferedWriter(new OutputStreamWriter(
-//                    new FileOutputStream(fileName2), "utf-8"));
-//            writer1.write(var3);
-//            writer1.close();
-//            var2 = var2.substring(0, var2.length() - 1);
-//            var2 = "[" + var2 + "]";
-//
-//            Writer writer = new BufferedWriter(new OutputStreamWriter(
-//                    new FileOutputStream(fileName), "utf-8"));
-//            writer.write(var2);
-//            writer.close();
-//        }else{
-//            BufferedReader br = new BufferedReader(new FileReader(fileName));
-//            var2 = br.readLine();
-//            br.close();
-//        }
-//        Gson gson = new Gson();
-//        Match[] matches = gson.fromJson(var2, Match[].class);
-//        return matches;
+        System.out.println("Caching " + capitalize(gameType.toString().toLowerCase()) +  " matches for " + PLAYER_UF);
+        double totalGames = totalGames(gameType, PLAYER_UF);
+        if(totalGames == 0) {
+            System.out.println("This player hasn't played this game type");
+            return;
+        }
+        double iterations = totalGames / 25;
+        for (int i = 0; i < iterations; i++) {
+            obj = new JSONObject(playerMatches(PLAYER, gameType.toString().toLowerCase(), start, 25));
+            obj2 = obj.getJSONArray("Results");
+            matches1 = gson.fromJson(obj2.toString(), Match[].class);
+            for (int k = 0; k < matches1.length; k++){
+                match = matches1[k];
+                matchList.add(match);
+            }
+            start = start + obj.getInt("Count");
+        }
+        matches = new Match[matchList.size()];
+        for (int i = 0; i < matchList.size(); i++){
+            matches[i] = matchList.get(i);
+        }
+        System.out.println("Adding matches to database");
+        db.writeMetadataToDB(matches, dataType.MATCHES, true, gameType);
+        db.writeMetadataToDB(matches, dataType.MATCHES, false, gameType);
+        System.out.println("Finished caching Matches for " + PLAYER_UF);
     }
 
     public  CarnageReport[] getCarnageReports(Enum gameType) throws Exception{
@@ -735,74 +688,28 @@ public class HaloApi {
         return carnageReports;
     }
 
-    public  Set<String> getResources(Enum gameType) throws Exception
-    {
-//        JSONObject obj = null;
-//        String var = null;
-//        String var3 = "";
-//        Integer start = 0;
-//        int m = 0;
-//        double totalGames = totalGames(gameType, PLAYER_UF);
-//        double iterations = totalGames/25;
-//        TimeUnit.SECONDS.sleep(10);
-        String fileName = getFileName(gameType, PLAYER_UF, "mapMin");
-//        if(cachingResources) {
-//            Gson gson = new Gson();
-//            for (int i = 1; i < iterations; i++) {
-//                obj = new JSONObject(playerMatches(PLAYER, gameType.toString().toLowerCase(), start, 25));
-//                JSONArray obj2 = obj.getJSONArray("Results");
-////            System.out.println(i);
-//                for (int k = 0; k < obj2.length(); k++) {
-//                    m++;
-////                System.out.println(k);
-//                    JSONObject obj3 = obj2.getJSONObject(k).getJSONObject("MapVariant");
-//                    var = obj3.toString();
-//                    if (k < obj2.length()) {
-//                        var3 = var3.concat(var);
-//                        var3 = var3 + ",";
-//                    } else {
-//                        var3 = var3.concat(var);
-//                    }
-//                }
-//                start = start + 25;
-//                if (i % 200 == 0) {
-//                    TimeUnit.SECONDS.sleep(10);
-//                }
-//            }
-//            var3 = var3.substring(0, var3.length() - 1);
-//            var3 = "[" + var3 + "]";
-//            Writer writer = new BufferedWriter(new OutputStreamWriter(
-//                    new FileOutputStream(fileName), "utf-8"));
-//            writer.write(var3);
-//            writer.close();
-//        }else{
-//            BufferedReader br = new BufferedReader(new FileReader(fileName));
-//            var3 = br.readLine();
-//            br.close();
-//        }
-        String var3 = null;
-        BufferedReader br = new BufferedReader(new FileReader(fileName));
-        var3 = br.readLine();
-        br.close();
-        JSONArray obj3 = new JSONArray(var3);
-        Set<String> mapIDs = new HashSet<String>();
-        for (int i = 0; i < obj3.length(); i++){
-            String mapID = obj3.getJSONObject(i).getString("ResourceId");
-            if(mapIDs.contains(mapID))
+    public  Set<String> getUniqueResources(Resource[] resources) throws Exception {
+        Set<String> mapIDs = new HashSet<>();
+        for (int i = 0; i < resources.length; i++){
+            if(mapIDs.contains(resources[i].getResourceId()))
                 continue;
             else
-                mapIDs.add(mapID);
+                mapIDs.add(resources[i].getResourceId());
         }
-//        System.out.println("mapSimpleData size " + mapIDs.size());
         return mapIDs;
     }
 
-    public  MapVariant getMapVariant(String mapVariantID) throws Exception
-    {
+    public  MapVariant getMapVariant(String mapVariantID) throws Exception {
         Gson gson = new Gson();
         String mapData = listMapVariants(mapVariantID);
         MapVariant mapVariant = gson.fromJson(mapData, MapVariant.class);
         return mapVariant;
+    }
+
+    public GameVariant getGameVariant(String gameVariantID) throws Exception{
+        Gson gson = new Gson();
+        String gameData = listGameVariant(gameVariantID);
+        return gson.fromJson(gameData, GameVariant.class);
     }
 
     public String getMapOwner(String mapID) throws Exception{
@@ -819,24 +726,30 @@ public class HaloApi {
                 break;
             }
         }
+        if (mapOwner != null && mapOwner.contains(" "))
+            mapOwner = formatString(mapOwner);
         return mapOwner;
     }
 
     public  CustomMapVariant getCustomMapVariant(String mapVariantID, String player) throws Exception{
         Gson gson = new Gson();
         String mapData = listCustomMapVariants(mapVariantID, player);
-        CustomMapVariant mapVariant = gson.fromJson(mapData, CustomMapVariant.class);
-        return mapVariant;
+        return gson.fromJson(mapData, CustomMapVariant.class);
+    }
+
+    public CustomGameVariant getCustomGameVariant(String gameVariantID, String player) throws Exception{
+        Gson gson = new Gson();
+        String gameData = listCustomGameVariants(gameVariantID, player);
+        return gson.fromJson(gameData, CustomGameVariant.class);
     }
 
     public  CustomMapVariant[] getCachedCustMapVariants() throws Exception{
-        Gson gson = new Gson();
-        String fileName = getFileName(CUSTOM, PLAYER_UF, "mapMax");
-        BufferedReader br = new BufferedReader(new FileReader(fileName));
-        String var3 = br.readLine();
-        br.close();
-        CustomMapVariant[] mapVariant = gson.fromJson(var3, CustomMapVariant[].class);
+        CustomMapVariant[] mapVariant = db.getCustomMapVariants();
         return mapVariant;
+    }
+
+    public MapVariant[] getArenaMapVariants() throws Exception{
+        return db.getArenaMapVariants();
     }
 
     public  String getCustomMapName(String mapID) throws Exception{

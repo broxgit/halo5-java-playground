@@ -4,7 +4,9 @@ package com.broxhouse.h5api.models.metadata;
 
 import com.google.gson.annotations.SerializedName;
 
-public class Impulse {
+import java.io.Serializable;
+
+public class Impulse implements Serializable {
     /**
      * Internal use. The non-localized name of the impulse.
      */

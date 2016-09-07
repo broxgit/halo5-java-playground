@@ -4,9 +4,10 @@ package com.broxhouse.h5api.models.stats.reports;
 
 import com.google.gson.annotations.SerializedName;
 
+import java.io.Serializable;
 import java.util.List;
 
-public class VersusPlayerStats extends BasePlayerStats {
+public class VersusPlayerStats extends BasePlayerStats implements Serializable {
     public static class OpponentDetails {
         /**
          * The gamertag of the opponent that was killed or killed the player.

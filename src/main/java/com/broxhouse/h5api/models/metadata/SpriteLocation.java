@@ -2,7 +2,9 @@
 
 package com.broxhouse.h5api.models.metadata;
 
-public class SpriteLocation {
+import java.io.Serializable;
+
+public class SpriteLocation implements Serializable{
     /**
      * A reference to an image that contains all the sprites.
      */

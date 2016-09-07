@@ -4,9 +4,10 @@ package com.broxhouse.h5api.models.stats.common;
 
 import com.google.gson.annotations.SerializedName;
 
+import java.io.Serializable;
 import java.util.List;
 
-public class WeaponId extends WeaponStats {
+public class WeaponId extends WeaponStats implements Serializable {
 
     /**
      * The ID of the weapon. Weapons are available via the Metadata API.

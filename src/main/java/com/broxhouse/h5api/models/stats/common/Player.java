@@ -4,7 +4,9 @@ package com.broxhouse.h5api.models.stats.common;
 
 import com.google.gson.annotations.SerializedName;
 
-public class Player {
+import java.io.Serializable;
+
+public class Player implements Serializable {
     /**
      *  The player's gamertag.
      */

@@ -2,10 +2,12 @@ package com.broxhouse.h5api.models.metadata;
 
 import com.google.gson.annotations.SerializedName;
 
+import java.io.Serializable;
+
 /**
  * Created by Brock Berrett on 7/21/2016.
  */
-public class Weapon extends MetaData{
+public class Weapon extends MetaData implements Serializable{
     /**
      * A localized name for the object, suitable for display to users. The text is title
      * cased.

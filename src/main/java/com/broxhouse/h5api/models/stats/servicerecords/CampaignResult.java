@@ -4,7 +4,9 @@ package com.broxhouse.h5api.models.stats.servicerecords;
 
 import com.google.gson.annotations.SerializedName;
 
-public class CampaignResult extends BaseServiceRecordResult {
+import java.io.Serializable;
+
+public class CampaignResult extends BaseServiceRecordResult implements Serializable {
 
     @SerializedName("CampaignStat")
     private CampaignStat campaignStat;

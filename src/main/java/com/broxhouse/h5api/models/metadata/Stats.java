@@ -5,8 +5,10 @@ import javax.annotation.Generated;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+import java.io.Serializable;
+
 @Generated("org.jsonschema2pojo")
-public class Stats {
+public class Stats implements Serializable {
 
     @SerializedName("BookmarkCount")
     @Expose

@@ -6,9 +6,10 @@ import com.broxhouse.h5api.models.stats.common.Csr;
 import com.broxhouse.h5api.models.stats.reports.BaseStats;
 import com.google.gson.annotations.SerializedName;
 
+import java.io.Serializable;
 import java.util.List;
 
-public class ArenaStat extends BaseStats {
+public class ArenaStat extends BaseStats implements Serializable {
 
     public static class ArenaPlaylistStats extends BaseStats {
         /**

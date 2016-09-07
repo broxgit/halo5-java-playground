@@ -4,7 +4,9 @@ package com.broxhouse.h5api.models.metadata;
 
 import com.google.gson.annotations.SerializedName;
 
-public class SpartanRank {
+import java.io.Serializable;
+
+public class SpartanRank implements Serializable {
 
     /**
      * The amount of XP required to enter this rank.

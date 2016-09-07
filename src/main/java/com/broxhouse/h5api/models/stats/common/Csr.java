@@ -3,7 +3,9 @@ package com.broxhouse.h5api.models.stats.common;
 
 import com.google.gson.annotations.SerializedName;
 
-public class Csr {
+import java.io.Serializable;
+
+public class Csr implements Serializable {
     /**
      * The Csr tier.
      */

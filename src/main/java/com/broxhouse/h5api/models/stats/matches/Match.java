@@ -7,11 +7,12 @@ import com.broxhouse.h5api.models.stats.reports.Team;
 import com.broxhouse.h5api.models.stats.reports.TeamPlayer;
 import com.google.gson.annotations.SerializedName;
 
+import java.io.Serializable;
 import java.util.List;
 
-public class Match {
+public class Match implements Serializable {
 
-    public static class Id {
+    public static class Id implements Serializable{
         /**
          * The ID for this match. More match details are available via the applicable
          * Post Game Carnage Report endpoint.
@@ -37,14 +38,26 @@ public class Match {
         public int getGameMode() {
             return gameMode;
         }
+
+        public void setMatchId(String matchId) {
+            this.matchId = matchId;
+        }
+
+        public void setGameMode(int gameMode) {
+            this.gameMode = gameMode;
+        }
     }
 
-    public static class CompletedDate {
+    public static class CompletedDate implements Serializable{
         @SerializedName("ISO8601Date")
         private String date;
 
         public String getDate() {
             return date;
+        }
+
+        public void setDate(String date) {
+            this.date = date;
         }
     }
 
@@ -184,5 +197,53 @@ public class Match {
 
     public String getSeasonId() {
         return seasonId;
+    }
+
+    public void setId(Id id) {
+        this.id = id;
+    }
+
+    public void setHopperId(String hopperId) {
+        this.hopperId = hopperId;
+    }
+
+    public void setMapId(String mapId) {
+        this.mapId = mapId;
+    }
+
+    public void setMapVariant(Resource mapVariant) {
+        this.mapVariant = mapVariant;
+    }
+
+    public void setGameBaseVariantId(String gameBaseVariantId) {
+        this.gameBaseVariantId = gameBaseVariantId;
+    }
+
+    public void setGameVariant(Resource gameVariant) {
+        this.gameVariant = gameVariant;
+    }
+
+    public void setMatchDuration(String matchDuration) {
+        this.matchDuration = matchDuration;
+    }
+
+    public void setMatchCompletedDate(CompletedDate matchCompletedDate) {
+        this.matchCompletedDate = matchCompletedDate;
+    }
+
+    public void setTeams(List<Team> teams) {
+        this.teams = teams;
+    }
+
+    public void setPlayers(List<TeamPlayer> players) {
+        this.players = players;
+    }
+
+    public void setTeamGame(boolean teamGame) {
+        isTeamGame = teamGame;
+    }
+
+    public void setSeasonId(String seasonId) {
+        this.seasonId = seasonId;
     }
 }

@@ -4,7 +4,9 @@ package com.broxhouse.h5api.models.stats.common;
 
 import com.google.gson.annotations.SerializedName;
 
-public class EnemyKill {
+import java.io.Serializable;
+
+public class EnemyKill implements Serializable {
 
     /**
      * The enemy this entry references

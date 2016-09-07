@@ -4,9 +4,10 @@ package com.broxhouse.h5api.models.metadata;
 
 import com.google.gson.annotations.SerializedName;
 
+import java.io.Serializable;
 import java.util.List;
 
-public class GameBaseVariant {
+public class GameBaseVariant implements Serializable {
     /**
      * A localized name for the game base variant, suitable for display to users. The
      * text is title cased.

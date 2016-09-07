@@ -4,9 +4,10 @@ package com.broxhouse.h5api.models.stats.reports;
 
 import com.google.gson.annotations.SerializedName;
 
+import java.io.Serializable;
 import java.util.List;
 
-public class TeamStats {
+public class TeamStats implements Serializable {
 
     public static class RoundStats {
         /**

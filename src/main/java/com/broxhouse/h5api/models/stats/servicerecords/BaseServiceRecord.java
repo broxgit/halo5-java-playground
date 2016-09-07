@@ -2,6 +2,8 @@
 
 package com.broxhouse.h5api.models.stats.servicerecords;
 
-public class BaseServiceRecord {
+import java.io.Serializable;
+
+public class BaseServiceRecord implements Serializable {
 
 }

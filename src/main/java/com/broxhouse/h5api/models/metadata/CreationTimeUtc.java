@@ -5,8 +5,10 @@ import javax.annotation.Generated;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+import java.io.Serializable;
+
 @Generated("org.jsonschema2pojo")
-public class CreationTimeUtc {
+public class CreationTimeUtc implements Serializable {
 
     @SerializedName("ISO8601Date")
     @Expose

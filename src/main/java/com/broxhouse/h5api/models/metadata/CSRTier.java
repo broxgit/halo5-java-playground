@@ -4,7 +4,9 @@ package com.broxhouse.h5api.models.metadata;
 
 import com.google.gson.annotations.SerializedName;
 
-public class CSRTier {
+import java.io.Serializable;
+
+public class CSRTier implements Serializable {
 
     /**
      * An image to use as the icon for th tier.

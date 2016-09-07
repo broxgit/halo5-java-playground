@@ -8,9 +8,10 @@ import com.broxhouse.h5api.models.stats.common.MedalAward;
 import com.broxhouse.h5api.models.stats.common.WeaponStats;
 import com.google.gson.annotations.SerializedName;
 
+import java.io.Serializable;
 import java.util.List;
 
-public class BaseStats {
+public class BaseStats implements Serializable {
 
     /**
      * Total number of kills done by the player. This includes melee kills, shoulder

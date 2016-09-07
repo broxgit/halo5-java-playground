@@ -4,9 +4,10 @@ package com.broxhouse.h5api.models.stats.matches;
 
 import com.google.gson.annotations.SerializedName;
 
+import java.io.Serializable;
 import java.util.List;
 
-public class Page {
+public class Page implements Serializable {
     /**
      * The starting point that was used. When the "start" query string parameter is
      * specified, this value is identical. When "start" is omitted, the default value is

@@ -4,7 +4,9 @@ package com.broxhouse.h5api.models.metadata;
 
 import com.google.gson.annotations.SerializedName;
 
-public class MapVariant extends MetaData{
+import java.io.Serializable;
+
+public class MapVariant extends MetaData implements Serializable {
 
 //    MapVariant (String name, String description, String mapImageUrl, String mapId, String id){
 //        this.name = name;

@@ -5,9 +5,10 @@ package com.broxhouse.h5api.models.stats.servicerecords;
 import com.broxhouse.h5api.models.stats.reports.BaseStats;
 import com.google.gson.annotations.SerializedName;
 
+import java.io.Serializable;
 import java.util.List;
 
-public class CustomStat extends BaseStats {
+public class CustomStat extends BaseStats implements Serializable {
 
     /**
      * List of custom stats by CustomGameBaseVariant

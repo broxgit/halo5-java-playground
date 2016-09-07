@@ -5,9 +5,10 @@ package com.broxhouse.h5api.models.stats.reports;
 
 import com.google.gson.annotations.SerializedName;
 
+import java.io.Serializable;
 import java.util.List;
 
-public class BaseCarnageReport<S extends BasePlayerStats> {
+public class BaseCarnageReport<S extends BasePlayerStats> implements Serializable {
 
     /**
      * A list of stats for each player who was present in the match.

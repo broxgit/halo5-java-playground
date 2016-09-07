@@ -4,7 +4,9 @@ package com.broxhouse.h5api.models.stats.reports;
 
 import com.google.gson.annotations.SerializedName;
 
-public class Team {
+import java.io.Serializable;
+
+public class Team implements Serializable {
     /**
      * The ID for the team. The team's ID dictates the team's color. Team colors
      * are available via the Metadata API.

@@ -5,7 +5,9 @@ package com.broxhouse.h5api.models.stats.servicerecords;
 import com.broxhouse.h5api.models.stats.common.Player;
 import com.google.gson.annotations.SerializedName;
 
-public class BaseServiceRecordResult {
+import java.io.Serializable;
+
+public class BaseServiceRecordResult implements Serializable {
 
     /**
      * Information about the player for whom this data was returned.

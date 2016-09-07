@@ -4,9 +4,10 @@ package com.broxhouse.h5api.models.metadata;
 
 import com.google.gson.annotations.SerializedName;
 
+import java.io.Serializable;
 import java.util.List;
 
-public class Reward {
+public class Reward implements Serializable {
 
     // The amount of XP that will be awarded.
     private int xp;

@@ -4,7 +4,9 @@ package com.broxhouse.h5api.models.metadata;
 
 import com.google.gson.annotations.SerializedName;
 
-public class Skull {
+import java.io.Serializable;
+
+public class Skull implements Serializable {
 
     /**
      * A localized name, suitable for display to users. The text is title cased.

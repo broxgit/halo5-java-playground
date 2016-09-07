@@ -4,9 +4,10 @@ package com.broxhouse.h5api.models.stats.common;
 
 import com.google.gson.annotations.SerializedName;
 
+import java.io.Serializable;
 import java.util.List;
 
-public class FlexibleStats {
+public class FlexibleStats implements Serializable {
     /**
      * The set of flexible stats that are derived from medal events.
      */

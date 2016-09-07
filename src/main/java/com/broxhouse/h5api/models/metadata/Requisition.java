@@ -4,9 +4,10 @@ package com.broxhouse.h5api.models.metadata;
 
 import com.google.gson.annotations.SerializedName;
 
+import java.io.Serializable;
 import java.util.List;
 
-public class Requisition {
+public class Requisition implements Serializable {
     /**
      * This lists all the game modes that this requisition is redeemable in. Options are:
      * - Arena

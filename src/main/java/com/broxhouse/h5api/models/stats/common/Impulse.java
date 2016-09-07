@@ -4,7 +4,9 @@ package com.broxhouse.h5api.models.stats.common;
 
 import com.google.gson.annotations.SerializedName;
 
-public class Impulse {
+import java.io.Serializable;
+
+public class Impulse implements Serializable {
 
     /**
      * The ID of the Impulse. Impulses are available via the Metadata API.

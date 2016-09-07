@@ -3,7 +3,9 @@ package com.broxhouse.h5api.models.stats.reports;
 import com.broxhouse.h5api.models.stats.common.Csr;
 import com.google.gson.annotations.SerializedName;
 
-public class ArenaPlayerStats extends SpartanRankedPlayerStats {
+import java.io.Serializable;
+
+public class ArenaPlayerStats extends SpartanRankedPlayerStats implements Serializable {
 
     /**
      * The Competitive Skill Ranking (Csr) of the player before the match started. If

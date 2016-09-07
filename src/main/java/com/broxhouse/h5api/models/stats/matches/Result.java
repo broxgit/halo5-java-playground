@@ -7,13 +7,14 @@ import com.broxhouse.h5api.models.stats.reports.Team;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
 /**
  * Created by Brock Berrett on 7/28/2016.
  */
-public class Result {
+public class Result implements Serializable {
 //    @SerializedName("Links")
 //    @Expose
 //    private Links links;

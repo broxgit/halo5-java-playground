@@ -6,7 +6,9 @@ package com.broxhouse.h5api.models.stats;
 
 import com.google.gson.annotations.SerializedName;
 
-public class WeaponStats
+import java.io.Serializable;
+
+public class WeaponStats implements Serializable
 {
     @SerializedName("WeaponId")
     private WeaponId weaponId;

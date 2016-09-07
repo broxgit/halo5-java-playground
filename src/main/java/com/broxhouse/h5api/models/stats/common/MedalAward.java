@@ -4,8 +4,10 @@ package com.broxhouse.h5api.models.stats.common;
 
 import com.google.gson.annotations.SerializedName;
 
+import java.io.Serializable;
 
-public class MedalAward {
+
+public class MedalAward implements Serializable {
 
     /**
      * The ID of the Medal. Medals are available via the Metadata API.

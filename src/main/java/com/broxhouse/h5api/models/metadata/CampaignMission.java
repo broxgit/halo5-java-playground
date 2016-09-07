@@ -4,7 +4,9 @@ package com.broxhouse.h5api.models.metadata;
 
 import com.google.gson.annotations.SerializedName;
 
-public class CampaignMission {
+import java.io.Serializable;
+
+public class CampaignMission implements Serializable {
     /**
      * Order of mission in story
      */

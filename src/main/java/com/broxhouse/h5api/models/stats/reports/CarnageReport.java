@@ -1,5 +1,6 @@
 package com.broxhouse.h5api.models.stats.reports;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import javax.annotation.Generated;
@@ -7,7 +8,7 @@ import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 @Generated("org.jsonschema2pojo")
-public class CarnageReport {
+public class CarnageReport implements Serializable {
 
     @SerializedName("PlayerStats")
     @Expose

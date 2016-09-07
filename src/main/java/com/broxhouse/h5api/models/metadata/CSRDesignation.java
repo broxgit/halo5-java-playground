@@ -4,9 +4,10 @@ package com.broxhouse.h5api.models.metadata;
 
 import com.google.gson.annotations.SerializedName;
 
+import java.io.Serializable;
 import java.util.List;
 
-public class CSRDesignation {
+public class CSRDesignation implements Serializable {
     /**
      * A localized name for the designation, suitable for display to users. The text is
      * title cased.

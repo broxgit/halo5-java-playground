@@ -6,7 +6,9 @@ import com.broxhouse.h5api.models.stats.common.FlexibleStats;
 import com.broxhouse.h5api.models.stats.common.Player;
 import com.google.gson.annotations.SerializedName;
 
-public class BasePlayerStats extends BaseStats {
+import java.io.Serializable;
+
+public class BasePlayerStats extends BaseStats implements Serializable {
 
     /**
      * The game base variant specific stats for this match. Flexible stats are

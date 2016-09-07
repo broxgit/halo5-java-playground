@@ -4,7 +4,9 @@ package com.broxhouse.h5api.models.stats.reports;
 
 import com.google.gson.annotations.SerializedName;
 
-public class Resource {
+import java.io.Serializable;
+
+public class Resource implements Serializable {
 
     /**
      * 2 - GameVariant
@@ -48,5 +50,21 @@ public class Resource {
 
     public String getOwner() {
         return owner;
+    }
+
+    public void setResourceType(int resourceType) {
+        this.resourceType = resourceType;
+    }
+
+    public void setResourceId(String resourceId) {
+        this.resourceId = resourceId;
+    }
+
+    public void setOwnerType(String ownerType) {
+        this.ownerType = ownerType;
+    }
+
+    public void setOwner(String owner) {
+        this.owner = owner;
     }
 }

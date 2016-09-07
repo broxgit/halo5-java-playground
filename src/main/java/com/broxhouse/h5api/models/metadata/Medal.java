@@ -4,7 +4,9 @@ package com.broxhouse.h5api.models.metadata;
 
 import com.google.gson.annotations.SerializedName;
 
-public class Medal{
+import java.io.Serializable;
+
+public class Medal implements Serializable {
 //    @Override
 //    public String getContentId() {
 //        return null;

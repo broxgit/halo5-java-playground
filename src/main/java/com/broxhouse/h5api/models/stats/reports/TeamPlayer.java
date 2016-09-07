@@ -5,7 +5,9 @@ package com.broxhouse.h5api.models.stats.reports;
 import com.broxhouse.h5api.models.stats.common.Player;
 import com.google.gson.annotations.SerializedName;
 
-public class TeamPlayer {
+import java.io.Serializable;
+
+public class TeamPlayer implements Serializable {
 
     @SerializedName("Player")
     private Player player;

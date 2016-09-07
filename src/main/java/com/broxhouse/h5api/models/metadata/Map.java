@@ -4,9 +4,10 @@ package com.broxhouse.h5api.models.metadata;
 
 import com.google.gson.annotations.SerializedName;
 
+import java.io.Serializable;
 import java.util.List;
 
-public class Map {
+public class Map implements Serializable {
     /**
      * A localized name, suitable for display to users.
      */
@@ -17,33 +18,7 @@ public class Map {
      */
     private String description;
 
-    public void setName(String name) {
-        this.name = name;
-    }
 
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public void setSupportedGameModes(List<String> supportedGameModes) {
-        this.supportedGameModes = supportedGameModes;
-    }
-
-    public void setImageUrl(String imageUrl) {
-        this.imageUrl = imageUrl;
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
-
-    public String getContentId() {
-        return contentId;
-    }
-
-    public void setContentId(String contentId) {
-        this.contentId = contentId;
-    }
 
     /**
      * This lists all the game modes to which this map is available. Options are:
@@ -99,5 +74,32 @@ public class Map {
 
     public void setCount(int count){
         this.count = count;
+    }
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public void setSupportedGameModes(List<String> supportedGameModes) {
+        this.supportedGameModes = supportedGameModes;
+    }
+
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public String getContentId() {
+        return contentId;
+    }
+
+    public void setContentId(String contentId) {
+        this.contentId = contentId;
     }
 }

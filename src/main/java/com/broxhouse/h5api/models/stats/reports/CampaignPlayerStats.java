@@ -4,7 +4,9 @@ package com.broxhouse.h5api.models.stats.reports;
 
 import com.google.gson.annotations.SerializedName;
 
-public class CampaignPlayerStats extends BasePlayerStats {
+import java.io.Serializable;
+
+public class CampaignPlayerStats extends BasePlayerStats implements Serializable {
     /**
      * The player's biggest score due to a kill.
      */

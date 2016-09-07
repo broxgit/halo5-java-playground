@@ -4,9 +4,10 @@ package com.broxhouse.h5api.models.stats.reports;
 
 import com.google.gson.annotations.SerializedName;
 
+import java.io.Serializable;
 import java.util.List;
 
-public class VersusCarnageReport<S extends VersusPlayerStats> extends BaseCarnageReport<S> {
+public class VersusCarnageReport<S extends VersusPlayerStats> extends BaseCarnageReport<S> implements Serializable {
 
     /**
      * A list of stats for each team who in the match. Note that in Free For All modes,

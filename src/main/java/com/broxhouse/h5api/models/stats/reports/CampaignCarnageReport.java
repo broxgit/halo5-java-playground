@@ -4,9 +4,10 @@ package com.broxhouse.h5api.models.stats.reports;
 
 import com.google.gson.annotations.SerializedName;
 
+import java.io.Serializable;
 import java.util.List;
 
-public class CampaignCarnageReport extends BaseCarnageReport<CampaignPlayerStats> {
+public class CampaignCarnageReport extends BaseCarnageReport<CampaignPlayerStats> implements Serializable {
 
     /**
      * The total playthrough time of the mission as calculated by the game. This value is

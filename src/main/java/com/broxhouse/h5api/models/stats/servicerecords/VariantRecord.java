@@ -4,7 +4,9 @@ package com.broxhouse.h5api.models.stats.servicerecords;
 
 import com.google.gson.annotations.SerializedName;
 
-public class VariantRecord {
+import java.io.Serializable;
+
+public class VariantRecord implements Serializable {
     /**
      * Rank between 1-3
      */

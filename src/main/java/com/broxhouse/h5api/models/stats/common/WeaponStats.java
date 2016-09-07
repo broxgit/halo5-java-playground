@@ -4,10 +4,12 @@ package com.broxhouse.h5api.models.stats.common;
 
 import com.google.gson.annotations.SerializedName;
 
+import java.io.Serializable;
+
 /**
  * Created by ahart on 2015-11-06.
  */
-public class WeaponStats {
+public class WeaponStats implements Serializable {
 
     @SerializedName("name")
     private String name;

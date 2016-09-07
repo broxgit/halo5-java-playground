@@ -6,7 +6,9 @@ import com.broxhouse.h5api.models.stats.common.FlexibleStats;
 import com.broxhouse.h5api.models.stats.reports.BaseStats;
 import com.google.gson.annotations.SerializedName;
 
-public class GameBaseVariantStats extends BaseStats {
+import java.io.Serializable;
+
+public class GameBaseVariantStats extends BaseStats implements Serializable {
 
     /**
      * The ID of the game base variant. Game base variants are available via

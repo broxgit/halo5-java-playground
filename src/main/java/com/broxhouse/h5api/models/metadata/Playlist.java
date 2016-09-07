@@ -4,7 +4,9 @@ package com.broxhouse.h5api.models.metadata;
 
 import com.google.gson.annotations.SerializedName;
 
-public class Playlist {
+import java.io.Serializable;
+
+public class Playlist implements Serializable {
     /**
      * A localized name for the playlist, suitable for display to users. The text is
      * title cased.

@@ -4,10 +4,11 @@ package com.broxhouse.h5api.models.stats.reports;
 
 import com.google.gson.annotations.SerializedName;
 
+import java.io.Serializable;
 import java.math.BigInteger;
 import java.util.List;
 
-public class SpartanRankedPlayerStats extends VersusPlayerStats {
+public class SpartanRankedPlayerStats extends VersusPlayerStats implements Serializable {
 
     public static class XpInfo {
         /**
