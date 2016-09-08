@@ -156,7 +156,7 @@ public class HaloApi {
 //            hapi.cachePlayerData(CUSTOM, hapi.PLAYER_UF);
 //            System.out.println(hapi.killedByOponent(ARENA));
 //            hapi.cacheAllPlayerData(hapi.PLAYER_UF);
-            hapi.cacheGameCarnage(CUSTOM);
+            hapi.cacheGameCarnage(ARENA);
 //            System.out.println(hapi.favoriteMapVariant(ARENA));
 //            System.out.println(hapi.favoriteCustomMapVariant(CUSTOM));
 //            System.out.println(hapi.killedByOponent(CUSTOM));
@@ -389,34 +389,67 @@ public class HaloApi {
 
     }
 
-    public void cacheGameCarnage(Enum gameType) throws Exception{
-        System.out.println("Getting " + gameType +  " game carnage for: " + PLAYER_UF);
+    public void cacheGameCarnage(Enum gameType) throws Exception {
+        System.out.println("Getting " + gameType + " game carnage for: " + PLAYER_UF);
+        CarnageReport[] oldCarnageReports = (CarnageReport[]) db.getMetadataFromDB(dataType.CARNAGE, false, gameType);
+        System.out.println("boobs");
+        List<String> oldMatchIDs = new ArrayList<>();
+        List<String> newMatchIDs = new ArrayList<>();
+        List<String> allMatchIDs = new ArrayList<>();
         Gson gson = new Gson();
         Match[] matches = getMatches(gameType);
         CarnageReport carnageReport = null;
         List<CarnageReport> carnageList = new ArrayList<>();
-        JSONObject obj = null;
-        for (int i = 0; i < matches.length; i++) {
-            if (gameType == ARENA) {
-                obj = new JSONObject(postGameCarnage(matches[i].getId().getMatchId()));
+        if (oldCarnageReports != null) {
+            for (int i = 0; i < oldCarnageReports.length; i++) {
+                oldMatchIDs.add(oldCarnageReports[i].getMatchId());
             }
-            else if(gameType == CUSTOM) {
-                obj = new JSONObject(postCustomGameCarnage(matches[i].getId().getMatchId()));
+            for (int i = 0; i < matches.length; i++) {
+                if (oldMatchIDs.contains(matches[i].getId().getMatchId())) {
+                    allMatchIDs.add(matches[i].getId().getMatchId());
+                    continue;
+                }
+                else {
+                    newMatchIDs.add(matches[i].getId().getMatchId());
+                    allMatchIDs.add(matches[i].getId().getMatchId());
+                }
             }
-            else if(gameType == WARZONE){}
-
-            carnageReport = gson.fromJson(obj.toString(), CarnageReport.class);
-            carnageReport.setMatchId(matches[i].getId().getMatchId());
-            carnageList.add(carnageReport);
-
-            continue;
+        } else if (oldCarnageReports == null) {
+            for (int i = 0; i < matches.length; i++) {
+                newMatchIDs.add(matches[i].getId().getMatchId());
+            }
         }
-        CarnageReport[] reports = new CarnageReport[carnageList.size()];
-        for (int i = 0; i < carnageList.size(); i++){
-            reports[i] = carnageList.get(i);
+            JSONObject obj = null;
+            for (int i = 0; i < newMatchIDs.size(); i++) {
+                if (gameType == ARENA) {
+                    obj = new JSONObject(postGameCarnage(newMatchIDs.get(i)));
+                } else if (gameType == CUSTOM) {
+                    obj = new JSONObject(postCustomGameCarnage(newMatchIDs.get(i)));
+                } else if (gameType == WARZONE) {}
+
+                carnageReport = gson.fromJson(obj.toString(), CarnageReport.class);
+                carnageReport.setMatchId(matches[i].getId().getMatchId());
+                carnageList.add(carnageReport);
+
+                continue;
+            }
+            CarnageReport[] reports = new CarnageReport[carnageList.size()];
+            for (int i = 0; i < carnageList.size(); i++) {
+                reports[i] = carnageList.get(i);
+            }
+            db.writeCarnageReportsToDB(reports, dataType.CARNAGE, false, gameType);
+        oldCarnageReports = (CarnageReport[]) db.getMetadataFromDB(dataType.CARNAGE, true, gameType);
+        CarnageReport[] playerReports = new CarnageReport[oldCarnageReports.length];
+        int diffCount = 0;
+        for (int i = 0; i < oldCarnageReports.length; i++){
+            if(! allMatchIDs.contains(oldCarnageReports[i].getMatchId())){
+                playerReports[i] = oldCarnageReports[i];
+                diffCount++;
+            }
         }
-        db.writeCarnageReportsToDB(reports);
-    }
+        System.out.println(diffCount);
+        db.writeCarnageReportsToDB(playerReports, dataType.CARNAGE, true, gameType);
+        }
 
     public void cacheArenaMaps() throws Exception {
 //        MapVariant[] oldmaps = db.getArenaMapVariants();
@@ -435,7 +468,7 @@ public class HaloApi {
         }
         Set<String> oldMapIDs = getUniqueResources(oldResources);
         System.out.println("Caching Custom Maps");
-        Match[] matches = db.getMatchesDB(ARENA);
+        Match[] matches = getMatches(ARENA);
         Resource[] resources = null;
         List<Resource> mapList = new ArrayList<>();
         int k = 0;
@@ -557,7 +590,7 @@ public class HaloApi {
         }
         Set<String> oldMapIDs = getUniqueResources(oldResources);
         System.out.println("Caching Custom Maps");
-        Match[] matches = db.getMatchesDB(CUSTOM);
+        Match[] matches = getMatches(CUSTOM);
         Resource[] resources = null;
         List<Resource> mapList = new ArrayList<>();
         int k = 0;
@@ -725,7 +758,7 @@ public class HaloApi {
     }
 
     public Match[] getMatches(Enum gameType) throws Exception{
-        return db.getMatchesFromDB(dataType.MATCHES, true, gameType);
+        return (Match[]) db.getMetadataFromDB(dataType.MATCHES, true, gameType);
     }
 
     public void cacheMatches(Enum gameType) throws Exception {
@@ -768,13 +801,7 @@ public class HaloApi {
     }
 
     public  CarnageReport[] getCarnageReports(Enum gameType) throws Exception{
-        Gson gson = new Gson();
-        String fileName = getFileName(gameType, PLAYER_UF, "carnage");
-        BufferedReader br = new BufferedReader(new FileReader(fileName));
-        String carnageData = br.readLine();
-        br.close();
-        CarnageReport[] carnageReports = gson.fromJson(carnageData, CarnageReport[].class);
-        return carnageReports;
+        return (CarnageReport[]) db.getMetadataFromDB(dataType.CARNAGE, true, gameType);
     }
 
     public  Set<String> getUniqueResources(Resource[] resources) throws Exception {
@@ -833,12 +860,11 @@ public class HaloApi {
     }
 
     public  CustomMapVariant[] getCachedCustMapVariants() throws Exception{
-        CustomMapVariant[] mapVariant = db.getCustomMapVariants();
-        return mapVariant;
+        return  (CustomMapVariant[]) db.getMetadataFromDB(dataType.CUSTOMMAPVARIANTS, false, NA);
     }
 
     public MapVariant[] getArenaMapVariants() throws Exception{
-        return db.getArenaMapVariants();
+        return  (MapVariant[]) db.getMetadataFromDB(dataType.ARENAMAPVARIANTS, false, NA);
     }
 
     public  String getCustomMapName(String mapID) throws Exception{

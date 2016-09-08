@@ -8,10 +8,7 @@ import javax.annotation.Generated;
 
 import com.broxhouse.h5api.models.stats.arenastatsold.WeaponStat;
 import com.broxhouse.h5api.models.stats.arenastatsold.WeaponWithMostKills;
-import com.broxhouse.h5api.models.stats.common.FlexibleStats;
-import com.broxhouse.h5api.models.stats.common.Impulse;
-import com.broxhouse.h5api.models.stats.common.MedalAward;
-import com.broxhouse.h5api.models.stats.common.Player;
+import com.broxhouse.h5api.models.stats.common.*;
 import com.broxhouse.h5api.models.stats.reports.KilledByOpponentDetail;
 import com.broxhouse.h5api.models.stats.reports.KilledOpponentDetail;
 import com.google.gson.annotations.Expose;
@@ -145,7 +142,7 @@ public class PlayerStat implements Serializable {
     private List<Object> enemyKills = new ArrayList<Object>();
     @SerializedName("WeaponStats")
     @Expose
-    private List<WeaponStat> weaponStats = new ArrayList<WeaponStat>();
+    private List<WeaponStats> weaponStats = new ArrayList<WeaponStats>();
     @SerializedName("Impulses")
     @Expose
     private List<Impulse> impulses = new ArrayList<Impulse>();
@@ -899,7 +896,7 @@ public class PlayerStat implements Serializable {
      * @return
      *     The weaponStats
      */
-    public List<WeaponStat> getWeaponStats() {
+    public List<WeaponStats> getWeaponStats() {
         return weaponStats;
     }
 
@@ -908,7 +905,7 @@ public class PlayerStat implements Serializable {
      * @param weaponStats
      *     The WeaponStats
      */
-    public void setWeaponStats(List<WeaponStat> weaponStats) {
+    public void setWeaponStats(List<WeaponStats> weaponStats) {
         this.weaponStats = weaponStats;
     }
 
