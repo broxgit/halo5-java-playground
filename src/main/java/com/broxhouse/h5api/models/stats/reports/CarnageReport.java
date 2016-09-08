@@ -50,6 +50,18 @@ public class CarnageReport implements Serializable {
     @Expose
     private MapVariantResourceId mapVariantResourceId;
 
+    public String getMatchId() {
+        return matchId;
+    }
+
+    public void setMatchId(String matchId) {
+
+        this.matchId = matchId;
+    }
+
+    @SerializedName("matchID")
+    private String matchId;
+
     /**
      *
      * @return

@@ -7,186 +7,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5fdac0ad-8c12-40e7-a786-d460f1f65048" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/broxhouse/h5api/models/metadata/BaseGame.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/broxhouse/h5api/models/metadata/CustomGameVariant.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/broxhouse/h5api/models/metadata/serial2.java" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/test-classes/com/broxhouse/h5api/HaloApi$3.class" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/broxhouse/h5api/models/metadata/BaseMap.class" afterPath="$PROJECT_DIR$/target/classes/com/broxhouse/h5api/models/metadata/BaseMap.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/broxhouse/h5api/models/metadata/CSRDesignation.class" afterPath="$PROJECT_DIR$/target/classes/com/broxhouse/h5api/models/metadata/CSRDesignation.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/broxhouse/h5api/models/metadata/CSRTier.class" afterPath="$PROJECT_DIR$/target/classes/com/broxhouse/h5api/models/metadata/CSRTier.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/broxhouse/h5api/models/metadata/CampaignMission.class" afterPath="$PROJECT_DIR$/target/classes/com/broxhouse/h5api/models/metadata/CampaignMission.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/broxhouse/h5api/models/metadata/Commendation$Category.class" afterPath="$PROJECT_DIR$/target/classes/com/broxhouse/h5api/models/metadata/Commendation$Category.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/broxhouse/h5api/models/metadata/Commendation$Level.class" afterPath="$PROJECT_DIR$/target/classes/com/broxhouse/h5api/models/metadata/Commendation$Level.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/broxhouse/h5api/models/metadata/Commendation.class" afterPath="$PROJECT_DIR$/target/classes/com/broxhouse/h5api/models/metadata/Commendation.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/broxhouse/h5api/models/metadata/CreationTimeUtc.class" afterPath="$PROJECT_DIR$/target/classes/com/broxhouse/h5api/models/metadata/CreationTimeUtc.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/broxhouse/h5api/models/metadata/CustomMapVariant.class" afterPath="$PROJECT_DIR$/target/classes/com/broxhouse/h5api/models/metadata/CustomMapVariant.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/broxhouse/h5api/models/metadata/Enemy.class" afterPath="$PROJECT_DIR$/target/classes/com/broxhouse/h5api/models/metadata/Enemy.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/broxhouse/h5api/models/metadata/FlexibleStat.class" afterPath="$PROJECT_DIR$/target/classes/com/broxhouse/h5api/models/metadata/FlexibleStat.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/broxhouse/h5api/models/metadata/GameBaseVariant.class" afterPath="$PROJECT_DIR$/target/classes/com/broxhouse/h5api/models/metadata/GameBaseVariant.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/broxhouse/h5api/models/metadata/GameVariant.class" afterPath="$PROJECT_DIR$/target/classes/com/broxhouse/h5api/models/metadata/GameVariant.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/broxhouse/h5api/models/metadata/Identity.class" afterPath="$PROJECT_DIR$/target/classes/com/broxhouse/h5api/models/metadata/Identity.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/broxhouse/h5api/models/metadata/Impulse.class" afterPath="$PROJECT_DIR$/target/classes/com/broxhouse/h5api/models/metadata/Impulse.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/broxhouse/h5api/models/metadata/LastModifiedTimeUtc.class" afterPath="$PROJECT_DIR$/target/classes/com/broxhouse/h5api/models/metadata/LastModifiedTimeUtc.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/broxhouse/h5api/models/metadata/Links.class" afterPath="$PROJECT_DIR$/target/classes/com/broxhouse/h5api/models/metadata/Links.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/broxhouse/h5api/models/metadata/Map.class" afterPath="$PROJECT_DIR$/target/classes/com/broxhouse/h5api/models/metadata/Map.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/broxhouse/h5api/models/metadata/MapVariant.class" afterPath="$PROJECT_DIR$/target/classes/com/broxhouse/h5api/models/metadata/MapVariant.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/broxhouse/h5api/models/metadata/Medal.class" afterPath="$PROJECT_DIR$/target/classes/com/broxhouse/h5api/models/metadata/Medal.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/broxhouse/h5api/models/metadata/Playlist.class" afterPath="$PROJECT_DIR$/target/classes/com/broxhouse/h5api/models/metadata/Playlist.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/broxhouse/h5api/models/metadata/Requisition.class" afterPath="$PROJECT_DIR$/target/classes/com/broxhouse/h5api/models/metadata/Requisition.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/broxhouse/h5api/models/metadata/RequisitionPack.class" afterPath="$PROJECT_DIR$/target/classes/com/broxhouse/h5api/models/metadata/RequisitionPack.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/broxhouse/h5api/models/metadata/Reward.class" afterPath="$PROJECT_DIR$/target/classes/com/broxhouse/h5api/models/metadata/Reward.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/broxhouse/h5api/models/metadata/Skull.class" afterPath="$PROJECT_DIR$/target/classes/com/broxhouse/h5api/models/metadata/Skull.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/broxhouse/h5api/models/metadata/SpartanRank.class" afterPath="$PROJECT_DIR$/target/classes/com/broxhouse/h5api/models/metadata/SpartanRank.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/broxhouse/h5api/models/metadata/SpriteLocation.class" afterPath="$PROJECT_DIR$/target/classes/com/broxhouse/h5api/models/metadata/SpriteLocation.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/broxhouse/h5api/models/metadata/Stats.class" afterPath="$PROJECT_DIR$/target/classes/com/broxhouse/h5api/models/metadata/Stats.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/broxhouse/h5api/models/metadata/TeamColor.class" afterPath="$PROJECT_DIR$/target/classes/com/broxhouse/h5api/models/metadata/TeamColor.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/broxhouse/h5api/models/metadata/Vehicle.class" afterPath="$PROJECT_DIR$/target/classes/com/broxhouse/h5api/models/metadata/Vehicle.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/broxhouse/h5api/models/metadata/Weapon.class" afterPath="$PROJECT_DIR$/target/classes/com/broxhouse/h5api/models/metadata/Weapon.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/broxhouse/h5api/models/stats/WeaponId.class" afterPath="$PROJECT_DIR$/target/classes/com/broxhouse/h5api/models/stats/WeaponId.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/broxhouse/h5api/models/stats/WeaponStats.class" afterPath="$PROJECT_DIR$/target/classes/com/broxhouse/h5api/models/stats/WeaponStats.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/broxhouse/h5api/models/stats/common/Csr.class" afterPath="$PROJECT_DIR$/target/classes/com/broxhouse/h5api/models/stats/common/Csr.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/broxhouse/h5api/models/stats/common/Enemy.class" afterPath="$PROJECT_DIR$/target/classes/com/broxhouse/h5api/models/stats/common/Enemy.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/broxhouse/h5api/models/stats/common/EnemyKill.class" afterPath="$PROJECT_DIR$/target/classes/com/broxhouse/h5api/models/stats/common/EnemyKill.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/broxhouse/h5api/models/stats/common/FlexibleStats.class" afterPath="$PROJECT_DIR$/target/classes/com/broxhouse/h5api/models/stats/common/FlexibleStats.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/broxhouse/h5api/models/stats/common/Impulse.class" afterPath="$PROJECT_DIR$/target/classes/com/broxhouse/h5api/models/stats/common/Impulse.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/broxhouse/h5api/models/stats/common/MedalAward.class" afterPath="$PROJECT_DIR$/target/classes/com/broxhouse/h5api/models/stats/common/MedalAward.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/broxhouse/h5api/models/stats/common/Player.class" afterPath="$PROJECT_DIR$/target/classes/com/broxhouse/h5api/models/stats/common/Player.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/broxhouse/h5api/models/stats/common/StatCount.class" afterPath="$PROJECT_DIR$/target/classes/com/broxhouse/h5api/models/stats/common/StatCount.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/broxhouse/h5api/models/stats/common/Timelapse.class" afterPath="$PROJECT_DIR$/target/classes/com/broxhouse/h5api/models/stats/common/Timelapse.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/broxhouse/h5api/models/stats/common/WeaponId.class" afterPath="$PROJECT_DIR$/target/classes/com/broxhouse/h5api/models/stats/common/WeaponId.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/broxhouse/h5api/models/stats/common/WeaponStats.class" afterPath="$PROJECT_DIR$/target/classes/com/broxhouse/h5api/models/stats/common/WeaponStats.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/broxhouse/h5api/models/stats/matches/Match$CompletedDate.class" afterPath="$PROJECT_DIR$/target/classes/com/broxhouse/h5api/models/stats/matches/Match$CompletedDate.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/broxhouse/h5api/models/stats/matches/Match$Id.class" afterPath="$PROJECT_DIR$/target/classes/com/broxhouse/h5api/models/stats/matches/Match$Id.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/broxhouse/h5api/models/stats/matches/Match.class" afterPath="$PROJECT_DIR$/target/classes/com/broxhouse/h5api/models/stats/matches/Match.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/broxhouse/h5api/models/stats/matches/Page.class" afterPath="$PROJECT_DIR$/target/classes/com/broxhouse/h5api/models/stats/matches/Page.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/broxhouse/h5api/models/stats/matches/Result.class" afterPath="$PROJECT_DIR$/target/classes/com/broxhouse/h5api/models/stats/matches/Result.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/broxhouse/h5api/models/stats/reports/ArenaPlayerStats.class" afterPath="$PROJECT_DIR$/target/classes/com/broxhouse/h5api/models/stats/reports/ArenaPlayerStats.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/broxhouse/h5api/models/stats/reports/BaseCarnageReport.class" afterPath="$PROJECT_DIR$/target/classes/com/broxhouse/h5api/models/stats/reports/BaseCarnageReport.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/broxhouse/h5api/models/stats/reports/BasePlayerStats.class" afterPath="$PROJECT_DIR$/target/classes/com/broxhouse/h5api/models/stats/reports/BasePlayerStats.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/broxhouse/h5api/models/stats/reports/BaseStats.class" afterPath="$PROJECT_DIR$/target/classes/com/broxhouse/h5api/models/stats/reports/BaseStats.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/broxhouse/h5api/models/stats/reports/CampaignCarnageReport.class" afterPath="$PROJECT_DIR$/target/classes/com/broxhouse/h5api/models/stats/reports/CampaignCarnageReport.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/broxhouse/h5api/models/stats/reports/CampaignPlayerStats.class" afterPath="$PROJECT_DIR$/target/classes/com/broxhouse/h5api/models/stats/reports/CampaignPlayerStats.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/broxhouse/h5api/models/stats/reports/Resource.class" afterPath="$PROJECT_DIR$/target/classes/com/broxhouse/h5api/models/stats/reports/Resource.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/broxhouse/h5api/models/stats/reports/SpartanRankedPlayerStats$CreditsEarned.class" afterPath="$PROJECT_DIR$/target/classes/com/broxhouse/h5api/models/stats/reports/SpartanRankedPlayerStats$CreditsEarned.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/broxhouse/h5api/models/stats/reports/SpartanRankedPlayerStats$DataHolder.class" afterPath="$PROJECT_DIR$/target/classes/com/broxhouse/h5api/models/stats/reports/SpartanRankedPlayerStats$DataHolder.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/broxhouse/h5api/models/stats/reports/SpartanRankedPlayerStats$MetaCommendationDelta.class" afterPath="$PROJECT_DIR$/target/classes/com/broxhouse/h5api/models/stats/reports/SpartanRankedPlayerStats$MetaCommendationDelta.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/broxhouse/h5api/models/stats/reports/SpartanRankedPlayerStats$ProgressiveCommendationDelta.class" afterPath="$PROJECT_DIR$/target/classes/com/broxhouse/h5api/models/stats/reports/SpartanRankedPlayerStats$ProgressiveCommendationDelta.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/broxhouse/h5api/models/stats/reports/SpartanRankedPlayerStats$RewardSet.class" afterPath="$PROJECT_DIR$/target/classes/com/broxhouse/h5api/models/stats/reports/SpartanRankedPlayerStats$RewardSet.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/broxhouse/h5api/models/stats/reports/SpartanRankedPlayerStats$XpInfo.class" afterPath="$PROJECT_DIR$/target/classes/com/broxhouse/h5api/models/stats/reports/SpartanRankedPlayerStats$XpInfo.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/broxhouse/h5api/models/stats/reports/SpartanRankedPlayerStats.class" afterPath="$PROJECT_DIR$/target/classes/com/broxhouse/h5api/models/stats/reports/SpartanRankedPlayerStats.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/broxhouse/h5api/models/stats/reports/Team.class" afterPath="$PROJECT_DIR$/target/classes/com/broxhouse/h5api/models/stats/reports/Team.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/broxhouse/h5api/models/stats/reports/TeamPlayer.class" afterPath="$PROJECT_DIR$/target/classes/com/broxhouse/h5api/models/stats/reports/TeamPlayer.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/broxhouse/h5api/models/stats/reports/TeamStats$RoundStats.class" afterPath="$PROJECT_DIR$/target/classes/com/broxhouse/h5api/models/stats/reports/TeamStats$RoundStats.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/broxhouse/h5api/models/stats/reports/TeamStats.class" afterPath="$PROJECT_DIR$/target/classes/com/broxhouse/h5api/models/stats/reports/TeamStats.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/broxhouse/h5api/models/stats/reports/VersusCarnageReport.class" afterPath="$PROJECT_DIR$/target/classes/com/broxhouse/h5api/models/stats/reports/VersusCarnageReport.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/broxhouse/h5api/models/stats/reports/VersusPlayerStats$OpponentDetails.class" afterPath="$PROJECT_DIR$/target/classes/com/broxhouse/h5api/models/stats/reports/VersusPlayerStats$OpponentDetails.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/broxhouse/h5api/models/stats/reports/VersusPlayerStats.class" afterPath="$PROJECT_DIR$/target/classes/com/broxhouse/h5api/models/stats/reports/VersusPlayerStats.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/broxhouse/h5api/models/stats/reports/WarzonePlayerStats.class" afterPath="$PROJECT_DIR$/target/classes/com/broxhouse/h5api/models/stats/reports/WarzonePlayerStats.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/broxhouse/h5api/models/stats/servicerecords/ArenaResult.class" afterPath="$PROJECT_DIR$/target/classes/com/broxhouse/h5api/models/stats/servicerecords/ArenaResult.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/broxhouse/h5api/models/stats/servicerecords/ArenaStat$ArenaPlaylistStats.class" afterPath="$PROJECT_DIR$/target/classes/com/broxhouse/h5api/models/stats/servicerecords/ArenaStat$ArenaPlaylistStats.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/broxhouse/h5api/models/stats/servicerecords/ArenaStat.class" afterPath="$PROJECT_DIR$/target/classes/com/broxhouse/h5api/models/stats/servicerecords/ArenaStat.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/broxhouse/h5api/models/stats/servicerecords/BaseServiceRecord.class" afterPath="$PROJECT_DIR$/target/classes/com/broxhouse/h5api/models/stats/servicerecords/BaseServiceRecord.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/broxhouse/h5api/models/stats/servicerecords/BaseServiceRecordResult.class" afterPath="$PROJECT_DIR$/target/classes/com/broxhouse/h5api/models/stats/servicerecords/BaseServiceRecordResult.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/broxhouse/h5api/models/stats/servicerecords/CampaignResult.class" afterPath="$PROJECT_DIR$/target/classes/com/broxhouse/h5api/models/stats/servicerecords/CampaignResult.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/broxhouse/h5api/models/stats/servicerecords/CampaignStat$CampaignMissionStats.class" afterPath="$PROJECT_DIR$/target/classes/com/broxhouse/h5api/models/stats/servicerecords/CampaignStat$CampaignMissionStats.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/broxhouse/h5api/models/stats/servicerecords/CampaignStat$PlaythroughStats.class" afterPath="$PROJECT_DIR$/target/classes/com/broxhouse/h5api/models/stats/servicerecords/CampaignStat$PlaythroughStats.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/broxhouse/h5api/models/stats/servicerecords/CampaignStat.class" afterPath="$PROJECT_DIR$/target/classes/com/broxhouse/h5api/models/stats/servicerecords/CampaignStat.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/broxhouse/h5api/models/stats/servicerecords/CustomResult.class" afterPath="$PROJECT_DIR$/target/classes/com/broxhouse/h5api/models/stats/servicerecords/CustomResult.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/broxhouse/h5api/models/stats/servicerecords/CustomStat.class" afterPath="$PROJECT_DIR$/target/classes/com/broxhouse/h5api/models/stats/servicerecords/CustomStat.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/broxhouse/h5api/models/stats/servicerecords/GameBaseVariantStats.class" afterPath="$PROJECT_DIR$/target/classes/com/broxhouse/h5api/models/stats/servicerecords/GameBaseVariantStats.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/broxhouse/h5api/models/stats/servicerecords/PlayerQueryResponse.class" afterPath="$PROJECT_DIR$/target/classes/com/broxhouse/h5api/models/stats/servicerecords/PlayerQueryResponse.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/broxhouse/h5api/models/stats/servicerecords/ServiceRecordCollection.class" afterPath="$PROJECT_DIR$/target/classes/com/broxhouse/h5api/models/stats/servicerecords/ServiceRecordCollection.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/broxhouse/h5api/models/stats/servicerecords/VariantRecord.class" afterPath="$PROJECT_DIR$/target/classes/com/broxhouse/h5api/models/stats/servicerecords/VariantRecord.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/broxhouse/h5api/models/stats/servicerecords/WarzoneResult.class" afterPath="$PROJECT_DIR$/target/classes/com/broxhouse/h5api/models/stats/servicerecords/WarzoneResult.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/broxhouse/h5api/models/stats/servicerecords/WarzoneStat$ScenarioStats.class" afterPath="$PROJECT_DIR$/target/classes/com/broxhouse/h5api/models/stats/servicerecords/WarzoneStat$ScenarioStats.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/broxhouse/h5api/models/stats/servicerecords/WarzoneStat.class" afterPath="$PROJECT_DIR$/target/classes/com/broxhouse/h5api/models/stats/servicerecords/WarzoneStat.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/test-classes/com/broxhouse/h5api/Database.class" afterPath="$PROJECT_DIR$/target/test-classes/com/broxhouse/h5api/Database.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/test-classes/com/broxhouse/h5api/HaloApi$1.class" afterPath="$PROJECT_DIR$/target/test-classes/com/broxhouse/h5api/HaloApi$1.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/test-classes/com/broxhouse/h5api/HaloApi$2.class" afterPath="$PROJECT_DIR$/target/test-classes/com/broxhouse/h5api/HaloApi$2.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/test-classes/com/broxhouse/h5api/HaloApi.class" afterPath="$PROJECT_DIR$/target/test-classes/com/broxhouse/h5api/HaloApi.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/test-classes/com/broxhouse/h5api/gameType.class" afterPath="$PROJECT_DIR$/target/test-classes/com/broxhouse/h5api/gameType.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/test-classes/com/broxhouse/h5api/dataType.class" afterPath="$PROJECT_DIR$/target/test-classes/com/broxhouse/h5api/dataType.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/broxhouse/h5api/models/metadata/BaseMap.java" afterPath="$PROJECT_DIR$/src/main/java/com/broxhouse/h5api/models/metadata/BaseMap.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/broxhouse/h5api/models/metadata/CSRDesignation.java" afterPath="$PROJECT_DIR$/src/main/java/com/broxhouse/h5api/models/metadata/CSRDesignation.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/broxhouse/h5api/models/metadata/CSRTier.java" afterPath="$PROJECT_DIR$/src/main/java/com/broxhouse/h5api/models/metadata/CSRTier.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/broxhouse/h5api/models/metadata/CampaignMission.java" afterPath="$PROJECT_DIR$/src/main/java/com/broxhouse/h5api/models/metadata/CampaignMission.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/broxhouse/h5api/models/metadata/Commendation.java" afterPath="$PROJECT_DIR$/src/main/java/com/broxhouse/h5api/models/metadata/Commendation.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/broxhouse/h5api/models/metadata/CreationTimeUtc.java" afterPath="$PROJECT_DIR$/src/main/java/com/broxhouse/h5api/models/metadata/CreationTimeUtc.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/broxhouse/h5api/models/metadata/CustomMapVariant.java" afterPath="$PROJECT_DIR$/src/main/java/com/broxhouse/h5api/models/metadata/CustomMapVariant.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/broxhouse/h5api/models/metadata/Enemy.java" afterPath="$PROJECT_DIR$/src/main/java/com/broxhouse/h5api/models/metadata/Enemy.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/broxhouse/h5api/models/metadata/FlexibleStat.java" afterPath="$PROJECT_DIR$/src/main/java/com/broxhouse/h5api/models/metadata/FlexibleStat.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/broxhouse/h5api/models/metadata/GameBaseVariant.java" afterPath="$PROJECT_DIR$/src/main/java/com/broxhouse/h5api/models/metadata/GameBaseVariant.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/broxhouse/h5api/models/metadata/GameVariant.java" afterPath="$PROJECT_DIR$/src/main/java/com/broxhouse/h5api/models/metadata/GameVariant.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/broxhouse/h5api/models/metadata/Identity.java" afterPath="$PROJECT_DIR$/src/main/java/com/broxhouse/h5api/models/metadata/Identity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/broxhouse/h5api/models/metadata/Impulse.java" afterPath="$PROJECT_DIR$/src/main/java/com/broxhouse/h5api/models/metadata/Impulse.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/broxhouse/h5api/models/metadata/LastModifiedTimeUtc.java" afterPath="$PROJECT_DIR$/src/main/java/com/broxhouse/h5api/models/metadata/LastModifiedTimeUtc.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/broxhouse/h5api/models/metadata/Links.java" afterPath="$PROJECT_DIR$/src/main/java/com/broxhouse/h5api/models/metadata/Links.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/broxhouse/h5api/models/metadata/Map.java" afterPath="$PROJECT_DIR$/src/main/java/com/broxhouse/h5api/models/metadata/Map.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/broxhouse/h5api/models/metadata/MapVariant.java" afterPath="$PROJECT_DIR$/src/main/java/com/broxhouse/h5api/models/metadata/MapVariant.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/broxhouse/h5api/models/metadata/Medal.java" afterPath="$PROJECT_DIR$/src/main/java/com/broxhouse/h5api/models/metadata/Medal.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/broxhouse/h5api/models/metadata/MetaData.java" afterPath="$PROJECT_DIR$/src/main/java/com/broxhouse/h5api/models/metadata/MetaData.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/broxhouse/h5api/models/metadata/Playlist.java" afterPath="$PROJECT_DIR$/src/main/java/com/broxhouse/h5api/models/metadata/Playlist.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/broxhouse/h5api/models/metadata/Requisition.java" afterPath="$PROJECT_DIR$/src/main/java/com/broxhouse/h5api/models/metadata/Requisition.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/broxhouse/h5api/models/metadata/RequisitionPack.java" afterPath="$PROJECT_DIR$/src/main/java/com/broxhouse/h5api/models/metadata/RequisitionPack.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/broxhouse/h5api/models/metadata/Reward.java" afterPath="$PROJECT_DIR$/src/main/java/com/broxhouse/h5api/models/metadata/Reward.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/broxhouse/h5api/models/metadata/Skull.java" afterPath="$PROJECT_DIR$/src/main/java/com/broxhouse/h5api/models/metadata/Skull.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/broxhouse/h5api/models/metadata/SpartanRank.java" afterPath="$PROJECT_DIR$/src/main/java/com/broxhouse/h5api/models/metadata/SpartanRank.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/broxhouse/h5api/models/metadata/SpriteLocation.java" afterPath="$PROJECT_DIR$/src/main/java/com/broxhouse/h5api/models/metadata/SpriteLocation.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/broxhouse/h5api/models/metadata/Stats.java" afterPath="$PROJECT_DIR$/src/main/java/com/broxhouse/h5api/models/metadata/Stats.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/broxhouse/h5api/models/metadata/TeamColor.java" afterPath="$PROJECT_DIR$/src/main/java/com/broxhouse/h5api/models/metadata/TeamColor.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/broxhouse/h5api/models/metadata/Vehicle.java" afterPath="$PROJECT_DIR$/src/main/java/com/broxhouse/h5api/models/metadata/Vehicle.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/broxhouse/h5api/models/metadata/Weapon.java" afterPath="$PROJECT_DIR$/src/main/java/com/broxhouse/h5api/models/metadata/Weapon.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/broxhouse/h5api/models/stats/WeaponId.java" afterPath="$PROJECT_DIR$/src/main/java/com/broxhouse/h5api/models/stats/WeaponId.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/broxhouse/h5api/models/stats/WeaponStats.java" afterPath="$PROJECT_DIR$/src/main/java/com/broxhouse/h5api/models/stats/WeaponStats.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/broxhouse/h5api/models/stats/common/Csr.java" afterPath="$PROJECT_DIR$/src/main/java/com/broxhouse/h5api/models/stats/common/Csr.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/broxhouse/h5api/models/stats/common/Enemy.java" afterPath="$PROJECT_DIR$/src/main/java/com/broxhouse/h5api/models/stats/common/Enemy.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/broxhouse/h5api/models/stats/common/EnemyKill.java" afterPath="$PROJECT_DIR$/src/main/java/com/broxhouse/h5api/models/stats/common/EnemyKill.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/broxhouse/h5api/models/stats/common/FlexibleStats.java" afterPath="$PROJECT_DIR$/src/main/java/com/broxhouse/h5api/models/stats/common/FlexibleStats.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/broxhouse/h5api/models/stats/common/Impulse.java" afterPath="$PROJECT_DIR$/src/main/java/com/broxhouse/h5api/models/stats/common/Impulse.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/broxhouse/h5api/models/stats/common/MedalAward.java" afterPath="$PROJECT_DIR$/src/main/java/com/broxhouse/h5api/models/stats/common/MedalAward.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/broxhouse/h5api/models/stats/common/Player.java" afterPath="$PROJECT_DIR$/src/main/java/com/broxhouse/h5api/models/stats/common/Player.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/broxhouse/h5api/models/stats/common/StatCount.java" afterPath="$PROJECT_DIR$/src/main/java/com/broxhouse/h5api/models/stats/common/StatCount.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/broxhouse/h5api/models/stats/common/Timelapse.java" afterPath="$PROJECT_DIR$/src/main/java/com/broxhouse/h5api/models/stats/common/Timelapse.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/broxhouse/h5api/models/stats/common/WeaponId.java" afterPath="$PROJECT_DIR$/src/main/java/com/broxhouse/h5api/models/stats/common/WeaponId.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/broxhouse/h5api/models/stats/common/WeaponStats.java" afterPath="$PROJECT_DIR$/src/main/java/com/broxhouse/h5api/models/stats/common/WeaponStats.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/broxhouse/h5api/models/stats/matches/Match.java" afterPath="$PROJECT_DIR$/src/main/java/com/broxhouse/h5api/models/stats/matches/Match.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/broxhouse/h5api/models/stats/matches/Page.java" afterPath="$PROJECT_DIR$/src/main/java/com/broxhouse/h5api/models/stats/matches/Page.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/broxhouse/h5api/models/stats/matches/Result.java" afterPath="$PROJECT_DIR$/src/main/java/com/broxhouse/h5api/models/stats/matches/Result.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/broxhouse/h5api/models/stats/reports/ArenaPlayerStats.java" afterPath="$PROJECT_DIR$/src/main/java/com/broxhouse/h5api/models/stats/reports/ArenaPlayerStats.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/broxhouse/h5api/models/stats/reports/BaseCarnageReport.java" afterPath="$PROJECT_DIR$/src/main/java/com/broxhouse/h5api/models/stats/reports/BaseCarnageReport.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/broxhouse/h5api/models/stats/reports/BasePlayerStats.java" afterPath="$PROJECT_DIR$/src/main/java/com/broxhouse/h5api/models/stats/reports/BasePlayerStats.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/broxhouse/h5api/models/stats/reports/BaseStats.java" afterPath="$PROJECT_DIR$/src/main/java/com/broxhouse/h5api/models/stats/reports/BaseStats.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/broxhouse/h5api/models/stats/reports/CampaignCarnageReport.java" afterPath="$PROJECT_DIR$/src/main/java/com/broxhouse/h5api/models/stats/reports/CampaignCarnageReport.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/broxhouse/h5api/models/stats/reports/CampaignPlayerStats.java" afterPath="$PROJECT_DIR$/src/main/java/com/broxhouse/h5api/models/stats/reports/CampaignPlayerStats.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/broxhouse/h5api/models/stats/reports/CarnageReport.java" afterPath="$PROJECT_DIR$/src/main/java/com/broxhouse/h5api/models/stats/reports/CarnageReport.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/broxhouse/h5api/models/stats/reports/GameVariantResourceId.java" afterPath="$PROJECT_DIR$/src/main/java/com/broxhouse/h5api/models/stats/reports/GameVariantResourceId.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/broxhouse/h5api/models/stats/reports/KilledByOpponentDetail.java" afterPath="$PROJECT_DIR$/src/main/java/com/broxhouse/h5api/models/stats/reports/KilledByOpponentDetail.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/broxhouse/h5api/models/stats/reports/KilledOpponentDetail.java" afterPath="$PROJECT_DIR$/src/main/java/com/broxhouse/h5api/models/stats/reports/KilledOpponentDetail.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/broxhouse/h5api/models/stats/reports/MapVariantResourceId.java" afterPath="$PROJECT_DIR$/src/main/java/com/broxhouse/h5api/models/stats/reports/MapVariantResourceId.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/broxhouse/h5api/models/stats/reports/PlayerStat.java" afterPath="$PROJECT_DIR$/src/main/java/com/broxhouse/h5api/models/stats/reports/PlayerStat.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/broxhouse/h5api/models/stats/reports/Resource.java" afterPath="$PROJECT_DIR$/src/main/java/com/broxhouse/h5api/models/stats/reports/Resource.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/broxhouse/h5api/models/stats/reports/SpartanRankedPlayerStats.java" afterPath="$PROJECT_DIR$/src/main/java/com/broxhouse/h5api/models/stats/reports/SpartanRankedPlayerStats.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/broxhouse/h5api/models/stats/reports/Team.java" afterPath="$PROJECT_DIR$/src/main/java/com/broxhouse/h5api/models/stats/reports/Team.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/broxhouse/h5api/models/stats/reports/TeamPlayer.java" afterPath="$PROJECT_DIR$/src/main/java/com/broxhouse/h5api/models/stats/reports/TeamPlayer.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/broxhouse/h5api/models/stats/reports/TeamStat.java" afterPath="$PROJECT_DIR$/src/main/java/com/broxhouse/h5api/models/stats/reports/TeamStat.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/broxhouse/h5api/models/stats/reports/TeamStats.java" afterPath="$PROJECT_DIR$/src/main/java/com/broxhouse/h5api/models/stats/reports/TeamStats.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/broxhouse/h5api/models/stats/reports/VersusCarnageReport.java" afterPath="$PROJECT_DIR$/src/main/java/com/broxhouse/h5api/models/stats/reports/VersusCarnageReport.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/broxhouse/h5api/models/stats/reports/VersusPlayerStats.java" afterPath="$PROJECT_DIR$/src/main/java/com/broxhouse/h5api/models/stats/reports/VersusPlayerStats.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/broxhouse/h5api/models/stats/reports/WarzonePlayerStats.java" afterPath="$PROJECT_DIR$/src/main/java/com/broxhouse/h5api/models/stats/reports/WarzonePlayerStats.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/broxhouse/h5api/models/stats/servicerecords/ArenaResult.java" afterPath="$PROJECT_DIR$/src/main/java/com/broxhouse/h5api/models/stats/servicerecords/ArenaResult.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/broxhouse/h5api/models/stats/servicerecords/ArenaStat.java" afterPath="$PROJECT_DIR$/src/main/java/com/broxhouse/h5api/models/stats/servicerecords/ArenaStat.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/broxhouse/h5api/models/stats/servicerecords/BaseServiceRecord.java" afterPath="$PROJECT_DIR$/src/main/java/com/broxhouse/h5api/models/stats/servicerecords/BaseServiceRecord.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/broxhouse/h5api/models/stats/servicerecords/BaseServiceRecordResult.java" afterPath="$PROJECT_DIR$/src/main/java/com/broxhouse/h5api/models/stats/servicerecords/BaseServiceRecordResult.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/broxhouse/h5api/models/stats/servicerecords/CampaignResult.java" afterPath="$PROJECT_DIR$/src/main/java/com/broxhouse/h5api/models/stats/servicerecords/CampaignResult.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/broxhouse/h5api/models/stats/servicerecords/CampaignStat.java" afterPath="$PROJECT_DIR$/src/main/java/com/broxhouse/h5api/models/stats/servicerecords/CampaignStat.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/broxhouse/h5api/models/stats/servicerecords/CustomResult.java" afterPath="$PROJECT_DIR$/src/main/java/com/broxhouse/h5api/models/stats/servicerecords/CustomResult.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/broxhouse/h5api/models/stats/servicerecords/CustomStat.java" afterPath="$PROJECT_DIR$/src/main/java/com/broxhouse/h5api/models/stats/servicerecords/CustomStat.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/broxhouse/h5api/models/stats/servicerecords/GameBaseVariantStats.java" afterPath="$PROJECT_DIR$/src/main/java/com/broxhouse/h5api/models/stats/servicerecords/GameBaseVariantStats.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/broxhouse/h5api/models/stats/servicerecords/PlayerQueryResponse.java" afterPath="$PROJECT_DIR$/src/main/java/com/broxhouse/h5api/models/stats/servicerecords/PlayerQueryResponse.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/broxhouse/h5api/models/stats/servicerecords/ServiceRecordCollection.java" afterPath="$PROJECT_DIR$/src/main/java/com/broxhouse/h5api/models/stats/servicerecords/ServiceRecordCollection.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/broxhouse/h5api/models/stats/servicerecords/VariantRecord.java" afterPath="$PROJECT_DIR$/src/main/java/com/broxhouse/h5api/models/stats/servicerecords/VariantRecord.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/broxhouse/h5api/models/stats/servicerecords/WarzoneResult.java" afterPath="$PROJECT_DIR$/src/main/java/com/broxhouse/h5api/models/stats/servicerecords/WarzoneResult.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/broxhouse/h5api/models/stats/servicerecords/WarzoneStat.java" afterPath="$PROJECT_DIR$/src/main/java/com/broxhouse/h5api/models/stats/servicerecords/WarzoneStat.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/com/broxhouse/h5api/Database.java" afterPath="$PROJECT_DIR$/src/test/java/com/broxhouse/h5api/Database.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/com/broxhouse/h5api/HaloApi.java" afterPath="$PROJECT_DIR$/src/test/java/com/broxhouse/h5api/HaloApi.java" />
     </list>
@@ -213,35 +40,58 @@
             <file leaf-file-name="Database.java" pinned="false" current-in-tab="true">
               <entry file="file://$PROJECT_DIR$/src/test/java/com/broxhouse/h5api/Database.java">
                 <provider selected="true" editor-type-id="text-editor">
-                  <state relative-caret-position="81">
-                    <caret line="693" column="5" selection-start-line="693" selection-start-column="5" selection-end-line="693" selection-end-column="5" />
+                  <state relative-caret-position="522">
+                    <caret line="447" column="77" selection-start-line="447" selection-start-column="47" selection-end-line="447" selection-end-column="77" />
                     <folding>
                       <element signature="imports" expanded="true" />
-                      <element signature="e#1485#1521#0" expanded="false" />
+                      <element signature="e#1505#1541#0" expanded="false" />
                       <element signature="method#getWeaponsDB#0;class#Database#0" expanded="false" />
-                      <element signature="e#1973#2027#0" expanded="false" />
+                      <element signature="e#1993#2047#0" expanded="false" />
                       <element signature="method#getMapsDB#0;class#Database#0" expanded="false" />
                       <element signature="method#getArenaMapVariants#0;class#Database#0" expanded="false" />
-                      <element signature="method#getCustomMapVariants#0;class#Database#0" expanded="false" />
-                      <element signature="method#getMedalsDB#0;class#Database#0" expanded="false" />
-                      <element signature="method#getMatchesDB#0;class#Database#0" expanded="false" />
                       <element signature="method#getResources#0;class#Database#0" expanded="false" />
                       <element signature="method#addWeaponstoDB#0;class#Database#0" expanded="false" />
-                      <element signature="method#addMapsToDB#0;class#Database#0" expanded="false" />
                       <element signature="method#addArenaMapVariantsToDB#0;class#Database#0" expanded="false" />
-                      <element signature="method#addCustomMapVariantsToDB#0;class#Database#0" expanded="false" />
+                      <element signature="method#writeMapVariantsToDB#0;class#Database#0" expanded="false" />
                       <element signature="method#addResources#0;class#Database#0" expanded="false" />
                       <element signature="method#addMedalsToDB#0;class#Database#0" expanded="false" />
+                      <element signature="method#createTable#0;class#Database#0" expanded="false" />
                       <element signature="method#createMatchesTable#0;class#Database#0" expanded="false" />
-                      <element signature="method#addItemsToDatabase#0;class#Database#0" expanded="false" />
-                      <element signature="method#createDatabaseConnection#0;class#Database#0" expanded="false" />
+                      <element signature="method#addMatchesToDB#0;class#Database#0" expanded="false" />
+                      <element signature="method#writeMetadataToDB#0;class#Database#0" expanded="false" />
+                      <element signature="method#writeMatchesToDB#0;class#Database#0" expanded="false" />
+                      <element signature="method#getMatchesFromDB#0;class#Database#0" expanded="false" />
+                      <element signature="method#getMetadataFromDB#0;class#Database#0" expanded="false" />
                       <element signature="method#handleConnection#0;class#Database#0" expanded="false" />
                       <element signature="method#clearTable#0;class#Database#0" expanded="false" />
                       <element signature="method#checkDatabaseValues#0;class#Database#0" expanded="false" />
                       <element signature="method#checkDBForValue#0;class#Database#0" expanded="false" />
-                      <marker date="1472738231223" expanded="false" signature="30220:30876" ph="..." />
-                      <marker date="1472738231223" expanded="true" signature="31181:31949" ph="..." />
+                      <marker date="1473368416188" expanded="true" signature="37424:38080" ph="..." />
+                      <marker date="1473368416188" expanded="true" signature="38485:39253" ph="..." />
                     </folding>
+                  </state>
+                </provider>
+              </entry>
+            </file>
+            <file leaf-file-name="Identity.java" pinned="false" current-in-tab="false">
+              <entry file="file://$PROJECT_DIR$/src/main/java/com/broxhouse/h5api/models/metadata/Identity.java">
+                <provider selected="true" editor-type-id="text-editor">
+                  <state relative-caret-position="354">
+                    <caret line="48" column="18" selection-start-line="48" selection-start-column="18" selection-end-line="48" selection-end-column="18" />
+                    <folding>
+                      <element signature="e#1018#1019#0" expanded="true" />
+                      <element signature="e#1051#1052#0" expanded="true" />
+                    </folding>
+                  </state>
+                </provider>
+              </entry>
+            </file>
+            <file leaf-file-name="ObjectInputStream.java" pinned="false" current-in-tab="false">
+              <entry file="jar://C:/Program Files/Java/jdk1.8.0_92/src.zip!/java/io/ObjectInputStream.java">
+                <provider selected="true" editor-type-id="text-editor">
+                  <state relative-caret-position="-4746">
+                    <caret line="362" column="24" selection-start-line="362" selection-start-column="24" selection-end-line="362" selection-end-column="24" />
+                    <folding />
                   </state>
                 </provider>
               </entry>
@@ -307,24 +157,24 @@
       <file leaf-file-name="HaloApi.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/test/java/com/broxhouse/h5api/HaloApi.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="612">
-              <caret line="146" column="40" selection-start-line="146" selection-start-column="40" selection-end-line="146" selection-end-column="40" />
+            <state relative-caret-position="221">
+              <caret line="141" column="0" selection-start-line="141" selection-start-column="0" selection-end-line="141" selection-end-column="0" />
               <folding>
-                <element signature="e#2851#2906#0" expanded="false" />
+                <element signature="e#2909#2964#0" expanded="false" />
                 <element signature="method#api#0;class#HaloApi#0" expanded="false" />
-                <element signature="e#3442#3457#0" expanded="false" />
-                <element signature="e#3980#4021#0" expanded="false" />
+                <element signature="e#3500#3515#0" expanded="false" />
                 <element signature="method#cacheData#0;class#HaloApi#0" expanded="false" />
+                <element signature="e#5634#5683#0" expanded="false" />
+                <element signature="e#6367#6432#0" expanded="false" />
                 <element signature="method#getFileName#0;class#HaloApi#0" expanded="false" />
                 <element signature="method#cachePlayerData#0;class#HaloApi#0" expanded="false" />
-                <element signature="e#7903#7947#0" expanded="false" />
+                <element signature="e#8710#8754#0" expanded="false" />
                 <element signature="method#cacheAllPlayerData#0;class#HaloApi#0" expanded="false" />
-                <element signature="class#13194:13445" expanded="false" />
-                <element signature="e#13732#13779#0" expanded="false" />
-                <element signature="e#14218#14268#0" expanded="false" />
-                <element signature="method#cacheArenaMaps#0;class#HaloApi#0" expanded="false" />
-                <element signature="e#16194#16252#0" expanded="false" />
-                <element signature="e#16397#16448#0" expanded="false" />
+                <element signature="class#14001:14252" expanded="false" />
+                <element signature="e#14539#14586#0" expanded="false" />
+                <element signature="e#15025#15075#0" expanded="false" />
+                <element signature="e#16971#17029#0" expanded="false" />
+                <element signature="e#19932#19983#0" expanded="false" />
                 <element signature="method#cacheCustomMaps#0;class#HaloApi#0" expanded="false" />
                 <element signature="method#formatString#0;class#HaloApi#0" expanded="false" />
                 <element signature="method#postGameCarnage#0;class#HaloApi#0" expanded="false" />
@@ -339,13 +189,9 @@
                 <element signature="method#listMaps#0;class#HaloApi#0" expanded="false" />
                 <element signature="method#testJSONWeapons#0;class#HaloApi#0" expanded="false" />
                 <element signature="method#testJSONMedals#0;class#HaloApi#0" expanded="false" />
-                <element signature="method#getMedals#0;class#HaloApi#0" expanded="false" />
-                <element signature="method#getMaps#0;class#HaloApi#0" expanded="false" />
-                <element signature="method#getMatches#0;class#HaloApi#0" expanded="false" />
                 <element signature="method#getCarnageReports#0;class#HaloApi#0" expanded="false" />
                 <element signature="method#getUniqueResources#0;class#HaloApi#0" expanded="false" />
                 <element signature="method#getMapOwner#0;class#HaloApi#0" expanded="false" />
-                <element signature="method#getCachedCustMapVariants#0;class#HaloApi#0" expanded="false" />
                 <element signature="method#getCustomMapName#0;class#HaloApi#0" expanded="false" />
                 <element signature="method#getMedalName#0;class#HaloApi#0" expanded="false" />
                 <element signature="method#getMedalDescription#0;class#HaloApi#0" expanded="false" />
@@ -365,7 +211,8 @@
                 <element signature="method#totalDeaths#0;class#HaloApi#0" expanded="false" />
                 <element signature="method#getKD#0;class#HaloApi#0" expanded="false" />
                 <element signature="method#testWeaponKills#0;class#HaloApi#0" expanded="false" />
-                <element signature="e#37744#37816#0" expanded="false" />
+                <element signature="e#41702#41774#0" expanded="false" />
+                <element signature="method#testBaseStats#0;class#HaloApi#0" expanded="false" />
                 <element signature="method#testBaseResults#0;class#HaloApi#0" expanded="false" />
                 <element signature="method#testActivePlaylists#0;class#HaloApi#0" expanded="false" />
                 <element signature="method#comparePlayers#0;class#HaloApi#0" expanded="false" />
@@ -374,11 +221,69 @@
                 <element signature="method#favoriteCustomMapVariant#0;class#HaloApi#0" expanded="false" />
                 <element signature="method#cacheEnemyKills#0;class#HaloApi#0" expanded="false" />
                 <element signature="method#killedByOponent#0;class#HaloApi#0" expanded="false" />
-                <element signature="e#54229#54260#0" expanded="false" />
+                <element signature="e#58187#58218#0" expanded="false" />
                 <element signature="method#testPlayerMatches#0;class#HaloApi#0" expanded="false" />
-                <marker date="1472738231082" expanded="false" signature="1126:2580" ph="..." />
-                <marker date="1472738231082" expanded="false" signature="2582:2795" ph="..." />
+                <marker date="1473368590889" expanded="false" signature="1184:2638" ph="..." />
+                <marker date="1473368590889" expanded="false" signature="2640:2853" ph="..." />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="CarnageReport.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/broxhouse/h5api/models/stats/reports/CarnageReport.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="782">
+              <caret line="52" column="32" selection-start-line="52" selection-start-column="32" selection-end-line="52" selection-end-column="32" />
+              <folding>
+                <element signature="e#1579#1580#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="BasePlayerStats.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/broxhouse/h5api/models/stats/reports/BasePlayerStats.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="102">
+              <caret line="10" column="70" selection-start-line="10" selection-start-column="70" selection-end-line="10" selection-end-column="70" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="List.java" pinned="false" current-in-tab="false">
+        <entry file="jar://C:/Program Files/Java/jdk1.8.0_92/src.zip!/java/util/List.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="219">
+              <caret line="120" column="8" selection-start-line="120" selection-start-column="8" selection-end-line="120" selection-end-column="8" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="MapVariant.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/broxhouse/h5api/models/metadata/MapVariant.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="663">
+              <caret line="86" column="18" selection-start-line="86" selection-start-column="18" selection-end-line="86" selection-end-column="18" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#198#294#0" expanded="false" />
+                <element signature="e#567#582#0" expanded="false" />
+                <element signature="e#1833#1834#0" expanded="true" />
+                <element signature="e#1858#1859#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ComparableTimSort.java" pinned="false" current-in-tab="false">
+        <entry file="jar://C:/Program Files/Java/jdk1.8.0_92/src.zip!/java/util/ComparableTimSort.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="181">
+              <caret line="201" column="0" selection-start-line="201" selection-start-column="0" selection-end-line="201" selection-end-column="0" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -386,69 +291,22 @@
       <file leaf-file-name="Match.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/broxhouse/h5api/models/stats/matches/Match.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="612">
-              <caret line="50" column="61" selection-start-line="50" selection-start-column="61" selection-end-line="50" selection-end-column="61" />
+            <state relative-caret-position="219">
+              <caret line="189" column="28" selection-start-line="189" selection-start-column="28" selection-end-line="189" selection-end-column="28" />
               <folding>
-                <element signature="imports" expanded="false" />
-                <element signature="e#968#969#0" expanded="false" />
-                <element signature="e#1006#1007#0" expanded="false" />
-                <element signature="e#1042#1043#0" expanded="false" />
-                <element signature="e#1081#1082#0" expanded="false" />
-                <element signature="e#1131#1132#0" expanded="false" />
-                <element signature="e#1177#1178#0" expanded="false" />
-                <element signature="e#1226#1227#0" expanded="false" />
-                <element signature="e#1274#1275#0" expanded="false" />
-                <element signature="e#1447#1448#0" expanded="false" />
-                <element signature="e#1482#1483#0" expanded="false" />
-                <element signature="e#1526#1527#0" expanded="false" />
-                <element signature="e#1566#1567#0" expanded="false" />
-                <element signature="e#4841#4842#0" expanded="false" />
-                <element signature="e#4866#4867#0" expanded="false" />
-                <element signature="e#4901#4902#0" expanded="false" />
-                <element signature="e#4932#4933#0" expanded="false" />
-                <element signature="e#4964#4965#0" expanded="false" />
-                <element signature="e#4992#4993#0" expanded="false" />
-                <element signature="e#5031#5032#0" expanded="false" />
-                <element signature="e#5064#5065#0" expanded="false" />
-                <element signature="e#5108#5109#0" expanded="false" />
-                <element signature="e#5148#5149#0" expanded="false" />
-                <element signature="e#5188#5189#0" expanded="false" />
-                <element signature="e#5222#5223#0" expanded="false" />
-                <element signature="e#5262#5263#0" expanded="false" />
-                <element signature="e#5298#5299#0" expanded="false" />
-                <element signature="e#5350#5351#0" expanded="false" />
-                <element signature="e#5391#5392#0" expanded="false" />
-                <element signature="e#5427#5428#0" expanded="false" />
-                <element signature="e#5455#5456#0" expanded="false" />
-                <element signature="e#5499#5500#0" expanded="false" />
-                <element signature="e#5529#5530#0" expanded="false" />
-                <element signature="e#5564#5565#0" expanded="false" />
-                <element signature="e#5597#5598#0" expanded="false" />
-                <element signature="e#5632#5633#0" expanded="false" />
-                <element signature="e#5663#5664#0" expanded="false" />
-                <element signature="e#5695#5696#0" expanded="false" />
-                <element signature="e#5723#5724#0" expanded="false" />
-                <element signature="e#5771#5772#0" expanded="false" />
-                <element signature="e#5811#5812#0" expanded="false" />
-                <element signature="e#5853#5854#0" expanded="false" />
-                <element signature="e#5887#5888#0" expanded="false" />
-                <element signature="e#5941#5942#0" expanded="false" />
-                <element signature="e#5985#5986#0" expanded="false" />
-                <element signature="e#6051#6052#0" expanded="false" />
-                <element signature="e#6109#6110#0" expanded="false" />
-                <element signature="e#6165#6166#0" expanded="false" />
-                <element signature="e#6211#6212#0" expanded="false" />
-                <element signature="e#6269#6270#0" expanded="false" />
-                <element signature="e#6319#6320#0" expanded="false" />
-                <element signature="e#6500#6501#0" expanded="false" />
-                <element signature="e#6534#6535#0" expanded="false" />
-                <element signature="e#6590#6591#0" expanded="false" />
-                <element signature="e#6628#6629#0" expanded="false" />
-                <element signature="e#6677#6678#0" expanded="false" />
-                <element signature="e#6714#6715#0" expanded="false" />
-                <element signature="e#6762#6763#0" expanded="false" />
-                <element signature="e#6802#6803#0" expanded="false" />
+                <element signature="e#5499#5500#0" expanded="true" />
+                <element signature="e#5529#5530#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="TeamPlayer.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/broxhouse/h5api/models/stats/reports/TeamPlayer.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-51">
+              <caret line="9" column="13" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -492,7 +350,6 @@
         <option value="$PROJECT_DIR$/src/main/java/com/broxhouse/h5api/models/stats/reports/BaseStats.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/broxhouse/h5api/models/stats/reports/CampaignCarnageReport.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/broxhouse/h5api/models/stats/reports/CampaignPlayerStats.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/broxhouse/h5api/models/stats/reports/CarnageReport.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/broxhouse/h5api/models/stats/reports/GameVariantResourceId.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/broxhouse/h5api/models/stats/reports/KilledByOpponentDetail.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/broxhouse/h5api/models/stats/reports/KilledOpponentDetail.java" />
@@ -523,8 +380,9 @@
         <option value="$PROJECT_DIR$/src/main/java/com/broxhouse/h5api/models/stats/WeaponId.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/broxhouse/h5api/models/stats/WeaponStats.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/broxhouse/h5api/models/stats/matches/Match.java" />
-        <option value="$PROJECT_DIR$/src/test/java/com/broxhouse/h5api/HaloApi.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/broxhouse/h5api/models/stats/reports/CarnageReport.java" />
         <option value="$PROJECT_DIR$/src/test/java/com/broxhouse/h5api/Database.java" />
+        <option value="$PROJECT_DIR$/src/test/java/com/broxhouse/h5api/HaloApi.java" />
       </list>
     </option>
   </component>
@@ -750,6 +608,150 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="broxhouse" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="HaloApp2" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="HaloApp2" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="broxhouse" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="h5api" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="HaloApp2" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="HaloApp2" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="broxhouse" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="h5api" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="models" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="stats" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="HaloApp2" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="HaloApp2" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="broxhouse" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="h5api" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="models" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="stats" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="reports" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="HaloApp2" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="HaloApp2" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="broxhouse" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="h5api" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="models" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -1314,11 +1316,13 @@
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32645035" sideWeight="0.48507464" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32991454" sideWeight="0.5" order="10" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3336887" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32907662" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32645035" sideWeight="0.51492536" order="2" side_tool="true" content_ui="tabs" x="-1928" y="-8" width="1936" height="1176" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -1327,14 +1331,12 @@
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39921337" sideWeight="0.46162048" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39921337" sideWeight="0.46162048" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32645035" sideWeight="0.48933902" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39921337" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.19174041" sideWeight="0.5042644" order="2" side_tool="true" content_ui="tabs" x="-1928" y="-8" width="1936" height="1176" />
       <window_info id="Captures" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32940018" sideWeight="0.49573562" order="1" side_tool="false" content_ui="tabs" />
     </layout>
@@ -1367,7 +1369,7 @@
       <breakpoints-dialog>
         <breakpoints-dialog />
       </breakpoints-dialog>
-      <option name="time" value="58" />
+      <option name="time" value="59" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -1376,34 +1378,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/broxhouse/h5api/models/stats/common/FlexibleStats.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="9" column="50" selection-start-line="9" selection-start-column="50" selection-end-line="9" selection-end-column="50" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/broxhouse/h5api/models/stats/common/Impulse.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="8" column="44" selection-start-line="8" selection-start-column="44" selection-end-line="8" selection-end-column="44" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/broxhouse/h5api/models/stats/common/MedalAward.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="9" column="47" selection-start-line="9" selection-start-column="47" selection-end-line="9" selection-end-column="47" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/broxhouse/h5api/models/stats/common/Player.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="8" column="43" selection-start-line="8" selection-start-column="43" selection-end-line="8" selection-end-column="43" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/broxhouse/h5api/models/stats/common/StatCount.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="136">
@@ -1422,6 +1396,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="102">
           <caret line="9" column="65" selection-start-line="9" selection-start-column="65" selection-end-line="9" selection-end-column="65" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1443,6 +1418,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-3380">
           <caret line="16" column="43" selection-start-line="16" selection-start-column="43" selection-end-line="16" selection-end-column="43" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1450,20 +1426,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="357">
           <caret line="24" column="7" selection-start-line="24" selection-start-column="7" selection-end-line="24" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/broxhouse/h5api/models/stats/reports/BaseCarnageReport.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="10" column="81" selection-start-line="10" selection-start-column="81" selection-end-line="10" selection-end-column="81" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/broxhouse/h5api/models/stats/reports/BasePlayerStats.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="10" column="70" selection-start-line="10" selection-start-column="70" selection-end-line="10" selection-end-column="70" />
         </state>
       </provider>
     </entry>
@@ -1485,13 +1447,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="136">
           <caret line="8" column="80" selection-start-line="8" selection-start-column="80" selection-end-line="8" selection-end-column="80" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/broxhouse/h5api/models/stats/reports/CarnageReport.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="10" column="50" selection-start-line="10" selection-start-column="50" selection-end-line="10" selection-end-column="50" />
         </state>
       </provider>
     </entry>
@@ -1520,6 +1475,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="102">
           <caret line="10" column="57" selection-start-line="10" selection-start-column="57" selection-end-line="10" selection-end-column="57" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1541,13 +1497,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="136">
           <caret line="8" column="41" selection-start-line="8" selection-start-column="41" selection-end-line="8" selection-end-column="41" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/broxhouse/h5api/models/stats/reports/TeamPlayer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="9" column="47" selection-start-line="9" selection-start-column="47" selection-end-line="9" selection-end-column="47" />
         </state>
       </provider>
     </entry>
@@ -1597,6 +1546,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="102">
           <caret line="11" column="64" selection-start-line="11" selection-start-column="64" selection-end-line="11" selection-end-column="64" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1698,81 +1648,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/broxhouse/h5api/models/metadata/MapVariant.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="8" column="64" selection-start-line="8" selection-start-column="64" selection-end-line="8" selection-end-column="64" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/broxhouse/h5api/models/stats/matches/Match.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="612">
-          <caret line="50" column="61" selection-start-line="50" selection-start-column="61" selection-end-line="50" selection-end-column="61" />
-          <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="e#968#969#0" expanded="false" />
-            <element signature="e#1006#1007#0" expanded="false" />
-            <element signature="e#1042#1043#0" expanded="false" />
-            <element signature="e#1081#1082#0" expanded="false" />
-            <element signature="e#1131#1132#0" expanded="false" />
-            <element signature="e#1177#1178#0" expanded="false" />
-            <element signature="e#1226#1227#0" expanded="false" />
-            <element signature="e#1274#1275#0" expanded="false" />
-            <element signature="e#1447#1448#0" expanded="false" />
-            <element signature="e#1482#1483#0" expanded="false" />
-            <element signature="e#1526#1527#0" expanded="false" />
-            <element signature="e#1566#1567#0" expanded="false" />
-            <element signature="e#4841#4842#0" expanded="false" />
-            <element signature="e#4866#4867#0" expanded="false" />
-            <element signature="e#4901#4902#0" expanded="false" />
-            <element signature="e#4932#4933#0" expanded="false" />
-            <element signature="e#4964#4965#0" expanded="false" />
-            <element signature="e#4992#4993#0" expanded="false" />
-            <element signature="e#5031#5032#0" expanded="false" />
-            <element signature="e#5064#5065#0" expanded="false" />
-            <element signature="e#5108#5109#0" expanded="false" />
-            <element signature="e#5148#5149#0" expanded="false" />
-            <element signature="e#5188#5189#0" expanded="false" />
-            <element signature="e#5222#5223#0" expanded="false" />
-            <element signature="e#5262#5263#0" expanded="false" />
-            <element signature="e#5298#5299#0" expanded="false" />
-            <element signature="e#5350#5351#0" expanded="false" />
-            <element signature="e#5391#5392#0" expanded="false" />
-            <element signature="e#5427#5428#0" expanded="false" />
-            <element signature="e#5455#5456#0" expanded="false" />
-            <element signature="e#5499#5500#0" expanded="false" />
-            <element signature="e#5529#5530#0" expanded="false" />
-            <element signature="e#5564#5565#0" expanded="false" />
-            <element signature="e#5597#5598#0" expanded="false" />
-            <element signature="e#5632#5633#0" expanded="false" />
-            <element signature="e#5663#5664#0" expanded="false" />
-            <element signature="e#5695#5696#0" expanded="false" />
-            <element signature="e#5723#5724#0" expanded="false" />
-            <element signature="e#5771#5772#0" expanded="false" />
-            <element signature="e#5811#5812#0" expanded="false" />
-            <element signature="e#5853#5854#0" expanded="false" />
-            <element signature="e#5887#5888#0" expanded="false" />
-            <element signature="e#5941#5942#0" expanded="false" />
-            <element signature="e#5985#5986#0" expanded="false" />
-            <element signature="e#6051#6052#0" expanded="false" />
-            <element signature="e#6109#6110#0" expanded="false" />
-            <element signature="e#6165#6166#0" expanded="false" />
-            <element signature="e#6211#6212#0" expanded="false" />
-            <element signature="e#6269#6270#0" expanded="false" />
-            <element signature="e#6319#6320#0" expanded="false" />
-            <element signature="e#6500#6501#0" expanded="false" />
-            <element signature="e#6534#6535#0" expanded="false" />
-            <element signature="e#6590#6591#0" expanded="false" />
-            <element signature="e#6628#6629#0" expanded="false" />
-            <element signature="e#6677#6678#0" expanded="false" />
-            <element signature="e#6714#6715#0" expanded="false" />
-            <element signature="e#6762#6763#0" expanded="false" />
-            <element signature="e#6802#6803#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://C:/Program Files/Java/jdk1.8.0_92/src.zip!/java/lang/Class.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="867">
@@ -1818,60 +1693,154 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/com/broxhouse/h5api/Database.java">
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_92/src.zip!/java/util/ComparableTimSort.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="81">
-          <caret line="693" column="5" selection-start-line="693" selection-start-column="5" selection-end-line="693" selection-end-column="5" />
+        <state relative-caret-position="181">
+          <caret line="201" column="0" selection-start-line="201" selection-start-column="0" selection-end-line="201" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_92/src.zip!/java/io/ObjectInputStream.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-4746">
+          <caret line="362" column="24" selection-start-line="362" selection-start-column="24" selection-end-line="362" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/broxhouse/h5api/models/metadata/Identity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="354">
+          <caret line="48" column="18" selection-start-line="48" selection-start-column="18" selection-end-line="48" selection-end-column="18" />
+          <folding>
+            <element signature="e#1018#1019#0" expanded="true" />
+            <element signature="e#1051#1052#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/broxhouse/h5api/models/metadata/MapVariant.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="663">
+          <caret line="86" column="18" selection-start-line="86" selection-start-column="18" selection-end-line="86" selection-end-column="18" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#1485#1521#0" expanded="false" />
+            <element signature="e#198#294#0" expanded="false" />
+            <element signature="e#567#582#0" expanded="false" />
+            <element signature="e#1833#1834#0" expanded="true" />
+            <element signature="e#1858#1859#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/broxhouse/h5api/models/stats/reports/TeamPlayer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-51">
+          <caret line="9" column="13" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_92/src.zip!/java/util/List.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="219">
+          <caret line="120" column="8" selection-start-line="120" selection-start-column="8" selection-end-line="120" selection-end-column="8" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/broxhouse/h5api/models/stats/matches/Match.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="219">
+          <caret line="189" column="28" selection-start-line="189" selection-start-column="28" selection-end-line="189" selection-end-column="28" />
+          <folding>
+            <element signature="e#5499#5500#0" expanded="true" />
+            <element signature="e#5529#5530#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/broxhouse/h5api/models/stats/reports/BaseCarnageReport.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="10" column="81" selection-start-line="10" selection-start-column="81" selection-end-line="10" selection-end-column="81" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/broxhouse/h5api/models/stats/reports/BasePlayerStats.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="10" column="70" selection-start-line="10" selection-start-column="70" selection-end-line="10" selection-end-column="70" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/broxhouse/h5api/models/stats/reports/CarnageReport.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="782">
+          <caret line="52" column="32" selection-start-line="52" selection-start-column="32" selection-end-line="52" selection-end-column="32" />
+          <folding>
+            <element signature="e#1579#1580#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/com/broxhouse/h5api/Database.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="522">
+          <caret line="447" column="77" selection-start-line="447" selection-start-column="47" selection-end-line="447" selection-end-column="77" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1505#1541#0" expanded="false" />
             <element signature="method#getWeaponsDB#0;class#Database#0" expanded="false" />
-            <element signature="e#1973#2027#0" expanded="false" />
+            <element signature="e#1993#2047#0" expanded="false" />
             <element signature="method#getMapsDB#0;class#Database#0" expanded="false" />
             <element signature="method#getArenaMapVariants#0;class#Database#0" expanded="false" />
-            <element signature="method#getCustomMapVariants#0;class#Database#0" expanded="false" />
-            <element signature="method#getMedalsDB#0;class#Database#0" expanded="false" />
-            <element signature="method#getMatchesDB#0;class#Database#0" expanded="false" />
             <element signature="method#getResources#0;class#Database#0" expanded="false" />
             <element signature="method#addWeaponstoDB#0;class#Database#0" expanded="false" />
-            <element signature="method#addMapsToDB#0;class#Database#0" expanded="false" />
             <element signature="method#addArenaMapVariantsToDB#0;class#Database#0" expanded="false" />
-            <element signature="method#addCustomMapVariantsToDB#0;class#Database#0" expanded="false" />
+            <element signature="method#writeMapVariantsToDB#0;class#Database#0" expanded="false" />
             <element signature="method#addResources#0;class#Database#0" expanded="false" />
             <element signature="method#addMedalsToDB#0;class#Database#0" expanded="false" />
+            <element signature="method#createTable#0;class#Database#0" expanded="false" />
             <element signature="method#createMatchesTable#0;class#Database#0" expanded="false" />
-            <element signature="method#addItemsToDatabase#0;class#Database#0" expanded="false" />
-            <element signature="method#createDatabaseConnection#0;class#Database#0" expanded="false" />
+            <element signature="method#addMatchesToDB#0;class#Database#0" expanded="false" />
+            <element signature="method#writeMetadataToDB#0;class#Database#0" expanded="false" />
+            <element signature="method#writeMatchesToDB#0;class#Database#0" expanded="false" />
+            <element signature="method#getMatchesFromDB#0;class#Database#0" expanded="false" />
+            <element signature="method#getMetadataFromDB#0;class#Database#0" expanded="false" />
             <element signature="method#handleConnection#0;class#Database#0" expanded="false" />
             <element signature="method#clearTable#0;class#Database#0" expanded="false" />
             <element signature="method#checkDatabaseValues#0;class#Database#0" expanded="false" />
             <element signature="method#checkDBForValue#0;class#Database#0" expanded="false" />
-            <marker date="1472738231223" expanded="false" signature="30220:30876" ph="..." />
-            <marker date="1472738231223" expanded="true" signature="31181:31949" ph="..." />
+            <marker date="1473368416188" expanded="true" signature="37424:38080" ph="..." />
+            <marker date="1473368416188" expanded="true" signature="38485:39253" ph="..." />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/com/broxhouse/h5api/HaloApi.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="612">
-          <caret line="146" column="40" selection-start-line="146" selection-start-column="40" selection-end-line="146" selection-end-column="40" />
+        <state relative-caret-position="221">
+          <caret line="141" column="0" selection-start-line="141" selection-start-column="0" selection-end-line="141" selection-end-column="0" />
           <folding>
-            <element signature="e#2851#2906#0" expanded="false" />
+            <element signature="e#2909#2964#0" expanded="false" />
             <element signature="method#api#0;class#HaloApi#0" expanded="false" />
-            <element signature="e#3442#3457#0" expanded="false" />
-            <element signature="e#3980#4021#0" expanded="false" />
+            <element signature="e#3500#3515#0" expanded="false" />
             <element signature="method#cacheData#0;class#HaloApi#0" expanded="false" />
+            <element signature="e#5634#5683#0" expanded="false" />
+            <element signature="e#6367#6432#0" expanded="false" />
             <element signature="method#getFileName#0;class#HaloApi#0" expanded="false" />
             <element signature="method#cachePlayerData#0;class#HaloApi#0" expanded="false" />
-            <element signature="e#7903#7947#0" expanded="false" />
+            <element signature="e#8710#8754#0" expanded="false" />
             <element signature="method#cacheAllPlayerData#0;class#HaloApi#0" expanded="false" />
-            <element signature="class#13194:13445" expanded="false" />
-            <element signature="e#13732#13779#0" expanded="false" />
-            <element signature="e#14218#14268#0" expanded="false" />
-            <element signature="method#cacheArenaMaps#0;class#HaloApi#0" expanded="false" />
-            <element signature="e#16194#16252#0" expanded="false" />
-            <element signature="e#16397#16448#0" expanded="false" />
+            <element signature="class#14001:14252" expanded="false" />
+            <element signature="e#14539#14586#0" expanded="false" />
+            <element signature="e#15025#15075#0" expanded="false" />
+            <element signature="e#16971#17029#0" expanded="false" />
+            <element signature="e#19932#19983#0" expanded="false" />
             <element signature="method#cacheCustomMaps#0;class#HaloApi#0" expanded="false" />
             <element signature="method#formatString#0;class#HaloApi#0" expanded="false" />
             <element signature="method#postGameCarnage#0;class#HaloApi#0" expanded="false" />
@@ -1886,13 +1855,9 @@
             <element signature="method#listMaps#0;class#HaloApi#0" expanded="false" />
             <element signature="method#testJSONWeapons#0;class#HaloApi#0" expanded="false" />
             <element signature="method#testJSONMedals#0;class#HaloApi#0" expanded="false" />
-            <element signature="method#getMedals#0;class#HaloApi#0" expanded="false" />
-            <element signature="method#getMaps#0;class#HaloApi#0" expanded="false" />
-            <element signature="method#getMatches#0;class#HaloApi#0" expanded="false" />
             <element signature="method#getCarnageReports#0;class#HaloApi#0" expanded="false" />
             <element signature="method#getUniqueResources#0;class#HaloApi#0" expanded="false" />
             <element signature="method#getMapOwner#0;class#HaloApi#0" expanded="false" />
-            <element signature="method#getCachedCustMapVariants#0;class#HaloApi#0" expanded="false" />
             <element signature="method#getCustomMapName#0;class#HaloApi#0" expanded="false" />
             <element signature="method#getMedalName#0;class#HaloApi#0" expanded="false" />
             <element signature="method#getMedalDescription#0;class#HaloApi#0" expanded="false" />
@@ -1912,7 +1877,8 @@
             <element signature="method#totalDeaths#0;class#HaloApi#0" expanded="false" />
             <element signature="method#getKD#0;class#HaloApi#0" expanded="false" />
             <element signature="method#testWeaponKills#0;class#HaloApi#0" expanded="false" />
-            <element signature="e#37744#37816#0" expanded="false" />
+            <element signature="e#41702#41774#0" expanded="false" />
+            <element signature="method#testBaseStats#0;class#HaloApi#0" expanded="false" />
             <element signature="method#testBaseResults#0;class#HaloApi#0" expanded="false" />
             <element signature="method#testActivePlaylists#0;class#HaloApi#0" expanded="false" />
             <element signature="method#comparePlayers#0;class#HaloApi#0" expanded="false" />
@@ -1921,10 +1887,10 @@
             <element signature="method#favoriteCustomMapVariant#0;class#HaloApi#0" expanded="false" />
             <element signature="method#cacheEnemyKills#0;class#HaloApi#0" expanded="false" />
             <element signature="method#killedByOponent#0;class#HaloApi#0" expanded="false" />
-            <element signature="e#54229#54260#0" expanded="false" />
+            <element signature="e#58187#58218#0" expanded="false" />
             <element signature="method#testPlayerMatches#0;class#HaloApi#0" expanded="false" />
-            <marker date="1472738231082" expanded="false" signature="1126:2580" ph="..." />
-            <marker date="1472738231082" expanded="false" signature="2582:2795" ph="..." />
+            <marker date="1473368590889" expanded="false" signature="1184:2638" ph="..." />
+            <marker date="1473368590889" expanded="false" signature="2640:2853" ph="..." />
           </folding>
         </state>
       </provider>

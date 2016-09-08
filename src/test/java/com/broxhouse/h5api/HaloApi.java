@@ -3,6 +3,7 @@ package com.broxhouse.h5api;
 import com.broxhouse.h5api.models.metadata.*;
 import com.broxhouse.h5api.models.metadata.Map;
 import com.broxhouse.h5api.models.stats.common.MedalAward;
+import com.broxhouse.h5api.models.stats.common.Player;
 import com.broxhouse.h5api.models.stats.common.WeaponStats;
 import com.broxhouse.h5api.models.stats.matches.Match;
 import com.broxhouse.h5api.models.stats.reports.*;
@@ -32,7 +33,7 @@ enum gameType {WARZONE, ARENA, CUSTOM, NA}
 
 public class HaloApi {
 
-    public String PLAYER_UF = "That Ax Guy";
+    public String PLAYER_UF = "That Brock Guy";
     private final String PLAYER = formatString(PLAYER_UF);
     private static final String TOKEN = "ad00d31dde2c44a8b6f07c05621699d9";
     private static final String BASE_URL = "https://www.haloapi.com/";
@@ -97,26 +98,42 @@ public class HaloApi {
     }
 
     public void printData() throws Exception{
-//        db.clearTable("MAPVRESOURCES");
-//        Map[] weapons = getMaps();
+//        db.clearTable("CUSTOMMATCHESBLOB");
+//        Map[] metaData = getMaps();
 //        MapVariant[] metaData = getArenaMapVariants();
-//        CustomMapVariant[] metaData = getCachedCustMapVariants();
+        CustomMapVariant[] metaData = (CustomMapVariant[]) db.getMetadataFromDB(dataType.CUSTOMMAPVARIANTS, false, NA);
 //        Match[] metaData = getMatches(ARENA);
-        Weapon[] metaData = (Weapon[]) db.getMetadataFromDB(dataType.MEDALS);
-        System.out.println(metaData.length);
+//        Weapon[] metaData = (Weapon[]) db.getMetadataFromDB(dataType.MEDALS);
         int i = 0;
         for (; i < metaData.length; i++){
             System.out.println(metaData[i].getName());
         }
+        System.out.println(metaData.length);
     }
 
-    public void test() throws Exception{
-//        db.writeMetadataToDB(getWeapons(), dataType.MEDALS);
+    public Player[] cachePlayers() throws Exception{
+        Match[] matches = getMatches(ARENA);
+        List<Player> playersList = new ArrayList<>();
+        for (int i = 0; i < matches.length; i++){
+            for (int k = 0; k < matches[i].getPlayers().size(); i++){
+                playersList.add(matches[i].getPlayers().get(k).getPlayer());
+                System.out.println(matches[i].getPlayers().size() + " " + matches[i].getPlayers().get(k).getPlayer().getGamertag());
+            }
+        }
+        Player[] players = new Player[playersList.size()];
+        for (int i = 0; i < playersList.size(); i++){
+            players[i] = playersList.get(i);
+        }
+        return players;
     }
 
     public void cacheData() throws Exception{
         cacheAllMetaData();
         cacheMatches(ARENA);
+    }
+
+    public void test() throws Exception{
+        db.addItemsToDatabase(dataType.PLAYERS);
     }
 
     public static void main(String[] args) throws Exception {
@@ -125,7 +142,7 @@ public class HaloApi {
 //            long startTime = System.nanoTime();
 //            hapi.printData();
 //            hapi.test();
-            hapi.cacheMatches(CUSTOM);
+//            hapi.cacheMatches(ARENA);
 //            hapi.cacheData();
 //            hapi.cacheAllMetaData();
 //            hapi.cacheArenaMaps();
@@ -139,7 +156,7 @@ public class HaloApi {
 //            hapi.cachePlayerData(CUSTOM, hapi.PLAYER_UF);
 //            System.out.println(hapi.killedByOponent(ARENA));
 //            hapi.cacheAllPlayerData(hapi.PLAYER_UF);
-//            hapi.cacheGameCarnage(CUSTOM);
+            hapi.cacheGameCarnage(CUSTOM);
 //            System.out.println(hapi.favoriteMapVariant(ARENA));
 //            System.out.println(hapi.favoriteCustomMapVariant(CUSTOM));
 //            System.out.println(hapi.killedByOponent(CUSTOM));
@@ -366,16 +383,19 @@ public class HaloApi {
         db.writeMetadataToDB(gson.fromJson(listMedals(), Medal[].class), dataType.MEDALS, false, NA);
         db.writeMetadataToDB(gson.fromJson(listWeapons(), Weapon[].class), dataType.WEAPONS, false, NA);
         db.writeMetadataToDB(gson.fromJson(listMaps(), Map[].class), dataType.MAPS, false, NA);
+        db.addItemsToDatabase(dataType.PLAYERS);
+        cacheCustomMaps();
+        cacheArenaMaps();
+
     }
 
-    public  void cacheGameCarnage(Enum gameType) throws Exception{
+    public void cacheGameCarnage(Enum gameType) throws Exception{
         System.out.println("Getting " + gameType +  " game carnage for: " + PLAYER_UF);
-        double totalGames = totalGames(gameType, PLAYER_UF);
+        Gson gson = new Gson();
         Match[] matches = getMatches(gameType);
-        String var3 = "";
+        CarnageReport carnageReport = null;
+        List<CarnageReport> carnageList = new ArrayList<>();
         JSONObject obj = null;
-        String fileName = getFileName(gameType, PLAYER_UF, "carnage");
-        StringBuilder strBuilder = new StringBuilder("");
         for (int i = 0; i < matches.length; i++) {
             if (gameType == ARENA) {
                 obj = new JSONObject(postGameCarnage(matches[i].getId().getMatchId()));
@@ -385,23 +405,89 @@ public class HaloApi {
             }
             else if(gameType == WARZONE){}
 
-            strBuilder.append(obj.toString());
-            strBuilder.append(",");
+            carnageReport = gson.fromJson(obj.toString(), CarnageReport.class);
+            carnageReport.setMatchId(matches[i].getId().getMatchId());
+            carnageList.add(carnageReport);
+
             continue;
         }
-        var3 = strBuilder.substring(0, strBuilder.length() -1);
-        var3 = "[" + var3 + "]";
-        Writer writer = new BufferedWriter(new OutputStreamWriter(
-                new FileOutputStream(fileName), "utf-8"));
-        writer.write(var3);
-        writer.close();
-        System.out.println("Finished caching " + capitalize(gameType.toString().toLowerCase()) + " carnage reports");
+        CarnageReport[] reports = new CarnageReport[carnageList.size()];
+        for (int i = 0; i < carnageList.size(); i++){
+            reports[i] = carnageList.get(i);
+        }
+        db.writeCarnageReportsToDB(reports);
     }
 
     public void cacheArenaMaps() throws Exception {
 //        MapVariant[] oldmaps = db.getArenaMapVariants();
 //        List<Resource> oldResourceList = new ArrayList<>();
-        Resource[] mapResources = db.getResources(resourceType.MAPVRESOURCES);
+        MapVariant[] oldmaps = (MapVariant[]) db.getMetadataFromDB(dataType.ARENAMAPVARIANTS, false, NA);
+        List<Resource> oldResourceList = new ArrayList<>();
+        Resource[] oldResources = null;
+        for (int i = 0; i < oldmaps.length; i++){
+            Resource oldResource = new Resource();
+            oldResource.setResourceId(oldmaps[i].getId());
+            oldResourceList.add(oldResource);
+        }
+        oldResources = new Resource[oldResourceList.size()];
+        for (int i = 0; i < oldResourceList.size(); i++){
+            oldResources[i] = oldResourceList.get(i);
+        }
+        Set<String> oldMapIDs = getUniqueResources(oldResources);
+        System.out.println("Caching Custom Maps");
+        Match[] matches = db.getMatchesDB(ARENA);
+        Resource[] resources = null;
+        List<Resource> mapList = new ArrayList<>();
+        int k = 0;
+        System.out.println("Creating resourceList");
+        for (int i = 0; i < matches.length; i++){
+            Resource mapv = matches[i].getMapVariant();
+            mapList.add(mapv);
+        }
+        System.out.println("Creating resource array");
+        resources = new Resource[mapList.size()];
+        for (int i = 0; i < mapList.size(); i++){
+            resources[i] = mapList.get(i);
+        }
+        boolean newValues = false;
+        boolean firstRun = false;
+        Set<String> mapIDs = getUniqueResources(resources);
+        MapVariant[] maps = null;
+        List<MapVariant> newMaps = new ArrayList<>();
+        if (firstRun) {
+            maps = new MapVariant[resources.length];
+            for (int i = 0; i < resources.length; i++) {
+                System.out.println(resources[i].getResourceId());
+                maps[i] = getMapVariant(resources[i].getResourceId());
+            }
+        }
+        if (!firstRun) {
+            for (String s : mapIDs) {
+                if (db.checkDBForValue("resourceid", s, dataType.CUSTOMMAPVARIANTS)) {
+//                    System.out.println("Contains");
+                    k++;
+                    continue;
+                } else {
+//                    System.out.println("Does not contain");
+                    MapVariant map = getMapVariant(s);
+                    newMaps.add(map);
+                    newValues = true;
+                    k++;
+                    continue;
+                }
+            }
+            maps = new MapVariant[newMaps.size()];
+            for (int i = 0; i < newMaps.size(); i++){
+                maps[i] = newMaps.get(i);
+            }
+        }
+        System.out.println("Adding map variants to the database");
+        if (newValues == true){
+            db.writeMapVariantsToDB(maps);
+            System.out.println("Finished caching Arena maps");
+        }else{
+            System.out.println("There weren't any new values to add.");
+        }
 
 
 
@@ -457,7 +543,7 @@ public class HaloApi {
     }
 
     public void cacheCustomMaps() throws Exception{
-        CustomMapVariant[] oldmaps = db.getCustomMapVariants();
+        CustomMapVariant[] oldmaps = (CustomMapVariant[]) db.getMetadataFromDB(dataType.CUSTOMMAPVARIANTS, false, NA);
         List<Resource> oldResourceList = new ArrayList<>();
         Resource[] oldResources = null;
         for (int i = 0; i < oldmaps.length; i++){
@@ -485,14 +571,15 @@ public class HaloApi {
         for (int i = 0; i < mapList.size(); i++){
             resources[i] = mapList.get(i);
         }
-        boolean newValues = false;
-        boolean firstRun = false;
+        boolean newValues = true;
+        boolean firstRun = true;
         Set<String> mapIDs = getUniqueResources(resources);
         CustomMapVariant[] maps = null;
         List<CustomMapVariant> newMaps = new ArrayList<>();
         if (firstRun) {
             maps = new CustomMapVariant[resources.length];
             for (int i = 0; i < resources.length; i++) {
+                System.out.println(resources[i].getResourceId());
                 maps[i] = getCustomMapVariant(resources[i].getResourceId(), formatString(resources[i].getOwner()));
             }
         }
@@ -518,7 +605,7 @@ public class HaloApi {
         }
         System.out.println("Adding map variants to the database");
         if (newValues == true){
-            db.addCustomMapVariantsToDB(maps);
+            db.writeCustomMapVariantsToDB(maps);
             System.out.println("Finished caching Arena maps");
         }else{
             System.out.println("There weren't any new values to add.");
@@ -626,19 +713,19 @@ public class HaloApi {
     }
 
     public  Medal[] getMedals() throws Exception {
-        return db.getMedalsDB();
+        return (Medal[]) db.getMetadataFromDB(dataType.MEDALS, false, NA);
     }
 
     public  Map[] getMaps() throws Exception{
-        return db.getMapsDB();
+        return (Map[]) db.getMetadataFromDB(dataType.MAPS, false, NA);
     }
 
     public  Weapon[] getWeapons() throws Exception {
-        return db.getWeaponsDB();
+        return (Weapon[]) db.getMetadataFromDB(dataType.WEAPONS, false, NA);
     }
 
     public Match[] getMatches(Enum gameType) throws Exception{
-        return db.getMatchesDB(gameType);
+        return db.getMatchesFromDB(dataType.MATCHES, true, gameType);
     }
 
     public void cacheMatches(Enum gameType) throws Exception {
@@ -673,8 +760,10 @@ public class HaloApi {
             matches[i] = matchList.get(i);
         }
         System.out.println("Adding matches to database");
-        db.writeMetadataToDB(matches, dataType.MATCHES, true, gameType);
-        db.writeMetadataToDB(matches, dataType.MATCHES, false, gameType);
+        db.writeMatchesToDB(matches, dataType.MATCHES, true, gameType);
+        db.writeMatchesToDB(matches, dataType.MATCHES, false, gameType);
+//        db.writeMetadataToDB(matches, dataType.MATCHES, true, gameType);
+//        db.writeMetadataToDB(matches, dataType.MATCHES, false, gameType);
         System.out.println("Finished caching Matches for " + PLAYER_UF);
     }
 
