@@ -111,22 +111,6 @@ public class HaloApi {
         System.out.println(metaData.length);
     }
 
-    public Player[] cachePlayers() throws Exception{
-        Match[] matches = getMatches(ARENA);
-        List<Player> playersList = new ArrayList<>();
-        for (int i = 0; i < matches.length; i++){
-            for (int k = 0; k < matches[i].getPlayers().size(); i++){
-                playersList.add(matches[i].getPlayers().get(k).getPlayer());
-                System.out.println(matches[i].getPlayers().size() + " " + matches[i].getPlayers().get(k).getPlayer().getGamertag());
-            }
-        }
-        Player[] players = new Player[playersList.size()];
-        for (int i = 0; i < playersList.size(); i++){
-            players[i] = playersList.get(i);
-        }
-        return players;
-    }
-
     public void cacheData() throws Exception{
         cacheAllMetaData();
         cacheMatches(ARENA);

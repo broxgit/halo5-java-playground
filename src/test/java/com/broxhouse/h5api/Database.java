@@ -36,6 +36,8 @@ public class Database {
 
     static HaloApi haloApi = new HaloApi();
 
+    static PopulateDatabase pd = new PopulateDatabase();
+
     static String player = haloApi.PLAYER_UF.replaceAll("\\s+", "").toUpperCase();
 
     public Database(Connection conn, Statement stmt, ResultSet rs) {
@@ -700,7 +702,7 @@ public class Database {
         Player[] metaData = null;
         String sql = null;
         try {
-            metaData = haloApi.cachePlayers();
+            metaData = pd.cachePlayers();
             for (int i = 0; i < metaData.length; i++) {
                 sql = "INSERT IGNORE INTO " + "PLAYERS" + " VALUES " +
                         "('" + metaData[i].getGamertag() + ")";
