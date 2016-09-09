@@ -311,29 +311,30 @@ public class Database {
 //        } catch (Exception e) {
 //        }
 //    }
-    //    public static void handleConnection(Database db) {
-//        try {
-//            db.rs.close();
-//            db.stmt.close();
-//            db.conn.close();
-//
-//        } catch (Exception e) {
-//        } finally {
-//            //finally block used to close resources
-//            try {
-//                if (db.stmt != null)
-//                    db.stmt.close();
-//            } catch (SQLException se2) {
-//            }// nothing we can do
-//            try {
-//                if (db.conn != null)
-//                    db.conn.close();
-//            } catch (SQLException se) {
-//                se.printStackTrace();
-//            }//end finally try
-//        }//end try
-//        System.out.println("Goodbye!");
-//    }
+
+    public static void handleConnection(Database db) {
+        try {
+            db.rs.close();
+            db.stmt.close();
+            db.conn.close();
+
+        } catch (Exception e) {
+        } finally {
+            //finally block used to close resources
+            try {
+                if (db.stmt != null)
+                    db.stmt.close();
+            } catch (SQLException se2) {
+            }// nothing we can do
+            try {
+                if (db.conn != null)
+                    db.conn.close();
+            } catch (SQLException se) {
+                se.printStackTrace();
+            }//end finally try
+        }//end try
+        System.out.println("Goodbye!");
+    }
     //    public static void addResources(Resource[] metaData, Enum resourceType, Enum gameType) {
 //        Connection conn = null;
 //        Statement stmt = null;
@@ -698,20 +699,26 @@ public class Database {
 //        return objects;
 //    }
 
-    public static void addPlayersToDB(Statement stmt) {
-        Player[] metaData = null;
-        String sql = null;
-        try {
-            metaData = pd.cachePlayers();
-            for (int i = 0; i < metaData.length; i++) {
-                sql = "INSERT IGNORE INTO " + "PLAYERS" + " VALUES " +
-                        "('" + metaData[i].getGamertag() + ")";
-                System.out.println(sql);
-                stmt.executeUpdate(sql);
-            }
-        } catch (Exception e) {
+    public static void addPlayersToDB(List<String> players) throws Exception{
+        Class.forName("com.mysql.jdbc.Driver");
+        Connection conn = DriverManager.getConnection(DB_URL, USER, PASS);
+        String tableName = "players";
+        DatabaseMetaData dbm = conn.getMetaData();
+        ResultSet tables = dbm.getTables(null, null, tableName, null);
+        if (!tables.next()){
+            System.out.println("Table doesn't exist");
+            createTable(tableName);
         }
-
+        for (int i = 0; i < players.size(); i++){
+            PreparedStatement pstmt = conn
+                    .prepareStatement("INSERT IGNORE INTO " + tableName + " VALUES (?)");
+            pstmt.setString(1, players.get(i));
+            System.out.println(pstmt);
+            pstmt.executeUpdate();
+            pstmt.close();
+        }
+        conn.close();
+        System.out.println("Goodbye!");
     }
 
     public static void writeCustomMapVariantsToDB(CustomMapVariant[] customMaps) throws Exception{
@@ -791,26 +798,26 @@ public class Database {
 
     public static void createTable(String tableName) throws Exception{
 
-            Class.forName("com.mysql.jdbc.Driver");
-            Connection conn = DriverManager.getConnection(DB_URL, USER, PASS);
-            Statement stmt = conn.createStatement();
+        Class.forName("com.mysql.jdbc.Driver");
+        Connection conn = DriverManager.getConnection(DB_URL, USER, PASS);
+        Statement stmt = conn.createStatement();
 
-            String sql = "CREATE TABLE " + tableName +
-                    "(matchid varchar (255) primary key, b blob);";
+        String sql = "CREATE TABLE " + tableName +
+                "(matchid varchar (255) primary key, b blob);";
 //            System.out.println(sql);
-            stmt.executeUpdate(sql);
-            //finally block used to close resources
-            try {
-                if (stmt != null)
-                    conn.close();
-            } catch (SQLException se) {
-            }// do nothing
-            try {
-                if (conn != null)
-                    conn.close();
-            } catch (SQLException se) {
-                se.printStackTrace();
-            }//end finally try
+        stmt.executeUpdate(sql);
+        //finally block used to close resources
+        try {
+            if (stmt != null)
+                conn.close();
+        } catch (SQLException se) {
+        }// do nothing
+        try {
+            if (conn != null)
+                conn.close();
+        } catch (SQLException se) {
+            se.printStackTrace();
+        }//end finally try
     }
 
 
@@ -863,7 +870,7 @@ public class Database {
         }
         for (int i = 0; i < matches.length; i++){
             PreparedStatement pstmt = conn
-                    .prepareStatement("INSERT INTO " + tableName + " VALUES ('" + matches[i].getId().getMatchId() +  "', " +
+                    .prepareStatement("INSERT IGNORE INTO " + tableName + " VALUES ('" + matches[i].getId().getMatchId() +  "', " +
                             "?)");
             pstmt.setObject(1, matches[i]);
             System.out.println(pstmt);
@@ -894,12 +901,13 @@ public class Database {
             return null;
         }
         Statement stmt = conn.createStatement();
+//        System.out.println("SELECT * FROM " + tableName);
         ResultSet rs = stmt.executeQuery("SELECT * FROM " + tableName);
         List<Object> metaList = new ArrayList<>();
         Object[] objects = null;
         while (rs.next()) {
             byte[] st = null;
-            if (dataType.toString().equalsIgnoreCase("custommapvariants") || dataType.toString().equalsIgnoreCase("arenamapvariants") || dataType.toString().equalsIgnoreCase("carnage"))
+            if (dataType.toString().equalsIgnoreCase("custommapvariants") || dataType.toString().equalsIgnoreCase("arenamapvariants") || dataType.toString().equalsIgnoreCase("carnage") || dataType.toString().equalsIgnoreCase("matches"))
                 st = (byte[]) rs.getObject(2);
             else{
                 st = (byte[]) rs.getObject(1);
@@ -932,6 +940,20 @@ public class Database {
         return objects;
     }
 
+    public static List<String> getPlayersFromDB() throws Exception {
+
+        List<String> players = new ArrayList<>();
+        Database db = createDatabaseConnection(dataType.PLAYERS);
+        try {
+            while (db.rs.next()) {
+                players.add(db.rs.getString("name"));
+            }
+        } catch (Exception e) {
+        }
+        handleConnection(db);
+        return players;
+    }
+
     public static void addItemsToDatabase(Enum dataType) {
         Connection conn = null;
         Statement stmt = null;
@@ -949,9 +971,6 @@ public class Database {
             //STEP 4: Execute a query
             System.out.println("Inserting records into the table...");
             stmt = conn.createStatement();
-            if (tableName.equalsIgnoreCase("players")){
-                addPlayersToDB(stmt);
-            }
             System.out.println("Inserted records into the table...");
 
         } catch (SQLException se) {
