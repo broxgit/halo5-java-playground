@@ -270,8 +270,8 @@ public class PopulateDatabase {
         Database db2 = new Database();
         Match match = null;
         Gson gson = new Gson();
-        System.out.println("Caching " + hApi.capitalize(gameType.toString().toLowerCase()) +  " matches for " + gamertag);
         double totalGames = hApi.totalGames(gameType, gamertag);
+        System.out.println("Caching " + totalGames + " " + hApi.capitalize(gameType.toString().toLowerCase()) +  " matches for " + gamertag);
         if(totalGames == 0) {
             System.out.println("This player hasn't played this game type");
             return;
@@ -547,10 +547,11 @@ public class PopulateDatabase {
         if (matchCount % 100000 > 1){
             div = 5000;
         }
-        System.out.println("Starting " + matchCount/div + " threads");
+        int threadCount = matchCount/div;
+        System.out.println("Starting " + threadCount + " threads");
 //        System.out.println(matchCount);
-        Thread[] threads = new Thread[matchCount/div];
-        for (int i = 0; i < matchCount/div; i++){
+        Thread[] threads = new Thread[threadCount];
+        for (int i = 0; i < threadCount; i++){
             int finalI = i;
             int arrayStart = finalI *div;
             int arrayEnd = (finalI + 1) *div;
@@ -558,7 +559,13 @@ public class PopulateDatabase {
                 @Override
                 public void run(){
                     try{
-                        cacheGameCarnage(gameType, false, Arrays.copyOfRange(matches, arrayStart, arrayEnd));
+                        Match[] tempMatches = Arrays.copyOfRange(matches, arrayStart, arrayEnd);
+                        for (int k = 0; k < tempMatches.length/100; k++){
+                            int finalK = k;
+                            int arrayStart2 = finalK *100;
+                            int arrayEnd2 = (finalK + 1) * 100;
+                            cacheGameCarnage(gameType, false, Arrays.copyOfRange(tempMatches, arrayStart2, arrayEnd2));
+                        }
                     }catch (Exception e){}
                 }
             };
@@ -573,16 +580,15 @@ public class PopulateDatabase {
 
     public void cacheMatchesThreadTest(Enum gameType) throws Exception{
         List<String> playersList = hApi.getPlayers();
-        String[] players = (String[]) playersList.toArray();
+        String[] players = playersList.toArray(new String[playersList.size()]);
         int playerCount = players.length;
         int div = 0;
         if (playerCount % 1000 > 1){
-            div = 500;
+            div = 600;
         }
         int threadCount = playerCount/div;
         System.out.println("Starting " + threadCount + " threads");
         Thread[] threads = new Thread[threadCount];
-        String[] tempPlayers = new String[threadCount];
         for (int i = 0; i < threadCount; i++){
             int finalI = i;
             int arrayStart = finalI *div;
@@ -591,9 +597,12 @@ public class PopulateDatabase {
                 @Override
                 public void run(){
                     try{
+                        String[] tempPlayers = Arrays.copyOfRange(players, arrayStart, arrayEnd);
+                        Arrays.sort(tempPlayers);
                         for (int k = 0; k < tempPlayers.length; k++){
                             cacheMatches(gameType, false, tempPlayers[k]);
                         }
+                        System.out.println("Thread " + finalI + " completed");
                     }catch (Exception e){}
                 }
             };

@@ -39,7 +39,7 @@ public class HaloApi {
     private static final String BASE_URL = "https://www.haloapi.com/";
     private static final String STATS_URL = "https://www.haloapi.com/stats/h5/";
     private static final String META_URL = "https://www.haloapi.com/metadata/h5/metadata/";
-    private final String PLAYER_MATCHES = STATS_URL + "players/" + PLAYER + "/matches";
+    private final String PLAYER_MATCHES = STATS_URL + "players/%s/matches";
     private static final String CUSTOM_STATS = STATS_URL + "servicerecords/custom?players=%s";
     private static final String ARENA_STATS = STATS_URL + "servicerecords/arena?players=%s";
     private static final String WARZONE_STATS = STATS_URL + "servicerecords/warzone?players=%s";
@@ -67,35 +67,43 @@ public class HaloApi {
 
     private static String api(String url) throws Exception
     {
+        String getResponse = null;
+        int iterations = 1;
+        for (int i = 0; i < iterations; i++) {
+
 //        System.out.println(url);
-        HttpClient httpclient = HttpClients.createDefault();
-        String getResponse;
+            HttpClient httpclient = HttpClients.createDefault();
 
-        URIBuilder builder = new URIBuilder(url);
-
-
-        URI uri = builder.build();
-        HttpGet request = new HttpGet(uri);
-        request.setHeader("Ocp-Apim-Subscription-Key", TOKEN);
+            URIBuilder builder = new URIBuilder(url);
 
 
-        // Request body
+            URI uri = builder.build();
+            HttpGet request = new HttpGet(uri);
+            request.setHeader("Ocp-Apim-Subscription-Key", TOKEN);
+
+
+            // Request body
 //            StringEntity reqEntity = new StringEntity("{body}");
 //            request.setEntity(reqEntity);
 
-        HttpResponse response = httpclient.execute(request);
-        HttpEntity entity = response.getEntity();
+            HttpResponse response = httpclient.execute(request);
+            HttpEntity entity = response.getEntity();
 
-        if (entity != null)
-        {
-            getResponse = EntityUtils.toString(entity);
-//                System.out.println(getResponse);
-            return getResponse;
+            if (entity != null) {
+                getResponse = EntityUtils.toString(entity);
+                if (getResponse.contains("Rate limit is exceeded")) {
+                    String temp = getResponse.replaceAll("\\D+", "");
+                    temp = temp.replaceAll("429", "");
+                    int waitTime = Integer.parseInt(temp);
+                    i--;
+                    Thread.sleep(waitTime * 1000);
+                    System.out.println("Rate limit exceeded, waiting " + waitTime + " seconds before trying again.");
+                }
+            } else {
+                return null;
+            }
         }
-        else
-        {
-            return null;
-        }
+        return getResponse;
     }
 
     public void printData() throws Exception{
@@ -127,8 +135,7 @@ public class HaloApi {
 //            long startTime = System.nanoTime();
 //            hapi.printData();
 //            hapi.test();
-            pd.cacheCarnageThreadTest(ARENA);
-//            pd.cachePlayers();
+            pd.cacheMatchesThreadTest(ARENA);
 //            db.clearTable("players");
 //            hapi.cacheMatches(ARENA);
 //            hapi.cacheData();
@@ -226,7 +233,7 @@ public class HaloApi {
     }
 
     public  String playerMatches(String gt, String modes, int start, int count) throws Exception {
-        String pURL = PLAYER_MATCHES;
+        String pURL = String.format(PLAYER_MATCHES, gt);
         pURL = pURL +"?modes=" + modes + "&";
         pURL = pURL + "start=" + start + "&";
         pURL = pURL + "count=" + count;

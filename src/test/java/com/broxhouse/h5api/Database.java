@@ -847,7 +847,6 @@ public class Database {
             pstmt.close();
         }
         conn.close();
-        System.out.println("Goodbye!");
     }
 
     public static void writeMatchesToDB(Match[] matches, Enum dataType, boolean isPlayerDB, Enum gameType) throws Exception{
@@ -873,12 +872,11 @@ public class Database {
                     .prepareStatement("INSERT IGNORE INTO " + tableName + " VALUES ('" + matches[i].getId().getMatchId() +  "', " +
                             "?)");
             pstmt.setObject(1, matches[i]);
-            System.out.println(pstmt);
+//            System.out.println(pstmt);
             pstmt.executeUpdate();
             pstmt.close();
         }
         conn.close();
-        System.out.println("Goodbye!");
     }
 
 
@@ -915,6 +913,7 @@ public class Database {
             ByteArrayInputStream baip = new ByteArrayInputStream(st);
             ObjectInputStream ois = new ObjectInputStream(baip);
             Object weapon =  ois.readObject();
+            ois.close();
             metaList.add(weapon);
         }
         if (dataType.toString().equalsIgnoreCase("weapons"))
