@@ -68,34 +68,34 @@ public class HaloApi {
     private static String api(String url) throws Exception
     {
         String getResponse = null;
-        int iterations = 1;
-        for (int i = 0; i < iterations; i++) {
-
+        boolean callSuccessful = false;
+        while (!callSuccessful) {
 //        System.out.println(url);
             HttpClient httpclient = HttpClients.createDefault();
 
             URIBuilder builder = new URIBuilder(url);
 
-
             URI uri = builder.build();
             HttpGet request = new HttpGet(uri);
             request.setHeader("Ocp-Apim-Subscription-Key", TOKEN);
-
 
             // Request body
 //            StringEntity reqEntity = new StringEntity("{body}");
 //            request.setEntity(reqEntity);
 
             HttpResponse response = httpclient.execute(request);
+            int statusCode = response.getStatusLine().getStatusCode();
             HttpEntity entity = response.getEntity();
 
             if (entity != null) {
                 getResponse = EntityUtils.toString(entity);
-                if (getResponse.contains("Rate limit is exceeded")) {
-                    String temp = getResponse.replaceAll("\\D+", "");
-                    temp = temp.replaceAll("429", "");
+                if (statusCode == 200)
+                    callSuccessful = true;
+                else if (statusCode != 200 && statusCode != 429)
+                    System.out.println(getResponse);
+                else if (statusCode == 429) {
+                    String temp = getResponse.replaceAll("\\D+", "").replaceAll("429", "");
                     int waitTime = Integer.parseInt(temp);
-                    i--;
                     Thread.sleep(waitTime * 1000);
                     System.out.println("Rate limit exceeded, waiting " + waitTime + " seconds before trying again.");
                 }
@@ -233,7 +233,7 @@ public class HaloApi {
     }
 
     public  String playerMatches(String gt, String modes, int start, int count) throws Exception {
-        String pURL = String.format(PLAYER_MATCHES, gt);
+        String pURL = String.format(PLAYER_MATCHES, formatString(gt));
         pURL = pURL +"?modes=" + modes + "&";
         pURL = pURL + "start=" + start + "&";
         pURL = pURL + "count=" + count;

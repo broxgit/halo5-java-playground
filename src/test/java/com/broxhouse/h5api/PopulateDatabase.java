@@ -599,6 +599,7 @@ public class PopulateDatabase {
                     try{
                         String[] tempPlayers = Arrays.copyOfRange(players, arrayStart, arrayEnd);
                         Arrays.sort(tempPlayers);
+                        System.out.println("Thread " + finalI + " is caching " + tempPlayers.length + " players.");
                         for (int k = 0; k < tempPlayers.length; k++){
                             cacheMatches(gameType, false, tempPlayers[k]);
                         }

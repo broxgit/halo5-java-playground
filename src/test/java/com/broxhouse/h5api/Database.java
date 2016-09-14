@@ -333,7 +333,7 @@ public class Database {
                 se.printStackTrace();
             }//end finally try
         }//end try
-        System.out.println("Goodbye!");
+        
     }
     //    public static void addResources(Resource[] metaData, Enum resourceType, Enum gameType) {
 //        Connection conn = null;
@@ -496,7 +496,7 @@ public class Database {
 //                se.printStackTrace();
 //            }//end finally try
 //        }//end try
-//        System.out.println("Goodbye!");
+//        
 //    }
 //
 //
@@ -663,7 +663,7 @@ public class Database {
 //                se.printStackTrace();
 //            }//end finally try
 //        }//end try
-//        System.out.println("Goodbye!");
+//        
 //    }
 //    public static Match[] getMatchesFromDB(Enum dataType, boolean isPlayerDB, Enum gameType) throws Exception{
 //        Class.forName("com.mysql.jdbc.Driver");
@@ -718,7 +718,7 @@ public class Database {
             pstmt.close();
         }
         conn.close();
-        System.out.println("Goodbye!");
+        
     }
 
     public static void writeCustomMapVariantsToDB(CustomMapVariant[] customMaps) throws Exception{
@@ -739,7 +739,7 @@ public class Database {
             pstmt.close();
         }
         conn.close();
-        System.out.println("Goodbye!");
+        
     }
 
     public static void writeCarnageReportsToDB(CarnageReport[] carnageReports, Enum dataType, boolean isPlayerDB, Enum gameType) throws Exception{
@@ -773,7 +773,7 @@ public class Database {
             pstmt.close();
         }
         conn.close();
-        System.out.println("Goodbye!");
+        
     }
 
     public static void writeMapVariantsToDB(MapVariant[] arenaMaps) throws Exception {
@@ -792,7 +792,7 @@ public class Database {
             pstmt.close();
         }
         conn.close();
-        System.out.println("Goodbye!");
+        
     }
 
 
@@ -914,6 +914,7 @@ public class Database {
             ObjectInputStream ois = new ObjectInputStream(baip);
             Object weapon =  ois.readObject();
             ois.close();
+            baip.close();
             metaList.add(weapon);
         }
         if (dataType.toString().equalsIgnoreCase("weapons"))
@@ -992,7 +993,7 @@ public class Database {
                 se.printStackTrace();
             }//end finally try
         }//end try
-        System.out.println("Goodbye!");
+        
     }
 
     public static Database createDatabaseConnection(Enum dataType, String... tablename) {
