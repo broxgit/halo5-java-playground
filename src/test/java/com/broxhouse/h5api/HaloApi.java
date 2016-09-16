@@ -126,7 +126,7 @@ public class HaloApi {
 //        Match[] matches = getAllMatches(ARENA);
 //        System.out.println(matches.length);
 //        CarnageReport[] carnageReports = getAllCarnageReports(ARENA);
-        System.out.println(db.getNumberOfRows(dataType.MATCHES, false, ARENA));
+        System.out.println(db.getNumberOfRows(dataType.CARNAGE, false, ARENA));
 //        db.clearTable("arenamatchesblob");
     }
 
