@@ -123,8 +123,10 @@ public class HaloApi {
     public void test() throws Exception {
 //        List<String> players = db.getPlayersFromDB();
 //        System.out.println(players.size());
-        Match[] matches = getAllMatches(ARENA);
-        System.out.println(matches.length);
+//        Match[] matches = getAllMatches(ARENA);
+//        System.out.println(matches.length);
+//        CarnageReport[] carnageReports = getAllCarnageReports(ARENA);
+        System.out.println(db.getNumberOfRows(dataType.MATCHES, false, ARENA));
 //        db.clearTable("arenamatchesblob");
     }
 
@@ -135,8 +137,9 @@ public class HaloApi {
 //            long startTime = System.nanoTime();
 //            hapi.printData();
 //            hapi.test();
-            pd.cacheMatchesThreadTest(ARENA);
+//            pd.cacheMatchesThreadTest(ARENA);
 //            db.clearTable("players");
+            hapi.test();
 //            hapi.cacheMatches(ARENA);
 //            hapi.cacheData();
 //            hapi.cacheAllMetaData();
@@ -325,7 +328,7 @@ public class HaloApi {
     }
 
     public List<String> getPlayers() throws Exception{
-        return db.getPlayersFromDB();
+        return db.getPlayersFromDB(false);
     }
 
     public Match[] getPlayerMatches(Enum gameType) throws Exception{

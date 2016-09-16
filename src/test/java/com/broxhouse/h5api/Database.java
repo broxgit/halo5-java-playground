@@ -17,7 +17,7 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-enum dataType{WEAPONS, MAPS, MEDALS, MAPVARIANTS, CUSTOMMAPVARIANTS, ARENAMATCHES, CUSTOMMATCHES, MATCHES, ARENAMAPVARIANTS, PLAYERS, CARNAGE}
+enum dataType{WEAPONS, MAPS, MEDALS, MAPVARIANTS, CUSTOMMAPVARIANTS, ARENAMATCHES, CUSTOMMATCHES, MATCHES, ARENAMAPVARIANTS, PLAYERS, CARNAGE, OLDPLAYERS}
 
 enum resourceType{MAPVRESOURCES, GAMEVRESOURCES}
 
@@ -699,10 +699,14 @@ public class Database {
 //        return objects;
 //    }
 
-    public static void addPlayersToDB(List<String> players) throws Exception{
+    public static void addPlayersToDB(List<String> players, boolean newPlayers) throws Exception{
         Class.forName("com.mysql.jdbc.Driver");
         Connection conn = DriverManager.getConnection(DB_URL, USER, PASS);
-        String tableName = "players";
+        String tableName = null;
+        if (newPlayers)
+            tableName = "players";
+        else
+            tableName = "oldplayers";
         DatabaseMetaData dbm = conn.getMetaData();
         ResultSet tables = dbm.getTables(null, null, tableName, null);
         if (!tables.next()){
@@ -718,7 +722,7 @@ public class Database {
             pstmt.close();
         }
         conn.close();
-        
+        System.out.println("Goodbye!");
     }
 
     public static void writeCustomMapVariantsToDB(CustomMapVariant[] customMaps) throws Exception{
@@ -793,6 +797,34 @@ public class Database {
         }
         conn.close();
         
+    }
+
+    public static int getNumberOfRows(Enum dataType, boolean isPlayerDB, Enum gameType) throws Exception{
+        Class.forName("com.mysql.jdbc.Driver");
+        String tableName = null;
+        String gameMode = gameType.toString();
+        int count = 0;
+        if (gameMode.equalsIgnoreCase("na")){
+            tableName = dataType.toString() + "blob";
+        } else {
+            tableName = gameMode + dataType.toString() + "blob";
+        }
+        if (isPlayerDB)
+            tableName = player + gameMode + dataType.toString() + "blob";
+        Connection conn = DriverManager.getConnection(DB_URL, USER, PASS);
+        DatabaseMetaData dbm = conn.getMetaData();
+        ResultSet tables = dbm.getTables(null, null, tableName, null);
+        if (!tables.next()){
+            System.out.println("Table doesn't exist");
+            return 0;
+        }
+        Statement stmt = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
+        ResultSet rs = stmt.executeQuery("SELECT * FROM " + tableName);
+        count = rs.last() ? rs.getRow() : 0;
+        stmt.close();
+        rs.close();
+        conn.close();
+        return count;
     }
 
 
@@ -940,10 +972,46 @@ public class Database {
         return objects;
     }
 
-    public static List<String> getPlayersFromDB() throws Exception {
+    public static Object[] getSomeMatchesFromDB(int offset) throws Exception {
+        Class.forName("com.mysql.jdbc.Driver");
+        Connection conn = DriverManager.getConnection(DB_URL, USER, PASS);
+        DatabaseMetaData dbm = conn.getMetaData();
+        Statement stmt = conn.createStatement();
+//        System.out.println("SELECT * FROM " + tableName);
+        offset = offset * 10000;
+        ResultSet rs = stmt.executeQuery("SELECT * FROM ARENAMATCHESBLOB ORDER BY MATCHID DESC LIMIT 10000 OFFSET " + offset);
+        List<Object> metaList = new ArrayList<>();
+        Object[] objects = null;
+        while (rs.next()) {
+            try {
+                byte[] st = null;
+                st = (byte[]) rs.getObject(2);
+                ByteArrayInputStream baip = new ByteArrayInputStream(st);
+                ObjectInputStream ois = new ObjectInputStream(baip);
+                Object weapon = ois.readObject();
+                ois.close();
+                baip.close();
+                metaList.add(weapon);
+            }catch(Exception e){continue;}
+        }
+        objects = new Match[metaList.size()];
+        for (int i = 0; i < metaList.size(); i++){
+            objects[i] = metaList.get(i);
+        }
+        stmt.close();
+        rs.close();
+        conn.close();
+        return objects;
+    }
 
+
+    public static List<String> getPlayersFromDB(boolean newPlayers) throws Exception {
         List<String> players = new ArrayList<>();
-        Database db = createDatabaseConnection(dataType.PLAYERS);
+        Database db = null;
+        if (newPlayers)
+            db = createDatabaseConnection(dataType.PLAYERS);
+        else
+            db = createDatabaseConnection(dataType.OLDPLAYERS);
         try {
             while (db.rs.next()) {
                 players.add(db.rs.getString("name"));

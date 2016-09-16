@@ -5,17 +5,14 @@ import com.broxhouse.h5api.models.metadata.MapVariant;
 import com.broxhouse.h5api.models.stats.common.Player;
 import com.broxhouse.h5api.models.stats.matches.Match;
 import com.broxhouse.h5api.models.stats.reports.CarnageReport;
-import com.broxhouse.h5api.models.stats.reports.KilledByOpponentDetail;
 import com.broxhouse.h5api.models.stats.reports.PlayerStat;
 import com.broxhouse.h5api.models.stats.reports.Resource;
 import com.google.gson.Gson;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-import java.io.*;
 import java.util.*;
 
-import static com.broxhouse.h5api.Database.player;
 import static com.broxhouse.h5api.gameType.*;
 
 /**
@@ -26,7 +23,7 @@ public class PopulateDatabase {
     HaloApi hApi = new HaloApi();
     Database db = new Database();
 
-    public void cachePlayers() throws Exception{
+    public List<String> populatePlayers() throws Exception{
         CarnageReport[] matches = hApi.getPlayerCarnageReports(ARENA);
         List<Player> playersList = new ArrayList<>();
         List<List<PlayerStat>> playerStatList = new ArrayList<>();
@@ -48,8 +45,21 @@ public class PopulateDatabase {
             }
         }
         List<String> uniquePlayers = new ArrayList<>(new HashSet<>(players));
+        return uniquePlayers;
+    }
 
-        db.addPlayersToDB(uniquePlayers);
+    public void cacheNewPlayers() throws Exception{
+        List<String> newPlayers = populatePlayers();
+        List<String> allPlayers = db.getPlayersFromDB(false);
+        System.out.println("New players: " + newPlayers.size() + " Old Players: " + allPlayers.size());
+        for (String s: allPlayers){
+            if (newPlayers.contains(s))
+                newPlayers.remove(s);
+        }
+        db.clearTable("players");
+        db.addPlayersToDB(newPlayers, false);
+        db.addPlayersToDB(newPlayers, true);
+        System.out.println("New size of the New Players list: " + newPlayers.size());
     }
 
     public void cacheArenaMaps() throws Exception {
@@ -541,53 +551,52 @@ public class PopulateDatabase {
     }
 
     public void cacheCarnageThreadTest(Enum gameType) throws Exception{
-        Match[] matches = hApi.getAllMatches(gameType);
-        int matchCount = matches.length;
-        int div = 0;
-        if (matchCount % 100000 > 1){
-            div = 5000;
-        }
-        int threadCount = matchCount/div;
-        System.out.println("Starting " + threadCount + " threads");
+        for (int k = 0; k < 60; k++) {
+            Match[] matches = (Match[]) db.getSomeMatchesFromDB(k);
+            int matchCount = matches.length;
+            int div = 200;
+            System.out.println("Starting " + matchCount / div + " threads");
 //        System.out.println(matchCount);
-        Thread[] threads = new Thread[threadCount];
-        for (int i = 0; i < threadCount; i++){
-            int finalI = i;
-            int arrayStart = finalI *div;
-            int arrayEnd = (finalI + 1) *div;
-            threads[i] = new Thread(){
-                @Override
-                public void run(){
-                    try{
-                        Match[] tempMatches = Arrays.copyOfRange(matches, arrayStart, arrayEnd);
-                        for (int k = 0; k < tempMatches.length/100; k++){
-                            int finalK = k;
-                            int arrayStart2 = finalK *100;
-                            int arrayEnd2 = (finalK + 1) * 100;
-                            cacheGameCarnage(gameType, false, Arrays.copyOfRange(tempMatches, arrayStart2, arrayEnd2));
-                        }
-                    }catch (Exception e){}
+            Thread[] threads = new Thread[matchCount / div];
+            for (int i = 0; i < matchCount / div; i++) {
+                int finalI = i;
+                int arrayStart = finalI * div;
+                int arrayEnd = (finalI + 1) * div;
+                Match[] finalMatches = matches;
+                threads[i] = new Thread() {
+                    @Override
+                    public void run() {
+                        try {
+                            cacheGameCarnage(gameType, false, Arrays.copyOfRange(finalMatches, arrayStart, arrayEnd));
+                        } catch (OutOfMemoryError e) {
+                            threads[finalI].stop();
+                        }catch (Exception e){}
+                    }
+                };
+                threads[i].start();
+            }
+            for (int i = 0; i < matchCount / div; i++) {
+                try {
+                    threads[i].join();
+                } catch (Exception e) {
                 }
-            };
-            threads[i].start();
-        }
-        for (int i = 0; i < matchCount/div; i++){
-            try{
-                threads[i].join();
-            }catch (Exception e){}
+            }
         }
     }
 
     public void cacheMatchesThreadTest(Enum gameType) throws Exception{
-        List<String> playersList = hApi.getPlayers();
+        List<String> playersList = db.getPlayersFromDB(true);
         String[] players = playersList.toArray(new String[playersList.size()]);
         int playerCount = players.length;
         int div = 0;
-        if (playerCount % 1000 > 1){
-            div = 600;
+        if (playerCount % 100 > 1) {
+            div = 50;
+        }
+        else if (playerCount % 10 > 1){
+            div = 5;
         }
         int threadCount = playerCount/div;
-        System.out.println("Starting " + threadCount + " threads");
+        System.out.println("Starting " + threadCount + " threads with " + playerCount + " players");
         Thread[] threads = new Thread[threadCount];
         for (int i = 0; i < threadCount; i++){
             int finalI = i;
@@ -602,6 +611,9 @@ public class PopulateDatabase {
                         System.out.println("Thread " + finalI + " is caching " + tempPlayers.length + " players.");
                         for (int k = 0; k < tempPlayers.length; k++){
                             cacheMatches(gameType, false, tempPlayers[k]);
+                            if (k % 100 == 0){
+                                System.out.println("Thread " + finalI + " is on it's " + k + "th player.");
+                            }
                         }
                         System.out.println("Thread " + finalI + " completed");
                     }catch (Exception e){}
@@ -618,7 +630,7 @@ public class PopulateDatabase {
 
 
     public void cacheAShitTonOfMatches(Enum gameType) throws Exception {
-        List<String> players = db.getPlayersFromDB();
+        List<String> players = db.getPlayersFromDB(false);
         for (String s : players){
             hApi.PLAYER_UF = s;
             cacheMatches(gameType, false, s);
