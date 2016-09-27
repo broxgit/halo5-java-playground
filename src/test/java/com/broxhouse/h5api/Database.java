@@ -16,12 +16,15 @@ import java.io.ObjectInputStream;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Logger;
 
 enum dataType{WEAPONS, MAPS, MEDALS, MAPVARIANTS, CUSTOMMAPVARIANTS, ARENAMATCHES, CUSTOMMATCHES, MATCHES, ARENAMAPVARIANTS, PLAYERS, CARNAGE, OLDPLAYERS}
 
 enum resourceType{MAPVRESOURCES, GAMEVRESOURCES}
 
 public class Database {
+
+    Logger log = Logger.getLogger("Log");
     private Connection conn;
     private Statement stmt;
     private ResultSet rs;
@@ -47,7 +50,8 @@ public class Database {
     }
 
     public Database() {
-
+        System.setProperty("java.util.logging.SimpleFormatter.format",
+                "%5$s %n");
     }
 
 //    static Connection conn = null;
@@ -896,7 +900,7 @@ public class Database {
         DatabaseMetaData dbm = conn.getMetaData();
         ResultSet tables = dbm.getTables(null, null, tableName, null);
         if (!tables.next()){
-            System.out.println("Table doesn't exist");
+            System.out.println("Table doesn't exist: " + tableName);
             createTable(tableName);
         }
         for (int i = 0; i < matches.length; i++){
@@ -972,14 +976,20 @@ public class Database {
         return objects;
     }
 
-    public static Object[] getSomeMatchesFromDB(int offset) throws Exception {
+    public static Object[] getSomeMatchesFromDB(int offset, int limit, boolean isPlayerDB, Enum gameType) throws Exception {
         Class.forName("com.mysql.jdbc.Driver");
         Connection conn = DriverManager.getConnection(DB_URL, USER, PASS);
         DatabaseMetaData dbm = conn.getMetaData();
         Statement stmt = conn.createStatement();
 //        System.out.println("SELECT * FROM " + tableName);
-        offset = offset * 10000;
-        ResultSet rs = stmt.executeQuery("SELECT * FROM ARENAMATCHESBLOB ORDER BY MATCHID DESC LIMIT 10000 OFFSET " + offset);
+        if (! isPlayerDB) {
+            offset = offset * 10000;
+        }
+        String tableName = "MATCHESBLOB";
+        if (isPlayerDB)
+            tableName = player + gameType.toString() + tableName;
+        System.out.println("SELECT * FROM " + tableName + " ORDER BY MATCHID DESC LIMIT " + limit + " OFFSET " + offset);
+        ResultSet rs = stmt.executeQuery("SELECT * FROM " + tableName + " ORDER BY MATCHID DESC LIMIT " + limit + " OFFSET " + offset);
         List<Object> metaList = new ArrayList<>();
         Object[] objects = null;
         while (rs.next()) {
@@ -1198,7 +1208,7 @@ public class Database {
             stmt = connection.prepareStatement(
                     "SELECT * from " + dataType.toString() + " WHERE "+ column +  "=?");
             stmt.setString(1, value);
-//            System.out.println(stmt);
+            System.out.println(stmt);
             rset = stmt.executeQuery();
             if (rset.absolute(1)){
                 connection.close();

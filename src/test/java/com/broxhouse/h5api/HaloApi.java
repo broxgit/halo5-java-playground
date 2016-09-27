@@ -10,6 +10,8 @@ import com.broxhouse.h5api.models.stats.reports.*;
 import com.broxhouse.h5api.models.stats.servicerecords.ArenaStat;
 import com.broxhouse.h5api.models.stats.servicerecords.BaseServiceRecordResult;
 import com.google.gson.Gson;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.impl.Log4JLogger;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
@@ -17,10 +19,10 @@ import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.utils.URIBuilder;
 import org.apache.http.impl.client.HttpClients;
 import org.apache.http.util.EntityUtils;
+import java.util.logging.Logger;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-import java.io.*;
 import java.net.URI;
 import java.util.*;
 import java.util.HashSet;
@@ -33,7 +35,9 @@ enum gameType {WARZONE, ARENA, CUSTOM, NA}
 
 public class HaloApi {
 
-    public String PLAYER_UF = "That Ax Guy";
+    static Logger log = Logger.getLogger("Logging");
+
+    public String PLAYER_UF = "That Brock Guy";
     public final String PLAYER = formatString(PLAYER_UF);
     private static final String TOKEN = "ad00d31dde2c44a8b6f07c05621699d9";
     private static final String BASE_URL = "https://www.haloapi.com/";
@@ -65,6 +69,11 @@ public class HaloApi {
     static Database db = new Database();
     static PopulateDatabase pd = new PopulateDatabase();
 
+    public HaloApi() {
+        System.setProperty("java.util.logging.SimpleFormatter.format",
+                "%5$s %n");
+    }
+
     private static String api(String url) throws Exception
     {
         String getResponse = null;
@@ -86,11 +95,16 @@ public class HaloApi {
             HttpResponse response = httpclient.execute(request);
             int statusCode = response.getStatusLine().getStatusCode();
             HttpEntity entity = response.getEntity();
-
+//            log.info(statusCode + "");
             if (entity != null) {
                 getResponse = EntityUtils.toString(entity);
-                if (statusCode == 200)
+                if (statusCode == 200) {
                     callSuccessful = true;
+                }
+                if (statusCode == 404){
+//                    log.info("404 status code");
+                    return null;
+                }
                 else if (statusCode != 200 && statusCode != 429)
                     System.out.println(getResponse);
                 else if (statusCode == 429) {
@@ -126,7 +140,7 @@ public class HaloApi {
 //        Match[] matches = getAllMatches(ARENA);
 //        System.out.println(matches.length);
 //        CarnageReport[] carnageReports = getAllCarnageReports(ARENA);
-        System.out.println(db.getNumberOfRows(dataType.CARNAGE, false, ARENA));
+//        log.info("" + db.getNumberOfRows(dataType.CARNAGE, false, ARENA));
 //        db.clearTable("arenamatchesblob");
     }
 
@@ -134,27 +148,17 @@ public class HaloApi {
     public static void main(String[] args) throws Exception {
         try{
             HaloApi hapi = new HaloApi();
-//            long startTime = System.nanoTime();
-//            hapi.printData();
-//            hapi.test();
-//            pd.cacheMatchesThreadTest(ARENA);
-//            db.clearTable("players");
-            hapi.test();
-//            hapi.cacheMatches(ARENA);
-//            hapi.cacheData();
-//            hapi.cacheAllMetaData();
-//            hapi.cacheArenaMaps();
-//            hapi.cacheCustomMaps();
-//            hapi.getMedals();
-//            hapi.getMaps();
-//            hapi.getWeapons();
-//            hapi.cacheData();
 //            hapi.testPlayerMatches(CUSTOM);
+//            hapi.PLAYER_UF = "That Sturt Guy";
+            pd.cacheMatches(CUSTOM, true);
+//            pd.cacheAShitTonOfPlayerCaranage(CUSTOM);
+//            pd.cacheCustomMaps();
+//            hapi.comparePlayers("That Brock Guy", "Phantom6030", ARENA);
 //            hapi.cacheEnemyKills(CUSTOM);
 //            hapi.cachePlayerData(CUSTOM, hapi.PLAYER_UF);
 //            System.out.println(hapi.killedByOponent(CUSTOM));
 //            hapi.cacheAllPlayerData(hapi.PLAYER_UF);
-//            pd.cacheGameCarnage(CUSTOM);
+//            pd.cacheGameCarnage(ARENA, true);
 //            pd.cacheAShitTonOfMatches(ARENA);
 //            db.addItemsToDatabase(dataType.PLAYERS);
 //            System.out.println(hapi.favoriteMapVariant(ARENA));
@@ -627,6 +631,7 @@ public class HaloApi {
     public  void testBaseStats(Enum gameType) throws Exception
     {
         JSONObject obj = getPlayerStatsJSON(gameType);
+//        System.out.println(obj.toString());
         String gType = capitalize(gameType.toString().toLowerCase());
         String var = obj.toString();
         Gson gson = new Gson();
@@ -649,15 +654,15 @@ public class HaloApi {
         double accuracy = (totalShotsLanded/totalShotsFired);
         accuracy = (double)Math.round(accuracy * 100d);
         System.out.println("\nHere are some Random Stats: ");
-        System.out.println(PLAYER_UF + " has completed " + stats.getTotalGamesCompleted()+ " " + capitalize(gType.toString().toLowerCase()) + " games.");
+//        System.out.println(PLAYER_UF + " has completed " + stats.getTotalGamesCompleted()+ " " + capitalize(gType.toString().toLowerCase()) + " games.");
         System.out.println("You have wasted a total of: " + playTime[0] + " days " + playTime[1] + " hours " + playTime[2] + " minutes and "  + playTime[3] + " seconds playing Halo 5!");
         testWeaponKills(gameType);
         System.out.println("You have fired a total of: " + (int)totalShotsFired + " shots. Of those, you've landed " + (int)totalShotsLanded + " shots.");
         System.out.println("That's an accuracy of " + accuracy + "%");
         System.out.println("You have slaughtered " + totalHeadShots + " Spartans with a headshot.");
 //        System.out.println("You've stroked a power weapon in your hands for a total of " + pWeaponTime[0] + " days " + pWeaponTime[1] + " hours " + pWeaponTime[2] + " minutes and "  + pWeaponTime[3] + " seconds!");
-        System.out.println("You have grabbed a power weapon " + (int)totalPowerWeapon + " times, you've killed " + (int)totalPowerWeaponKills + " Spartans with those power weapons.");
-        System.out.println("That's an average of " + powerWeaponKillAvg + " kills each time you pick up a power weapon!");
+        System.out.println("You have grabbed a power weapon " + (int)totalPowerWeapon + " times, \nYou've killed " + (int)totalPowerWeaponKills + " Spartans with those power weapons.");
+//        System.out.println("That's an average of " + powerWeaponKillAvg + " kills each time you pick up a power weapon!");
         System.out.println("You have Spartan Charged " + stats.getTotalShoulderBashKills() + " dumb-dumbs.");
         System.out.println("You have murdered " + stats.getTotalGrenadeKills() + " Spartans with grenades.");
         System.out.println("You have tied the stupid enemy team " + stats.getTotalGamesTied() + " time(s).");
@@ -856,7 +861,124 @@ public class HaloApi {
         }
         if(mostRepeated != null)
             favMap = ("Your most played Custom map is: " + getCustomMapVariant(mostRepeated.getKey(), getMapOwner(mostRepeated.getKey())).getName() + " with a total play count of: " + mostRepeated.getValue() + " games!");
+        else
+            favMap = "You don't have a favorite Custom map you nigger";
         return favMap;
+    }
+
+    public Player[] getTeamMates (Enum gameType) throws Exception {
+        CarnageReport[] reports = getPlayerCarnageReports(gameType);
+        List<Player> teamMates = new ArrayList<>();
+        int playerTeamID = 0;
+        for (int i = 0; i < reports.length; i++){
+            List<PlayerStat> playerList = reports[i].getPlayerStats();
+            for(PlayerStat en : playerList){
+                if (en.getPlayer().getGamertag().equalsIgnoreCase(PLAYER_UF))
+                    playerTeamID = en.getTeamId();
+                if(! en.getPlayer().getGamertag().equalsIgnoreCase((PLAYER_UF)) && en.getTeamId() == playerTeamID){
+                    teamMates.add(en.getPlayer());
+                }}}
+        Player[] matesArray = new Player[teamMates.size()];
+        for (int i = 0; i < teamMates.size(); i++){
+            matesArray[i] = teamMates.get(i);
+        }
+        return matesArray;
+    }
+
+    public Player[] getPlayersPlayedWith (Enum gameType) throws Exception {
+        CarnageReport[] reports = getPlayerCarnageReports(gameType);
+        List<Player> teamMates = new ArrayList<>();
+        for (int i = 0; i < reports.length; i++){
+            List<PlayerStat> playerList = reports[i].getPlayerStats();
+            for(PlayerStat en : playerList){
+                if(! en.getPlayer().getGamertag().equalsIgnoreCase((PLAYER_UF))){
+                    teamMates.add(en.getPlayer());
+                }}}
+        Player[] matesArray = new Player[teamMates.size()];
+        for (int i = 0; i < teamMates.size(); i++){
+            matesArray[i] = teamMates.get(i);
+        }
+        return matesArray;
+    }
+
+    public String favoriteTeamMate(Enum gameType) throws Exception {
+        String favPlayer = null;
+        int totalMates = 0;
+        double totalGames = totalGames(gameType, PLAYER);
+        double numTimesWFavPlayer = 0;
+        HashMap<String, Integer> playerCount = new HashMap<>();
+        List<String> list = new ArrayList<>();
+        Player[] teamMates = getTeamMates(gameType);
+
+        for (int i = 0; i < teamMates.length; i++){
+            list.add(teamMates[i].getGamertag());
+        }
+        List<String> uniquePlayers = new ArrayList<>(new HashSet<>(list));
+        totalMates = uniquePlayers.size();
+
+        for (String s: list){
+            Integer c = playerCount.get(s);
+            if (c == null){
+                c = new Integer(0);
+            }
+            c++;
+            playerCount.put(s, c);
+        }
+        java.util.Map.Entry<String,Integer> mostRepeated = null;
+        for(java.util.Map.Entry<String, Integer> e: playerCount.entrySet())
+        {
+            if(mostRepeated == null || mostRepeated.getValue() < e.getValue())
+                mostRepeated = e;
+        }
+        if(mostRepeated != null) {
+            numTimesWFavPlayer = mostRepeated.getValue() / totalGames;
+            numTimesWFavPlayer = (double)Math.round(numTimesWFavPlayer *100d);
+            favPlayer = ("You've had a total of " + totalMates + " unique team mates. \n" +
+                    "The player that's been on your team the most is: " + mostRepeated.getKey() + ". You've been team mates " + mostRepeated.getValue() + " times!" +
+                    " That's " + numTimesWFavPlayer + "% of your games!");
+        }
+
+        return favPlayer;
+    }
+
+    public String favoritePlayer(Enum gameType) throws Exception {
+        String favPlayer = null;
+        int totalMates = 0;
+        double totalGames = totalGames(gameType, PLAYER);
+        double numTimesWFavPlayer = 0;
+        HashMap<String, Integer> playerCount = new HashMap<>();
+        List<String> list = new ArrayList<>();
+        Player[] teamMates = getPlayersPlayedWith(gameType);
+
+        for (int i = 0; i < teamMates.length; i++){
+            list.add(teamMates[i].getGamertag());
+        }
+        List<String> uniquePlayers = new ArrayList<>(new HashSet<>(list));
+        totalMates = uniquePlayers.size();
+
+        for (String s: list){
+            Integer c = playerCount.get(s);
+            if (c == null){
+                c = new Integer(0);
+            }
+            c++;
+            playerCount.put(s, c);
+        }
+        java.util.Map.Entry<String,Integer> mostRepeated = null;
+        for(java.util.Map.Entry<String, Integer> e: playerCount.entrySet())
+        {
+            if(mostRepeated == null || mostRepeated.getValue() < e.getValue())
+                mostRepeated = e;
+        }
+        if(mostRepeated != null) {
+            numTimesWFavPlayer = mostRepeated.getValue() / totalGames;
+            numTimesWFavPlayer = (double)Math.round(numTimesWFavPlayer *100d);
+            favPlayer = ("You've played with a total of " + totalMates + " unique players. \n" +
+                    "The player that's you'ved played the most is: " + mostRepeated.getKey() + ". You've played " + mostRepeated.getValue() + " games with each other!" +
+                    " That's " + numTimesWFavPlayer + "% of your games!");
+        }
+
+        return favPlayer;
     }
 
     public KilledByOpponentDetail[] getEnemyKills (Enum gameType) throws Exception {
@@ -969,6 +1091,7 @@ public class HaloApi {
             else{currentKD = (totalKills/totalDeaths);}
             if (matches[i].getPlayers().get(0).getResult() == 0){
                 matchesDNF++;
+//                log.info(matches[i].getId().getMatchId());
             }
             String matchID = matches[i].getId().getMatchId();
             averageKills += totalKills;
@@ -1021,8 +1144,10 @@ public class HaloApi {
                     System.out.println(medal.getName() + " x " + medal.getCount());
                 }}}
         testBaseStats(gameType);
-        System.out.println(favoriteMapVariant(ARENA));
-        System.out.println(favoriteCustomMapVariant(CUSTOM));
+        System.out.println(favoriteMapVariant(gameType));
+//        System.out.println(favoriteCustomMapVariant(CUSTOM));
         System.out.println(killedByOponent(gameType));
+        System.out.println(favoriteTeamMate(gameType));
+        System.out.println(favoritePlayer(gameType));
     }
 }
