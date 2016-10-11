@@ -1,6 +1,7 @@
 package com.broxhouse.h5api;
 
 import com.broxhouse.h5api.models.metadata.CustomMapVariant;
+import com.broxhouse.h5api.models.metadata.GameVariant;
 import com.broxhouse.h5api.models.metadata.MapVariant;
 import com.broxhouse.h5api.models.stats.common.Player;
 import com.broxhouse.h5api.models.stats.matches.Match;
@@ -31,9 +32,10 @@ public class PopulateDatabase {
 
     HaloApi hApi = new HaloApi();
     Database db = new Database();
+    Gson gson = new Gson();
 
     public List<String> populatePlayers() throws Exception{
-        CarnageReport[] matches = hApi.getPlayerCarnageReports(ARENA);
+        CarnageReport[] matches = hApi.getAllCarnageReports(ARENA);
         List<Player> playersList = new ArrayList<>();
         List<List<PlayerStat>> playerStatList = new ArrayList<>();
         for (int i = 0; i < matches.length; i++){
@@ -69,6 +71,15 @@ public class PopulateDatabase {
         db.addPlayersToDB(newPlayers, false);
         db.addPlayersToDB(newPlayers, true);
         System.out.println("New size of the New Players list: " + newPlayers.size());
+    }
+
+    public void cacheArenaGameTypes() throws Exception {
+        Match[] matches = hApi.getPlayerMatches(ARENA);
+        GameVariant[] gameVariants = new GameVariant[matches.length];
+        for (int i = 0; i < matches.length; i++){
+            gameVariants[i] = gson.fromJson(hApi.listGameVariant(matches[i].getGameVariant().getResourceId()), GameVariant.class);
+        }
+        db.writeGameVariantsToDB(gameVariants, dataType.ARENAGAMEVARIANTS, false, NA);
     }
 
     public void cacheArenaMaps() throws Exception {
@@ -195,6 +206,65 @@ public class PopulateDatabase {
 //        }else System.out.println("There weren't any new values to add.");
     }
 
+    public void cacheCustomMapsRandomly() throws Exception {
+        List<String> players = db.getPlayersFromDB(false);
+        List<CustomMapVariant> mapList = new ArrayList<>();
+        for (String s : players){
+            CustomMapVariant[] maps = hApi.getCustomMapVariantsByPlayer(hApi.formatString(s));
+            if (maps == null)
+                continue;
+            for (int i = 0; i < maps.length; i++){
+                mapList.add(maps[i]);
+            }
+        }
+        CustomMapVariant[] allMaps = new CustomMapVariant[mapList.size()];
+        for (int i = 0; i < mapList.size(); i++){
+            allMaps[i] = mapList.get(i);
+        }
+
+        db.writeCustomMapVariantsToDB(allMaps);
+
+    }
+
+    public void cacheCustomMapsRandomlyAsText() throws Exception {
+
+        db.writeCustomMapVariantsToDBText((CustomMapVariant[]) db.getMetadataFromDB(dataType.CUSTOMMAPVARIANTS, false, NA));
+
+    }
+
+    public void cacheMatchesAsText() throws Exception {
+        for (int i = 10; i < 100; i++){
+            Match[] matches = (Match[]) db.getSomeMatchesFromDB(i*10, 100000, false, ARENA);
+//            db.writeMatchesToDBText(matches, dataType.MATCHES, false, ARENA);
+            int threadCount = 100;
+            Thread[] threads = new Thread[threadCount];
+            for (int k = 0; k < threadCount; k++){
+                int finalI = k;
+                int finalI1 = i;
+                int div = 100000/threadCount;
+                int arrayStart = finalI *div;
+                int arrayEnd = (finalI + 1) *div;
+
+                threads[i] = new Thread(){
+                    @Override
+                    public void run(){
+                        try{
+                            db.writeMatchesToDBText(Arrays.copyOfRange(matches, arrayStart, arrayEnd), dataType.MATCHES, false, ARENA);
+                            log.info("Thread " + finalI + " is finished with loop " + finalI1);
+                        }catch (Exception e){}
+                    }
+                };
+                threads[i].start();
+            }
+            for (int k = 0; k < threadCount; k++){
+                try{
+                    threads[i].join();
+                }catch (Exception e){}
+            }
+        }
+
+    }
+
     public void cacheCustomMaps() throws Exception{
         CustomMapVariant[] oldmaps = (CustomMapVariant[]) db.getMetadataFromDB(dataType.CUSTOMMAPVARIANTS, false, NA);
         List<Resource> oldResourceList = new ArrayList<>();
@@ -233,7 +303,7 @@ public class PopulateDatabase {
             maps = new CustomMapVariant[resources.length];
             for (int i = 0; i < resources.length; i++) {
                 System.out.println(resources[i].getResourceId());
-                maps[i] = hApi.getCustomMapVariant(resources[i].getResourceId(), hApi.formatString(resources[i].getOwner()));
+                maps[i] = hApi.getCustomMapVariant(resources[i].getResourceId(), resources[i].getOwner());
             }
         }
         if (!firstRun) {
@@ -265,9 +335,34 @@ public class PopulateDatabase {
         }
     }
 
+    public void cacheAnyMapVariant(Enum gameType) throws Exception {
+        Match[] matches = (Match[])db.getSomeMatchesFromDB(0, 50000, false, gameType);
+        MapVariant[] maps = (MapVariant[]) db.getMetadataFromDB(dataType.ARENAMAPVARIANTS, false, NA);
+        if (gameType.toString().equalsIgnoreCase("ARENA")){
+            for (int i = 0; i < matches.length; i++) {
+                if (hApi.getMapVariantName(matches[i].getMapVariant().getResourceId(), maps) == null) {
+                    MapVariant[] mapsTest = new MapVariant[1];
+                    mapsTest[0] = hApi.getMapVariant(matches[i].getMapVariant().getResourceId());
+                    db.writeMapVariantsToDB(mapsTest);
+//                log.info(getMapVariantName(matches[i].getMapVariant().getResourceId()));
+                }
+            }
+        }
+        else if (gameType.toString().equalsIgnoreCase("CUSTOM")) {
+            for (int i = 0; i < matches.length; i++) {
+                if (hApi.getCustomMapName(matches[i].getMapVariant().getResourceId()) == null) {
+                    CustomMapVariant[] mapsTest = new CustomMapVariant[1];
+                    mapsTest[0] = hApi.getCustomMapVariant(matches[i].getMapVariant().getResourceId(), matches[i].getMapVariant().getOwner());
+                    db.writeCustomMapVariantsToDB(mapsTest);
+                }
+            }
+        }
+
+    }
+
     public void cacheMatches(Enum gameType, boolean cachePlayerData, String... players) throws Exception {
         List<String> oldMatchIDs = new ArrayList<>();
-        CustomMapVariant[] customMaps = null;
+        GameVariant[] gameVariants = null;
         if ((Match[]) db.getMetadataFromDB(dataType.MATCHES, true, gameType) != null) {
             Match[] oldMatches = hApi.getPlayerMatches(gameType);
             for (int i = 0; i < oldMatches.length; i++) {
@@ -302,15 +397,13 @@ public class PopulateDatabase {
             obj = new JSONObject(hApi.playerMatches(gamertag, gameType.toString().toLowerCase(), start, 25));
             obj2 = obj.getJSONArray("Results");
             matches1 = gson.fromJson(obj2.toString(), Match[].class);
-            customMaps = new CustomMapVariant[matches1.length];
+            gameVariants = new GameVariant[matches1.length];
             for (int k = 0; k < matches1.length; k++){
                 match = matches1[k];
                 matchList.add(match);
-                if (matches1[k].getMapVariant().getOwner().equalsIgnoreCase("") || matches1[k].getMapVariant().getOwner() == null)
-                    continue;
-                customMaps[k] = hApi.getCustomMapVariant(matches1[k].getMapVariant().getResourceId(), hApi.formatString(matches1[k].getMapVariant().getOwner()));
-                if (oldMatchIDs.contains(matches1[k].getId().getMatchId()) && cachePlayerData){}
-//                    break outer;
+//                gameVariants[k] = hApi.getGameVariant(matches1[k].getGameVariant().getResourceId());
+                if (oldMatchIDs.contains(matches1[k].getId().getMatchId()) && cachePlayerData)
+                    break outer;
             }
             start = start + obj.getInt("Count");
         }
@@ -321,11 +414,13 @@ public class PopulateDatabase {
         System.out.println("Adding " + newGames +  " matches to database");
         if (cachePlayerData) {
             db.writeMatchesToDB(matches, dataType.MATCHES, true, gameType);
-            db2.writeCustomMapVariantsToDB(customMaps);
+//            db2.writeGameVariantsToDB(gameVariants, dataType.ARENAGAMEVARIANTS, false, NA);
 //            db2.writeMatchesToDB(matches, dataType.MATCHES, false, gameType);
         }
-        if (! cachePlayerData)
+        if (! cachePlayerData) {
             db.writeMatchesToDB(matches, dataType.MATCHES, false, gameType);
+//            db2.writeMapVariantsToDB(customMaps);
+        }
         System.out.println("Finished caching Matches for " + gamertag);
     }
 
@@ -486,13 +581,12 @@ public class PopulateDatabase {
 //        warzoneThread.start();
     }
 
-    public void cacheGameCarnage(Enum gameType, boolean cachePlayerCarnage, Match... matches1) throws Exception {
+    public void cacheGameCarnage(Enum gameType, boolean cachePlayerCarnage, CarnageReport[] oldCarnageReports, Match... matches1) throws Exception {
 //        System.out.println("Getting " + gameType + " game carnage for: " + hApi.PLAYER_UF);
-        CarnageReport[] oldCarnageReports = null;
-        if (cachePlayerCarnage){
-            oldCarnageReports = (CarnageReport[]) db.getMetadataFromDB(dataType.CARNAGE, true, gameType);
+        if (oldCarnageReports == null){
+            oldCarnageReports = hApi.getPlayerCarnageReports(gameType);
         }
-        else {
+        if (! cachePlayerCarnage){
             oldCarnageReports = null;
         }
 //        System.out.println("boobs");
@@ -543,22 +637,18 @@ public class PopulateDatabase {
                 obj = new JSONObject(hApi.postCustomGameCarnage(newMatchIDs.get(i)));
             } else if (gameType == WARZONE) {}
 
-            if (i % 100 == 0){
-//                System.out.println(i);
-            }
             carnageReport = gson.fromJson(obj.toString(), CarnageReport.class);
             carnageReport.setMatchId(matches[i].getId().getMatchId());
             carnageList.add(carnageReport);
-
-            continue;
         }
         CarnageReport[] reports = new CarnageReport[carnageList.size()];
-        for (int i = 0; i < carnageList.size(); i++) {
-            reports[i] = carnageList.get(i);
+        for (int k = 0; k < carnageList.size(); k++) {
+            reports[k] = carnageList.get(k);
         }
-        db.writeCarnageReportsToDB(reports, dataType.CARNAGE, false, gameType);
         if (cachePlayerCarnage == true) {
             cachePlayerCarnage(reports, gameType);
+        }else{
+            db.writeCarnageReportsToDB(reports, dataType.CARNAGE, false, gameType);
         }
     }
 
@@ -566,46 +656,87 @@ public class PopulateDatabase {
         db.writeCarnageReportsToDB(reports, dataType.CARNAGE, true, gameType);
     }
 
-    public void cacheCarnageThreadTest(Enum gameType) throws Exception{
-        for (int k = 0; k < 60; k++) {
-            Match[] matches = (Match[]) db.getSomeMatchesFromDB(k, 10000, false, gameType);
-            int matchCount = matches.length;
-            int div = 400;
-            System.out.println("Starting " + matchCount / div + " threads");
+//    public void cacheCarnageThreadTest(Enum gameType) throws Exception{
+//        for (int k = 0; k < 60; k++) {
+//            Match[] matches = (Match[]) db.getSomeMatchesFromDB(k, 10000, false, gameType);
+//            int matchCount = matches.length;
+//            int div = 400;
+//            System.out.println("Starting " + matchCount / div + " threads");
+////        System.out.println(matchCount);
+//            Thread[] threads = new Thread[matchCount / div];
+//            for (int i = 0; i < matchCount / div; i++) {
+//                int finalI = i;
+//                int arrayStart = finalI * div;
+//                int arrayEnd = (finalI + 1) * div;
+//                Match[] finalMatches = matches;
+//                int finalK = k;
+//                threads[i] = new Thread() {
+//                    @Override
+//                    public void run() {
+//                        try {
+//                            System.out.println("Creating thread: " + finalI + " in loop: " + finalK);
+//                            cacheGameCarnage(gameType, false, Arrays.copyOfRange(finalMatches, arrayStart, arrayEnd));
+//                            System.out.println(db.getNumberOfRows(dataType.CARNAGE, false, ARENA));
+////                            for (int j = arrayStart; j < arrayEnd; j++){
+////                                cacheGameCarnage(gameType, false, finalMatches[j]);
+////                            }
+//                            if (finalI == (matchCount / div) - 1)
+//                                System.out.println("Thread " + finalI + " in loop " + finalK + " completed");
+//                        }catch(OutOfMemoryError e){
+//                            System.out.println(Runtime.getRuntime().maxMemory());
+//                            System.out.println(e.getMessage() + ". Total memory: " + Runtime.getRuntime().totalMemory() + " Free memory: " + Runtime.getRuntime().freeMemory() + " " + (Runtime.getRuntime().totalMemory() - (Runtime.getRuntime().freeMemory())));
+//                        }
+//                        catch (Exception e){}
+//                    }
+//                };
+//                threads[i].start();
+//            }
+//            for (int i = 0; i < matchCount / div; i++) {
+//                try {
+//                    threads[i].join();
+//                } catch (Exception e) {
+//                }
+//            }
+//        }
+//    }
+
+    public void cachePlayerCarnageThreadTest(Enum gameType) throws Exception{
+        Match[] matches = hApi.getPlayerMatches(gameType);
+        CarnageReport[] oldCarnageReports = (CarnageReport[])db.getMetadataFromDB(dataType.CARNAGE, true, gameType);
+        int matchCount = matches.length;
+        int div = (int)(matches.length *10.0f/100.0f);
+        log.info(div + "");
+        int threadCount = (div/10);
+        System.out.println("Starting " + threadCount + " threads");
 //        System.out.println(matchCount);
-            Thread[] threads = new Thread[matchCount / div];
-            for (int i = 0; i < matchCount / div; i++) {
-                int finalI = i;
-                int arrayStart = finalI * div;
-                int arrayEnd = (finalI + 1) * div;
-                Match[] finalMatches = matches;
-                int finalK = k;
-                threads[i] = new Thread() {
-                    @Override
-                    public void run() {
-                        try {
-                            System.out.println("Creating thread: " + finalI + " in loop: " + finalK);
-                            cacheGameCarnage(gameType, false, Arrays.copyOfRange(finalMatches, arrayStart, arrayEnd));
-                            System.out.println(db.getNumberOfRows(dataType.CARNAGE, false, ARENA));
+        Thread[] threads = new Thread[threadCount];
+        for (int i = 0; i < threadCount; i++) {
+            int finalI = i;
+            int arrayStart = finalI * div;
+            int arrayEnd = (finalI + 1) * div;
+            Match[] finalMatches = matches;
+            threads[i] = new Thread() {
+                @Override
+                public void run() {
+                    try {
+                        cacheGameCarnage(gameType, true, oldCarnageReports ,Arrays.copyOfRange(finalMatches, arrayStart, arrayEnd));
+                        System.out.println(db.getNumberOfRows(dataType.CARNAGE, true, ARENA));
 //                            for (int j = arrayStart; j < arrayEnd; j++){
 //                                cacheGameCarnage(gameType, false, finalMatches[j]);
 //                            }
-                            if (finalI == (matchCount / div) - 1)
-                                System.out.println("Thread " + finalI + " in loop " + finalK + " completed");
-                        }catch(OutOfMemoryError e){
-                            System.out.println(Runtime.getRuntime().maxMemory());
-                            System.out.println(e.getMessage() + ". Total memory: " + Runtime.getRuntime().totalMemory() + " Free memory: " + Runtime.getRuntime().freeMemory() + " " + (Runtime.getRuntime().totalMemory() - (Runtime.getRuntime().freeMemory())));
-                        }
-                        catch (Exception e){}
+                    }catch(OutOfMemoryError e){
+                        System.out.println(Runtime.getRuntime().maxMemory());
+                        System.out.println(e.getMessage() + ". Total memory: " + Runtime.getRuntime().totalMemory() + " Free memory: " + Runtime.getRuntime().freeMemory() + " " + (Runtime.getRuntime().totalMemory() - (Runtime.getRuntime().freeMemory())));
                     }
-                };
-                threads[i].start();
-            }
-            for (int i = 0; i < matchCount / div; i++) {
-                try {
-                    threads[i].join();
-                } catch (Exception e) {
+                    catch (Exception e){e.printStackTrace();}
                 }
+            };
+            threads[i].start();
+        }
+        for (int i = 0; i < matchCount / div; i++) {
+            try {
+                threads[i].join();
+            } catch (Exception e) {
             }
         }
     }
@@ -614,12 +745,14 @@ public class PopulateDatabase {
         List<String> playersList = db.getPlayersFromDB(true);
         String[] players = playersList.toArray(new String[playersList.size()]);
         int playerCount = players.length;
-        int div = 0;
-        if (playerCount % 100 > 1) {
-            div = 50;
-        }
-        else if (playerCount % 10 > 1){
-            div = 5;
+        int div = 1;
+//        if (playerCount % 500 > 1) {
+//            div = 50;
+//            log.info(div + " " + playerCount % 500);
+//        }
+        if (playerCount % 10 > 1){
+            div = 10;
+            log.info(div + "");
         }
         int threadCount = playerCount/div;
         System.out.println("Starting " + threadCount + " threads with " + playerCount + " players");
@@ -664,15 +797,16 @@ public class PopulateDatabase {
     }
 
     public void cacheAShitTonOfCarnage(Enum gameType) throws Exception {
-        cacheGameCarnage(gameType, false);
+//        cacheGameCarnage(gameType, false);
     }
 
     public void cacheAShitTonOfPlayerCaranage(Enum gameType) throws Exception {
-        for (int k = 0; k < hApi.totalGames(gameType, hApi.PLAYER)/100; k++) {
-            Match[] matches = (Match[]) db.getSomeMatchesFromDB(k*100, 100, true, gameType);
+//        CarnageReport[] oldCarnageReports = hApi.getPlayerCarnageReports(gameType);
+        for (int k = 0; k < hApi.totalGames(gameType, hApi.PLAYER)/300; k++) {
+            Match[] matches = (Match[]) db.getSomeMatchesFromDB(k*300, 300, true, gameType);
             int matchCount = matches.length;
             int div = 5;
-//            System.out.println("Starting " + matchCount / div + " threads");
+            System.out.println("Starting " + matchCount / div + " threads");
 //        System.out.println(matchCount);
             Thread[] threads = new Thread[matchCount / div];
             for (int i = 0; i < matchCount / div; i++) {
@@ -686,7 +820,7 @@ public class PopulateDatabase {
                     public void run() {
                         try {
 //                            System.out.println("Creating thread: " + finalI + " in loop: " + finalK);
-                            cacheGameCarnage(gameType, true, Arrays.copyOfRange(finalMatches, arrayStart, arrayEnd));
+                            cacheGameCarnage(gameType, true, null, Arrays.copyOfRange(finalMatches, arrayStart, arrayEnd));
 //                            System.out.println(db.getNumberOfRows(dataType.CARNAGE, true, gameType));
 //                            for (int j = arrayStart; j < arrayEnd; j++){
 //                                cacheGameCarnage(gameType, false, finalMatches[j]);

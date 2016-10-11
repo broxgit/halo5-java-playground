@@ -9,22 +9,26 @@ import java.io.Serializable;
 public class Impulse implements Serializable {
 
     /**
-     * The ID of the Impulse. Impulses are available via the Metadata API.
+     * Internal use. The non-localized name of the impulse.
      */
-    @SerializedName("Id")
+    private String internalName;
+
+    /**
+     * The ID that uniquely identifies this impulse.
+     */
     private long id;
 
     /**
-     * The number of times the Impuse was earned.
+     * Internal use only. Do not use.
      */
-    @SerializedName("Count")
-    private int count;
+    @SerializedName("contentId")
+    private String contentId;
 
     public long getId() {
         return id;
     }
 
-    public int getCount() {
-        return count;
+    public String getInternalName() {
+        return internalName;
     }
 }

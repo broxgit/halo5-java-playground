@@ -49,7 +49,7 @@ public class PlayerStat implements Serializable {
     private Object postMatchRatings;
     @SerializedName("PlayerScore")
     @Expose
-    private Object playerScore;
+    private Integer playerScore;
     @SerializedName("GameEndStatus")
     @Expose
     private Integer gameEndStatus;
@@ -338,7 +338,7 @@ public class PlayerStat implements Serializable {
      * @return
      *     The playerScore
      */
-    public Object getPlayerScore() {
+    public Integer getPlayerScore() {
         return playerScore;
     }
 
@@ -347,7 +347,7 @@ public class PlayerStat implements Serializable {
      * @param playerScore
      *     The PlayerScore
      */
-    public void setPlayerScore(Object playerScore) {
+    public void setPlayerScore(Integer playerScore) {
         this.playerScore = playerScore;
     }
 

@@ -18,7 +18,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Logger;
 
-enum dataType{WEAPONS, MAPS, MEDALS, MAPVARIANTS, CUSTOMMAPVARIANTS, ARENAMATCHES, CUSTOMMATCHES, MATCHES, ARENAMAPVARIANTS, PLAYERS, CARNAGE, OLDPLAYERS}
+enum dataType{WEAPONS, MAPS, MEDALS, MAPVARIANTS, CUSTOMMAPVARIANTS, ARENAMATCHES, CUSTOMMATCHES, MATCHES, ARENAMAPVARIANTS, PLAYERS, CARNAGE, OLDPLAYERS, ARENAGAMEVARIANTS}
 
 enum resourceType{MAPVRESOURCES, GAMEVRESOURCES}
 
@@ -38,6 +38,7 @@ public class Database {
     static final String PASS = "winter12";
 
     static HaloApi haloApi = new HaloApi();
+    static Gson gson = new Gson();
 
     static PopulateDatabase pd = new PopulateDatabase();
 
@@ -714,7 +715,7 @@ public class Database {
         DatabaseMetaData dbm = conn.getMetaData();
         ResultSet tables = dbm.getTables(null, null, tableName, null);
         if (!tables.next()){
-            System.out.println("Table doesn't exist");
+            System.out.println("Table doesn't exist: " + tableName);
             createTable(tableName);
         }
         for (int i = 0; i < players.size(); i++){
@@ -737,6 +738,7 @@ public class Database {
                 continue;
             if (customMaps[i].getIdentity() == null)
                 continue;
+//            System.out.println(customMaps[i].getIdentity().getResourceId());
             PreparedStatement pstmt = conn
                     .prepareStatement("INSERT IGNORE INTO CUSTOMMAPVARIANTSBLOB VALUES" +
                             " ('" + customMaps[i].getIdentity().getResourceId() +  "', " +
@@ -748,6 +750,29 @@ public class Database {
         }
         conn.close();
         
+    }
+
+    public static void writeCustomMapVariantsToDBText(CustomMapVariant[] customMaps) throws Exception{
+        Class.forName("com.mysql.jdbc.Driver");
+        Gson gson = new Gson();
+        Connection conn = DriverManager.getConnection(DB_URL, USER, PASS);
+        for (int i = 0; i < customMaps.length; i++){
+            if (customMaps[i] == null)
+                continue;
+            if (customMaps[i].getIdentity() == null)
+                continue;
+//            System.out.println(customMaps[i].getIdentity().getResourceId());
+            PreparedStatement pstmt = conn
+                    .prepareStatement("INSERT IGNORE INTO CUSTOMMAPVARIANTSTEXT VALUES" +
+                            " ('" + customMaps[i].getIdentity().getResourceId() +  "', " +
+                            "?)");
+            pstmt.setString(1, gson.toJson(customMaps[i]).toString());
+            System.out.println(pstmt);
+            pstmt.executeUpdate();
+            pstmt.close();
+        }
+        conn.close();
+
     }
 
     public static void writeCarnageReportsToDB(CarnageReport[] carnageReports, Enum dataType, boolean isPlayerDB, Enum gameType) throws Exception{
@@ -765,7 +790,7 @@ public class Database {
         DatabaseMetaData dbm = conn.getMetaData();
         ResultSet tables = dbm.getTables(null, null, tableName, null);
         if (!tables.next()){
-            System.out.println("Table doesn't exist");
+            System.out.println("Table doesn't exist: " + tableName);
             createTable(tableName);
         }
         for (int i = 0; i < carnageReports.length; i++){
@@ -819,7 +844,7 @@ public class Database {
         DatabaseMetaData dbm = conn.getMetaData();
         ResultSet tables = dbm.getTables(null, null, tableName, null);
         if (!tables.next()){
-            System.out.println("Table doesn't exist");
+            System.out.println("Table doesn't exist: " + tableName);
             return 0;
         }
         Statement stmt = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
@@ -863,16 +888,16 @@ public class Database {
         String tableName = null;
         String gameMode = gameType.toString();
         if (gameMode.equalsIgnoreCase("na")){
-            tableName = dataType.toString() + "blob";
+            tableName = dataType.toString() + "text";
         } else {
-            tableName = gameMode + dataType.toString() + "blob";
+            tableName = gameMode + dataType.toString() + "text";
         }
         if (isPlayerDB)
-            tableName = player + gameMode + dataType.toString() + "blob";
+            tableName = player + gameMode + dataType.toString() + "text";
         DatabaseMetaData dbm = conn.getMetaData();
         ResultSet tables = dbm.getTables(null, null, tableName, null);
         if (!tables.next()){
-            System.out.println("Table doesn't exist");
+            System.out.println("Table doesn't exist: " + tableName);
             createTable(tableName);
         }
         for (int i = 0; i < objects.length; i++){
@@ -915,9 +940,76 @@ public class Database {
         conn.close();
     }
 
+    public static void writeGameVariantsToDB(GameVariant[] games, Enum dataType, boolean isPlayerDB, Enum gameType) throws Exception{
+        Class.forName("com.mysql.jdbc.Driver");
+        Connection conn = DriverManager.getConnection(DB_URL, USER, PASS);
+        String tableName = null;
+        Gson gson = new Gson();
+        String gameMode = gameType.toString();
+        if (gameMode.equalsIgnoreCase("na")){
+            tableName = dataType.toString() + "text";
+        } else {
+            tableName = gameMode + dataType.toString() + "text";
+        }
+        if (isPlayerDB)
+            tableName = player + gameMode + dataType.toString() + "text";
+
+        DatabaseMetaData dbm = conn.getMetaData();
+        ResultSet tables = dbm.getTables(null, null, tableName, null);
+        if (!tables.next()){
+            System.out.println("Table doesn't exist: " + tableName);
+            createTable(tableName);
+        }
+        for (int i = 0; i < games.length; i++){
+            if (games[i].getId() == null)
+                continue;
+            System.out.println(tableName + " " + games[i].getId());
+            PreparedStatement pstmt = conn
+                    .prepareStatement("INSERT IGNORE INTO " + tableName + " VALUES ('" + games[i].getId() +  "', " +
+                            "?)");
+            pstmt.setString(1, gson.toJson(games[i]).toString());
+            System.out.println(pstmt);
+            pstmt.executeUpdate();
+            pstmt.close();
+        }
+        conn.close();
+    }
+
+    public static void writeMatchesToDBText(Match[] matches, Enum dataType, boolean isPlayerDB, Enum gameType) throws Exception{
+        Class.forName("com.mysql.jdbc.Driver");
+        Connection conn = DriverManager.getConnection(DB_URL, USER, PASS);
+        String tableName = null;
+        Gson gson = new Gson();
+        String gameMode = gameType.toString();
+        if (gameMode.equalsIgnoreCase("na")){
+            tableName = dataType.toString() + "text";
+        } else {
+            tableName = gameMode + dataType.toString() + "text";
+        }
+        if (isPlayerDB)
+            tableName = player + gameMode + dataType.toString() + "text";
+        DatabaseMetaData dbm = conn.getMetaData();
+        ResultSet tables = dbm.getTables(null, null, tableName, null);
+        if (!tables.next()){
+            System.out.println("Table doesn't exist: " + tableName);
+            createTable(tableName);
+        }
+        for (int i = 0; i < matches.length; i++){
+            PreparedStatement pstmt = conn
+                    .prepareStatement("INSERT IGNORE INTO " + tableName + " VALUES ('" + matches[i].getId().getMatchId() +  "', " +
+                            "?)");
+            pstmt.setString(1, gson.toJson(matches[i]).toString());
+//            System.out.println(pstmt);
+            pstmt.executeUpdate();
+            pstmt.close();
+        }
+        conn.close();
+    }
+
 
     public static Object[] getMetadataFromDB(Enum dataType, boolean isPlayerDB, Enum gameType) throws Exception{
         Class.forName("com.mysql.jdbc.Driver");
+        long start = System.currentTimeMillis() / 1000;
         String tableName = null;
         String gameMode = gameType.toString();
         if (gameMode.equalsIgnoreCase("na")){
@@ -931,7 +1023,7 @@ public class Database {
         DatabaseMetaData dbm = conn.getMetaData();
         ResultSet tables = dbm.getTables(null, null, tableName, null);
         if (!tables.next()){
-            System.out.println("Table doesn't exist");
+            System.out.println("Table doesn't exist: " + tableName);
             return null;
         }
         Statement stmt = conn.createStatement();
@@ -973,6 +1065,44 @@ public class Database {
         stmt.close();
         rs.close();
         conn.close();
+        long end = System.currentTimeMillis() / 1000;
+        long totalTime = end-start;
+//        System.out.println("It took " + totalTime + " seconds to get " + tableName + " objects");
+        return objects;
+    }
+
+    public static String[] getMetadataTextFromDB(Enum dataType, boolean isPlayerDB, Enum gameType) throws Exception{
+        Class.forName("com.mysql.jdbc.Driver");
+        String tableName = null;
+        String gameMode = gameType.toString();
+        if (gameMode.equalsIgnoreCase("na")){
+            tableName = dataType.toString() + "text";
+        } else {
+            tableName = gameMode + dataType.toString() + "text";
+        }
+        if (isPlayerDB)
+            tableName = player + gameMode + dataType.toString() + "text";
+        Connection conn = DriverManager.getConnection(DB_URL, USER, PASS);
+        DatabaseMetaData dbm = conn.getMetaData();
+        ResultSet tables = dbm.getTables(null, null, tableName, null);
+        if (!tables.next()){
+            System.out.println("Table doesn't exist: " + tableName);
+            return null;
+        }
+        Statement stmt = conn.createStatement();
+//        System.out.println("SELECT * FROM " + tableName);
+        ResultSet rs = stmt.executeQuery("SELECT * FROM " + tableName);
+        List<String> metaList = new ArrayList<>();
+        while (rs.next()) {
+            metaList.add(rs.getString("jsondata"));
+        }
+        String[] objects = new String[metaList.size()];
+        for (int i = 0; i < metaList.size(); i++){
+            objects[i] = metaList.get(i);
+        }
+        stmt.close();
+        rs.close();
+        conn.close();
         return objects;
     }
 
@@ -988,6 +1118,9 @@ public class Database {
         String tableName = "MATCHESBLOB";
         if (isPlayerDB)
             tableName = player + gameType.toString() + tableName;
+        else{
+            tableName = gameType.toString() + tableName;
+        }
         System.out.println("SELECT * FROM " + tableName + " ORDER BY MATCHID DESC LIMIT " + limit + " OFFSET " + offset);
         ResultSet rs = stmt.executeQuery("SELECT * FROM " + tableName + " ORDER BY MATCHID DESC LIMIT " + limit + " OFFSET " + offset);
         List<Object> metaList = new ArrayList<>();
