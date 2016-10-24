@@ -1,6 +1,7 @@
 
 package com.broxhouse.h5api.models.stats.matchevents;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import javax.annotation.Generated;
@@ -8,7 +9,7 @@ import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 @Generated("org.jsonschema2pojo")
-public class MatchEvents {
+public class MatchEvents implements Serializable {
 
     @SerializedName("Links")
     @Expose
@@ -19,6 +20,9 @@ public class MatchEvents {
     @SerializedName("IsCompleteSetOfEvents")
     @Expose
     private Boolean isCompleteSetOfEvents;
+    @SerializedName("matchId")
+    @Expose
+    private String matchID;
 
     /**
      * 
@@ -74,4 +78,11 @@ public class MatchEvents {
         this.isCompleteSetOfEvents = isCompleteSetOfEvents;
     }
 
+    public String getMatchID() {
+        return matchID;
+    }
+
+    public void setMatchID(String matchID) {
+        this.matchID = matchID;
+    }
 }

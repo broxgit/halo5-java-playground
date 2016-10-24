@@ -54,6 +54,34 @@ public class WeaponStats implements Serializable {
     @SerializedName("TotalPossessionTime")
     private String totalPossessionTime;
 
+    public void setWeaponId(WeaponId weaponId) {
+        this.weaponId = weaponId;
+    }
+
+    public void setTotalShotsFired(int totalShotsFired) {
+        this.totalShotsFired = totalShotsFired;
+    }
+
+    public void setTotalShotsLanded(int totalShotsLanded) {
+        this.totalShotsLanded = totalShotsLanded;
+    }
+
+    public void setTotalHeadshots(int totalHeadshots) {
+        this.totalHeadshots = totalHeadshots;
+    }
+
+    public void setTotalKills(int totalKills) {
+        this.totalKills = totalKills;
+    }
+
+    public void setTotalDamageDealt(double totalDamageDealt) {
+        this.totalDamageDealt = totalDamageDealt;
+    }
+
+    public void setTotalPossessionTime(String totalPossessionTime) {
+        this.totalPossessionTime = totalPossessionTime;
+    }
+
     public WeaponId getWeaponId() {
         return weaponId;
     }

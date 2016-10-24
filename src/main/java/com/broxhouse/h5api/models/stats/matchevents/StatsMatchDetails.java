@@ -5,8 +5,10 @@ import javax.annotation.Generated;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+import java.io.Serializable;
+
 @Generated("org.jsonschema2pojo")
-public class StatsMatchDetails {
+public class StatsMatchDetails implements Serializable {
 
     @SerializedName("AuthorityId")
     @Expose

@@ -7,18 +7,20 @@ package com.broxhouse.h5api;
 import com.broxhouse.h5api.models.metadata.*;
 import com.broxhouse.h5api.models.stats.common.Player;
 import com.broxhouse.h5api.models.stats.matches.Match;
+import com.broxhouse.h5api.models.stats.matchevents.MatchEvents;
 import com.broxhouse.h5api.models.stats.reports.CarnageReport;
 import com.broxhouse.h5api.models.stats.reports.Resource;
 import com.google.gson.Gson;
 
 import java.io.ByteArrayInputStream;
+import java.io.EOFException;
 import java.io.ObjectInputStream;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Logger;
 
-enum dataType{WEAPONS, MAPS, MEDALS, MAPVARIANTS, CUSTOMMAPVARIANTS, ARENAMATCHES, CUSTOMMATCHES, MATCHES, ARENAMAPVARIANTS, PLAYERS, CARNAGE, OLDPLAYERS, ARENAGAMEVARIANTS}
+enum dataType{WEAPONS, MAPS, MEDALS, MAPVARIANTS, CUSTOMMAPVARIANTS, MATCHEVENTS, CUSTOMMATCHES, MATCHES, ARENAMAPVARIANTS, PLAYERS, CARNAGE, OLDPLAYERS, ARENAGAMEVARIANTS, CUSTOMGAMEVARIANTS}
 
 enum resourceType{MAPVRESOURCES, GAMEVRESOURCES}
 
@@ -809,6 +811,44 @@ public class Database {
         
     }
 
+    public static void writeMatchEventsToDB(MatchEvents[] carnageReports, Enum dataType, boolean isPlayerDB, Enum gameType) throws Exception{
+        Class.forName("com.mysql.jdbc.Driver");
+        Connection conn = DriverManager.getConnection(DB_URL, USER, PASS);
+        String tableName = null;
+        String gameMode = gameType.toString();
+        if (gameMode.equalsIgnoreCase("na")){
+            tableName = dataType.toString() + "text";
+        } else {
+            tableName = gameMode + dataType.toString() + "text";
+        }
+        if (isPlayerDB)
+            tableName = player + gameMode + dataType.toString() + "text";
+        DatabaseMetaData dbm = conn.getMetaData();
+        ResultSet tables = dbm.getTables(null, null, tableName, null);
+        if (!tables.next()){
+            System.out.println("Table doesn't exist: " + tableName);
+            createTable(tableName, true);
+        }
+        for (int i = 0; i < carnageReports.length; i++){
+            if (carnageReports[i] == null)
+                continue;
+            if (carnageReports[i].getMatchID() == null)
+                continue;
+            if (carnageReports[i].getIsCompleteSetOfEvents() == null)
+                continue;
+            PreparedStatement pstmt = conn
+                    .prepareStatement("INSERT IGNORE INTO " + tableName + " VALUES" +
+                            " ('" + carnageReports[i].getMatchID() +  "', " +
+                            "?)");
+            pstmt.setString(1, gson.toJson(carnageReports[i]));
+            System.out.println(pstmt);
+            pstmt.executeUpdate();
+            pstmt.close();
+        }
+        conn.close();
+
+    }
+
     public static void writeMapVariantsToDB(MapVariant[] arenaMaps) throws Exception {
         Class.forName("com.mysql.jdbc.Driver");
         Connection conn = DriverManager.getConnection(DB_URL, USER, PASS);
@@ -857,14 +897,19 @@ public class Database {
     }
 
 
-    public static void createTable(String tableName) throws Exception{
+    public static void createTable(String tableName, boolean ... isText) throws Exception{
 
         Class.forName("com.mysql.jdbc.Driver");
         Connection conn = DriverManager.getConnection(DB_URL, USER, PASS);
         Statement stmt = conn.createStatement();
-
-        String sql = "CREATE TABLE " + tableName +
-                "(matchid varchar (255) primary key, b blob);";
+        String sql = null;
+        if (isText.length > 0 && isText[0] == true){
+            sql = "CREATE TABLE " + tableName +
+                    "(matchid varchar (255) primary key, b longtext);";
+        }else {
+            sql = "CREATE TABLE " + tableName +
+                    "(matchid varchar (255) primary key, b blob);";
+        }
 //            System.out.println(sql);
         stmt.executeUpdate(sql);
         //finally block used to close resources
@@ -963,7 +1008,7 @@ public class Database {
         for (int i = 0; i < games.length; i++){
             if (games[i].getId() == null)
                 continue;
-            System.out.println(tableName + " " + games[i].getId());
+//            System.out.println(tableName + " " + games[i].getId());
             PreparedStatement pstmt = conn
                     .prepareStatement("INSERT IGNORE INTO " + tableName + " VALUES ('" + games[i].getId() +  "', " +
                             "?)");
@@ -1032,18 +1077,23 @@ public class Database {
         List<Object> metaList = new ArrayList<>();
         Object[] objects = null;
         while (rs.next()) {
-            byte[] st = null;
-            if (dataType.toString().equalsIgnoreCase("custommapvariants") || dataType.toString().equalsIgnoreCase("arenamapvariants") || dataType.toString().equalsIgnoreCase("carnage") || dataType.toString().equalsIgnoreCase("matches"))
-                st = (byte[]) rs.getObject(2);
-            else{
-                st = (byte[]) rs.getObject(1);
-            }
-            ByteArrayInputStream baip = new ByteArrayInputStream(st);
-            ObjectInputStream ois = new ObjectInputStream(baip);
-            Object weapon =  ois.readObject();
-            ois.close();
-            baip.close();
-            metaList.add(weapon);
+//            try {
+                byte[] st = null;
+                if (dataType.toString().equalsIgnoreCase("custommapvariants") || dataType.toString().equalsIgnoreCase("arenamapvariants") || dataType.toString().equalsIgnoreCase("carnage") || dataType.toString().equalsIgnoreCase("matches") || dataType.toString().equalsIgnoreCase("MATCHEVENTS"))
+                    st = (byte[]) rs.getObject(2);
+                else {
+                    st = (byte[]) rs.getObject(1);
+                }
+                ByteArrayInputStream baip = new ByteArrayInputStream(st);
+                ObjectInputStream ois = new ObjectInputStream(baip);
+                baip.close();
+                Object weapon;
+                weapon = ois.readObject();
+//                while ((weapon = ois.readObject()) != null){
+                metaList.add(weapon);
+//                }
+                ois.close();
+//            }catch (Exception e){}
         }
         if (dataType.toString().equalsIgnoreCase("weapons"))
             objects = new Weapon[metaList.size()];
@@ -1059,19 +1109,18 @@ public class Database {
             objects = new Match[metaList.size()];
         else if(dataType.toString().equalsIgnoreCase("carnage"))
             objects = new CarnageReport[metaList.size()];
+        else if(dataType.toString().equalsIgnoreCase("MATCHEVENTS"))
+            objects = new MatchEvents[metaList.size()];
         for (int i = 0; i < metaList.size(); i++){
             objects[i] = metaList.get(i);
         }
         stmt.close();
         rs.close();
         conn.close();
-        long end = System.currentTimeMillis() / 1000;
-        long totalTime = end-start;
-//        System.out.println("It took " + totalTime + " seconds to get " + tableName + " objects");
         return objects;
     }
 
-    public static String[] getMetadataTextFromDB(Enum dataType, boolean isPlayerDB, Enum gameType) throws Exception{
+    public static String[] getMetadataTextFromDB(Enum dataType, boolean isPlayerDB, Enum gameType, boolean... isTextDB) throws Exception{
         Class.forName("com.mysql.jdbc.Driver");
         String tableName = null;
         String gameMode = gameType.toString();
@@ -1093,8 +1142,14 @@ public class Database {
 //        System.out.println("SELECT * FROM " + tableName);
         ResultSet rs = stmt.executeQuery("SELECT * FROM " + tableName);
         List<String> metaList = new ArrayList<>();
+        String column = null;
+        if (isTextDB.length > 0 && isTextDB[0] == true){
+            column = "b";
+        }else {
+            column = "jsondata";
+        }
         while (rs.next()) {
-            metaList.add(rs.getString("jsondata"));
+            metaList.add(rs.getString(column));
         }
         String[] objects = new String[metaList.size()];
         for (int i = 0; i < metaList.size(); i++){

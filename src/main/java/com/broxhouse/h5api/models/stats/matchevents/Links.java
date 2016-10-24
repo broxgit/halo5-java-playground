@@ -5,8 +5,10 @@ import javax.annotation.Generated;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+import java.io.Serializable;
+
 @Generated("org.jsonschema2pojo")
-public class Links {
+public class Links implements Serializable {
 
     @SerializedName("StatsMatchDetails")
     @Expose

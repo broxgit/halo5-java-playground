@@ -1,6 +1,7 @@
 
 package com.broxhouse.h5api.models.stats.matchevents;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import javax.annotation.Generated;
@@ -8,7 +9,7 @@ import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 @Generated("org.jsonschema2pojo")
-public class GameEvent {
+public class GameEvent implements Serializable {
 
     @SerializedName("RoundIndex")
     @Expose
@@ -24,10 +25,10 @@ public class GameEvent {
     private Player player;
     @SerializedName("WeaponAttachmentIds")
     @Expose
-    private List<Integer> weaponAttachmentIds = new ArrayList<Integer>();
+    private List<Long> weaponAttachmentIds = new ArrayList<>();
     @SerializedName("WeaponStockId")
     @Expose
-    private Integer weaponStockId;
+    private Long weaponStockId;
     @SerializedName("Assistants")
     @Expose
     private List<Object> assistants = new ArrayList<Object>();
@@ -60,10 +61,10 @@ public class GameEvent {
     private Integer killerAgent;
     @SerializedName("KillerWeaponAttachmentIds")
     @Expose
-    private List<Integer> killerWeaponAttachmentIds = new ArrayList<Integer>();
+    private List<Long> killerWeaponAttachmentIds = new ArrayList<>();
     @SerializedName("KillerWeaponStockId")
     @Expose
-    private Integer killerWeaponStockId;
+    private Long killerWeaponStockId;
     @SerializedName("KillerWorldLocation")
     @Expose
     private KillerWorldLocation killerWorldLocation;
@@ -78,13 +79,13 @@ public class GameEvent {
     private List<Object> victimAttachmentIds = new ArrayList<Object>();
     @SerializedName("VictimStockId")
     @Expose
-    private Integer victimStockId;
+    private Long victimStockId;
     @SerializedName("VictimWorldLocation")
     @Expose
     private VictimWorldLocation victimWorldLocation;
     @SerializedName("MedalId")
     @Expose
-    private Integer medalId;
+    private Long medalId;
     @SerializedName("ShotsFired")
     @Expose
     private Integer shotsFired;
@@ -172,7 +173,7 @@ public class GameEvent {
      * @return
      *     The weaponAttachmentIds
      */
-    public List<Integer> getWeaponAttachmentIds() {
+    public List<Long> getWeaponAttachmentIds() {
         return weaponAttachmentIds;
     }
 
@@ -181,7 +182,7 @@ public class GameEvent {
      * @param weaponAttachmentIds
      *     The WeaponAttachmentIds
      */
-    public void setWeaponAttachmentIds(List<Integer> weaponAttachmentIds) {
+    public void setWeaponAttachmentIds(List<Long> weaponAttachmentIds) {
         this.weaponAttachmentIds = weaponAttachmentIds;
     }
 
@@ -190,7 +191,7 @@ public class GameEvent {
      * @return
      *     The weaponStockId
      */
-    public Integer getWeaponStockId() {
+    public Long getWeaponStockId() {
         return weaponStockId;
     }
 
@@ -199,7 +200,7 @@ public class GameEvent {
      * @param weaponStockId
      *     The WeaponStockId
      */
-    public void setWeaponStockId(Integer weaponStockId) {
+    public void setWeaponStockId(Long weaponStockId) {
         this.weaponStockId = weaponStockId;
     }
 
@@ -388,7 +389,7 @@ public class GameEvent {
      * @return
      *     The killerWeaponAttachmentIds
      */
-    public List<Integer> getKillerWeaponAttachmentIds() {
+    public List<Long> getKillerWeaponAttachmentIds() {
         return killerWeaponAttachmentIds;
     }
 
@@ -397,7 +398,7 @@ public class GameEvent {
      * @param killerWeaponAttachmentIds
      *     The KillerWeaponAttachmentIds
      */
-    public void setKillerWeaponAttachmentIds(List<Integer> killerWeaponAttachmentIds) {
+    public void setKillerWeaponAttachmentIds(List<Long> killerWeaponAttachmentIds) {
         this.killerWeaponAttachmentIds = killerWeaponAttachmentIds;
     }
 
@@ -406,7 +407,7 @@ public class GameEvent {
      * @return
      *     The killerWeaponStockId
      */
-    public Integer getKillerWeaponStockId() {
+    public Long getKillerWeaponStockId() {
         return killerWeaponStockId;
     }
 
@@ -415,7 +416,7 @@ public class GameEvent {
      * @param killerWeaponStockId
      *     The KillerWeaponStockId
      */
-    public void setKillerWeaponStockId(Integer killerWeaponStockId) {
+    public void setKillerWeaponStockId(Long killerWeaponStockId) {
         this.killerWeaponStockId = killerWeaponStockId;
     }
 
@@ -496,7 +497,7 @@ public class GameEvent {
      * @return
      *     The victimStockId
      */
-    public Integer getVictimStockId() {
+    public Long getVictimStockId() {
         return victimStockId;
     }
 
@@ -505,7 +506,7 @@ public class GameEvent {
      * @param victimStockId
      *     The VictimStockId
      */
-    public void setVictimStockId(Integer victimStockId) {
+    public void setVictimStockId(Long victimStockId) {
         this.victimStockId = victimStockId;
     }
 
@@ -532,7 +533,7 @@ public class GameEvent {
      * @return
      *     The medalId
      */
-    public Integer getMedalId() {
+    public Long getMedalId() {
         return medalId;
     }
 
@@ -541,7 +542,7 @@ public class GameEvent {
      * @param medalId
      *     The MedalId
      */
-    public void setMedalId(Integer medalId) {
+    public void setMedalId(Long medalId) {
         this.medalId = medalId;
     }
 
