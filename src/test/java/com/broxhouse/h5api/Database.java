@@ -841,7 +841,7 @@ public class Database {
                             " ('" + carnageReports[i].getMatchID() +  "', " +
                             "?)");
             pstmt.setString(1, gson.toJson(carnageReports[i]));
-            System.out.println(pstmt);
+//            System.out.println(pstmt);
             pstmt.executeUpdate();
             pstmt.close();
         }

@@ -5,28 +5,23 @@
       <artifact name="HaloApp2:jar" />
     </artifacts-to-build>
   </component>
+  <component name="BookmarkManager">
+    <bookmark url="file://$PROJECT_DIR$/src/test/java/com/broxhouse/h5api/HaloApi.java" line="44" />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="5fdac0ad-8c12-40e7-a786-d460f1f65048" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/broxhouse/h5api/models/stats/common/WeaponStats.class" afterPath="$PROJECT_DIR$/target/classes/com/broxhouse/h5api/models/stats/common/WeaponStats.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__mysql_mysql_connector_java_5_1_39.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/test-classes/com/broxhouse/h5api/Database.class" afterPath="$PROJECT_DIR$/target/test-classes/com/broxhouse/h5api/Database.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/test-classes/com/broxhouse/h5api/HaloApi.class" afterPath="$PROJECT_DIR$/target/test-classes/com/broxhouse/h5api/HaloApi.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/test-classes/com/broxhouse/h5api/dataType.class" afterPath="$PROJECT_DIR$/target/test-classes/com/broxhouse/h5api/dataType.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/test-classes/com/broxhouse/h5api/gameType.class" afterPath="$PROJECT_DIR$/target/test-classes/com/broxhouse/h5api/gameType.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/test-classes/com/broxhouse/h5api/resourceType.class" afterPath="$PROJECT_DIR$/target/test-classes/com/broxhouse/h5api/resourceType.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/compiler.xml" afterPath="$PROJECT_DIR$/.idea/compiler.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/broxhouse/h5api/models/stats/common/WeaponStats.java" afterPath="$PROJECT_DIR$/src/main/java/com/broxhouse/h5api/models/stats/common/WeaponStats.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/broxhouse/h5api/models/stats/matchevents/GameEvent.java" afterPath="$PROJECT_DIR$/src/main/java/com/broxhouse/h5api/models/stats/matchevents/GameEvent.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/broxhouse/h5api/models/stats/matchevents/Killer.java" afterPath="$PROJECT_DIR$/src/main/java/com/broxhouse/h5api/models/stats/matchevents/Killer.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/broxhouse/h5api/models/stats/matchevents/KillerWorldLocation.java" afterPath="$PROJECT_DIR$/src/main/java/com/broxhouse/h5api/models/stats/matchevents/KillerWorldLocation.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/broxhouse/h5api/models/stats/matchevents/Links.java" afterPath="$PROJECT_DIR$/src/main/java/com/broxhouse/h5api/models/stats/matchevents/Links.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/broxhouse/h5api/models/stats/matchevents/MatchEvents.java" afterPath="$PROJECT_DIR$/src/main/java/com/broxhouse/h5api/models/stats/matchevents/MatchEvents.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/broxhouse/h5api/models/stats/matchevents/Player.java" afterPath="$PROJECT_DIR$/src/main/java/com/broxhouse/h5api/models/stats/matchevents/Player.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/broxhouse/h5api/models/stats/matchevents/StatsMatchDetails.java" afterPath="$PROJECT_DIR$/src/main/java/com/broxhouse/h5api/models/stats/matchevents/StatsMatchDetails.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/broxhouse/h5api/models/stats/matchevents/UgcFilmManifest.java" afterPath="$PROJECT_DIR$/src/main/java/com/broxhouse/h5api/models/stats/matchevents/UgcFilmManifest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/broxhouse/h5api/models/stats/matchevents/Victim.java" afterPath="$PROJECT_DIR$/src/main/java/com/broxhouse/h5api/models/stats/matchevents/Victim.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/broxhouse/h5api/models/stats/matchevents/VictimWorldLocation.java" afterPath="$PROJECT_DIR$/src/main/java/com/broxhouse/h5api/models/stats/matchevents/VictimWorldLocation.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HaloApp2.iml" afterPath="$PROJECT_DIR$/HaloApp2.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pom.xml" afterPath="$PROJECT_DIR$/pom.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/com/broxhouse/h5api/Database.java" afterPath="$PROJECT_DIR$/src/test/java/com/broxhouse/h5api/Database.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/com/broxhouse/h5api/HaloApi.java" afterPath="$PROJECT_DIR$/src/test/java/com/broxhouse/h5api/HaloApi.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/com/broxhouse/h5api/PopulateDatabase.java" afterPath="$PROJECT_DIR$/src/test/java/com/broxhouse/h5api/PopulateDatabase.java" />
     </list>
     <ignored path="HaloApp2.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -39,7 +34,6 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ChangesViewManager" flattened_view="true" show_ignored="false" />
   <component name="CoverageDataManager">
     <SUITE FILE_PATH="coverage/HaloApp2$HaloApi.coverage" NAME="HaloApi Coverage Results" MODIFIED="1475697113994" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>com.broxhouse.h5api.*</FILTER>
@@ -57,22 +51,21 @@
       <file leaf-file-name="HaloApi.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/test/java/com/broxhouse/h5api/HaloApi.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="204">
-              <caret line="43" column="45" selection-start-line="43" selection-start-column="45" selection-end-line="43" selection-end-column="45" />
+            <state relative-caret-position="748">
+              <caret line="204" column="26" selection-start-line="204" selection-start-column="26" selection-end-line="204" selection-end-column="26" />
               <folding>
                 <element signature="method#HaloApi#0;class#HaloApi#0" expanded="false" />
                 <element signature="method#api#0;class#HaloApi#0" expanded="false" />
-                <element signature="e#4038#4068#0" expanded="false" />
-                <element signature="e#5644#5688#0" expanded="false" />
-                <element signature="e#5949#5972#0" expanded="false" />
+                <element signature="e#4073#4103#0" expanded="false" />
+                <element signature="e#5679#5723#0" expanded="false" />
+                <element signature="e#5984#6007#0" expanded="false" />
                 <element signature="method#printData#0;class#HaloApi#0" expanded="false" />
-                <element signature="e#6689#6734#0" expanded="false" />
+                <element signature="e#6399#6444#0" expanded="false" />
                 <element signature="method#test#0;class#HaloApi#0" expanded="false" />
-                <element signature="e#7619#7674#0" expanded="false" />
-                <element signature="e#8360#8404#0" expanded="false" />
+                <element signature="e#7329#7384#0" expanded="false" />
                 <element signature="method#cacheThatOneSpartanCompany#0;class#HaloApi#0" expanded="false" />
                 <element signature="method#clearSparanCompanyTables#0;class#HaloApi#0" expanded="false" />
-                <element signature="e#10700#10760#0" expanded="false" />
+                <element signature="e#11100#11160#0" expanded="false" />
                 <element signature="method#getTotalDuration#0;class#HaloApi#0" expanded="false" />
                 <element signature="method#getHaloReleaseTime#0;class#HaloApi#0" expanded="false" />
                 <element signature="method#getFileName#0;class#HaloApi#0" expanded="false" />
@@ -85,36 +78,29 @@
                 <element signature="method#listMedals#0;class#HaloApi#0" expanded="false" />
                 <element signature="method#listWeapons#0;class#HaloApi#0" expanded="false" />
                 <element signature="method#listMaps#0;class#HaloApi#0" expanded="false" />
-                <element signature="method#listMapVariants#0;class#HaloApi#0" expanded="false" />
                 <element signature="method#listCustomMapVariantsByPlayer#0;class#HaloApi#0" expanded="false" />
                 <element signature="method#listGameVariant#0;class#HaloApi#0" expanded="false" />
                 <element signature="method#listImpulses#0;class#HaloApi#0" expanded="false" />
-                <element signature="method#testJSONWeapons#0;class#HaloApi#0" expanded="false" />
-                <element signature="method#testJSONMedals#0;class#HaloApi#0" expanded="false" />
-                <element signature="method#getMedals#0;class#HaloApi#0" expanded="false" />
                 <element signature="method#getMaps#0;class#HaloApi#0" expanded="false" />
                 <element signature="method#getWeapons#0;class#HaloApi#0" expanded="false" />
-                <element signature="e#18475#18565#0" expanded="false" />
+                <element signature="e#18274#18364#0" expanded="false" />
                 <element signature="method#getPlayers#0;class#HaloApi#0" expanded="false" />
-                <element signature="e#19056#19139#0" expanded="false" />
+                <element signature="e#18855#18938#0" expanded="false" />
                 <element signature="method#getAllMatches#0;class#HaloApi#0" expanded="false" />
-                <element signature="e#20337#20425#0" expanded="false" />
-                <element signature="method#getPlayerCarnageReports#0;class#HaloApi#0" expanded="false" />
-                <element signature="e#20949#21044#0" expanded="false" />
-                <element signature="e#21483#21578#0" expanded="false" />
+                <element signature="e#20210#20298#0" expanded="false" />
+                <element signature="e#20822#20917#0" expanded="false" />
+                <element signature="e#21356#21451#0" expanded="false" />
                 <element signature="method#getUniqueResources#0;class#HaloApi#0" expanded="false" />
-                <element signature="method#getMapVariant#0;class#HaloApi#0" expanded="false" />
                 <element signature="method#getGameVariant#0;class#HaloApi#0" expanded="false" />
                 <element signature="method#getMapOwner#0;class#HaloApi#0" expanded="false" />
                 <element signature="method#getCustomMapVariantsByPlayer#0;class#HaloApi#0" expanded="false" />
-                <element signature="e#25201#25300#0" expanded="false" />
-                <element signature="e#25730#25828#0" expanded="false" />
+                <element signature="e#25074#25173#0" expanded="false" />
+                <element signature="e#25603#25701#0" expanded="false" />
                 <element signature="method#getMedalName#0;class#HaloApi#0" expanded="false" />
                 <element signature="method#getMedalDescription#0;class#HaloApi#0" expanded="false" />
                 <element signature="method#getMedalDifficulty#0;class#HaloApi#0" expanded="false" />
                 <element signature="method#getMedalID#0;class#HaloApi#0" expanded="false" />
                 <element signature="method#getWeaponName#0;class#HaloApi#0" expanded="false" />
-                <element signature="method#getMapVariantName#0;class#HaloApi#0" expanded="false" />
                 <element signature="method#getTeamID#0;class#HaloApi#0" expanded="false" />
                 <element signature="method#getTeamScore#0;class#HaloApi#0" expanded="false" />
                 <element signature="method#getBaseStats#0;class#HaloApi#0" expanded="false" />
@@ -129,27 +115,69 @@
                 <element signature="method#totalDeaths#0;class#HaloApi#0" expanded="false" />
                 <element signature="method#getKD#0;class#HaloApi#0" expanded="false" />
                 <element signature="method#getWeaponStats#0;class#HaloApi#0" expanded="false" />
-                <element signature="e#48692#48754#0" expanded="false" />
                 <element signature="method#getTotalTimePlayedAllModes#0;class#HaloApi#0" expanded="false" />
-                <element signature="method#testBaseResults#0;class#HaloApi#0" expanded="false" />
                 <element signature="method#comparePlayers#0;class#HaloApi#0" expanded="false" />
                 <element signature="method#favoriteMap#0;class#HaloApi#0" expanded="false" />
-                <element signature="e#66175#66228#0" expanded="false" />
-                <element signature="e#67461#67510#0" expanded="false" />
+                <element signature="e#67678#67727#0" expanded="false" />
                 <element signature="method#getTeamMates#0;class#HaloApi#0" expanded="false" />
-                <element signature="e#73869#73948#0" expanded="false" />
-                <element signature="e#74135#74260#0" expanded="false" />
+                <element signature="e#74088#74167#0" expanded="false" />
+                <element signature="e#74354#74479#0" expanded="false" />
                 <element signature="method#favoriteTeamMate#0;class#HaloApi#0" expanded="false" />
-                <element signature="e#78808#78906#0" expanded="false" />
+                <element signature="e#79027#79125#0" expanded="false" />
                 <element signature="method#getEnemyKills#0;class#HaloApi#0" expanded="false" />
                 <element signature="method#getEnemiesKilled#0;class#HaloApi#0" expanded="false" />
                 <element signature="method#getMatchDetails#0;class#HaloApi#0" expanded="false" />
-                <element signature="e#89986#90102#0" expanded="false" />
-                <marker date="1477345889381" expanded="false" signature="1447:3047" ph="..." />
-                <marker date="1477345889381" expanded="false" signature="4378:4504" ph="//..." />
-                <marker date="1477345889381" expanded="true" signature="5123:5471" ph="..." />
-                <marker date="1477345889381" expanded="true" signature="6216:6536" ph="..." />
-                <marker date="1477345889381" expanded="false" signature="36598:38677" ph="..." />
+                <element signature="e#90204#90320#0" expanded="false" />
+                <element signature="e#95168#95238#0" expanded="false" />
+                <marker date="1483466171160" expanded="false" signature="1482:3082" ph="..." />
+                <marker date="1483466171160" expanded="false" signature="4413:4539" ph="//..." />
+                <marker date="1483466171160" expanded="true" signature="5158:5506" ph="..." />
+                <marker date="1483466171160" expanded="true" signature="6243:6246" ph="..." />
+                <marker date="1483466171160" expanded="false" signature="36471:38550" ph="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Resource.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/broxhouse/h5api/models/stats/reports/Resource.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="158">
+              <caret line="42" column="18" selection-start-line="42" selection-start-column="18" selection-end-line="42" selection-end-column="18" />
+              <folding>
+                <element signature="e#880#881#0" expanded="true" />
+                <element signature="e#913#914#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="URLClassLoader.java" pinned="false" current-in-tab="false">
+        <entry file="jar://C:/Program Files/Java/jdk1.8.0_92/src.zip!/java/net/URLClassLoader.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="5542">
+              <caret line="380" column="0" selection-start-line="380" selection-start-column="0" selection-end-line="380" selection-end-column="0" />
+              <folding>
+                <element signature="e#0#31067#0" expanded="false" />
+                <element signature="imports" expanded="false" />
+                <element signature="e#12207#12208#0" expanded="false" />
+                <element signature="e#12238#12239#0" expanded="false" />
+                <element signature="e#12582#12583#0" expanded="false" />
+                <element signature="e#12618#12619#0" expanded="false" />
+                <element signature="e#21775#21776#0" expanded="false" />
+                <element signature="e#21850#21851#0" expanded="false" />
+                <element signature="e#23561#23562#0" expanded="false" />
+                <element signature="e#23606#23607#0" expanded="false" />
+                <element signature="e#28480#28481#0" expanded="false" />
+                <element signature="e#28571#28572#0" expanded="false" />
+                <element signature="e#29546#29547#0" expanded="false" />
+                <element signature="e#29629#29630#0" expanded="false" />
+                <element signature="e#29851#29852#0" expanded="false" />
+                <element signature="e#29903#29904#0" expanded="false" />
+                <element signature="e#29972#29973#0" expanded="false" />
+                <element signature="e#30050#30051#0" expanded="false" />
+                <element signature="e#30481#30482#0" expanded="false" />
+                <element signature="e#30513#30514#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -158,23 +186,8 @@
       <file leaf-file-name="GameEvent.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/broxhouse/h5api/models/stats/matchevents/GameEvent.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-153">
-              <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
-              <folding>
-                <element signature="e#3857#3858#0" expanded="true" />
-                <element signature="e#3886#3887#0" expanded="true" />
-                <element signature="e#5190#5191#0" expanded="true" />
-                <element signature="e#5229#5230#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Player.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/broxhouse/h5api/models/stats/matchevents/Player.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="102">
-              <caret line="10" column="13" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
+            <state relative-caret-position="374">
+              <caret line="27" column="59" selection-start-line="27" selection-start-column="59" selection-end-line="27" selection-end-column="59" />
               <folding />
             </state>
           </provider>
@@ -183,10 +196,9 @@
       <file leaf-file-name="Database.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/test/java/com/broxhouse/h5api/Database.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-625">
+            <state relative-caret-position="761">
               <caret line="1075" column="59" selection-start-line="1075" selection-start-column="59" selection-end-line="1075" selection-end-column="59" />
               <folding>
-                <element signature="imports" expanded="true" />
                 <element signature="e#1868#1904#0" expanded="false" />
                 <element signature="e#14159#14253#0" expanded="false" />
                 <element signature="method#writeCarnageReportsToDB#0;class#Database#0" expanded="false" />
@@ -199,12 +211,43 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="pom.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/pom.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="323">
+              <caret line="19" column="37" selection-start-line="19" selection-start-column="37" selection-end-line="19" selection-end-column="37" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="ObjectInputStream.java" pinned="false" current-in-tab="false">
         <entry file="jar://C:/Program Files/Java/jdk1.8.0_92/src.zip!/java/io/ObjectInputStream.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-84">
+            <state relative-caret-position="5457">
               <caret line="362" column="24" selection-start-line="362" selection-start-column="24" selection-end-line="362" selection-end-column="24" />
-              <folding />
+              <folding>
+                <element signature="e#0#137416#0" expanded="false" />
+                <element signature="imports" expanded="false" />
+                <element signature="e#53849#54719#0" expanded="false" />
+                <element signature="e#54718#54719#0" expanded="false" />
+                <element signature="e#83455#83456#0" expanded="false" />
+                <element signature="e#83515#83516#0" expanded="false" />
+                <element signature="e#84406#84407#0" expanded="false" />
+                <element signature="e#84441#84442#0" expanded="false" />
+                <element signature="e#90570#90847#0" expanded="false" />
+                <element signature="e#90846#90847#0" expanded="false" />
+                <element signature="e#91207#91208#0" expanded="false" />
+                <element signature="e#91242#91243#0" expanded="false" />
+                <element signature="e#91660#91661#0" expanded="false" />
+                <element signature="e#91696#91697#0" expanded="false" />
+                <element signature="e#96831#96832#0" expanded="false" />
+                <element signature="e#96869#96870#0" expanded="false" />
+                <element signature="e#134238#134239#0" expanded="false" />
+                <element signature="e#134273#134274#0" expanded="false" />
+                <element signature="e#135718#135719#0" expanded="false" />
+                <element signature="e#135761#135762#0" expanded="false" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -212,12 +255,24 @@
       <file leaf-file-name="PopulateDatabase.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/test/java/com/broxhouse/h5api/PopulateDatabase.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+            <state relative-caret-position="5899">
+              <caret line="366" column="0" selection-start-line="366" selection-start-column="0" selection-end-line="366" selection-end-column="0" />
               <folding>
-                <element signature="imports" expanded="true" />
+                <element signature="imports" expanded="false" />
+                <element signature="e#10225#10655#0" expanded="false" />
+                <element signature="e#10654#10655#0" expanded="false" />
                 <element signature="e#18252#18296#0" expanded="false" />
+                <element signature="e#23568#23827#0" expanded="false" />
+                <element signature="e#23826#23827#0" expanded="false" />
+                <element signature="e#23858#24116#0" expanded="false" />
+                <element signature="e#24115#24116#0" expanded="false" />
                 <element signature="e#28607#28680#0" expanded="false" />
+                <element signature="e#32055#33079#0" expanded="false" />
+                <element signature="e#33078#33079#0" expanded="false" />
+                <element signature="e#34404#35277#0" expanded="false" />
+                <element signature="e#35276#35277#0" expanded="false" />
+                <element signature="e#36747#38068#0" expanded="false" />
+                <element signature="e#38067#38068#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -228,7 +283,20 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="272">
               <caret line="20" column="11" selection-start-line="20" selection-start-column="11" selection-end-line="20" selection-end-column="11" />
-              <folding />
+              <folding>
+                <element signature="e#215#216#0" expanded="false" />
+                <element signature="e#247#248#0" expanded="false" />
+                <element signature="e#294#295#0" expanded="false" />
+                <element signature="e#336#337#0" expanded="false" />
+                <element signature="e#520#521#0" expanded="false" />
+                <element signature="e#547#548#0" expanded="false" />
+                <element signature="e#587#588#0" expanded="false" />
+                <element signature="e#619#620#0" expanded="false" />
+                <element signature="e#652#653#0" expanded="false" />
+                <element signature="e#684#685#0" expanded="false" />
+                <element signature="e#731#732#0" expanded="false" />
+                <element signature="e#773#774#0" expanded="false" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -239,8 +307,22 @@
             <state relative-caret-position="918">
               <caret line="67" column="19" selection-start-line="67" selection-start-column="19" selection-end-line="67" selection-end-column="19" />
               <folding>
-                <element signature="e#1410#1411#0" expanded="true" />
-                <element signature="e#1454#1455#0" expanded="true" />
+                <element signature="imports" expanded="false" />
+                <element signature="e#518#529#0" expanded="false" />
+                <element signature="e#793#794#0" expanded="false" />
+                <element signature="e#821#822#0" expanded="false" />
+                <element signature="e#927#928#0" expanded="false" />
+                <element signature="e#961#962#0" expanded="false" />
+                <element signature="e#1072#1073#0" expanded="false" />
+                <element signature="e#1105#1106#0" expanded="false" />
+                <element signature="e#1241#1242#0" expanded="false" />
+                <element signature="e#1285#1286#0" expanded="false" />
+                <element signature="e#1410#1411#0" expanded="false" />
+                <element signature="e#1454#1455#0" expanded="false" />
+                <element signature="e#1726#1727#0" expanded="false" />
+                <element signature="e#1756#1757#0" expanded="false" />
+                <element signature="e#1802#1803#0" expanded="false" />
+                <element signature="e#1840#1841#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -267,7 +349,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/com/broxhouse/h5api/models/stats/reports/GameVariantResourceId.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/broxhouse/h5api/models/stats/reports/KilledByOpponentDetail.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/broxhouse/h5api/models/stats/reports/KilledOpponentDetail.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/broxhouse/h5api/models/stats/reports/MapVariantResourceId.java" />
@@ -316,6 +397,7 @@
         <option value="$PROJECT_DIR$/src/main/java/com/broxhouse/h5api/models/stats/matchevents/UgcFilmManifest.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/broxhouse/h5api/models/stats/matchevents/Victim.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/broxhouse/h5api/models/stats/matchevents/VictimWorldLocation.java" />
+        <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/src/test/java/com/broxhouse/h5api/Database.java" />
         <option value="$PROJECT_DIR$/src/test/java/com/broxhouse/h5api/HaloApi.java" />
       </list>
@@ -370,6 +452,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scratches" />
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -690,17 +774,15 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scratches" />
-      <pane id="PackagesPane" />
       <pane id="Scope" />
       <pane id="AndroidView" />
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../HaloApp2 - Copy - Copy" />
-    <property name="settings.editor.selected.configurable" value="project.propCompiler" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="settings.editor.selected.configurable" value="reference.projectsettings.compiler.javacompiler" />
     <property name="settings.editor.splitter.proportion" value="0.2" />
-    <property name="project.structure.last.edited" value="Problems" />
+    <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.1150748" />
     <property name="last.edited.regexp" value="Sample Text" />
@@ -860,8 +942,13 @@
       <option name="SHOW_LOGCAT_AUTOMATICALLY" value="true" />
       <option name="SKIP_NOOP_APK_INSTALLATIONS" value="true" />
       <option name="FORCE_STOP_RUNNING_APP" value="true" />
+      <option name="DEBUGGER_TYPE" value="Java" />
       <option name="USE_LAST_SELECTED_DEVICE" value="false" />
       <option name="PREFERRED_AVD" value="" />
+      <Java />
+      <Profilers>
+        <option name="GAPID_DISABLE_PCS" value="false" />
+      </Profilers>
       <option name="DEEP_LINK" value="" />
       <option name="ACTIVITY_CLASS" value="" />
       <method />
@@ -880,8 +967,13 @@
       <option name="SHOW_LOGCAT_AUTOMATICALLY" value="true" />
       <option name="SKIP_NOOP_APK_INSTALLATIONS" value="true" />
       <option name="FORCE_STOP_RUNNING_APP" value="true" />
+      <option name="DEBUGGER_TYPE" value="Java" />
       <option name="USE_LAST_SELECTED_DEVICE" value="false" />
       <option name="PREFERRED_AVD" value="" />
+      <Java />
+      <Profilers>
+        <option name="GAPID_DISABLE_PCS" value="false" />
+      </Profilers>
       <method />
     </configuration>
     <configuration default="true" type="Application" factoryName="Application">
@@ -1281,7 +1373,14 @@
       <option name="project" value="LOCAL" />
       <updated>1476218430566</updated>
     </task>
-    <option name="localTasksCounter" value="24" />
+    <task id="LOCAL-00024" summary="why am I still doing this?">
+      <created>1477345929623</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1477345929623</updated>
+    </task>
+    <option name="localTasksCounter" value="25" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -1322,17 +1421,17 @@
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.35791543" sideWeight="0.41098082" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3576923" sideWeight="0.40458423" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39921337" sideWeight="0.54477614" order="10" side_tool="true" content_ui="tabs" />
-      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3336887" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33315566" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32907662" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.38053098" sideWeight="0.586887" order="2" side_tool="true" content_ui="tabs" x="-8" y="-8" width="1936" height="1176" />
+      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.8644231" sideWeight="0.5954158" order="2" side_tool="true" content_ui="tabs" x="-1920" y="23" width="1920" height="1137" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32940018" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18763326" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.19189766" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -1395,32 +1494,10 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_92/src.zip!/java/text/SimpleDateFormat.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="174">
-          <caret line="577" column="11" selection-start-line="577" selection-start-column="11" selection-end-line="577" selection-end-column="11" />
-          <folding>
-            <element signature="e#23443#23444#0" expanded="false" />
-            <element signature="e#23515#23516#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_92/src.zip!/java/lang/Deprecated.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="43" column="18" selection-start-line="43" selection-start-column="18" selection-end-line="43" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://C:/Program Files/Java/jdk1.8.0_92/src.zip!/java/util/Date.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="8206">
           <caret line="648" column="11" selection-start-line="648" selection-start-column="11" selection-end-line="648" selection-end-column="11" />
-          <folding>
-            <element signature="e#28620#28621#0" expanded="false" />
-            <element signature="e#28671#28672#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1428,21 +1505,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="302">
           <caret line="181" column="21" selection-start-line="181" selection-start-column="21" selection-end-line="181" selection-end-column="21" />
-          <folding>
-            <element signature="docComment;field#hopperId#0;class#Match#0" expanded="false" />
-            <element signature="docComment;field#mapId#0;class#Match#0" expanded="false" />
-            <element signature="docComment;field#mapVariant#0;class#Match#0" expanded="false" />
-            <element signature="docComment;field#gameBaseVariantId#0;class#Match#0" expanded="false" />
-            <element signature="docComment;field#gameVariant#0;class#Match#0" expanded="false" />
-            <element signature="docComment;field#matchDuration#0;class#Match#0" expanded="false" />
-            <element signature="docComment;field#matchCompletedDate#0;class#Match#0" expanded="false" />
-            <element signature="docComment;field#teams#0;class#Match#0" expanded="false" />
-            <element signature="docComment;field#players#0;class#Match#0" expanded="false" />
-            <element signature="docComment;field#isTeamGame#0;class#Match#0" expanded="false" />
-            <element signature="docComment;field#seasonId#0;class#Match#0" expanded="false" />
-            <element signature="e#5350#5351#0" expanded="false" />
-            <element signature="e#5391#5392#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1457,10 +1519,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="212">
           <caret line="47" column="18" selection-start-line="47" selection-start-column="18" selection-end-line="47" selection-end-column="18" />
-          <folding>
-            <element signature="e#911#912#0" expanded="false" />
-            <element signature="e#939#940#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1468,7 +1526,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="221">
           <caret line="36" column="13" selection-start-line="36" selection-start-column="13" selection-end-line="36" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1497,7 +1554,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
           <caret line="6" column="28" selection-start-line="6" selection-start-column="28" selection-end-line="6" selection-end-column="28" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1512,17 +1568,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="119">
           <caret line="9" column="13" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="e#504#505#0" expanded="false" />
-            <element signature="e#534#535#0" expanded="false" />
-            <element signature="e#564#565#0" expanded="false" />
-            <element signature="e#592#593#0" expanded="false" />
-            <element signature="e#679#680#0" expanded="false" />
-            <element signature="e#717#718#0" expanded="false" />
-            <element signature="e#759#760#0" expanded="false" />
-            <element signature="e#793#794#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1537,7 +1582,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="58021">
           <caret line="3484" column="0" selection-start-line="3484" selection-start-column="0" selection-end-line="3484" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1548,25 +1592,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/broxhouse/h5api/models/stats/reports/Resource.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="190">
-          <caret line="42" column="18" selection-start-line="42" selection-start-column="18" selection-end-line="42" selection-end-column="18" />
-          <folding>
-            <element signature="e#880#881#0" expanded="false" />
-            <element signature="e#913#914#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/broxhouse/h5api/models/metadata/MapVariant.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="17">
           <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
-          <folding>
-            <element signature="e#198#294#0" expanded="false" />
-            <element signature="e#567#582#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1581,7 +1610,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="329">
           <caret line="652" column="0" selection-start-line="652" selection-start-column="0" selection-end-line="652" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1589,7 +1617,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-31">
           <caret line="13" column="30" selection-start-line="13" selection-start-column="30" selection-end-line="13" selection-end-column="30" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1597,28 +1624,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="853">
           <caret line="117" column="18" selection-start-line="117" selection-start-column="18" selection-end-line="117" selection-end-column="18" />
-          <folding>
-            <element signature="e#1274#1275#0" expanded="false" />
-            <element signature="e#1314#1315#0" expanded="false" />
-            <element signature="e#1373#1374#0" expanded="false" />
-            <element signature="e#1427#1428#0" expanded="false" />
-            <element signature="e#1488#1489#0" expanded="false" />
-            <element signature="e#1544#1545#0" expanded="false" />
-            <element signature="e#1601#1602#0" expanded="false" />
-            <element signature="e#1653#1654#0" expanded="false" />
-            <element signature="e#1702#1703#0" expanded="false" />
-            <element signature="e#1746#1747#0" expanded="false" />
-            <element signature="e#1810#1811#0" expanded="false" />
-            <element signature="e#1866#1867#0" expanded="false" />
-            <element signature="e#1936#1937#0" expanded="false" />
-            <element signature="e#1998#1999#0" expanded="false" />
-            <element signature="e#2035#2036#0" expanded="false" />
-            <element signature="e#2066#2067#0" expanded="false" />
-            <element signature="e#2331#2332#0" expanded="false" />
-            <element signature="e#2364#2365#0" expanded="false" />
-            <element signature="e#2645#2646#0" expanded="false" />
-            <element signature="e#2672#2673#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1626,12 +1631,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="329">
           <caret line="916" column="25" selection-start-line="916" selection-start-column="25" selection-end-line="916" selection-end-column="25" />
-          <folding>
-            <element signature="e#20015#20016#0" expanded="false" />
-            <element signature="e#20049#20050#0" expanded="false" />
-            <element signature="e#20342#20343#0" expanded="false" />
-            <element signature="e#20373#20374#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1639,10 +1638,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="408">
           <caret line="26" column="16" selection-start-line="26" selection-start-column="16" selection-end-line="26" selection-end-column="16" />
-          <folding>
-            <element signature="e#525#526#0" expanded="false" />
-            <element signature="e#550#551#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1650,10 +1645,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="4301">
           <caret line="308" column="18" selection-start-line="308" selection-start-column="18" selection-end-line="308" selection-end-column="18" />
-          <folding>
-            <element signature="e#7458#7459#0" expanded="false" />
-            <element signature="e#7496#7497#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1661,59 +1652,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="4879">
           <caret line="385" column="27" selection-start-line="385" selection-start-column="27" selection-end-line="385" selection-end-column="27" />
-          <folding>
-            <element signature="e#0#56073#0" expanded="false" />
-            <element signature="imports" expanded="false" />
-            <element signature="e#6728#6729#0" expanded="false" />
-            <element signature="e#6803#6804#0" expanded="false" />
-            <element signature="e#7337#7338#0" expanded="false" />
-            <element signature="e#7414#7415#0" expanded="false" />
-            <element signature="e#8441#8442#0" expanded="false" />
-            <element signature="e#8482#8483#0" expanded="false" />
-            <element signature="e#12078#12079#0" expanded="false" />
-            <element signature="e#12124#12125#0" expanded="false" />
-            <element signature="e#23776#23777#0" expanded="false" />
-            <element signature="e#23818#23819#0" expanded="false" />
-            <element signature="e#24168#24182#0" expanded="false" />
-            <element signature="e#24674#24675#0" expanded="false" />
-            <element signature="e#24719#24720#0" expanded="false" />
-            <element signature="e#25132#25133#0" expanded="false" />
-            <element signature="e#25166#25167#0" expanded="false" />
-            <element signature="e#26016#26017#0" expanded="false" />
-            <element signature="e#26046#26047#0" expanded="false" />
-            <element signature="e#26856#26857#0" expanded="false" />
-            <element signature="e#26884#26885#0" expanded="false" />
-            <element signature="e#27478#27479#0" expanded="false" />
-            <element signature="e#27523#27524#0" expanded="false" />
-            <element signature="e#28780#28781#0" expanded="false" />
-            <element signature="e#28851#28852#0" expanded="false" />
-            <element signature="e#31661#31662#0" expanded="false" />
-            <element signature="e#31739#31740#0" expanded="false" />
-            <element signature="e#32201#32202#0" expanded="false" />
-            <element signature="e#32281#32282#0" expanded="false" />
-            <element signature="e#33313#33314#0" expanded="false" />
-            <element signature="e#33357#33358#0" expanded="false" />
-            <element signature="e#33843#33844#0" expanded="false" />
-            <element signature="e#33923#33924#0" expanded="false" />
-            <element signature="e#34403#34404#0" expanded="false" />
-            <element signature="e#34445#34446#0" expanded="false" />
-            <element signature="e#43431#43432#0" expanded="false" />
-            <element signature="e#43515#43516#0" expanded="false" />
-            <element signature="e#44809#44810#0" expanded="false" />
-            <element signature="e#44848#44849#0" expanded="false" />
-            <element signature="e#45392#45393#0" expanded="false" />
-            <element signature="e#45446#45447#0" expanded="false" />
-            <element signature="e#48623#48624#0" expanded="false" />
-            <element signature="e#48671#48672#0" expanded="false" />
-            <element signature="e#49045#49046#0" expanded="false" />
-            <element signature="e#49094#49095#0" expanded="false" />
-            <element signature="e#49474#49475#0" expanded="false" />
-            <element signature="e#49525#49526#0" expanded="false" />
-            <element signature="e#52436#52437#0" expanded="false" />
-            <element signature="e#52510#52511#0" expanded="false" />
-            <element signature="e#55367#55368#0" expanded="false" />
-            <element signature="e#55422#55423#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1721,19 +1659,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="612">
           <caret line="38" column="26" selection-start-line="38" selection-start-column="26" selection-end-line="38" selection-end-column="26" />
-          <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="e#1032#1033#0" expanded="false" />
-            <element signature="e#1059#1060#0" expanded="false" />
-            <element signature="e#1097#1098#0" expanded="false" />
-            <element signature="e#1131#1132#0" expanded="false" />
-            <element signature="e#1163#1164#0" expanded="false" />
-            <element signature="e#1191#1192#0" expanded="false" />
-            <element signature="e#1225#1226#0" expanded="false" />
-            <element signature="e#1255#1256#0" expanded="false" />
-            <element signature="e#1282#1283#0" expanded="false" />
-            <element signature="e#1307#1308#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1741,51 +1666,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2533">
           <caret line="183" column="16" selection-start-line="183" selection-start-column="16" selection-end-line="183" selection-end-column="16" />
-          <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="e#1081#1082#0" expanded="false" />
-            <element signature="e#1111#1112#0" expanded="false" />
-            <element signature="e#1227#1228#0" expanded="false" />
-            <element signature="e#1265#1266#0" expanded="false" />
-            <element signature="e#1355#1356#0" expanded="false" />
-            <element signature="e#1382#1383#0" expanded="false" />
-            <element signature="e#1485#1486#0" expanded="false" />
-            <element signature="e#1517#1518#0" expanded="false" />
-            <element signature="e#1621#1622#0" expanded="false" />
-            <element signature="e#1655#1656#0" expanded="false" />
-            <element signature="e#1786#1787#0" expanded="false" />
-            <element signature="e#1832#1833#0" expanded="false" />
-            <element signature="e#1941#1942#0" expanded="false" />
-            <element signature="e#1977#1978#0" expanded="false" />
-            <element signature="e#2117#2118#0" expanded="false" />
-            <element signature="e#2167#2168#0" expanded="false" />
-            <element signature="e#2258#2259#0" expanded="false" />
-            <element signature="e#2286#2287#0" expanded="false" />
-            <element signature="e#2392#2393#0" expanded="false" />
-            <element signature="e#2426#2427#0" expanded="false" />
-            <element signature="e#2547#2548#0" expanded="false" />
-            <element signature="e#2585#2586#0" expanded="false" />
-            <element signature="e#2741#2742#0" expanded="false" />
-            <element signature="e#2795#2796#0" expanded="false" />
-            <element signature="e#2928#2929#0" expanded="false" />
-            <element signature="e#2970#2971#0" expanded="false" />
-            <element signature="e#3303#3304#0" expanded="false" />
-            <element signature="e#3332#3333#0" expanded="false" />
-            <element signature="e#3444#3445#0" expanded="false" />
-            <element signature="e#3480#3481#0" expanded="false" />
-            <element signature="e#3580#3581#0" expanded="false" />
-            <element signature="e#3611#3612#0" expanded="false" />
-            <element signature="e#3732#3733#0" expanded="false" />
-            <element signature="e#3772#3773#0" expanded="false" />
-            <element signature="e#3863#3864#0" expanded="false" />
-            <element signature="e#3891#3892#0" expanded="false" />
-            <element signature="e#3997#3998#0" expanded="false" />
-            <element signature="e#4031#4032#0" expanded="false" />
-            <element signature="e#4069#4070#0" expanded="false" />
-            <element signature="e#4103#4104#0" expanded="false" />
-            <element signature="e#4131#4132#0" expanded="false" />
-            <element signature="e#4164#4165#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1793,25 +1673,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="102">
           <caret line="10" column="13" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="e#697#698#0" expanded="false" />
-            <element signature="e#732#733#0" expanded="false" />
-            <element signature="e#868#869#0" expanded="false" />
-            <element signature="e#916#917#0" expanded="false" />
-            <element signature="e#1018#1019#0" expanded="false" />
-            <element signature="e#1051#1052#0" expanded="false" />
-            <element signature="e#1178#1179#0" expanded="false" />
-            <element signature="e#1222#1223#0" expanded="false" />
-            <element signature="e#1323#1324#0" expanded="false" />
-            <element signature="e#1355#1356#0" expanded="false" />
-            <element signature="e#1479#1480#0" expanded="false" />
-            <element signature="e#1521#1522#0" expanded="false" />
-            <element signature="e#1613#1614#0" expanded="false" />
-            <element signature="e#1641#1642#0" expanded="false" />
-            <element signature="e#1748#1749#0" expanded="false" />
-            <element signature="e#1782#1783#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1819,69 +1680,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="102">
           <caret line="10" column="13" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="e#1718#1719#0" expanded="false" />
-            <element signature="e#1759#1760#0" expanded="false" />
-            <element signature="e#1919#1920#0" expanded="false" />
-            <element signature="e#1979#1980#0" expanded="false" />
-            <element signature="e#2078#2079#0" expanded="false" />
-            <element signature="e#2109#2110#0" expanded="false" />
-            <element signature="e#2229#2230#0" expanded="false" />
-            <element signature="e#2269#2270#0" expanded="false" />
-            <element signature="e#2369#2370#0" expanded="false" />
-            <element signature="e#2400#2401#0" expanded="false" />
-            <element signature="e#2521#2522#0" expanded="false" />
-            <element signature="e#2561#2562#0" expanded="false" />
-            <element signature="e#2664#2665#0" expanded="false" />
-            <element signature="e#2697#2698#0" expanded="false" />
-            <element signature="e#2825#2826#0" expanded="false" />
-            <element signature="e#2869#2870#0" expanded="false" />
-            <element signature="e#2978#2979#0" expanded="false" />
-            <element signature="e#3014#3015#0" expanded="false" />
-            <element signature="e#3154#3155#0" expanded="false" />
-            <element signature="e#3204#3205#0" expanded="false" />
-            <element signature="e#3331#3332#0" expanded="false" />
-            <element signature="e#3376#3377#0" expanded="false" />
-            <element signature="e#3731#3732#0" expanded="false" />
-            <element signature="e#3768#3769#0" expanded="false" />
-            <element signature="e#3912#3913#0" expanded="false" />
-            <element signature="e#3964#3965#0" expanded="false" />
-            <element signature="e#4054#4055#0" expanded="false" />
-            <element signature="e#4081#4082#0" expanded="false" />
-            <element signature="e#4184#4185#0" expanded="false" />
-            <element signature="e#4216#4217#0" expanded="false" />
-            <element signature="e#4320#4321#0" expanded="false" />
-            <element signature="e#4354#4355#0" expanded="false" />
-            <element signature="e#4485#4486#0" expanded="false" />
-            <element signature="e#4531#4532#0" expanded="false" />
-            <element signature="e#4640#4641#0" expanded="false" />
-            <element signature="e#4676#4677#0" expanded="false" />
-            <element signature="e#4816#4817#0" expanded="false" />
-            <element signature="e#4866#4867#0" expanded="false" />
-            <element signature="e#4957#4958#0" expanded="false" />
-            <element signature="e#4985#4986#0" expanded="false" />
-            <element signature="e#5091#5092#0" expanded="false" />
-            <element signature="e#5125#5126#0" expanded="false" />
-            <element signature="e#5246#5247#0" expanded="false" />
-            <element signature="e#5284#5285#0" expanded="false" />
-            <element signature="e#5440#5441#0" expanded="false" />
-            <element signature="e#5494#5495#0" expanded="false" />
-            <element signature="e#5627#5628#0" expanded="false" />
-            <element signature="e#5669#5670#0" expanded="false" />
-            <element signature="e#6002#6003#0" expanded="false" />
-            <element signature="e#6031#6032#0" expanded="false" />
-            <element signature="e#6143#6144#0" expanded="false" />
-            <element signature="e#6179#6180#0" expanded="false" />
-            <element signature="e#6279#6280#0" expanded="false" />
-            <element signature="e#6310#6311#0" expanded="false" />
-            <element signature="e#6431#6432#0" expanded="false" />
-            <element signature="e#6471#6472#0" expanded="false" />
-            <element signature="e#6562#6563#0" expanded="false" />
-            <element signature="e#6590#6591#0" expanded="false" />
-            <element signature="e#6696#6697#0" expanded="false" />
-            <element signature="e#6730#6731#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1889,7 +1687,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="197">
           <caret line="80" column="13" selection-start-line="80" selection-start-column="13" selection-end-line="80" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1897,7 +1694,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-102">
           <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1905,7 +1701,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-374">
           <caret line="13" column="24" selection-start-line="13" selection-start-column="24" selection-end-line="13" selection-end-column="24" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1913,7 +1708,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="136">
           <caret line="14" column="18" selection-start-line="14" selection-start-column="18" selection-end-line="14" selection-end-column="18" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1921,7 +1715,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="197">
           <caret line="51" column="19" selection-start-line="51" selection-start-column="19" selection-end-line="51" selection-end-column="19" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1929,7 +1722,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="85">
           <caret line="10" column="51" selection-start-line="10" selection-start-column="27" selection-end-line="10" selection-end-column="51" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1937,7 +1729,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="102">
           <caret line="10" column="55" selection-start-line="10" selection-start-column="55" selection-end-line="10" selection-end-column="55" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1945,7 +1736,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="102">
           <caret line="10" column="57" selection-start-line="10" selection-start-column="57" selection-end-line="10" selection-end-column="57" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1953,7 +1743,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="102">
           <caret line="10" column="44" selection-start-line="10" selection-start-column="44" selection-end-line="10" selection-end-column="44" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1961,7 +1750,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="102">
           <caret line="10" column="53" selection-start-line="10" selection-start-column="53" selection-end-line="10" selection-end-column="53" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1969,7 +1757,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="102">
           <caret line="10" column="44" selection-start-line="10" selection-start-column="44" selection-end-line="10" selection-end-column="44" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1977,7 +1764,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="102">
           <caret line="10" column="57" selection-start-line="10" selection-start-column="57" selection-end-line="10" selection-end-column="57" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1985,7 +1771,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="102">
           <caret line="10" column="43" selection-start-line="10" selection-start-column="43" selection-end-line="10" selection-end-column="43" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1993,15 +1778,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="102">
           <caret line="10" column="13" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_92/src.zip!/java/io/ObjectInputStream.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-84">
-          <caret line="362" column="24" selection-start-line="362" selection-start-column="24" selection-end-line="362" selection-end-column="24" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2010,33 +1786,22 @@
         <state relative-caret-position="918">
           <caret line="67" column="19" selection-start-line="67" selection-start-column="19" selection-end-line="67" selection-end-column="19" />
           <folding>
-            <element signature="e#1410#1411#0" expanded="true" />
-            <element signature="e#1454#1455#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/com/broxhouse/h5api/PopulateDatabase.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#18252#18296#0" expanded="false" />
-            <element signature="e#28607#28680#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/broxhouse/h5api/models/stats/matchevents/GameEvent.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-153">
-          <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
-          <folding>
-            <element signature="e#3857#3858#0" expanded="true" />
-            <element signature="e#3886#3887#0" expanded="true" />
-            <element signature="e#5190#5191#0" expanded="true" />
-            <element signature="e#5229#5230#0" expanded="true" />
+            <element signature="imports" expanded="false" />
+            <element signature="e#518#529#0" expanded="false" />
+            <element signature="e#793#794#0" expanded="false" />
+            <element signature="e#821#822#0" expanded="false" />
+            <element signature="e#927#928#0" expanded="false" />
+            <element signature="e#961#962#0" expanded="false" />
+            <element signature="e#1072#1073#0" expanded="false" />
+            <element signature="e#1105#1106#0" expanded="false" />
+            <element signature="e#1241#1242#0" expanded="false" />
+            <element signature="e#1285#1286#0" expanded="false" />
+            <element signature="e#1410#1411#0" expanded="false" />
+            <element signature="e#1454#1455#0" expanded="false" />
+            <element signature="e#1726#1727#0" expanded="false" />
+            <element signature="e#1756#1757#0" expanded="false" />
+            <element signature="e#1802#1803#0" expanded="false" />
+            <element signature="e#1840#1841#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -2045,16 +1810,137 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="272">
           <caret line="20" column="11" selection-start-line="20" selection-start-column="11" selection-end-line="20" selection-end-column="11" />
+          <folding>
+            <element signature="e#215#216#0" expanded="false" />
+            <element signature="e#247#248#0" expanded="false" />
+            <element signature="e#294#295#0" expanded="false" />
+            <element signature="e#336#337#0" expanded="false" />
+            <element signature="e#520#521#0" expanded="false" />
+            <element signature="e#547#548#0" expanded="false" />
+            <element signature="e#587#588#0" expanded="false" />
+            <element signature="e#619#620#0" expanded="false" />
+            <element signature="e#652#653#0" expanded="false" />
+            <element signature="e#684#685#0" expanded="false" />
+            <element signature="e#731#732#0" expanded="false" />
+            <element signature="e#773#774#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_92/src.zip!/java/io/ObjectInputStream.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="5457">
+          <caret line="362" column="24" selection-start-line="362" selection-start-column="24" selection-end-line="362" selection-end-column="24" />
+          <folding>
+            <element signature="e#0#137416#0" expanded="false" />
+            <element signature="imports" expanded="false" />
+            <element signature="e#53849#54719#0" expanded="false" />
+            <element signature="e#54718#54719#0" expanded="false" />
+            <element signature="e#83455#83456#0" expanded="false" />
+            <element signature="e#83515#83516#0" expanded="false" />
+            <element signature="e#84406#84407#0" expanded="false" />
+            <element signature="e#84441#84442#0" expanded="false" />
+            <element signature="e#90570#90847#0" expanded="false" />
+            <element signature="e#90846#90847#0" expanded="false" />
+            <element signature="e#91207#91208#0" expanded="false" />
+            <element signature="e#91242#91243#0" expanded="false" />
+            <element signature="e#91660#91661#0" expanded="false" />
+            <element signature="e#91696#91697#0" expanded="false" />
+            <element signature="e#96831#96832#0" expanded="false" />
+            <element signature="e#96869#96870#0" expanded="false" />
+            <element signature="e#134238#134239#0" expanded="false" />
+            <element signature="e#134273#134274#0" expanded="false" />
+            <element signature="e#135718#135719#0" expanded="false" />
+            <element signature="e#135761#135762#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_92/src.zip!/java/net/URLClassLoader.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="5542">
+          <caret line="380" column="0" selection-start-line="380" selection-start-column="0" selection-end-line="380" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#31067#0" expanded="false" />
+            <element signature="imports" expanded="false" />
+            <element signature="e#12207#12208#0" expanded="false" />
+            <element signature="e#12238#12239#0" expanded="false" />
+            <element signature="e#12582#12583#0" expanded="false" />
+            <element signature="e#12618#12619#0" expanded="false" />
+            <element signature="e#21775#21776#0" expanded="false" />
+            <element signature="e#21850#21851#0" expanded="false" />
+            <element signature="e#23561#23562#0" expanded="false" />
+            <element signature="e#23606#23607#0" expanded="false" />
+            <element signature="e#28480#28481#0" expanded="false" />
+            <element signature="e#28571#28572#0" expanded="false" />
+            <element signature="e#29546#29547#0" expanded="false" />
+            <element signature="e#29629#29630#0" expanded="false" />
+            <element signature="e#29851#29852#0" expanded="false" />
+            <element signature="e#29903#29904#0" expanded="false" />
+            <element signature="e#29972#29973#0" expanded="false" />
+            <element signature="e#30050#30051#0" expanded="false" />
+            <element signature="e#30481#30482#0" expanded="false" />
+            <element signature="e#30513#30514#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/com/broxhouse/h5api/PopulateDatabase.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="5899">
+          <caret line="366" column="0" selection-start-line="366" selection-start-column="0" selection-end-line="366" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="false" />
+            <element signature="e#10225#10655#0" expanded="false" />
+            <element signature="e#10654#10655#0" expanded="false" />
+            <element signature="e#18252#18296#0" expanded="false" />
+            <element signature="e#23568#23827#0" expanded="false" />
+            <element signature="e#23826#23827#0" expanded="false" />
+            <element signature="e#23858#24116#0" expanded="false" />
+            <element signature="e#24115#24116#0" expanded="false" />
+            <element signature="e#28607#28680#0" expanded="false" />
+            <element signature="e#32055#33079#0" expanded="false" />
+            <element signature="e#33078#33079#0" expanded="false" />
+            <element signature="e#34404#35277#0" expanded="false" />
+            <element signature="e#35276#35277#0" expanded="false" />
+            <element signature="e#36747#38068#0" expanded="false" />
+            <element signature="e#38067#38068#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="19" column="37" selection-start-line="19" selection-start-column="37" selection-end-line="19" selection-end-column="37" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/broxhouse/h5api/models/stats/matchevents/GameEvent.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="374">
+          <caret line="27" column="59" selection-start-line="27" selection-start-column="59" selection-end-line="27" selection-end-column="59" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/broxhouse/h5api/models/stats/reports/Resource.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="158">
+          <caret line="42" column="18" selection-start-line="42" selection-start-column="18" selection-end-line="42" selection-end-column="18" />
+          <folding>
+            <element signature="e#880#881#0" expanded="true" />
+            <element signature="e#913#914#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/com/broxhouse/h5api/Database.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-625">
+        <state relative-caret-position="761">
           <caret line="1075" column="59" selection-start-line="1075" selection-start-column="59" selection-end-line="1075" selection-end-column="59" />
           <folding>
-            <element signature="imports" expanded="true" />
             <element signature="e#1868#1904#0" expanded="false" />
             <element signature="e#14159#14253#0" expanded="false" />
             <element signature="method#writeCarnageReportsToDB#0;class#Database#0" expanded="false" />
@@ -2068,22 +1954,21 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/com/broxhouse/h5api/HaloApi.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="43" column="45" selection-start-line="43" selection-start-column="45" selection-end-line="43" selection-end-column="45" />
+        <state relative-caret-position="748">
+          <caret line="204" column="26" selection-start-line="204" selection-start-column="26" selection-end-line="204" selection-end-column="26" />
           <folding>
             <element signature="method#HaloApi#0;class#HaloApi#0" expanded="false" />
             <element signature="method#api#0;class#HaloApi#0" expanded="false" />
-            <element signature="e#4038#4068#0" expanded="false" />
-            <element signature="e#5644#5688#0" expanded="false" />
-            <element signature="e#5949#5972#0" expanded="false" />
+            <element signature="e#4073#4103#0" expanded="false" />
+            <element signature="e#5679#5723#0" expanded="false" />
+            <element signature="e#5984#6007#0" expanded="false" />
             <element signature="method#printData#0;class#HaloApi#0" expanded="false" />
-            <element signature="e#6689#6734#0" expanded="false" />
+            <element signature="e#6399#6444#0" expanded="false" />
             <element signature="method#test#0;class#HaloApi#0" expanded="false" />
-            <element signature="e#7619#7674#0" expanded="false" />
-            <element signature="e#8360#8404#0" expanded="false" />
+            <element signature="e#7329#7384#0" expanded="false" />
             <element signature="method#cacheThatOneSpartanCompany#0;class#HaloApi#0" expanded="false" />
             <element signature="method#clearSparanCompanyTables#0;class#HaloApi#0" expanded="false" />
-            <element signature="e#10700#10760#0" expanded="false" />
+            <element signature="e#11100#11160#0" expanded="false" />
             <element signature="method#getTotalDuration#0;class#HaloApi#0" expanded="false" />
             <element signature="method#getHaloReleaseTime#0;class#HaloApi#0" expanded="false" />
             <element signature="method#getFileName#0;class#HaloApi#0" expanded="false" />
@@ -2096,36 +1981,29 @@
             <element signature="method#listMedals#0;class#HaloApi#0" expanded="false" />
             <element signature="method#listWeapons#0;class#HaloApi#0" expanded="false" />
             <element signature="method#listMaps#0;class#HaloApi#0" expanded="false" />
-            <element signature="method#listMapVariants#0;class#HaloApi#0" expanded="false" />
             <element signature="method#listCustomMapVariantsByPlayer#0;class#HaloApi#0" expanded="false" />
             <element signature="method#listGameVariant#0;class#HaloApi#0" expanded="false" />
             <element signature="method#listImpulses#0;class#HaloApi#0" expanded="false" />
-            <element signature="method#testJSONWeapons#0;class#HaloApi#0" expanded="false" />
-            <element signature="method#testJSONMedals#0;class#HaloApi#0" expanded="false" />
-            <element signature="method#getMedals#0;class#HaloApi#0" expanded="false" />
             <element signature="method#getMaps#0;class#HaloApi#0" expanded="false" />
             <element signature="method#getWeapons#0;class#HaloApi#0" expanded="false" />
-            <element signature="e#18475#18565#0" expanded="false" />
+            <element signature="e#18274#18364#0" expanded="false" />
             <element signature="method#getPlayers#0;class#HaloApi#0" expanded="false" />
-            <element signature="e#19056#19139#0" expanded="false" />
+            <element signature="e#18855#18938#0" expanded="false" />
             <element signature="method#getAllMatches#0;class#HaloApi#0" expanded="false" />
-            <element signature="e#20337#20425#0" expanded="false" />
-            <element signature="method#getPlayerCarnageReports#0;class#HaloApi#0" expanded="false" />
-            <element signature="e#20949#21044#0" expanded="false" />
-            <element signature="e#21483#21578#0" expanded="false" />
+            <element signature="e#20210#20298#0" expanded="false" />
+            <element signature="e#20822#20917#0" expanded="false" />
+            <element signature="e#21356#21451#0" expanded="false" />
             <element signature="method#getUniqueResources#0;class#HaloApi#0" expanded="false" />
-            <element signature="method#getMapVariant#0;class#HaloApi#0" expanded="false" />
             <element signature="method#getGameVariant#0;class#HaloApi#0" expanded="false" />
             <element signature="method#getMapOwner#0;class#HaloApi#0" expanded="false" />
             <element signature="method#getCustomMapVariantsByPlayer#0;class#HaloApi#0" expanded="false" />
-            <element signature="e#25201#25300#0" expanded="false" />
-            <element signature="e#25730#25828#0" expanded="false" />
+            <element signature="e#25074#25173#0" expanded="false" />
+            <element signature="e#25603#25701#0" expanded="false" />
             <element signature="method#getMedalName#0;class#HaloApi#0" expanded="false" />
             <element signature="method#getMedalDescription#0;class#HaloApi#0" expanded="false" />
             <element signature="method#getMedalDifficulty#0;class#HaloApi#0" expanded="false" />
             <element signature="method#getMedalID#0;class#HaloApi#0" expanded="false" />
             <element signature="method#getWeaponName#0;class#HaloApi#0" expanded="false" />
-            <element signature="method#getMapVariantName#0;class#HaloApi#0" expanded="false" />
             <element signature="method#getTeamID#0;class#HaloApi#0" expanded="false" />
             <element signature="method#getTeamScore#0;class#HaloApi#0" expanded="false" />
             <element signature="method#getBaseStats#0;class#HaloApi#0" expanded="false" />
@@ -2140,27 +2018,25 @@
             <element signature="method#totalDeaths#0;class#HaloApi#0" expanded="false" />
             <element signature="method#getKD#0;class#HaloApi#0" expanded="false" />
             <element signature="method#getWeaponStats#0;class#HaloApi#0" expanded="false" />
-            <element signature="e#48692#48754#0" expanded="false" />
             <element signature="method#getTotalTimePlayedAllModes#0;class#HaloApi#0" expanded="false" />
-            <element signature="method#testBaseResults#0;class#HaloApi#0" expanded="false" />
             <element signature="method#comparePlayers#0;class#HaloApi#0" expanded="false" />
             <element signature="method#favoriteMap#0;class#HaloApi#0" expanded="false" />
-            <element signature="e#66175#66228#0" expanded="false" />
-            <element signature="e#67461#67510#0" expanded="false" />
+            <element signature="e#67678#67727#0" expanded="false" />
             <element signature="method#getTeamMates#0;class#HaloApi#0" expanded="false" />
-            <element signature="e#73869#73948#0" expanded="false" />
-            <element signature="e#74135#74260#0" expanded="false" />
+            <element signature="e#74088#74167#0" expanded="false" />
+            <element signature="e#74354#74479#0" expanded="false" />
             <element signature="method#favoriteTeamMate#0;class#HaloApi#0" expanded="false" />
-            <element signature="e#78808#78906#0" expanded="false" />
+            <element signature="e#79027#79125#0" expanded="false" />
             <element signature="method#getEnemyKills#0;class#HaloApi#0" expanded="false" />
             <element signature="method#getEnemiesKilled#0;class#HaloApi#0" expanded="false" />
             <element signature="method#getMatchDetails#0;class#HaloApi#0" expanded="false" />
-            <element signature="e#89986#90102#0" expanded="false" />
-            <marker date="1477345889381" expanded="false" signature="1447:3047" ph="..." />
-            <marker date="1477345889381" expanded="false" signature="4378:4504" ph="//..." />
-            <marker date="1477345889381" expanded="true" signature="5123:5471" ph="..." />
-            <marker date="1477345889381" expanded="true" signature="6216:6536" ph="..." />
-            <marker date="1477345889381" expanded="false" signature="36598:38677" ph="..." />
+            <element signature="e#90204#90320#0" expanded="false" />
+            <element signature="e#95168#95238#0" expanded="false" />
+            <marker date="1483466171160" expanded="false" signature="1482:3082" ph="..." />
+            <marker date="1483466171160" expanded="false" signature="4413:4539" ph="//..." />
+            <marker date="1483466171160" expanded="true" signature="5158:5506" ph="..." />
+            <marker date="1483466171160" expanded="true" signature="6243:6246" ph="..." />
+            <marker date="1483466171160" expanded="false" signature="36471:38550" ph="..." />
           </folding>
         </state>
       </provider>
