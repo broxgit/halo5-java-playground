@@ -7,30 +7,6 @@ import com.google.gson.annotations.SerializedName;
 import java.io.Serializable;
 
 public class Medal implements Serializable {
-//    @Override
-//    public String getContentId() {
-//        return null;
-//    }
-//
-//    @Override
-//    public String getLargeIconImageUrl() {
-//        return null;
-//    }
-//
-//    @Override
-//    public String getSmallIconImageUrl() {
-//        return null;
-//    }
-//
-//    @Override
-//    public boolean isUsableByPlayer() {
-//        return false;
-//    }
-//
-//    @Override
-//    public String getType() {
-//        return null;
-//    }
 
     /**
      * A localized name for the medal, suitable for display to users.
@@ -77,6 +53,9 @@ public class Medal implements Serializable {
      */
     @SerializedName("contentId")
     private String contentId;
+
+    private long time;
+    private String matchId;
 
     public String getName() {
         return name;
@@ -133,5 +112,21 @@ public class Medal implements Serializable {
 
     public void setContentId(String contentId) {
         this.contentId = contentId;
+    }
+
+    public long getTime() {
+        return time;
+    }
+
+    public void setTime(long time) {
+        this.time = time;
+    }
+
+    public String getMatchId() {
+        return matchId;
+    }
+
+    public void setMatchId(String matchId) {
+        this.matchId = matchId;
     }
 }

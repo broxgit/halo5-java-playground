@@ -19,6 +19,12 @@ import org.apache.http.client.utils.URIBuilder;
 import org.apache.http.impl.client.HttpClients;
 import org.apache.http.util.EntityUtils;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.text.DateFormat;
 import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
@@ -42,8 +48,8 @@ public class HaloApi {
 
     static Logger log = Logger.getLogger("Logging");
 
-    public static String PLAYER_UF = "That Brock Guy";
-    public final String PLAYER = formatString(PLAYER_UF);
+    public static String PLAYER_UF = "That Sturt Guy";
+    public static String PLAYER;
     private static final String TOKEN = "293bb4a86da743bdb983b97efa5bb265";
     private static final String BASE_URL = "https://www.haloapi.com/";
     private static final String STATS_URL = "https://www.haloapi.com/stats/h5/";
@@ -70,78 +76,53 @@ public class HaloApi {
     static Gson gson = new Gson();
 
     public HaloApi() {
-        System.setProperty("java.util.logging.SimpleFormatter.format",
-                "%5$s %n");
+        System.setProperty("java.util.logging.SimpleFormatter.format", "%5$s %n");
     }
 
-    private static String api(String url) throws Exception
-    {
+    private static String api(String url) throws Exception {
         String getResponse = null;
+        StringBuilder sb = new StringBuilder();
         boolean callSuccessful = false;
-        int i = 0;
         String[] token = new String[]{"ad00d31dde2c44a8b6f07c05621699d9", "a2cb028867254a79b5783c3786d19bfe", "293bb4a86da743bdb983b97efa5bb265"};
         while (!callSuccessful) {
-//        log.info(url);
-            HttpClient httpclient = HttpClients.createDefault();
+            try {
+            URL urlObj = new URL(url);
+            HttpURLConnection conn = (HttpURLConnection) urlObj.openConnection();
+            conn.setRequestMethod("GET");
+            conn.setRequestProperty("Accept", "application/json");
+            conn.setRequestProperty("Ocp-Apim-Subscription-Key", token[0]);
 
-            URIBuilder builder = new URIBuilder(url);
-
-            URI uri = builder.build();
-            HttpGet request = new HttpGet(uri);
-//            if (i == 0)
-                request.setHeader("Ocp-Apim-Subscription-Key", token[0]);
-//            else if (i == 1)
-//                request.setHeader("Ocp-Apim-Subscription-Key", token[1]);
-//            else if (i == 2)
-//                request.setHeader("Ocp-Apim-Subscription-Key", token[2]);
-//            else {
-//                request.setHeader("Ocp-Apim-Subscription-Key", token[0]);
-//            }
-
-            // Request body
-//            StringEntity reqEntity = new StringEntity("{body}");
-//            request.setEntity(reqEntity);
-
-            HttpResponse response = httpclient.execute(request);
-            int statusCode = response.getStatusLine().getStatusCode();
-            HttpEntity entity = response.getEntity();
-//            log.info(statusCode + "");
-            if (entity != null) {
-                getResponse = EntityUtils.toString(entity);
-                if (statusCode == 200) {
-                    callSuccessful = true;
-                }
-                if (statusCode == 404 || statusCode == 503){
-//                    log.info("404 status code " + url);
-                    return "{}";
-//                            "{" +
-//                            "  \"Results\": []," +
-//                            "  \"Start\": 0," +
-//                            "  \"Count\": 100," +
-//                            "  \"ResultCount\": 0," +
-//                            "  \"TotalCount\": 0," +
-//                            "  \"Links\": {}" +
-//                            "}";
-                }
-                else if (statusCode != 200 && statusCode != 429)
-                    log.info(getResponse);
-                else if (statusCode == 429) {
-//                    if (i >= 0 && i < 3) {
-//                        log.info(token[i]);
-                        String temp = getResponse.replaceAll("\\D+", "").replaceAll("429", "");
-                        int waitTime = Integer.parseInt(temp);
-                        Thread.sleep(waitTime * 1000);
-//                    }
-//                    log.info("Rate limit exceeded, waiting " + waitTime + " seconds before trying again.");
-//                    i++;
-                }
-            } else {
-                log.info("null");
-                return "{}";
+            if (conn.getResponseCode() != 200) {
+                throw new RuntimeException("Failed : HTTP error code : "
+                        + conn.getResponseCode());
             }
+
+            BufferedReader br = new BufferedReader(new InputStreamReader(
+                    (conn.getInputStream())));
+
+            while ((getResponse = br.readLine()) != null){
+                sb.append(getResponse);
+            }
+
+            conn.disconnect();
+
+        } catch (MalformedURLException e) {
+
+            e.printStackTrace();
+
+        } catch (IOException e) {
+
+            e.printStackTrace();
+
         }
-//        log.info(getResponse.length() + "");
+
+    }
+        log.info(getResponse);
         return getResponse;
+    }
+
+    public void testDocApi() throws Exception {
+        System.out.println(api("http://10.204.131.48:8080/doc/service.json"));
     }
 
     public void printData() throws Exception{
@@ -167,16 +148,51 @@ public class HaloApi {
 //        log.info("" + matches.length);
 //        CarnageReport[] carnageReports = getAllCarnageReports(ARENA);
         MatchEvents[] matchEventsB = getPlayerMatchEvents(ARENA, "That Brock Guy");
-        MatchEvents[] matchEventsA = getPlayerMatchEvents(ARENA, "That Ax Guy");
-        MatchEvents[] matchEventsS = getPlayerMatchEvents(ARENA, "That Sturt Guy");
-        MatchEvents[] matchEventsT = getPlayerMatchEvents(ARENA, "That Trev Guy");
-        MatchEvents[] matchEventsN = getPlayerMatchEvents(ARENA, "That Noah Guy");
+//        MatchEvents[] matchEventsA = getPlayerMatchEvents(ARENA, "That Ax Guy");
+//        MatchEvents[] matchEventsS = getPlayerMatchEvents(ARENA, "That Sturt Guy");
+//        MatchEvents[] matchEventsT = getPlayerMatchEvents(ARENA, "That Trev Guy");
+//        MatchEvents[] matchEventsN = getPlayerMatchEvents(ARENA, "That Noah Guy");
+
+//        log.info(fastestSpecificMedalEarned(matchEventsB, "That Brock Guy", "Top Gun"));
+//        log.info(fastestSpecificMedalEarned(matchEventsB, "That Brock Guy", "Killing Spree"));
+//        log.info(fastestSpecificMedalEarned(matchEventsB, "That Brock Guy", "Killing Frenzy"));
+//        log.info(fastestSpecificMedalEarned(matchEventsB, "That Brock Guy", "Overkill") + "\n");
+        fastestMedalWasEarned(matchEventsB, "That Brock Guy");
+//
+//        log.info(fastestSpecificMedalEarned(matchEventsA, "That Ax Guy", "Top Gun"));
+//        log.info(fastestSpecificMedalEarned(matchEventsB, "That Ax Guy", "Killing Spree"));
+//        log.info(fastestSpecificMedalEarned(matchEventsA, "That Ax Guy", "Killing Frenzy"));
+//        log.info(fastestSpecificMedalEarned(matchEventsA, "That Ax Guy", "Overkill") + "\n");
+//        fastestMedalWasEarned(matchEventsA, "That Ax Guy");
+//
+//        log.info(fastestSpecificMedalEarned(matchEventsS, "That Sturt Guy", "Top Gun"));
+//        log.info(fastestSpecificMedalEarned(matchEventsB, "That Sturt Guy", "Killing Spree"));
+//        log.info(fastestSpecificMedalEarned(matchEventsS, "That Sturt Guy", "Killing Frenzy"));
+//        log.info(fastestSpecificMedalEarned(matchEventsS, "That Sturt Guy", "Overkill") + "\n");
+//        fastestMedalWasEarned(matchEventsS, "That Sturt Guy");
+//
+//        log.info(fastestSpecificMedalEarned(matchEventsT, "That Trev Guy", "Top Gun"));
+//        log.info(fastestSpecificMedalEarned(matchEventsB, "That Trev Guy", "Killing Spree"));
+//        log.info(fastestSpecificMedalEarned(matchEventsT, "That Trev Guy", "Killing Frenzy"));
+//        log.info(fastestSpecificMedalEarned(matchEventsT, "That Trev Guy", "Overkill") + "\n");
+//        fastestMedalWasEarned(matchEventsT, "That Trev Guy");
+//
+//        log.info(fastestSpecificMedalEarned(matchEventsN, "That Noah Guy", "Top Gun"));
+//        log.info(fastestSpecificMedalEarned(matchEventsB, "That Noah Guy", "Killing Spree"));
+//        log.info(fastestSpecificMedalEarned(matchEventsN, "That Noah Guy", "Killing Frenzy"));
+//        fastestMedalWasEarned(matchEventsN, "That Noah Guy");
+
+
+//        log.info(fastestSpecificMedalEarned(matchEventsN, "That Noah Guy", "Overkill") + "\n");
+//        log.info(fastestMedalWasEarned(matchEventsB, "That Brock Guy"));
+
+
 //        log.info(getBetrayals(ARENA, matchEvents, "", true));
-        log.info(getBetrayals(matchEventsB, "That Brock Guy", true));
-        log.info(getBetrayals(matchEventsA, "That Ax Guy", true));
-        log.info(getBetrayals(matchEventsS, "That Sturt Guy", true));
-        log.info(getBetrayals(matchEventsT, "That Trev Guy", true));
-        log.info(getBetrayals(matchEventsN, "That Noah Guy", true));
+//        log.info(getBetrayals(matchEventsB, "That Brock Guy", true));
+//        log.info(getBetrayals(matchEventsA, "That Ax Guy", true));
+//        log.info(getBetrayals(matchEventsS, "That Sturt Guy", true));
+//        log.info(getBetrayals(matchEventsT, "That Trev Guy", true));
+//        log.info(getBetrayals(matchEventsN, "That Noah Guy", true));
 //        log.info(getBetrayals(ARENA, matchEvents, "That Ax Guy"));
 //        log.info(getBetrayals(ARENA, matchEvents, "That Noah Guy"));
 ////        log.info(getBetrayals(ARENA, matchEvents, "That Trev Guy"));
@@ -188,10 +204,17 @@ public class HaloApi {
     }
 
 
+
+
     public static void main(String[] args) throws Exception {
         try{
             long start = System.currentTimeMillis()/1000;
             HaloApi hapi = new HaloApi();
+            hapi.cacheThatOneSpartanCompany();
+//            hapi.testDocApi();
+
+//            PLAYER = hapi.formatString(PLAYER_UF);
+//            db.player = PLAYER_UF.replaceAll("\\s+", "").toUpperCase();
 //            hapi.printData();
 //            hapi.test();
 //            log.info(hapi.getBetrayals(ARENA, "That Ax Guy"));
@@ -200,16 +223,37 @@ public class HaloApi {
 //            hapi.testPlayerMatches(CUSTOM);
 //            pd.cacheMatches(ARENA, true);
 //            pd.cachePlayerCarnageThreadTest(ARENA);
-            hapi.testPlayerMatches(ARENA);
+//            pd.cachePlayerMatchEventsThreadTest(ARENA);
+//            pd.cachePlayerCarnage(ARENA);
+//            hapi.test();
+//            MatchEvents[] matchEvents = hapi.getPlayerMatchEvents(ARENA, PLAYER_UF);
+//            Match[] playerMatches = hapi.getPlayerMatches(ARENA);
+//            pd.cacheMatchEvents(ARENA, true, matchEvents, playerMatches);
+//            matchEvents = hapi.getPlayerMatchEvents(ARENA, PLAYER_UF);
+//            log.info(hapi.fastestSpecificMedalEarned(matchEvents, PLAYER_UF, "Top Gun"));
+//            hapi.testPlayerMatches(ARENA, 0);
 //            hapi.top5Stats(ARENA);
-//            hapi.clearSparanCompanyTables();
-//            hapi.comparePlayers("That Brock Guy", "That Ax Guy", ARENA);
             long endTime = System.currentTimeMillis()/1000;
             long duration = (endTime - start);
             log.info("\n\nduration:" + duration);
         }catch (Exception e){
             e.printStackTrace();
         }
+    }
+
+    public void testJSONStuff() throws Exception {
+        String test = arenaStats(formatString("That Brock Guy"));
+    }
+
+    public void runAppInCommandLine() throws Exception {
+        Scanner reader = new Scanner(System.in);
+        System.out.println("What is your gamertag?");
+        String gamertag = reader.nextLine();
+        PLAYER_UF = gamertag;
+        PLAYER = formatString(PLAYER_UF);
+        db.player = PLAYER;
+        MatchEvents[] matchEvents = getPlayerMatchEvents(ARENA, gamertag);
+        log.info(fastestSpecificMedalEarned(matchEvents, gamertag, "Top Gun"));
     }
 
     public void cacheThatOneSpartanCompany() throws Exception {
@@ -469,17 +513,22 @@ public class HaloApi {
         return (Match[]) Database.getMetadataFromDB(dataType.MATCHES, true, gameType);
     }
 
+    public Match[] getSomePLayerMatches(Enum gameType, int numberOfRecentMatches, double offset) throws Exception {
+        if (Database.getMetadataFromDB(dataType.MATCHES, true, gameType) == null)
+            pd.cacheMatches(gameType, true);
+        return (Match[]) db.getSomeMatchesFromDB((int) offset, numberOfRecentMatches, true, gameType);
+    }
+
     public MatchEvents[] getPlayerMatchEvents(Enum gameType, String player) throws Exception {
-        db.player = player.replaceAll("\\s+", "").toUpperCase();
-        String[] metaData = db.getMetadataTextFromDB(dataType.MATCHEVENTS, true, gameType, true);
-        MatchEvents[] metaDataA = new MatchEvents[metaData.length];
-        for (int i = 0; i < metaData.length; i++){
-//            if (! metaData[i].endsWith("}"))
-//                continue;
-//            log.info(metaData[i].length() + "");
-            metaDataA[i] = gson.fromJson(metaData[i], MatchEvents.class);
+        Database.player = player.replaceAll("\\s+", "").toUpperCase();
+        if (Database.getMetadataTextFromDB(dataType.MATCHEVENTS, true, gameType, true) == null)
+            return null;
+        String[] matchEvents = Database.getMetadataTextFromDB(dataType.MATCHEVENTS, true, gameType, true);
+        MatchEvents[] events = new MatchEvents[matchEvents.length];
+        for (int i = 0; i < events.length; i++){
+            events[i] = gson.fromJson(matchEvents[i], MatchEvents.class);
         }
-        return metaDataA;
+        return events;
     }
 
     public Match[] getAllMatches(Enum gameType) throws Exception{
@@ -1152,6 +1201,129 @@ public class HaloApi {
             betrayals += "\nThe Spartan that " + player + " has betrayed the most is: " + playersByKillCount.get(0).getName() + " with a total of " + playersByKillCount.get(0).getKillCount() + " betrayals!";
         }
         return betrayals;
+    }
+
+    public void fastestMedalWasEarned(MatchEvents[] matchEvents, String player) throws Exception {
+        ArrayList<Long> times = new ArrayList<>();
+        String matchID = null;
+        long fastestTime = 0;
+        Medal[] medals = getMedals();
+        ArrayList<Medal> medalList = new ArrayList<>();
+        for (Medal medal : medals) {
+            medalList.add(medal);
+        }
+        Collections.sort(medalList, Comparator.comparing(Medal::getName));
+        for (Medal medal : medalList){
+            String medalName = medal.getName();
+            long topGunID = medal.getId();
+            fastestTime = 10000;
+            for (int i = 0; i < matchEvents.length; i++) {
+                long actualStartTime = 0;
+                long time = 0;
+                if (matchEvents[i] == null)
+                    continue;
+                if (matchEvents[i].getGameEvents().size() < 2)
+                    continue;
+                for (int k = 0; k < matchEvents[i].getGameEvents().size(); k++){
+                    GameEvent event = matchEvents[i].getGameEvents().get(k);
+                    if (event.getEventName().contains("RoundStart")){
+                        GameEvent event2 = matchEvents[i].getGameEvents().get(k + 1);
+                        if (event2.getEventName().contains("WeaponPickup") || event2.getEventName().contains("PlayerSpawn")) {
+                            actualStartTime = Duration.parse(matchEvents[i].getGameEvents().get(k + 1).getTimeSinceStart()).getSeconds();
+                        }
+                    }
+                    if (event.getMedalId() == null)
+                        continue;
+                    if (event.getMedalId() == topGunID && event.getPlayer().getGamertag().equalsIgnoreCase(player)) {
+                        time = Duration.parse(event.getTimeSinceStart()).getSeconds() - actualStartTime;
+                        times.add(time);
+                        if (time < fastestTime) {
+                            fastestTime = time;
+                            medal.setTime(time);
+                            medal.setMatchId(matchEvents[i].getMatchID());
+                        }
+                    }
+                }
+            }
+            if (fastestTime == 10000)
+                continue;
+        }
+        Collections.sort(medalList, Comparator.comparingInt(o -> (int) o.getTime()));
+        for (Medal medal: medalList){
+            if (medal.getTime() == 0)
+                continue;
+            log.info("The quickest " + player + " has ever achieved the " + medal.getName() + " medal was in" + getTotalDuration(medal.getTime()) + " seconds!  Match ID: (" + medal.getMatchId() + ")");
+        }
+    }
+
+    public String fastestSpecificMedalEarned(MatchEvents[] matchEvents, String player, String medalName) throws Exception {
+        long fastestTime = 10000;
+        String matchID = null;
+        String date = null;
+        long time = 0;
+        ArrayList<Long> times = new ArrayList<>();
+        long topGunID = getMedalID(medalName, getMedals());
+        for (int i = 0; i < matchEvents.length; i++){
+            long actualStartTime = 0;
+            if (matchEvents[i] == null)
+                continue;
+            if (matchEvents[i].getGameEvents().size() < 2)
+                continue;
+            for (int k = 0; k < matchEvents[i].getGameEvents().size(); k++){
+                GameEvent event = matchEvents[i].getGameEvents().get(k);
+                if (event.getEventName().contains("RoundStart")){
+                    GameEvent event2 = matchEvents[i].getGameEvents().get(k + 1);
+                    if (event2.getEventName().contains("WeaponPickup") || event2.getEventName().contains("PlayerSpawn")) {
+                        actualStartTime = Duration.parse(matchEvents[i].getGameEvents().get(k + 1).getTimeSinceStart()).getSeconds();
+                    }
+                }
+                if (event.getMedalId() == null)
+                    continue;
+                if (event.getMedalId() == topGunID && event.getPlayer().getGamertag().equalsIgnoreCase(player)){
+                    time = Duration.parse(event.getTimeSinceStart()).getSeconds() - actualStartTime;
+                    times.add(time);
+                    if (time < fastestTime) {
+                        fastestTime = time;
+                        matchID = matchEvents[i].getMatchID();
+                    }
+                }
+            }
+        }
+        return "The quickest " + player + " has ever achieved the " + medalName + " medal was in" + getTotalDuration(fastestTime) + " seconds!";
+    }
+
+    public void mostMedalWasEarned(MatchEvents[] matchEvents, String player) throws Exception {
+        ArrayList<Long> times = new ArrayList<>();
+        String matchID = null;
+        long fastestTime = 0;
+        Medal[] medals = getMedals();
+        for (Medal medal : medals) {
+            String medalName = medal.getName();
+            long topGunID = medal.getId();
+            fastestTime = 10000;
+            for (int i = 0; i < matchEvents.length; i++) {
+                long time = 0;
+                if (matchEvents[i] == null)
+                    continue;
+                if (matchEvents[i].getGameEvents().size() < 1)
+                    continue;
+                for (GameEvent event : matchEvents[i].getGameEvents()) {
+                    if (event.getMedalId() == null)
+                        continue;
+                    if (event.getMedalId() == topGunID && event.getPlayer().getGamertag().equalsIgnoreCase(player)) {
+                        time = Duration.parse(event.getTimeSinceStart()).getSeconds();
+                        times.add(time);
+                        if (time < fastestTime) {
+                            fastestTime = time;
+                            matchID = matchEvents[i].getMatchID();
+                        }
+                    }
+                }
+            }
+            if (fastestTime == 10000)
+                continue;
+            log.info("The quickest that " + player + " has ever achieved the " + medalName + " medal was in " + getTotalDuration(fastestTime) + " seconds!");
+        }
     }
 
     public long getTotalTimePlayedAllModes() throws Exception {
@@ -1842,12 +2014,10 @@ public class HaloApi {
         return weaponsUsed + enemiesKilled;
     }
 
-    public void testPlayerMatches(Enum gameType) throws Exception {
+    public void testPlayerMatches(Enum gameType, int numberOfRecentMatches) throws Exception {
         DateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         GameVariant[] gameVariantsString =  getArenaGameVariants();
         Date completedDate = null;
-        double totalGames = totalGames(gameType, PLAYER_UF);
-        Medal[] medals = getMedals();
         Map[] maps = getMaps();
         double kdRatio = 0;
         double averageKills = 0;
@@ -1860,10 +2030,17 @@ public class HaloApi {
         String bestMatchID = null;
         String worstMatchID = null;
         String worstGameScore = null;
+        double totalGames = totalGames(gameType, PLAYER_UF);
         BaseStats stats = getBaseStats(gameType, PLAYER_UF);
         int positiveCount = 0;
-        Match[] matches = getPlayerMatches(gameType);
+        Match[] matches;
+        if (numberOfRecentMatches > 0)
+            matches = getSomePLayerMatches(gameType, numberOfRecentMatches, (totalGames - numberOfRecentMatches));
+        else
+            matches = getPlayerMatches(gameType);
+        totalGames = matches.length;
         for (int i = 0; i < matches.length; i++){
+//            log.info("" + matches[i].getMatchCompletedDate().getDate());
             double totalKills = matches[i].getPlayers().get(0).getTotalKills();
             double totalDeaths = matches[i].getPlayers().get(0).getTotalDeaths();
             double currentKD = 0;
@@ -1935,9 +2112,9 @@ public class HaloApi {
         double percentagePositive = (positiveCount/totalGames);
         percentagePositive = (double)Math.round(percentagePositive *100d);
         log.info("Your total number of kills: " + (int)averageKills + " Your total number of deaths: " + (int)averageDeaths);
-        averageKills = Math.round((averageKills/totalGames)*100d)/100d;
-        averageDeaths = Math.round((averageDeaths/totalGames)*100d)/100d;
-        log.info("Your average K/D spread is: " + getKD(stats.getTotalKills(), stats.getTotalDeaths()) + ". With an average of " + averageKills + " kills and " + averageDeaths + " deaths per game.");
+        double averageKills1 = Math.round((averageKills/totalGames)*100d)/100d;
+        double averageDeaths1 = Math.round((averageDeaths/totalGames)*100d)/100d;
+        log.info("Your average K/D spread is: " + getKD(averageKills, averageDeaths) + ". " + "With an average of " + averageKills1 + " kills and " + averageDeaths1 + " deaths per game.");
         log.info(getAverageLifeSpan(gameType));
         log.info(getFavoriteTeamColor(gameType, false));
         double dnfPercentage = matchesDNF/totalGames;
@@ -1994,5 +2171,10 @@ public class HaloApi {
         log.info(testWeaponKills(gameType, true));
         log.info(getFavoriteTeamColor(gameType, true));
         log.info(getBetrayals(getPlayerMatchEvents(gameType, PLAYER_UF), true));
+    }
+
+    public void customGamesComparison(Enum gameType, String comparePlayer) throws Exception {
+        Match[] playerMatches = getPlayerMatches(gameType);
+//        Match[] cPlayerMatches = getPlayerMat;
     }
 }

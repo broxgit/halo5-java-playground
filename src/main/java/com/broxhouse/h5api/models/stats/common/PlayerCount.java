@@ -7,6 +7,7 @@ public class PlayerCount {
 
     private String name;
     private int gameCount = 0;
+    private int killCount = 0;
 
     public int getKillCount() {
         return killCount;
@@ -15,8 +16,6 @@ public class PlayerCount {
     public void setKillCount(int killCount) {
         this.killCount = killCount;
     }
-
-    private int killCount = 0;
 
     public PlayerCount(String name, int gameCount){
         this.name = name;

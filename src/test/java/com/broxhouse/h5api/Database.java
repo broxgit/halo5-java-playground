@@ -15,6 +15,7 @@ import com.google.gson.Gson;
 import java.io.ByteArrayInputStream;
 import java.io.EOFException;
 import java.io.ObjectInputStream;
+import java.io.StreamCorruptedException;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -44,7 +45,7 @@ public class Database {
 
     static PopulateDatabase pd = new PopulateDatabase();
 
-    static String player = haloApi.PLAYER_UF.replaceAll("\\s+", "").toUpperCase();
+    static String player;
 
     public Database(Connection conn, Statement stmt, ResultSet rs) {
         this.conn = conn;
@@ -53,8 +54,7 @@ public class Database {
     }
 
     public Database() {
-        System.setProperty("java.util.logging.SimpleFormatter.format",
-                "%5$s %n");
+        System.setProperty("java.util.logging.SimpleFormatter.format", "%5$s %n");
     }
 
 //    static Connection conn = null;
@@ -803,7 +803,7 @@ public class Database {
                             " ('" + carnageReports[i].getMatchId() +  "', " +
                             "?)");
             pstmt.setObject(1, carnageReports[i]);
-            System.out.println(pstmt);
+//            System.out.println(pstmt);
             pstmt.executeUpdate();
             pstmt.close();
         }
@@ -840,7 +840,7 @@ public class Database {
                     .prepareStatement("INSERT IGNORE INTO " + tableName + " VALUES" +
                             " ('" + carnageReports[i].getMatchID() +  "', " +
                             "?)");
-            pstmt.setString(1, gson.toJson(carnageReports[i]));
+            pstmt.setObject(1, gson.toJson(carnageReports[i]));
 //            System.out.println(pstmt);
             pstmt.executeUpdate();
             pstmt.close();
@@ -897,8 +897,8 @@ public class Database {
     }
 
 
-    public static void createTable(String tableName, boolean ... isText) throws Exception{
-
+    public static void createTable(String tableName, boolean... isText) throws Exception{
+        System.out.println("Creating Table " + tableName);
         Class.forName("com.mysql.jdbc.Driver");
         Connection conn = DriverManager.getConnection(DB_URL, USER, PASS);
         Statement stmt = conn.createStatement();
@@ -924,6 +924,7 @@ public class Database {
         } catch (SQLException se) {
             se.printStackTrace();
         }//end finally try
+        System.out.println("Table: " + tableName + " created!");
     }
 
 
@@ -1068,7 +1069,7 @@ public class Database {
         DatabaseMetaData dbm = conn.getMetaData();
         ResultSet tables = dbm.getTables(null, null, tableName, null);
         if (!tables.next()){
-            System.out.println("Table doesn't exist: " + tableName);
+            System.out.println("Table doesn't exist: " + tableName + " cannot retrieve data!");
             return null;
         }
         Statement stmt = conn.createStatement();
@@ -1088,11 +1089,90 @@ public class Database {
                 ObjectInputStream ois = new ObjectInputStream(baip);
                 baip.close();
                 Object weapon;
-                weapon = ois.readObject();
+                try {
+                    weapon = ois.readObject();
+                }
+                catch (EOFException e){
+                    System.out.println(tableName + " " + rs.getStatement().toString());
+                    continue;
+                }
+                catch(StreamCorruptedException e){
+                    System.out.println(tableName + " " + rs.getStatement().toString());
+                    continue;
+                }
 //                while ((weapon = ois.readObject()) != null){
                 metaList.add(weapon);
 //                }
                 ois.close();
+//            }catch (Exception e){}
+        }
+
+        stmt.close();
+        rs.close();
+        conn.close();
+
+        if (dataType.toString().equalsIgnoreCase("weapons"))
+            objects = new Weapon[metaList.size()];
+        else if (dataType.toString().equalsIgnoreCase("maps"))
+            objects = new Map[metaList.size()];
+        else if (dataType.toString().equalsIgnoreCase("medals"))
+            objects = new Medal[metaList.size()];
+        else if (dataType.toString().equalsIgnoreCase("custommapvariants"))
+            objects = new CustomMapVariant[metaList.size()];
+        else if (dataType.toString().equalsIgnoreCase("arenamapvariants"))
+            objects = new MapVariant[metaList.size()];
+        else if (dataType.toString().equalsIgnoreCase("matches"))
+            objects = new Match[metaList.size()];
+        else if(dataType.toString().equalsIgnoreCase("carnage"))
+            objects = new CarnageReport[metaList.size()];
+        else if(dataType.toString().equalsIgnoreCase("MATCHEVENTS"))
+            objects = new MatchEvents[metaList.size()];
+        for (int i = 0; i < metaList.size(); i++){
+            objects[i] = metaList.get(i);
+        }
+        return objects;
+    }
+
+    public static Object[] getSomeMetadataFromDB(Enum dataType, boolean isPlayerDB, Enum gameType, int matchAmount, int start, int end) throws Exception{
+        Class.forName("com.mysql.jdbc.Driver");
+        String tableName = null;
+        String gameMode = gameType.toString();
+        if (gameMode.equalsIgnoreCase("na")){
+            tableName = dataType.toString() + "blob";
+        } else {
+            tableName = gameMode + dataType.toString() + "blob";
+        }
+        if (isPlayerDB)
+            tableName = player + gameMode + dataType.toString() + "blob";
+        Connection conn = DriverManager.getConnection(DB_URL, USER, PASS);
+        DatabaseMetaData dbm = conn.getMetaData();
+        ResultSet tables = dbm.getTables(null, null, tableName, null);
+        if (!tables.next()){
+            System.out.println("Table doesn't exist: " + tableName);
+            return null;
+        }
+        Statement stmt = conn.createStatement();
+//        System.out.println("SELECT * FROM " + tableName);
+        ResultSet rs = stmt.executeQuery("SELECT * FROM " + tableName);
+        List<Object> metaList = new ArrayList<>();
+        Object[] objects = null;
+        while (rs.next()) {
+//            try {
+            byte[] st = null;
+            if (dataType.toString().equalsIgnoreCase("custommapvariants") || dataType.toString().equalsIgnoreCase("arenamapvariants") || dataType.toString().equalsIgnoreCase("carnage") || dataType.toString().equalsIgnoreCase("matches") || dataType.toString().equalsIgnoreCase("MATCHEVENTS"))
+                st = (byte[]) rs.getObject(2);
+            else {
+                st = (byte[]) rs.getObject(1);
+            }
+            ByteArrayInputStream baip = new ByteArrayInputStream(st);
+            ObjectInputStream ois = new ObjectInputStream(baip);
+            baip.close();
+            Object weapon;
+            weapon = ois.readObject();
+//                while ((weapon = ois.readObject()) != null){
+            metaList.add(weapon);
+//                }
+            ois.close();
 //            }catch (Exception e){}
         }
         if (dataType.toString().equalsIgnoreCase("weapons"))
@@ -1131,11 +1211,12 @@ public class Database {
         }
         if (isPlayerDB)
             tableName = player + gameMode + dataType.toString() + "text";
+//        System.out.println(player);
         Connection conn = DriverManager.getConnection(DB_URL, USER, PASS);
         DatabaseMetaData dbm = conn.getMetaData();
         ResultSet tables = dbm.getTables(null, null, tableName, null);
         if (!tables.next()){
-            System.out.println("Table doesn't exist: " + tableName);
+            System.out.println("Table doesn't exist: " + tableName + " cannot retrieve data!");
             return null;
         }
         Statement stmt = conn.createStatement();
