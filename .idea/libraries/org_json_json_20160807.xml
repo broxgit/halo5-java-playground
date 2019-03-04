@@ -3,7 +3,6 @@
     <properties maven-id="org.json:json:20160807" />
     <CLASSES>
       <root url="jar://$PROJECT_DIR$/lib/json-20160807.jar!/" />
-      <root url="jar://$PROJECT_DIR$/lib/json-20160807.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />
