@@ -9,8 +9,8 @@
     <bookmark url="file://$PROJECT_DIR$/src/test/java/com/broxhouse/h5api/HaloApi.java" line="44" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5fdac0ad-8c12-40e7-a786-d460f1f65048" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+    <list default="true" id="5fdac0ad-8c12-40e7-a786-d460f1f65048" name="Default" comment="removing files that I don't want tracked by git">
+      <change afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/artifacts/HaloApp2_jar.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/copyright/profiles_settings.xml" beforeDir="false" />
@@ -107,7 +107,6 @@
       <change beforePath="$PROJECT_DIR$/.idea/uiDesigner.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/HaloApp2.iml" beforeDir="false" afterPath="$PROJECT_DIR$/HaloApp2.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/artifacts/HaloApp2_jar/HaloApp2.jar" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/broxhouse/JavaSample.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/broxhouse/h5api/ApiFactory$1.class" beforeDir="false" />
@@ -361,7 +360,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="PopulateDatabase.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="PopulateDatabase.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/test/java/com/broxhouse/h5api/PopulateDatabase.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="298">
@@ -370,6 +369,18 @@
                 <element signature="e#18236#18280#0" />
                 <element signature="e#36311#36384#0" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="README.md" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/README.md">
+          <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+            <state split_layout="FIRST">
+              <first_editor relative-caret-position="76">
+                <caret line="4" column="64" selection-start-line="4" selection-start-column="64" selection-end-line="4" selection-end-column="64" />
+              </first_editor>
+              <second_editor />
             </state>
           </provider>
         </entry>
@@ -451,7 +462,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/com/broxhouse/h5api/models/stats/reports/KilledOpponentDetail.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/broxhouse/h5api/models/stats/reports/MapVariantResourceId.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/broxhouse/h5api/models/stats/reports/SpartanRankedPlayerStats.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/broxhouse/h5api/models/stats/reports/Team.java" />
@@ -502,6 +512,7 @@
         <option value="$PROJECT_DIR$/src/main/java/com/broxhouse/h5api/models/metadata/Medal.java" />
         <option value="$PROJECT_DIR$/src/test/java/com/broxhouse/h5api/HaloApi.java" />
         <option value="$PROJECT_DIR$/.gitignore" />
+        <option value="$PROJECT_DIR$/README.md" />
       </list>
     </option>
   </component>
@@ -546,6 +557,11 @@
             <path>
               <item name="HaloApp2" type="b2602c69:ProjectViewProjectNode" />
               <item name="HaloApp2" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="HaloApp2" type="b2602c69:ProjectViewProjectNode" />
+              <item name="HaloApp2" type="462c0819:PsiDirectoryNode" />
+              <item name=".idea" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -939,7 +955,7 @@
       <workItem from="1534279918974" duration="10000" />
       <workItem from="1539618550577" duration="123000" />
       <workItem from="1544463221396" duration="8618000" />
-      <workItem from="1551723667182" duration="1110000" />
+      <workItem from="1551723667182" duration="1404000" />
     </task>
     <task id="LOCAL-00001" summary="ehhe">
       <created>1469050771760</created>
@@ -1116,7 +1132,14 @@
       <option name="project" value="LOCAL" />
       <updated>1544463334653</updated>
     </task>
-    <option name="localTasksCounter" value="26" />
+    <task id="LOCAL-00026" summary="removing files that I don't want tracked by git">
+      <created>1551727270860</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1551727270860</updated>
+    </task>
+    <option name="localTasksCounter" value="27" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -1152,11 +1175,10 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="10621000" />
+    <option name="totallyTimeSpent" value="10915000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-1928" y="-8" width="1936" height="1056" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info anchor="right" id="Palette" order="3" />
       <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.54477614" side_tool="true" weight="0.39921337" />
@@ -1177,8 +1199,8 @@
       <window_info anchor="right" id="TCPMON" order="5" />
       <window_info anchor="bottom" id="Version Control" order="8" weight="0.32907662" />
       <window_info anchor="bottom" x="-1920" y="23" width="1920" height="1137" id="Run" order="2" sideWeight="0.6108742" side_tool="true" weight="0.47304732" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="9" visible="true" weight="0.32849163" />
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.1380597" />
+      <window_info anchor="bottom" id="Terminal" order="9" visible="true" weight="0.32849163" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.1380597" />
       <window_info anchor="bottom" id="JProfiler" order="12" />
       <window_info anchor="right" id="SciView" order="5" />
       <window_info anchor="right" id="Theme Preview" order="4" />
@@ -1277,7 +1299,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_92/src.zip!/java/util/Comparator.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/com/broxhouse/h5api/models/stats/common/MedalAward.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="119">
@@ -1593,13 +1614,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/.gitignore">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="57">
-          <caret line="3" column="6" selection-start-line="3" selection-start-column="6" selection-end-line="3" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/com/broxhouse/h5api/PopulateDatabase.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="298">
@@ -1608,6 +1622,23 @@
             <element signature="e#18236#18280#0" />
             <element signature="e#36311#36384#0" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="57">
+          <caret line="3" column="6" selection-start-line="3" selection-start-column="6" selection-end-line="3" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="FIRST">
+          <first_editor relative-caret-position="76">
+            <caret line="4" column="64" selection-start-line="4" selection-start-column="64" selection-end-line="4" selection-end-column="64" />
+          </first_editor>
+          <second_editor />
         </state>
       </provider>
     </entry>
